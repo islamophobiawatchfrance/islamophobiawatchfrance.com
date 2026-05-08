@@ -29,11 +29,12 @@ load_dotenv()
 # CONFIGURATION
 # =============================================================
 
-MAX_POSTS = 2               # Number of posts to draft per run
-QUEUE_FILE   = "queue.json"
-ARCHIVE_FILE = "archive.json"
-WIRE_FILE    = "wire.json"
-MODEL        = "claude-haiku-4-5-20251001"
+MAX_POSTS      = 2          # Number of posts to draft per run
+QUEUE_FILE     = "queue.json"
+ARCHIVE_FILE   = "archive.json"
+WIRE_FILE      = "wire.json"
+WIRE_SEEN_FILE = "wire_seen.json"
+MODEL          = "claude-haiku-4-5-20251001"
 MAX_TOKENS   = 700
 
 TIER_1 = {
@@ -438,30 +439,101 @@ def append_to_archive(posts, timestamp):
     print(f"  Appended {len(posts)} post(s) to {ARCHIVE_FILE}.")
 
 
+def _load_wire_seen() -> tuple:
+    """Load wire_seen.json, purge entries older than 24 h, return (data, set of seen URLs)."""
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=24)
+    if os.path.exists(WIRE_SEEN_FILE):
+        with open(WIRE_SEEN_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    else:
+        data = {"entries": []}
+    fresh = []
+    for entry in data.get("entries", []):
+        try:
+            seen_at = datetime.datetime.fromisoformat(entry["seen_at"].replace("Z", "+00:00"))
+            if seen_at > cutoff:
+                fresh.append(entry)
+        except Exception:
+            pass
+    data["entries"] = fresh
+    return data, {e["url"] for e in fresh}
+
+
+def _save_wire_seen(data: dict, new_urls: list) -> None:
+    """Append new URLs to wire_seen data and write to disk."""
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    for url in new_urls:
+        data["entries"].append({"url": url, "seen_at": now})
+    with open(WIRE_SEEN_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def archive_stale_queue() -> None:
+    """Move undecided posts from a previous calendar day's queue into archive.json."""
+    if not os.path.exists(QUEUE_FILE):
+        return
+    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+        queue = json.load(f)
+    generated_str = queue.get("generated", "")
+    if not generated_str:
+        return
+    try:
+        generated = datetime.datetime.fromisoformat(generated_str)
+    except Exception:
+        return
+    if generated.date() >= datetime.date.today():
+        return
+    undecided = [p for p in queue.get("posts", []) if p.get("status") in ("pending", "rejected")]
+    if not undecided:
+        return
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    date_str = generated.strftime("%Y-%m-%d")
+    if os.path.exists(ARCHIVE_FILE):
+        with open(ARCHIVE_FILE, "r", encoding="utf-8") as f:
+            archive = json.load(f)
+    else:
+        archive = {"posts": []}
+    for post in undecided:
+        entry = dict(post)
+        entry["archived_reason"] = "daily_reset"
+        entry["archived_at"] = now
+        archive["posts"].append(entry)
+    with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
+        json.dump(archive, f, indent=2, ensure_ascii=False)
+    print(f"  Archived {len(undecided)} undecided post(s) from {date_str}.")
+
+
 def save_wire(stories: list, timestamp) -> None:
-    """Saves up to 50 deduplicated stories to wire.json for website display."""
-    seen = set()
+    """Saves up to 50 new (not seen in last 24 h) stories to wire.json."""
+    wire_seen_data, seen_urls = _load_wire_seen()
+    seen_titles = set()
     items = []
+    new_urls = []
     for s in stories:
-        key = simplify_title(s.get("title", ""))
-        if key in seen:
+        url = s.get("url", "")
+        if url in seen_urls:
             continue
-        seen.add(key)
+        key = simplify_title(s.get("title", ""))
+        if key in seen_titles:
+            continue
+        seen_titles.add(key)
         published = s.get("published")
         items.append({
             "title":     s.get("title", ""),
             "source":    s.get("source", ""),
-            "url":       s.get("url", ""),
+            "url":       url,
             "published": published.isoformat() if published else "",
             "time_ago":  format_time_ago(published) if published else "",
             "query":     s.get("query", ""),
         })
+        new_urls.append(url)
         if len(items) >= 50:
             break
+    _save_wire_seen(wire_seen_data, new_urls)
     wire = {"generated": timestamp.isoformat(), "items": items}
     with open(WIRE_FILE, "w", encoding="utf-8") as f:
         json.dump(wire, f, indent=2, ensure_ascii=False)
-    print(f"  Saved {len(items)} wire item(s) to {WIRE_FILE}.")
+    print(f"  Saved {len(items)} wire item(s) ({len(seen_urls)} already seen this 24 h).")
 
 
 # =============================================================
@@ -472,6 +544,8 @@ def main():
     print("\n" + "=" * 55)
     print("  IWF Drafter - Fetching stories and drafting posts")
     print("=" * 55 + "\n")
+
+    archive_stale_queue()
 
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:

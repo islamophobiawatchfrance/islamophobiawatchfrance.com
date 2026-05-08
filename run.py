@@ -8,6 +8,7 @@ Fetches news, drafts posts, then opens the dashboard in your browser.
 Run with: python3 run.py
 """
 
+import datetime
 import subprocess
 import sys
 import time
@@ -17,10 +18,35 @@ import os
 DASHBOARD_URL = "http://localhost:5000"
 
 # Absolute path to this directory so subprocess calls work from anywhere.
-HERE = os.path.dirname(os.path.abspath(__file__))
+HERE      = os.path.dirname(os.path.abspath(__file__))
+LOCK_FILE = os.path.join(HERE, "pipeline.lock")
 
 
-def main():
+def _acquire_lock() -> bool:
+    """
+    Return True if we successfully acquired the lock.
+    Return False if another run is active (lock < 2 h old).
+    Removes stale locks (>= 2 h old) automatically.
+    """
+    if os.path.exists(LOCK_FILE):
+        try:
+            with open(LOCK_FILE) as f:
+                lock_ts = datetime.datetime.fromisoformat(f.read().strip())
+            age_seconds = (datetime.datetime.now() - lock_ts).total_seconds()
+            if age_seconds < 7200:
+                print("  Pipeline already running (lock file found). Exiting.")
+                return False
+            print(f"  Stale lock file found ({age_seconds/3600:.1f} h old). Removing.")
+        except Exception:
+            pass
+        os.remove(LOCK_FILE)
+
+    with open(LOCK_FILE, "w") as f:
+        f.write(datetime.datetime.now().isoformat())
+    return True
+
+
+def _pipeline():
     print("\n" + "=" * 55)
     print("  IWF Publishing Pipeline")
     print("  Good morning. Let's see what's happening in France.")
@@ -58,6 +84,16 @@ def main():
     except KeyboardInterrupt:
         print("\n\n  Shutting down. Good editing!\n")
         flask_proc.terminate()
+
+
+def main():
+    if not _acquire_lock():
+        sys.exit(0)
+    try:
+        _pipeline()
+    finally:
+        if os.path.exists(LOCK_FILE):
+            os.remove(LOCK_FILE)
 
 
 if __name__ == "__main__":
