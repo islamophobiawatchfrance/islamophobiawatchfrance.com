@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile iwf_aggregator.py drafter.py app.py run.py)",
+      "Bash(python3 *)",
+      "Bash(curl -s http://localhost:5000/api/queue)",
+      "Bash(curl -s http://localhost:5000/)",
+      "Bash(xargs -I{} echo \"Dashboard HTML OK \\(IWF title found {} time\\(s\\)\\)\")",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"python3 app.py\")",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(kill 74639)"
+    ]
+  }
+}

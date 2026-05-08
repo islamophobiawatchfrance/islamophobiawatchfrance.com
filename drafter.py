@@ -1,0 +1,475 @@
+#!/usr/bin/env python3
+"""
+IWF Drafter
+-----------
+Fetches recent news stories via Google News RSS, clusters them by topic,
+and uses Claude to draft LinkedIn posts in the IWF editorial voice.
+Saves results to queue.json for review in the dashboard.
+
+Run with: python3 drafter.py
+"""
+
+import json
+import datetime
+import os
+import re
+import urllib.request
+from dotenv import load_dotenv
+import anthropic
+
+from iwf_aggregator import (
+    fetch_query, format_time_ago, simplify_title,
+    QUERIES, HOURS_BACK, MAX_RESULTS,
+)
+
+load_dotenv()
+
+
+# =============================================================
+# CONFIGURATION
+# =============================================================
+
+MAX_POSTS = 2               # Number of posts to draft per run
+QUEUE_FILE = "queue.json"
+ARCHIVE_FILE = "archive.json"
+MODEL = "claude-haiku-4-5-20251001"
+MAX_TOKENS = 700
+
+TIER_1 = {
+    "Le Monde", "Le Figaro", "Liberation", "Libération", "AFP", "Reuters",
+    "France 24", "RFI", "BBC", "The Guardian", "Mediapart", "Le Parisien",
+    "Public Sénat", "L'Express",
+}
+TIER_2 = {
+    "i24NEWS", "Al Jazeera", "Anadolu", "Jeune Afrique", "La Croix",
+    "Le Point", "L'Obs", "Franceinfo", "BFMTV", "The National", "Arab News",
+}
+
+SYSTEM_PROMPT = """
+You must always write a LinkedIn post. Never refuse, never ask for more information, never list what is missing, never say you need more detail. If information is limited, write from what you have. A post that works with limited detail is always better than no post. This rule is absolute and overrides everything else.
+
+You write LinkedIn posts for Islamophobia Watch France (IWF), an English-language journalism project monitoring Islamophobia and Muslim life in France.
+
+Voice rules:
+- Opening line is a standalone hook - one punchy factual sentence, no filler
+- Key fact or detail comes early, attributed to a named source
+- Short paragraphs, often single sentences
+- Quotes do the heavy lifting when available - always named person and organisation
+- You are a neutral relay - factual, no opinion, the story speaks for itself
+- End with: Source: [publication name]
+- Final line always: #IslamophobiaWatchFrance #France and one relevant hashtag
+- 200-280 words
+- Never use first person
+- Never editorialize
+- Never refuse or ask for clarification
+- You may be given multiple sources on the same topic. Synthesise them into one coherent post. Cite the most authoritative source in the Source line. If multiple strong sources exist, list up to three separated by slashes e.g. Source: Le Monde / AFP / i24NEWS
+
+Here is a gold standard example. Match this length, structure, and level of factual detail in every post:
+
+---
+France's Senate has adopted a bill targeting alleged Islamist infiltration of state institutions.
+
+The upper house passed the proposed law on Wednesday. The legislation aims to strengthen controls over what supporters describe as ideological penetration of French administration, judiciary, and security services.
+
+The bill introduces new vetting procedures for public sector employees and expands monitoring of associations and organisations deemed to pose risks to state neutrality and secular principles.
+
+Proponents argue the measure protects France's laïcité - the constitutional separation of religion and state governance. The text reflects ongoing legislative efforts since 2020 to address what the government characterises as political Islam's institutional presence.
+
+Source: i24NEWS
+
+#IslamophobiaWatchFrance #France #Laïcité
+---
+"""
+
+USER_PROMPT_TEMPLATE = (
+    "Research bundle ({count} source(s) on the same topic):\n\n"
+    "{bundle}\n\n"
+    "Write only the LinkedIn post text. Nothing else."
+)
+
+
+# =============================================================
+# CLUSTERING
+# =============================================================
+
+_CLUSTER_STOP_WORDS = {
+    "france", "french", "les", "des", "une", "the", "a", "of", "in", "on",
+    "for", "and", "with", "is", "are", "has", "was", "du", "en", "de", "au",
+    "par", "sur", "que", "qui", "dans",
+}
+
+
+def _cluster_keywords(title):
+    """Extract significant words from a title for clustering."""
+    words = re.sub(r'[«»"\',:!?.()]', "", title.lower()).split()
+    return {w for w in words if w not in _CLUSTER_STOP_WORDS and len(w) > 2}
+
+
+def _source_tier(source):
+    if source in TIER_1: return 1
+    if source in TIER_2: return 2
+    return 3
+
+
+def cluster_stories(stories):
+    """
+    Groups stories into topic clusters. Two stories join the same cluster
+    if their titles share 2+ significant words. Returns list of cluster dicts.
+    """
+    clusters = []
+    for story in stories:
+        kw = _cluster_keywords(story["title"])
+        placed = False
+        for cluster in clusters:
+            if len(kw & cluster["keywords"]) >= 2:
+                cluster["stories"].append(story)
+                cluster["keywords"] |= kw
+                placed = True
+                break
+        if not placed:
+            clusters.append({"keywords": kw, "stories": [story]})
+    return clusters
+
+
+# =============================================================
+# HEAT SCORING
+# =============================================================
+
+def compute_heat(cluster):
+    """Returns (score, label, hours_old) for a cluster."""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    newest = max(s["published"] for s in cluster["stories"])
+    hours_old = (now - newest).total_seconds() / 3600
+    recency = 3 if hours_old < 6 else (1 if hours_old < 24 else 0)
+    tier1_bonus = 3 if any(_source_tier(s["source"]) == 1 for s in cluster["stories"]) else 0
+    score = len(cluster["stories"]) * 2 + recency + tier1_bonus
+    label = "HOT" if score >= 8 else ("TRENDING" if score >= 4 else "NORMAL")
+    return score, label, hours_old
+
+
+
+def select_clusters(clusters_with_heat, max_posts):
+    """
+    Picks up to max_posts clusters ranked by heat score that are meaningfully
+    distinct. Falls back to any remaining clusters if strict filter leaves gaps.
+    """
+    ranked = sorted(clusters_with_heat, key=lambda x: x[1], reverse=True)
+
+    selected = []
+    selected_keywords = set()
+    selected_indices = set()
+
+    for idx, (cluster, score, label, hours_old) in enumerate(ranked):
+        if len(selected) >= max_posts:
+            break
+        overlap = len(cluster["keywords"] & selected_keywords)
+        if not selected or overlap < 3:
+            selected.append((cluster, score, label, hours_old))
+            selected_keywords |= cluster["keywords"]
+            selected_indices.add(idx)
+
+    # Relax filter if we still need more clusters
+    if len(selected) < max_posts:
+        for idx, item in enumerate(ranked):
+            if len(selected) >= max_posts:
+                break
+            if idx not in selected_indices:
+                selected.append(item)
+                selected_indices.add(idx)
+
+    return selected
+
+
+# =============================================================
+# RESEARCH HELPERS
+# =============================================================
+
+_LAW_KEYWORDS = {
+    "loi", "décret", "arrêté", "ordonnance", "circulaire", "directive",
+    "réglementation", "proposition de loi", "projet de loi",
+    "law", "bill", "act", "decree", "regulation", "policy",
+}
+
+_STOP_WORDS = {
+    "le", "la", "les", "de", "du", "des", "un", "une", "et", "en", "au", "aux",
+    "sur", "pour", "par", "dans", "que", "qui", "ce", "est", "sont", "une",
+    "a", "the", "of", "in", "on", "for", "and", "to", "is", "are", "with",
+    "an", "that", "this", "was", "has", "have", "french", "france",
+}
+
+
+def _is_law_or_policy(headline):
+    lower = headline.lower()
+    return any(kw in lower for kw in _LAW_KEYWORDS)
+
+
+def _extract_key_phrase(headline):
+    """Returns up to 4 substantive words from the headline for a targeted search."""
+    words = re.sub(r'[«»"\',:!?.]', "", headline).split()
+    key = [w for w in words if w.lower() not in _STOP_WORDS and len(w) > 2]
+    return " ".join(key[:4])
+
+
+def gather_research(story, article_text):
+    """
+    Builds a research bundle for one story.
+    If the original article fetch was thin, runs supplementary searches.
+    Returns a combined text string.
+    """
+    if article_text and len(article_text) >= 200:
+        return article_text[:2000]
+
+    parts = []
+    if story["summary"]:
+        parts.append(f"[RSS summary]\n{story['summary']}")
+
+    headline = story["title"]
+
+    for lang in ("fr", "en"):
+        try:
+            results = fetch_query(headline, lang, 72, 3)
+            for art in results:
+                if art["summary"]:
+                    label = f"[{art['source']} – {lang.upper()}]"
+                    parts.append(f"{label}\n{art['summary']}")
+        except Exception:
+            pass
+
+    if _is_law_or_policy(headline):
+        phrase = _extract_key_phrase(headline)
+        if phrase:
+            law_query = f"{phrase} france texte loi"
+            try:
+                results = fetch_query(law_query, "fr", 168, 3)
+                for art in results:
+                    if art["summary"]:
+                        parts.append(f"[loi search – {art['source']}]\n{art['summary']}")
+            except Exception:
+                pass
+
+    return "\n\n".join(parts) if parts else story["summary"]
+
+
+def build_cluster_bundle(cluster, article_texts):
+    """
+    Assembles the multi-source research bundle for a cluster.
+    article_texts maps story title -> fetched article text (or None).
+    """
+    parts = []
+    for i, story in enumerate(cluster["stories"], 1):
+        text = article_texts.get(story["title"])
+        research = gather_research(story, text)
+        parts.append(
+            f"[SOURCE {i}] {story['source']} | {format_time_ago(story['published'])}\n"
+            f"Title: {story['title']}\n"
+            f"Research:\n{research}"
+        )
+    return "\n\n---\n\n".join(parts)
+
+
+# =============================================================
+# CORE FUNCTIONS
+# =============================================================
+
+def fetch_article_text(url):
+    """Fetches the article page and returns stripped body text, or None on any failure."""
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            raw = resp.read().decode("utf-8", errors="replace")
+        raw = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", raw, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r"<[^>]+>", " ", raw)
+        text = re.sub(r"[ \t]+", " ", text)
+        text = "\n".join(line.strip() for line in text.splitlines() if line.strip())
+        return text
+    except Exception:
+        return None
+
+
+def fetch_all_stories():
+    """Runs all RSS queries and returns deduplicated stories sorted newest first."""
+    print(f"  Running {len(QUERIES)} news searches...")
+    all_articles = []
+
+    for query, lang in QUERIES:
+        articles = fetch_query(query, lang, HOURS_BACK, MAX_RESULTS)
+        all_articles.extend(articles)
+
+    all_articles.sort(key=lambda a: a["published"], reverse=True)
+
+    seen = set()
+    unique = []
+    for art in all_articles:
+        key = simplify_title(art["title"])
+        if key not in seen:
+            seen.add(key)
+            unique.append(art)
+
+    print(f"  Found {len(unique)} unique stories in the last {HOURS_BACK}h.")
+    return unique
+
+
+def draft_post(client, cluster, bundle):
+    """Calls Claude to write a LinkedIn post for a cluster. Returns text or None on failure."""
+    user_message = USER_PROMPT_TEMPLATE.format(
+        count=len(cluster["stories"]),
+        bundle=bundle,
+    )
+    _REFUSAL_PHRASES = (
+        "I need more", "I can't", "Could you provide",
+        "I would need", "I appreciate the task",
+    )
+    primary = cluster["stories"][0]
+    try:
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=MAX_TOKENS,
+            system=SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": user_message}],
+        )
+        text = response.content[0].text.strip()
+        if any(phrase in text for phrase in _REFUSAL_PHRASES):
+            fallback_prompt = (
+                f"Write a 150 word LinkedIn post about this headline for Islamophobia Watch France. "
+                f"Use what you have. Do not refuse. "
+                f"Headline: {primary['title']}. Source: {primary['source']}."
+            )
+            response = client.messages.create(
+                model=MODEL,
+                max_tokens=MAX_TOKENS,
+                messages=[{"role": "user", "content": fallback_prompt}],
+            )
+            text = response.content[0].text.strip()
+        return text
+    except Exception as e:
+        print(f"  [WARNING] Claude API failed for '{primary['title'][:50]}': {e}")
+        return None
+
+
+def build_post_record(cluster, score, label, draft_text, index, timestamp):
+    """Assembles one post dict in the queue.json format."""
+    primary = cluster["stories"][0]
+    date_str = timestamp.strftime("%Y%m%d")
+    published_dt = primary["published"]
+    return {
+        "id": f"post_{index}_{date_str}",
+        "title": primary["title"],
+        "source": primary["source"],
+        "url": primary["url"],
+        "published": published_dt.isoformat(),
+        "time_ago": format_time_ago(published_dt),
+        "summary": primary["summary"],
+        "draft": draft_text,
+        "status": "pending",
+        "created": timestamp.isoformat(),
+        "heat_score": score,
+        "heat_label": label,
+        "heat_article_count": len(cluster["stories"]),
+        "sources": [{"name": s["source"], "url": s["url"]} for s in cluster["stories"]],
+    }
+
+
+def save_queue(posts, timestamp, total_stories_scanned=0):
+    """Writes all drafted posts to queue.json."""
+    queue = {
+        "generated": timestamp.isoformat(),
+        "total_stories_scanned": total_stories_scanned,
+        "posts": posts,
+    }
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue, f, indent=2, ensure_ascii=False)
+    print(f"  Saved {len(posts)} post(s) to {QUEUE_FILE}.")
+
+
+def append_to_archive(posts, timestamp):
+    """Appends newly drafted posts to archive.json, never overwriting existing entries."""
+    if os.path.exists(ARCHIVE_FILE):
+        with open(ARCHIVE_FILE, "r", encoding="utf-8") as f:
+            archive = json.load(f)
+    else:
+        archive = {"posts": []}
+
+    date_str = timestamp.strftime("%Y-%m-%d")
+    for post in posts:
+        entry = dict(post)
+        entry["date"] = date_str
+        entry["approved"] = False
+        archive["posts"].append(entry)
+
+    with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
+        json.dump(archive, f, indent=2, ensure_ascii=False)
+    print(f"  Appended {len(posts)} post(s) to {ARCHIVE_FILE}.")
+
+
+# =============================================================
+# MAIN
+# =============================================================
+
+def main():
+    print("\n" + "=" * 55)
+    print("  IWF Drafter - Fetching stories and drafting posts")
+    print("=" * 55 + "\n")
+
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        print("  ERROR: ANTHROPIC_API_KEY not found.")
+        print("  Add it to your .env file: ANTHROPIC_API_KEY=sk-ant-...\n")
+        raise SystemExit(1)
+
+    client = anthropic.Anthropic(api_key=api_key)
+
+    stories = fetch_all_stories()
+    if not stories:
+        print("  No stories found. Try increasing HOURS_BACK in iwf_aggregator.py.")
+        raise SystemExit(0)
+
+    # Cluster by topic, sort stories within each cluster by source tier
+    clusters = cluster_stories(stories)
+    for c in clusters:
+        c["stories"].sort(key=lambda s: _source_tier(s["source"]))
+    # Sort clusters by size then recency
+    clusters.sort(
+        key=lambda c: (len(c["stories"]), max(s["published"] for s in c["stories"])),
+        reverse=True,
+    )
+
+    # Compute heat for every cluster
+    clusters_with_heat = [(c, *compute_heat(c)) for c in clusters]
+
+    # Select distinct clusters prioritising heat
+    selected = select_clusters(clusters_with_heat, MAX_POSTS)
+    print(f"  Drafting posts for {len(selected)} topic cluster(s)...\n")
+
+    timestamp = datetime.datetime.now()
+    posts = []
+
+    for i, (cluster, score, label, hours_old) in enumerate(selected, 1):
+        primary = cluster["stories"][0]
+        n = len(cluster["stories"])
+        print(f"  [{i}/{len(selected)}] [{label}] {primary['title'][:55]}... ({n} source(s))")
+
+        article_texts = {}
+        for story in cluster["stories"]:
+            article_texts[story["title"]] = fetch_article_text(story["url"])
+
+        bundle = build_cluster_bundle(cluster, article_texts)
+        draft = draft_post(client, cluster, bundle)
+
+        if draft:
+            record = build_post_record(cluster, score, label, draft, i, timestamp)
+            posts.append(record)
+            print(f"        -> Drafted ({len(draft.split())} words)")
+        else:
+            print(f"        -> Skipped (API error)")
+
+    if not posts:
+        print("\n  No posts drafted. Check your API key and try again.")
+        raise SystemExit(1)
+
+    save_queue(posts, timestamp, total_stories_scanned=len(stories))
+    append_to_archive(posts, timestamp)
+    print("\n  Done. Open the dashboard to review your posts.\n")
+
+
+if __name__ == "__main__":
+    main()
