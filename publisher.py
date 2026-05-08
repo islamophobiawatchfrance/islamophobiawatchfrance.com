@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 TEMPLATE_FILE  = "article-template.html"
 PUBLISHED_FILE = "published.json"
 WIRE_FILE      = "wire.json"
+SITEMAP_FILE   = "sitemap.xml"
 INDEX_FILE     = "index.html"
 NEWS_FILE      = "news.html"
 NEWS_DIR       = "news"
@@ -100,6 +101,17 @@ def _heat_icon(heat_label: str) -> str:
     return {"HOT": "🔥", "TRENDING": "📈"}.get(heat_label.upper(), "📰")
 
 
+def _meta_description(draft: str) -> str:
+    """155-char meta description: first paragraph stripped of hashtags and Source lines."""
+    desc = re.sub(r"(?m)^Source:.*$", "", draft, flags=re.IGNORECASE).strip()
+    desc = re.sub(r"#\S+", "", desc).strip()
+    first = desc.split("\n\n")[0].strip()
+    first = re.sub(r"\s+", " ", first)
+    if len(first) > 155:
+        first = first[:155].rstrip(" .,;") + "…"
+    return first
+
+
 def _excerpt(draft: str, max_chars: int = 200) -> str:
     """First paragraph of draft, trimmed to max_chars."""
     first = (draft.split("\n\n")[0] if draft else "").strip()
@@ -138,8 +150,16 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     slug       = generate_slug(title)
     date_str   = _format_date(post)
     category   = _derive_category(post)
+    filename   = f"{_date_prefix(post)}-{slug}.html"
+
+    raw_pub = post.get("published") or post.get("created") or ""
+    try:
+        published_iso = datetime.fromisoformat(raw_pub.replace("Z", "+00:00")).isoformat()
+    except Exception:
+        published_iso = datetime.now(timezone.utc).isoformat()
 
     excerpt_text   = _excerpt(draft, 160)
+    meta_desc      = _meta_description(draft)
     sources_inline = " / ".join(s.get("name", "") for s in sources) or post.get("source", "")
 
     # Build <p>-wrapped body from double-newline paragraphs
@@ -159,7 +179,10 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     subs = {
         "{{title}}":            _esc(title),
         "{{excerpt}}":          _esc(excerpt_text),
+        "{{meta_description}}": _esc(meta_desc),
         "{{slug}}":             _esc(slug),
+        "{{filename}}":         _esc(filename),
+        "{{published_iso}}":    _esc(published_iso),
         "{{date}}":             _esc(date_str),
         "{{heat_badge_class}}": _heat_cls(heat_label),
         "{{heat_icon}}":        _heat_icon(heat_label),
@@ -414,6 +437,65 @@ def update_wire(repo_path: str = ".") -> None:
     print(f"  Wire updated ({len(items)} items)")
 
 
+def update_sitemap(repo_path: str = ".") -> None:
+    """Regenerate sitemap.xml with static pages + all published articles."""
+    published_path = os.path.join(repo_path, PUBLISHED_FILE)
+    if os.path.exists(published_path):
+        with open(published_path, "r", encoding="utf-8") as f:
+            articles = json.load(f).get("articles", [])
+    else:
+        articles = []
+
+    BASE  = "https://islamophobiawatchfrance.com"
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    static = [
+        (f"{BASE}/",             today, "weekly",  "1.0"),
+        (f"{BASE}/news.html",    today, "daily",   "0.9"),
+        (f"{BASE}/about.html",   today, "monthly", "0.6"),
+        (f"{BASE}/contact.html", today, "monthly", "0.5"),
+    ]
+
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for url, lastmod, changefreq, priority in static:
+        lines += [
+            "  <url>",
+            f"    <loc>{url}</loc>",
+            f"    <lastmod>{lastmod}</lastmod>",
+            f"    <changefreq>{changefreq}</changefreq>",
+            f"    <priority>{priority}</priority>",
+            "  </url>",
+        ]
+
+    for a in sorted(articles, key=lambda x: x.get("published_at", ""), reverse=True):
+        filepath = a.get("filename", "")
+        if not filepath:
+            continue
+        raw = a.get("published_at", today)
+        try:
+            lastmod = datetime.fromisoformat(raw.replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        except Exception:
+            lastmod = today
+        lines += [
+            "  <url>",
+            f"    <loc>{BASE}/{filepath}</loc>",
+            f"    <lastmod>{lastmod}</lastmod>",
+            "    <changefreq>never</changefreq>",
+            "    <priority>0.8</priority>",
+            "  </url>",
+        ]
+
+    lines.append("</urlset>")
+
+    sitemap_path = os.path.join(repo_path, SITEMAP_FILE)
+    with open(sitemap_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines) + "\n")
+    print(f"  sitemap.xml updated ({len(articles)} article(s))")
+
+
 def git_publish(article_path: str, commit_message: str, repo_path: str = ".") -> bool:
     """
     Stage article + updated pages, commit, and push to GitHub.
@@ -424,7 +506,7 @@ def git_publish(article_path: str, commit_message: str, repo_path: str = ".") ->
         r = subprocess.run(cmd, capture_output=True, text=True, cwd=repo_path)
         return r.returncode, r.stdout.strip(), r.stderr.strip()
 
-    files = [article_path, INDEX_FILE, NEWS_FILE, PUBLISHED_FILE, WIRE_FILE]
+    files = [article_path, INDEX_FILE, NEWS_FILE, PUBLISHED_FILE, WIRE_FILE, SITEMAP_FILE]
 
     code, _, err = _run(["git", "add"] + files)
     if code != 0:
@@ -496,10 +578,11 @@ def publish_post(post: dict, repo_path: str = ".") -> str:
         json.dump(published, f, indent=2, ensure_ascii=False)
     print(f"  published.json: {len(existing)} article(s) total")
 
-    # 4, 5 & 6. Regenerate pages
+    # 4–7. Regenerate pages
     update_homepage(repo_path)
     update_news_archive(repo_path)
     update_wire(repo_path)
+    update_sitemap(repo_path)
 
     # 7. Git
     commit_msg = f"Publish: {title[:60]}"
