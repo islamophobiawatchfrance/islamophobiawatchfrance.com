@@ -16,7 +16,6 @@ import re
 import subprocess
 import unicodedata
 import urllib.parse
-import urllib.request
 from datetime import datetime, timezone
 
 TEMPLATE_FILE  = "article-template.html"
@@ -152,107 +151,12 @@ def generate_slug(title: str, max_chars: int = 60) -> str:
     return truncated[:last_hyphen] if last_hyphen > 0 else truncated
 
 
-_WIKIMEDIA_API = "https://commons.wikimedia.org/w/api.php"
-_WIKIMEDIA_UA  = "IWF-Aggregator/1.0 (https://islamophobiawatchfrance.com)"
-
-_CATEGORY_FALLBACK_QUERIES = {
-    "Islamophobia":     ["Grande Mosquee Paris", "mosque france", "paris france"],
-    "Policy & Law":     ["france parliament", "france protest demonstration", "paris france"],
-    "Muslim Life":      ["france mosque prayer", "paris mosque", "france community"],
-    "European Context": ["Paris cityscape", "france europe", "paris france aerial"],
-    "News":             ["france paris", "paris cityscape", "france landscape"],
-}
-
-
-def fetch_wikimedia_image(keywords: list, category: str) -> dict | None:
-    """
-    Search Wikimedia Commons for a landscape JPEG/PNG (aspect ratio 1.5–3.0, ≥600px wide).
-    Tries category fallback query first, then title keywords.
-    Returns {"url", "title", "author", "licence", "source", "commons_url"} or None.
-    """
-    fallbacks = _CATEGORY_FALLBACK_QUERIES.get(category, ["france paris"])
-    # Category fallbacks first (reliable), then title keywords as a last attempt
-    queries = list(fallbacks)
-    if keywords:
-        queries.append(" ".join(keywords[:2]))
-
-    def _api(params: dict) -> dict:
-        qs  = urllib.parse.urlencode(params)
-        req = urllib.request.Request(
-            f"{_WIKIMEDIA_API}?{qs}",
-            headers={"User-Agent": _WIKIMEDIA_UA},
-        )
-        with urllib.request.urlopen(req, timeout=8) as r:
-            return json.loads(r.read())
-
-    def _photo_titles(query: str) -> list:
-        """Return JPEG/PNG file titles from a search query (up to 10 results)."""
-        hits = _api({
-            "action": "query", "list": "search",
-            "srsearch": query, "srnamespace": 6,
-            "srlimit": 10, "format": "json",
-        }).get("query", {}).get("search", [])
-        return [h["title"] for h in hits if h["title"].lower().endswith((".jpg", ".jpeg", ".png"))]
-
-    def _best_landscape(titles: list) -> dict | None:
-        """Batch-fetch imageinfo for all titles; return first that is landscape ≥600px."""
-        if not titles:
-            return None
-        pages = _api({
-            "action": "query",
-            "titles": "|".join(titles),
-            "prop":   "imageinfo",
-            "iiprop": "url|extmetadata|size",
-            "format": "json",
-        }).get("query", {}).get("pages", {})
-
-        # Re-order pages to match the original search ranking
-        title_index = {t: i for i, t in enumerate(titles)}
-        ordered = sorted(pages.values(), key=lambda p: title_index.get(p.get("title", ""), 999))
-
-        for page in ordered:
-            ii  = (page.get("imageinfo") or [{}])[0]
-            w   = ii.get("width", 0)
-            h   = ii.get("height", 1)
-            url = ii.get("url", "").split("?")[0]
-            if not url or w < 600:
-                continue
-            ratio = w / h
-            if not (1.5 <= ratio <= 3.0):
-                continue
-
-            meta    = ii.get("extmetadata", {})
-            author  = re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "Unknown")).strip() or "Unknown"
-            licence = meta.get("LicenseShortName", {}).get("value", "Unknown")
-            ft      = page.get("title", "")
-            bare    = ft.replace("File:", "").replace(" ", "_")
-
-            return {
-                "url":         url,
-                "title":       ft.replace("File:", ""),
-                "author":      author,
-                "licence":     licence,
-                "source":      "Wikimedia Commons",
-                "commons_url": f"https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(bare)}",
-            }
-        return None
-
-    try:
-        for q in queries:
-            titles = _photo_titles(q)
-            result = _best_landscape(titles)
-            if result:
-                return result
-        return None
-    except Exception:
-        return None
-
-
 def generate_header_graphic(title: str, category: str, heat_label: str, date: str) -> str:
-    """Return an inline SVG header graphic (fallback when no Wikimedia image is found)."""
-    badge_color = {"HOT": "#ED2939", "TRENDING": "#D97706"}.get(heat_label.upper(), "#6B7280")
+    """Return a branded inline SVG banner for every article header."""
+    badge_bg    = {"HOT": "#A32D2D", "TRENDING": "#854F0B"}.get(heat_label.upper(), "#444444")
+    badge_fg    = {"HOT": "#FFAAAA", "TRENDING": "#FFD580"}.get(heat_label.upper(), "#AAAAAA")
 
-    # Word-wrap title to ~42 chars per line (fits ~740px at ~26px font)
+    # Word-wrap title: max 42 chars per line, two lines max (rest truncated with ellipsis)
     words, lines, current = title.split(), [], ""
     for word in words:
         candidate = f"{current} {word}".strip() if current else word
@@ -265,27 +169,50 @@ def generate_header_graphic(title: str, category: str, heat_label: str, date: st
     if current:
         lines.append(current)
 
+    if len(lines) > 2:
+        lines = lines[:2]
+        if len(lines[1]) > 39:
+            lines[1] = lines[1][:39].rstrip() + "…"
+        else:
+            lines[1] = lines[1] + "…"
+
     tspans = "".join(
-        f'<tspan x="30" y="{120 + i * 38}">{_esc(line)}</tspan>'
-        for i, line in enumerate(lines[:4])
+        f'<tspan x="40" dy="{0 if i == 0 else 44}">{_esc(line)}</tspan>'
+        for i, line in enumerate(lines)
     )
 
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" '
-        f'width="100%" style="display:block;background:#0a0a0a">'
-        f'<rect x="0"   y="0" width="6" height="300" fill="#ED2939"/>'
-        f'<rect x="794" y="0" width="6" height="300" fill="#002395"/>'
-        f'<text x="30" y="50" font-family="sans-serif" font-size="11" '
-        f'fill="#ED2939" letter-spacing="1">{_esc(category.upper())}</text>'
-        f'<text font-family="sans-serif" font-size="26" font-weight="500" fill="#ffffff">'
-        f'{tspans}</text>'
-        f'<text x="30" y="278" font-family="sans-serif" font-size="11" fill="#666">'
+    badge_label = _esc(heat_label.upper())
+    badge_w     = max(len(badge_label) * 7 + 20, 80)
+    badge_x     = 800 - badge_w - 40
+
+    svg = (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" '
+        f'width="100%" style="display:block">'
+        # Background
+        f'<rect width="800" height="220" fill="#0a0a0a"/>'
+        # Top red bar
+        f'<rect x="0" y="0" width="800" height="4" fill="#ED2939"/>'
+        # Bottom blue bar
+        f'<rect x="0" y="216" width="800" height="4" fill="#002395"/>'
+        # IWF watermark — faint, far right
+        f'<text x="580" y="180" font-family="sans-serif" font-size="120" font-weight="bold" '
+        f'fill="#1a1a1a" dominant-baseline="auto">IWF</text>'
+        # Category label
+        f'<text x="40" y="50" font-family="sans-serif" font-size="11" font-weight="normal" '
+        f'fill="#ED2939" letter-spacing="0.15em">{_esc(category.upper())}</text>'
+        # Heat badge — right-aligned on same row as category
+        f'<rect x="{badge_x}" y="34" width="{badge_w}" height="22" rx="3" fill="{badge_bg}"/>'
+        f'<text x="{badge_x + badge_w // 2}" y="49" font-family="sans-serif" font-size="11" '
+        f'fill="{badge_fg}" text-anchor="middle">{badge_label}</text>'
+        # Title
+        f'<text x="40" y="100" font-family="sans-serif" font-size="28" font-weight="bold" '
+        f'fill="#ffffff">{tspans}</text>'
+        # Date
+        f'<text x="40" y="190" font-family="sans-serif" font-size="11" fill="#666666">'
         f'{_esc(date)}</text>'
-        f'<rect x="656" y="18" width="130" height="26" rx="4" fill="{badge_color}"/>'
-        f'<text x="721" y="35" font-family="sans-serif" font-size="11" fill="#fff" '
-        f'text-anchor="middle">{_esc(heat_label.upper())}</text>'
         f'</svg>'
     )
+    return f'<div class="art-header-img">{svg}</div>'
 
 
 def generate_article_html(post: dict, published_articles: list = None) -> str:
@@ -312,27 +239,7 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     except Exception:
         published_iso = datetime.now(timezone.utc).isoformat()
 
-    # Header image: try Wikimedia Commons, fall back to generated SVG
-    img_keywords = [
-        w for w in re.sub(r"[^a-z0-9\s]", "", _ascii(title).lower()).split()
-        if w not in _STOP_WORDS
-    ][:4]
-    wikimedia = fetch_wikimedia_image(img_keywords, category)
-    if wikimedia:
-        attr = (
-            f'Image: <a href="{_esc(wikimedia["commons_url"])}" target="_blank" '
-            f'rel="noopener noreferrer">{_esc(wikimedia["title"])}</a>'
-            f' by {_esc(wikimedia["author"])} ({_esc(wikimedia["licence"])})'
-            f' via Wikimedia Commons'
-        )
-        header_image_html = (
-            f'<div class="art-header-img">\n'
-            f'  <img src="{_esc(wikimedia["url"])}" alt="{_esc(title)}" loading="lazy">\n'
-            f'  <p class="art-header-credit">{attr}</p>\n'
-            f'</div>'
-        )
-    else:
-        header_image_html = generate_header_graphic(title, category, heat_label, _format_date(post))
+    header_image_html = generate_header_graphic(title, category, heat_label, date_str)
 
     excerpt_text      = _excerpt(draft, 160)
     meta_desc         = _meta_description(draft)

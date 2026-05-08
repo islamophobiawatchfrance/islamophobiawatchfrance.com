@@ -943,24 +943,6 @@ p  { color: var(--text-secondary); }
   border-radius: 0 0 4px 4px;
 }
 
-.art-header-img img {
-  width: 100%;
-  max-height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-.art-header-credit {
-  font-size: 10px;
-  color: var(--text-muted);
-  padding: 5px 12px;
-  background: #f7f7f7;
-  border-bottom: 0.5px solid var(--border);
-  margin: 0;
-}
-
-.art-header-credit a { color: var(--text-muted); }
-
 .article-sidebar {
   width: 35%;
   background: #f7f7f7;
