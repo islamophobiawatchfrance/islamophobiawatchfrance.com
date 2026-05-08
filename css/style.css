@@ -281,7 +281,7 @@ p  { color: var(--text-secondary); }
 .hero-left {
   width: 45%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 48px;
   overflow-y: auto;
   flex-shrink: 0;
@@ -355,6 +355,7 @@ p  { color: var(--text-secondary); }
   flex-direction: column;
   overflow: hidden;
   min-width: 0;
+  padding-top: 48px;
 }
 
 .hero-feed-label {
@@ -364,7 +365,7 @@ p  { color: var(--text-secondary); }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-faint);
-  padding: 12px 20px;
+  padding: 0 20px 12px;
   background: var(--bg);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -780,6 +781,7 @@ p  { color: var(--text-secondary); }
     border-top: 2px solid var(--red);
     height: 400px;
     flex-shrink: 0;
+    padding-top: 0;
   }
 }
 
