@@ -834,4 +834,83 @@ p  { color: var(--text-secondary); }
   /* News feed */
   .news-feed-list { height: 420px; }
   .news-feed-item { grid-template-columns: 44px 1fr 20px; gap: 10px; padding: 14px 16px; }
+
+  /* Wire */
+  .wire-feed { max-height: 360px; }
+}
+
+/* ── 25. Wire Section ─────────────────────────────── */
+.wire-section { padding: 48px 0; border-top: 1px solid var(--border-subtle); }
+
+.wire-header { margin-bottom: 20px; }
+.wire-header h2 { margin-bottom: 4px; }
+.wire-subheading { font-size: 0.9rem; color: var(--text-muted); }
+
+.wire-feed {
+  border-top: 2px solid var(--red);
+  background: var(--bg-raised);
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) var(--bg-raised);
+}
+
+.wire-item {
+  display: grid;
+  grid-template-columns: 60px 90px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.82rem;
+}
+.wire-item:last-child { border-bottom: none; }
+
+.wire-time {
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.wire-source {
+  color: var(--red);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wire-headline {
+  color: var(--text);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  transition: color 0.15s;
+}
+.wire-headline:hover { color: var(--red); }
+
+.wire-note {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+.wire-empty {
+  padding: 20px 16px;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.feed-empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 2rem;
+  text-align: center;
 }

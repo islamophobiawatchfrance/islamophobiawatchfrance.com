@@ -30,10 +30,11 @@ load_dotenv()
 # =============================================================
 
 MAX_POSTS = 2               # Number of posts to draft per run
-QUEUE_FILE = "queue.json"
+QUEUE_FILE   = "queue.json"
 ARCHIVE_FILE = "archive.json"
-MODEL = "claude-haiku-4-5-20251001"
-MAX_TOKENS = 700
+WIRE_FILE    = "wire.json"
+MODEL        = "claude-haiku-4-5-20251001"
+MAX_TOKENS   = 700
 
 TIER_1 = {
     "Le Monde", "Le Figaro", "Liberation", "Libération", "AFP", "Reuters",
@@ -44,6 +45,42 @@ TIER_2 = {
     "i24NEWS", "Al Jazeera", "Anadolu", "Jeune Afrique", "La Croix",
     "Le Point", "L'Obs", "Franceinfo", "BFMTV", "The National", "Arab News",
 }
+
+_FRENCH_WORDS = {
+    "le", "la", "les", "du", "des", "en", "et", "une", "un", "est",
+    "sont", "au", "aux", "par", "sur", "dans", "que", "qui", "de",
+    "se", "ne", "pas", "plus", "mais", "ou", "donc", "or", "ni", "car",
+}
+
+
+def _is_french(text: str) -> bool:
+    """Returns True if more than 10% of words are common French words."""
+    words = re.sub(r"[^a-zA-Z\s]", "", text.lower()).split()
+    if not words:
+        return False
+    return sum(1 for w in words if w in _FRENCH_WORDS) / len(words) > 0.10
+
+
+def translate_to_english(client, text: str) -> str:
+    """Translate text to English if it appears to be French; return as-is otherwise."""
+    if not text or not _is_french(text):
+        return text
+    try:
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=500,
+            messages=[{
+                "role": "user",
+                "content": (
+                    "Translate the following to English. "
+                    "Return only the translated text, nothing else:\n\n" + text
+                ),
+            }],
+        )
+        return response.content[0].text.strip()
+    except Exception:
+        return text
+
 
 SYSTEM_PROMPT = """
 You must always write a LinkedIn post. Never refuse, never ask for more information, never list what is missing, never say you need more detail. If information is limited, write from what you have. A post that works with limited detail is always better than no post. This rule is absolute and overrides everything else.
@@ -401,6 +438,32 @@ def append_to_archive(posts, timestamp):
     print(f"  Appended {len(posts)} post(s) to {ARCHIVE_FILE}.")
 
 
+def save_wire(stories: list, timestamp) -> None:
+    """Saves up to 50 deduplicated stories to wire.json for website display."""
+    seen = set()
+    items = []
+    for s in stories:
+        key = simplify_title(s.get("title", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        published = s.get("published")
+        items.append({
+            "title":     s.get("title", ""),
+            "source":    s.get("source", ""),
+            "url":       s.get("url", ""),
+            "published": published.isoformat() if published else "",
+            "time_ago":  format_time_ago(published) if published else "",
+            "query":     s.get("query", ""),
+        })
+        if len(items) >= 50:
+            break
+    wire = {"generated": timestamp.isoformat(), "items": items}
+    with open(WIRE_FILE, "w", encoding="utf-8") as f:
+        json.dump(wire, f, indent=2, ensure_ascii=False)
+    print(f"  Saved {len(items)} wire item(s) to {WIRE_FILE}.")
+
+
 # =============================================================
 # MAIN
 # =============================================================
@@ -423,6 +486,15 @@ def main():
         print("  No stories found. Try increasing HOURS_BACK in iwf_aggregator.py.")
         raise SystemExit(0)
 
+    # Translate French titles and summaries to English
+    print("  Translating French content...")
+    for story in stories:
+        story["title"]   = translate_to_english(client, story.get("title", ""))
+        story["summary"] = translate_to_english(client, story.get("summary") or "")
+
+    timestamp = datetime.datetime.now()
+    save_wire(stories, timestamp)
+
     # Cluster by topic, sort stories within each cluster by source tier
     clusters = cluster_stories(stories)
     for c in clusters:
@@ -440,7 +512,6 @@ def main():
     selected = select_clusters(clusters_with_heat, MAX_POSTS)
     print(f"  Drafting posts for {len(selected)} topic cluster(s)...\n")
 
-    timestamp = datetime.datetime.now()
     posts = []
 
     for i, (cluster, score, label, hours_old) in enumerate(selected, 1):
@@ -456,6 +527,7 @@ def main():
         draft = draft_post(client, cluster, bundle)
 
         if draft:
+            draft = translate_to_english(client, draft)
             record = build_post_record(cluster, score, label, draft, i, timestamp)
             posts.append(record)
             print(f"        -> Drafted ({len(draft.split())} words)")

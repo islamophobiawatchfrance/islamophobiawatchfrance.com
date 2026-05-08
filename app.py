@@ -10,6 +10,7 @@ Run with: python3 app.py
 
 import json
 import os
+from datetime import datetime, timezone
 from flask import Flask, jsonify, request, render_template_string
 
 app = Flask(__name__)
@@ -169,6 +170,14 @@ TEMPLATE = r"""<!DOCTYPE html>
       color: #333; letter-spacing: 0.02em;
     }
 
+    /* ── Published link ── */
+    .published-link {
+      display: inline-block; font-size: 12px; color: #1e8e3e;
+      text-decoration: none; padding: 2px 0; margin-top: 4px;
+    }
+    .published-link:hover { text-decoration: underline; }
+    .publishing-notice { font-size: 12px; color: #999; font-style: italic; margin-top: 4px; }
+
     /* ── Toast ── */
     #toast {
       position: fixed; bottom: 28px; left: 50%;
@@ -283,7 +292,27 @@ TEMPLATE = r"""<!DOCTYPE html>
       body: JSON.stringify({ id, approved_at: new Date().toISOString() }),
     });
     render();
-    showToast('Post approved — Copy button now active');
+    showToast('Approved — publishing to website…');
+
+    try {
+      const res  = await fetch('/api/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (data.ok && data.url) {
+        post.published     = true;
+        post.published_url = data.url;
+        post.published_at  = new Date().toISOString();
+        render();
+        showToast('Published to islamophobiawatchfrance.com');
+      } else {
+        showToast('Approved — publish error: ' + (data.error || 'unknown'));
+      }
+    } catch (e) {
+      showToast('Approved — publish failed (check server logs)');
+    }
   }
 
   async function reject(id) {
@@ -405,6 +434,11 @@ TEMPLATE = r"""<!DOCTYPE html>
     const copyBtn = post.status === 'approved'
       ? `<button class="btn btn-copy" onclick="copyDraft('${id}')">Copy text</button>` : '';
 
+    const publishedLink = (post.published && post.published_url)
+      ? `<a class="published-link" href="${esc(post.published_url)}" target="_blank" rel="noopener noreferrer">View live article →</a>`
+      : (post.status === 'approved' && !post.published)
+        ? `<span class="publishing-notice">Publishing…</span>` : '';
+
     const undoBtn = post.status !== 'pending'
       ? `<button class="btn btn-undo" onclick="undoAction('${id}')">Undo</button>` : '';
 
@@ -437,6 +471,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           ${copyBtn}
           ${undoBtn}
         </div>
+        ${publishedLink}
         ${renderSources(post)}
       </div>`;
   }
@@ -577,6 +612,48 @@ def approve_archive():
     with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
         json.dump(archive, f, indent=2, ensure_ascii=False)
     return jsonify({"ok": True})
+
+
+@app.route("/api/publish", methods=["POST"])
+def publish_article():
+    """
+    Trigger the full publish flow for an approved post:
+    generates HTML, updates index/news pages, commits and pushes to GitHub.
+    """
+    import publisher
+
+    data = request.get_json(force=True)
+    if not data or "id" not in data:
+        return jsonify({"error": "Missing id"}), 400
+
+    if not os.path.exists(QUEUE_FILE):
+        return jsonify({"error": "Queue not found"}), 404
+
+    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+        queue_data = json.load(f)
+
+    post = next(
+        (p for p in queue_data.get("posts", []) if p.get("id") == data["id"]),
+        None,
+    )
+    if not post:
+        return jsonify({"error": "Post not found in queue"}), 404
+
+    try:
+        url = publisher.publish_post(post)
+    except Exception as e:
+        print(f"  [publish error] {e}")
+        return jsonify({"error": str(e)}), 500
+
+    # Persist publish metadata back into queue.json
+    now = datetime.now(timezone.utc).isoformat()
+    post["published"]     = True
+    post["published_url"] = url
+    post["published_at"]  = now
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+
+    return jsonify({"ok": True, "url": url})
 
 
 # =============================================================

@@ -2,8 +2,8 @@
 """
 IWF Pipeline Scheduler
 ----------------------
-Run this once to schedule the IWF pipeline to run automatically at 7am daily.
-Uses macOS launchd (no cron required).
+Run this once to schedule the IWF pipeline at 07:00 and 18:00 daily.
+Uses macOS launchd (no cron required). Detects your current Python automatically.
 
 Run with: python3 schedule_setup.py
 """
@@ -12,19 +12,34 @@ import os
 import subprocess
 import sys
 
-PYTHON_PATH  = "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
-SCRIPT_DIR   = os.path.dirname(os.path.abspath(__file__))
-RUN_SCRIPT   = os.path.join(SCRIPT_DIR, "run.py")
-LOG_PATH     = os.path.join(SCRIPT_DIR, "pipeline.log")
-PLIST_LABEL  = "com.iwf.pipeline"
-PLIST_PATH   = os.path.expanduser(f"~/Library/LaunchAgents/{PLIST_LABEL}.plist")
+PYTHON_PATH = sys.executable
+SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
+RUN_SCRIPT  = os.path.join(SCRIPT_DIR, "run.py")
+LOGS_DIR    = os.path.join(SCRIPT_DIR, "logs")
 
-PLIST_CONTENT = f"""<?xml version="1.0" encoding="UTF-8"?>
+JOBS = [
+    {
+        "label":  "com.iwf.pipeline.morning",
+        "hour":   7,
+        "minute": 0,
+        "log":    os.path.join(LOGS_DIR, "pipeline-morning.log"),
+    },
+    {
+        "label":  "com.iwf.pipeline.evening",
+        "hour":   18,
+        "minute": 0,
+        "log":    os.path.join(LOGS_DIR, "pipeline-evening.log"),
+    },
+]
+
+
+def _plist(job: dict) -> str:
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>{PLIST_LABEL}</string>
+    <string>{job["label"]}</string>
     <key>ProgramArguments</key>
     <array>
         <string>{PYTHON_PATH}</string>
@@ -35,14 +50,14 @@ PLIST_CONTENT = f"""<?xml version="1.0" encoding="UTF-8"?>
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>7</integer>
+        <integer>{job["hour"]}</integer>
         <key>Minute</key>
-        <integer>0</integer>
+        <integer>{job["minute"]}</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>{LOG_PATH}</string>
+    <string>{job["log"]}</string>
     <key>StandardErrorPath</key>
-    <string>{LOG_PATH}</string>
+    <string>{job["log"]}</string>
     <key>RunAtLoad</key>
     <false/>
 </dict>
@@ -55,38 +70,40 @@ def main():
     print("  IWF Pipeline Scheduler Setup")
     print("=" * 55 + "\n")
 
-    if not os.path.exists(PYTHON_PATH):
-        print(f"  ERROR: python3 not found at:\n  {PYTHON_PATH}")
-        print("\n  Find yours with:  which python3")
-        print("  Then update PYTHON_PATH in this file.")
-        sys.exit(1)
-
     if not os.path.exists(RUN_SCRIPT):
-        print(f"  ERROR: run.py not found at:\n  {RUN_SCRIPT}")
+        print(f"  ERROR: run.py not found at:\n  {RUN_SCRIPT}\n")
         sys.exit(1)
 
     os.makedirs(os.path.expanduser("~/Library/LaunchAgents"), exist_ok=True)
+    os.makedirs(LOGS_DIR, exist_ok=True)
 
-    # Unload any existing job silently before overwriting
-    subprocess.run(["launchctl", "unload", PLIST_PATH], capture_output=True)
+    for job in JOBS:
+        plist_path = os.path.expanduser(f"~/Library/LaunchAgents/{job['label']}.plist")
 
-    with open(PLIST_PATH, "w") as f:
-        f.write(PLIST_CONTENT)
-    print(f"  Plist written:  {PLIST_PATH}")
+        # Unload any existing job silently before overwriting
+        subprocess.run(["launchctl", "unload", plist_path], capture_output=True)
 
-    result = subprocess.run(
-        ["launchctl", "load", PLIST_PATH],
-        capture_output=True, text=True,
-    )
-    if result.returncode != 0:
-        print(f"\n  ERROR loading schedule:\n  {result.stderr.strip()}")
-        sys.exit(1)
+        with open(plist_path, "w") as f:
+            f.write(_plist(job))
 
-    print("  Schedule loaded: pipeline will run at 07:00 every day.")
-    print(f"  Log output:     {LOG_PATH}")
-    print("\n  To disable the schedule, run:")
-    print(f"    launchctl unload {PLIST_PATH}")
-    print(f"    rm {PLIST_PATH}")
+        result = subprocess.run(
+            ["launchctl", "load", plist_path],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            print(f"  ERROR loading {job['label']}:\n  {result.stderr.strip()}\n")
+            sys.exit(1)
+
+        time_label = f"{job['hour']:02d}:{job['minute']:02d}"
+        print(f"  Loaded: {job['label']} — runs daily at {time_label}")
+        print(f"  Log:    {job['log']}")
+        print()
+
+    print("  Pipeline will now run at 07:00 and 18:00 every day.\n")
+    print("  To disable, run:")
+    for job in JOBS:
+        plist_path = os.path.expanduser(f"~/Library/LaunchAgents/{job['label']}.plist")
+        print(f"    launchctl unload {plist_path}")
     print()
 
 

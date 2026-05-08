@@ -3,3 +3,6 @@ linkedin_auth.py
 linkedin_token.json
 queue.json
 archive.json
+__pycache__/
+*.pyc
+.DS_Store

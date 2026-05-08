@@ -63,49 +63,25 @@
         <button class="filter-btn">Muslim Life</button>
         <button class="filter-btn">Policy &amp; Law</button>
         <button class="filter-btn">Community</button>
+        <button class="filter-btn">The Wire</button>
       </div>
 
       <!-- Cards grid -->
       <div class="news-grid">
-        <article class="news-card">
-          <div class="card-meta">
-            <span class="card-date">6 May 2026</span>
-            <span class="card-source">europe1.fr</span>
-          </div>
-          <div class="card-badges">
-            <span class="badge heat-trending">📈 TRENDING</span>
-            <span class="badge badge-category">Islamophobia</span>
-          </div>
-          <h3 class="card-headline">
-            <a href="news/2026-05-06-4000-convives-autour-dun-cochon-a-la-broche-les-propos-du-re.html">«4.000 convives autour d’un cochon à la broche» : les propos du recteur de la Grande Mosquée de Paris sur le Canon français dénoncés par la droite</a>
-          </h3>
-          <p class="card-excerpt">The rector of Paris&#x27;s Grand Mosque has sparked political backlash after criticising France&#x27;s &quot;Canon français&quot; – a government-backed cultural initiative.</p>
-          <div class="card-footer">
-            <span class="card-sources-label">europe1.fr / lejdd.fr / Valeurs actuelles</span>
-            <a href="news/2026-05-06-4000-convives-autour-dun-cochon-a-la-broche-les-propos-du-re.html" class="card-read-more">Read more →</a>
-          </div>
-        </article>
-
-        <article class="news-card">
-          <div class="card-meta">
-            <span class="card-date">6 May 2026</span>
-            <span class="card-source">Mediapart</span>
-          </div>
-          <div class="card-badges">
-            <span class="badge heat-trending">📈 TRENDING</span>
-            <span class="badge badge-category">Policy &amp; Law</span>
-          </div>
-          <h3 class="card-headline">
-            <a href="news/2026-05-06-entrisme-islamiste-le-senat-adopte-une-proposition-de-loi-en.html">« Entrisme islamiste » : le Sénat adopte une proposition de loi en citant un rapport et un sondage contestés sur les musulmans</a>
-          </h3>
-          <p class="card-excerpt">France&#x27;s Senate has passed legislation targeting alleged Islamist infiltration of state institutions, drawing immediate criticism from Muslim organisations.</p>
-          <div class="card-footer">
-            <span class="card-sources-label">Mediapart / Bladi.net</span>
-            <a href="news/2026-05-06-entrisme-islamiste-le-senat-adopte-une-proposition-de-loi-en.html" class="card-read-more">Read more →</a>
-          </div>
-        </article>
-
+        <p class="feed-empty">No stories published yet. Run the pipeline to populate this section.</p>
       </div><!-- /.news-grid -->
+
+      <!-- Wire feed -->
+      <div class="wire-section" style="margin-top: 48px;">
+        <div class="wire-header">
+          <h2>The Wire</h2>
+          <p class="wire-subheading">Raw news feed — every story from French media in the last 24 hours</p>
+        </div>
+        <div id="wire-feed-news" class="wire-feed">
+          <p class="wire-empty">No wire stories available yet.</p>
+        </div><!-- /.wire-feed-news -->
+        <p class="wire-note">Updated each time the pipeline runs. Stories are raw RSS headlines — not edited by IWF.</p>
+      </div>
 
       <!-- Pagination -->
       <div class="pagination">
