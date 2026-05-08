@@ -125,16 +125,30 @@ def _excerpt(draft: str, max_chars: int = 200) -> str:
 # ── Public API ────────────────────────────────────────────
 
 
-def generate_slug(title: str) -> str:
+_STOP_WORDS = {
+    "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for",
+    "of", "with", "is", "are", "was", "were", "has", "have", "by", "from",
+    "its", "this", "that", "over", "about", "after", "before", "against",
+    "between", "into", "through", "during", "without", "within", "along",
+    "following", "across", "behind", "beyond", "plus", "except", "up",
+    "out", "around", "down", "off", "above", "below",
+}
+
+
+def generate_slug(title: str, max_chars: int = 60) -> str:
     """
-    Convert a headline to a URL slug.
-    Lowercase, ASCII-only, hyphens for spaces, max 60 chars.
+    Convert a headline to a SEO-optimised URL slug.
+    Strips stop words, lowercase ASCII, hyphens, max 60 chars at word boundary.
     """
     slug = _ascii(title).lower()
     slug = re.sub(r"[^a-z0-9\s-]", "", slug)
-    slug = re.sub(r"\s+", "-", slug.strip())
-    slug = re.sub(r"-+", "-", slug)
-    return slug[:60].rstrip("-")
+    words = [w.strip("-") for w in slug.split() if w.strip("-") and w.strip("-") not in _STOP_WORDS]
+    slug = re.sub(r"-+", "-", "-".join(words)).strip("-")
+    if len(slug) <= max_chars:
+        return slug
+    truncated = slug[:max_chars]
+    last_hyphen = truncated.rfind("-")
+    return truncated[:last_hyphen] if last_hyphen > 0 else truncated
 
 
 def generate_article_html(post: dict, published_articles: list = None) -> str:
