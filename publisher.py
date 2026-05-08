@@ -233,11 +233,19 @@ def save_article(post: dict, repo_path: str = ".", published_articles: list = No
     return rel_path
 
 
-def update_homepage(published_articles: list, repo_path: str = ".") -> None:
+def update_homepage(repo_path: str = ".") -> None:
     """
     Replace the contents of .hero-feed in index.html with
     freshly generated feed items (newest first, max 10).
+    Reads published.json directly so manual title edits are always reflected.
     """
+    published_path = os.path.join(repo_path, PUBLISHED_FILE)
+    if os.path.exists(published_path):
+        with open(published_path, "r", encoding="utf-8") as f:
+            published_articles = json.load(f).get("articles", [])
+    else:
+        published_articles = []
+
     index_path = os.path.join(repo_path, INDEX_FILE)
     with open(index_path, "r", encoding="utf-8") as f:
         html = f.read()
@@ -285,11 +293,18 @@ def update_homepage(published_articles: list, repo_path: str = ".") -> None:
     print(f"  index.html updated ({len(articles)} items in feed)")
 
 
-def update_news_archive(published_articles: list, repo_path: str = ".") -> None:
+def update_news_archive(repo_path: str = ".") -> None:
     """
-    Replace the .news-grid in news.html with real article cards
-    (newest first).
+    Replace the .news-grid in news.html with real article cards (newest first).
+    Reads published.json directly so manual title edits are always reflected.
     """
+    published_path = os.path.join(repo_path, PUBLISHED_FILE)
+    if os.path.exists(published_path):
+        with open(published_path, "r", encoding="utf-8") as f:
+            published_articles = json.load(f).get("articles", [])
+    else:
+        published_articles = []
+
     news_path = os.path.join(repo_path, NEWS_FILE)
     with open(news_path, "r", encoding="utf-8") as f:
         html = f.read()
@@ -482,8 +497,8 @@ def publish_post(post: dict, repo_path: str = ".") -> str:
     print(f"  published.json: {len(existing)} article(s) total")
 
     # 4, 5 & 6. Regenerate pages
-    update_homepage(existing, repo_path)
-    update_news_archive(existing, repo_path)
+    update_homepage(repo_path)
+    update_news_archive(repo_path)
     update_wire(repo_path)
 
     # 7. Git
