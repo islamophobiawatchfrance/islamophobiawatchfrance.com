@@ -26,8 +26,42 @@
   <meta name="twitter:description" content="Get in touch with Islamophobia Watch France. Submit tips, press enquiries, or report incidents of Islamophobia in France.">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-11T3VLGFBX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('config', 'G-11T3VLGFBX', { anonymize_ip: true });
+  </script>
 </head>
 <body>
+
+<!-- ── Cookie Consent ──────────────────────────────── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;color:#ccc;padding:16px 24px;display:none;align-items:center;gap:16px;flex-wrap:wrap;border-top:3px solid #ED2939">
+  <p style="margin:0;flex:1;min-width:200px;font-size:14px">We use Google Analytics to understand how people find us. No personal data is sold. <a href="privacy.html" style="color:#ED2939">Privacy policy</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="cookie-accept" style="background:#ED2939;color:#fff;border:none;padding:8px 16px;cursor:pointer;font-size:14px;border-radius:3px">Accept</button>
+    <button id="cookie-decline" style="background:transparent;color:#ccc;border:1px solid #555;padding:8px 16px;cursor:pointer;font-size:14px;border-radius:3px">Decline</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var b = document.getElementById('cookie-banner');
+    if (!localStorage.getItem('iwf_cookies')) { b.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      localStorage.setItem('iwf_cookies', 'accepted');
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      b.style.display = 'none';
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function () {
+      localStorage.setItem('iwf_cookies', 'declined');
+      b.style.display = 'none';
+    });
+  }());
+</script>
 
 <!-- ── Navigation ─────────────────────────────────── -->
 <header class="site-header">

@@ -1131,3 +1131,58 @@ p  { color: var(--text-secondary); }
   transition: color 0.15s;
 }
 .sidebar-related-title:hover { color: var(--red); }
+
+
+/* ── Static pages (Privacy, etc.) ────────────────── */
+.static-page {
+  max-width: 720px;
+  margin: 60px auto;
+  padding: 0 24px 80px;
+}
+.static-page h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.static-page .static-meta {
+  font-size: 13px;
+  color: var(--text-faint);
+  margin-bottom: 40px;
+}
+.static-page h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 36px 0 12px;
+  color: var(--text);
+}
+.static-page p, .static-page li {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+.static-page ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+.static-page a { color: var(--red); }
+.static-page a:hover { text-decoration: underline; }
+.static-page code {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 13px;
+  font-family: monospace;
+}
+
+/* ── IWF Stats bar ───────────────────────────────── */
+.iwf-stats-bar {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-faint);
+  padding: 10px 24px;
+  border-top: 0.5px solid var(--border-subtle);
+  border-bottom: 0.5px solid var(--border-subtle);
+  background: var(--surface);
+}

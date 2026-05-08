@@ -421,6 +421,22 @@ def update_homepage(repo_path: str = ".") -> None:
         flags=re.DOTALL,
     )
 
+    # Inject live story count into #iwf-stats
+    wire_seen_path = os.path.join(repo_path, "wire_seen.json")
+    story_count = 0
+    if os.path.exists(wire_seen_path):
+        try:
+            with open(wire_seen_path, "r", encoding="utf-8") as f:
+                story_count = len(json.load(f))
+        except Exception:
+            pass
+    stats_text = f"{story_count} stories monitored · covering French Muslim life since May 2026"
+    updated = re.sub(
+        r'(<div id="iwf-stats"[^>]*>)[^<]*(</div>)',
+        lambda m: m.group(1) + stats_text + m.group(2),
+        updated,
+    )
+
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(updated)
     print(f"  index.html updated ({len(articles)} items in feed)")
@@ -606,6 +622,50 @@ def update_sitemap(repo_path: str = ".") -> None:
     print(f"  sitemap.xml updated ({len(articles)} article(s))")
 
 
+def generate_source_report(repo_path: str = ".") -> None:
+    """
+    Read published.json + archive.json, count per-source citations,
+    flag any source >30% of total, save source_report.json.
+    """
+    counts: dict = {}
+
+    for fname in [PUBLISHED_FILE, "archive.json"]:
+        fpath = os.path.join(repo_path, fname)
+        if not os.path.exists(fpath):
+            continue
+        with open(fpath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        # published.json uses {"articles": [...]}, archive.json uses {"posts": [...]}
+        items = data.get("articles", data.get("posts", [])) if isinstance(data, dict) else data
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            for src in item.get("sources", []):
+                name = (src.get("name", "") if isinstance(src, dict) else str(src)).strip()
+                if name:
+                    counts[name] = counts.get(name, 0) + 1
+            plain_src = item.get("source", "").strip()
+            if plain_src and not item.get("sources"):
+                counts[plain_src] = counts.get(plain_src, 0) + 1
+
+    total = sum(counts.values())
+    if total == 0:
+        report = {"total": 0, "sources": [], "flagged": []}
+    else:
+        sources = sorted(
+            [{"name": n, "count": c, "pct": round(c / total * 100, 1)} for n, c in counts.items()],
+            key=lambda x: x["count"],
+            reverse=True,
+        )
+        flagged = [s["name"] for s in sources if s["pct"] > 30]
+        report = {"total": total, "sources": sources, "flagged": flagged}
+
+    out_path = os.path.join(repo_path, "source_report.json")
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2, ensure_ascii=False)
+    print(f"  source_report.json: {len(report['sources'])} source(s), {len(report['flagged'])} flagged")
+
+
 def git_publish(article_path: str, commit_message: str, repo_path: str = ".") -> bool:
     """
     Stage article + updated pages, commit, and push to GitHub.
@@ -693,6 +753,7 @@ def publish_post(post: dict, repo_path: str = ".") -> str:
     update_news_archive(repo_path)
     update_wire(repo_path)
     update_sitemap(repo_path)
+    generate_source_report(repo_path)
 
     # 7. Git
     commit_msg = f"Publish: {title[:60]}"

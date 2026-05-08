@@ -1,0 +1,71 @@
+{
+  "total": 34,
+  "sources": [
+    {
+      "name": "europe1.fr",
+      "count": 5,
+      "pct": 14.7
+    },
+    {
+      "name": "lejdd.fr",
+      "count": 5,
+      "pct": 14.7
+    },
+    {
+      "name": "Valeurs actuelles",
+      "count": 5,
+      "pct": 14.7
+    },
+    {
+      "name": "Mediapart",
+      "count": 4,
+      "pct": 11.8
+    },
+    {
+      "name": "Le Figaro",
+      "count": 3,
+      "pct": 8.8
+    },
+    {
+      "name": "Bladi.net",
+      "count": 3,
+      "pct": 8.8
+    },
+    {
+      "name": "Planet.fr",
+      "count": 2,
+      "pct": 5.9
+    },
+    {
+      "name": "Anadolu Ajansı",
+      "count": 2,
+      "pct": 5.9
+    },
+    {
+      "name": "Public Sénat",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "name": "tsa-algerie.com",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "name": "instagram.com",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "name": "Le Soir",
+      "count": 1,
+      "pct": 2.9
+    },
+    {
+      "name": "Yeni Şafak",
+      "count": 1,
+      "pct": 2.9
+    }
+  ],
+  "flagged": []
+}

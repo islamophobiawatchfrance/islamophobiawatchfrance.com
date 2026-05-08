@@ -29,7 +29,7 @@ load_dotenv()
 # CONFIGURATION
 # =============================================================
 
-MAX_POSTS      = 2          # Number of posts to draft per run
+MAX_CLUSTERS   = 2          # Number of topic clusters to process per run
 QUEUE_FILE     = "queue.json"
 ARCHIVE_FILE   = "archive.json"
 WIRE_FILE      = "wire.json"
@@ -123,6 +123,26 @@ USER_PROMPT_TEMPLATE = (
     "Research bundle ({count} source(s) on the same topic):\n\n"
     "{bundle}\n\n"
     "Write only the LinkedIn post text. Nothing else."
+)
+
+WEBSITE_SYSTEM_PROMPT = """You write in-depth news briefs for Islamophobia Watch France (IWF), an English-language journalism project monitoring Islamophobia and Muslim life in France.
+
+Your article rules:
+- Opening paragraph: a strong news lede capturing the essential who/what/when/where
+- Second paragraph: key facts, figures, and named sources
+- Middle section: background and context explaining why this matters, historical precedent if relevant, named institutions and their positions
+- Penultimate paragraph: reaction or response from affected communities or opposing voices if available in the source material
+- Final paragraph: what happens next or why this story matters for French Muslims broadly
+- 600-800 words total
+- Every claim attributed to a named source
+- Never editorialize or express opinion
+- End with: Sources: [list source names]
+- Do not include hashtags"""
+
+WEBSITE_USER_TEMPLATE = (
+    "Research bundle ({count} source(s) on the same topic):\n\n"
+    "{bundle}\n\n"
+    "Write only the website article text. Nothing else."
 )
 
 
@@ -288,6 +308,51 @@ def gather_research(story, article_text):
     return "\n\n".join(parts) if parts else story["summary"]
 
 
+def gather_deep_research(cluster) -> str:
+    """
+    Runs 2-3 additional background searches for a cluster to enrich website articles.
+    Returns a text bundle of background material.
+    """
+    primary   = cluster["stories"][0]
+    phrase    = _extract_key_phrase(primary["title"])
+    parts     = []
+    bg_queries = [
+        f"{phrase} france context",
+        f"{phrase} history explained",
+    ]
+    for q in bg_queries:
+        for lang in ("en", "fr"):
+            try:
+                results = fetch_query(q, lang, 168, 3)
+                for art in results:
+                    if art["summary"]:
+                        parts.append(f"[Background – {art['source']} {lang.upper()}]\n{art['summary']}")
+            except Exception:
+                pass
+    return "\n\n".join(parts[:6])
+
+
+def draft_website_article(client, cluster, bundle: str, deep_research: str) -> str | None:
+    """Calls Claude to write a long-form website article for a cluster. Returns text or None."""
+    combined = bundle
+    if deep_research:
+        combined += "\n\n=== BACKGROUND RESEARCH ===\n\n" + deep_research
+
+    user_msg = WEBSITE_USER_TEMPLATE.format(count=len(cluster["stories"]), bundle=combined)
+    primary  = cluster["stories"][0]
+    try:
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=1200,
+            system=WEBSITE_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": user_msg}],
+        )
+        return response.content[0].text.strip()
+    except Exception as e:
+        print(f"  [WARNING] Website draft failed for '{primary['title'][:50]}': {e}")
+        return None
+
+
 def build_cluster_bundle(cluster, article_texts):
     """
     Assembles the multi-source research bundle for a cluster.
@@ -384,13 +449,14 @@ def draft_post(client, cluster, bundle):
         return None
 
 
-def build_post_record(cluster, score, label, draft_text, index, timestamp):
+def build_post_record(cluster, score, label, draft_text, index, timestamp, post_type="linkedin"):
     """Assembles one post dict in the queue.json format."""
     primary = cluster["stories"][0]
     date_str = timestamp.strftime("%Y%m%d")
     published_dt = primary["published"]
     return {
-        "id": f"post_{index}_{date_str}",
+        "id": f"post_{index}_{post_type}_{date_str}",
+        "type": post_type,
         "title": primary["title"],
         "source": primary["source"],
         "url": primary["url"],
@@ -405,6 +471,68 @@ def build_post_record(cluster, score, label, draft_text, index, timestamp):
         "heat_article_count": len(cluster["stories"]),
         "sources": [{"name": s["source"], "url": s["url"]} for s in cluster["stories"]],
     }
+
+
+GAPS_FILE = "gaps.json"
+
+
+def detect_gaps(clusters_with_heat: list, published_json_path: str) -> None:
+    """
+    Finds HOT/TRENDING clusters not covered by any article published in the last 7 days.
+    Saves results to gaps.json.
+    """
+    now     = datetime.datetime.now(datetime.timezone.utc)
+    cutoff  = now - datetime.timedelta(days=7)
+    gaps    = []
+
+    # Load recently published titles
+    recent_titles: list[str] = []
+    if os.path.exists(published_json_path):
+        with open(published_json_path, "r", encoding="utf-8") as f:
+            pub = json.load(f)
+        for art in pub.get("articles", []):
+            try:
+                pub_dt = datetime.datetime.fromisoformat(
+                    art.get("published_at", "").replace("Z", "+00:00")
+                )
+                if pub_dt > cutoff:
+                    recent_titles.append(art.get("title", ""))
+            except Exception:
+                pass
+
+    recent_kw = [_cluster_keywords(t) for t in recent_titles]
+
+    for cluster, score, label, _ in clusters_with_heat:
+        if score < 4:          # only HOT / TRENDING
+            continue
+        cluster_kw = cluster["keywords"]
+        covered = any(len(cluster_kw & rk) >= 2 for rk in recent_kw)
+        if covered:
+            continue
+        primary = cluster["stories"][0]
+        gaps.append({
+            "topic":           primary["title"],
+            "heat_score":      score,
+            "heat_label":      label,
+            "article_count":   len(cluster["stories"]),
+            "top_story_title": primary["title"],
+            "top_story_url":   primary["url"],
+            "reason": (
+                f"{len(cluster['stories'])} source(s) covered this story "
+                "but IWF has not published on it recently"
+            ),
+        })
+
+    result = {
+        "generated": now.isoformat(),
+        "gaps":      gaps,
+    }
+    with open(GAPS_FILE, "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
+    if gaps:
+        print(f"  Gap detector: {len(gaps)} uncovered HOT/TRENDING cluster(s) saved to {GAPS_FILE}.")
+    else:
+        print(f"  Gap detector: all hot topics covered.")
 
 
 def save_queue(posts, timestamp, total_stories_scanned=0):
@@ -583,7 +711,8 @@ def main():
     clusters_with_heat = [(c, *compute_heat(c)) for c in clusters]
 
     # Select distinct clusters prioritising heat
-    selected = select_clusters(clusters_with_heat, MAX_POSTS)
+    selected = select_clusters(clusters_with_heat, MAX_CLUSTERS)
+    detect_gaps(clusters_with_heat, PUBLISHED_FILE)
     print(f"  Drafting posts for {len(selected)} topic cluster(s)...\n")
 
     posts = []
@@ -598,15 +727,26 @@ def main():
             article_texts[story["title"]] = fetch_article_text(story["url"])
 
         bundle = build_cluster_bundle(cluster, article_texts)
-        draft = draft_post(client, cluster, bundle)
 
-        if draft:
-            draft = translate_to_english(client, draft)
-            record = build_post_record(cluster, score, label, draft, i, timestamp)
-            posts.append(record)
-            print(f"        -> Drafted ({len(draft.split())} words)")
+        # OUTPUT A — LinkedIn post
+        linkedin_draft = draft_post(client, cluster, bundle)
+        if linkedin_draft:
+            linkedin_draft = translate_to_english(client, linkedin_draft)
+            posts.append(build_post_record(cluster, score, label, linkedin_draft, i, timestamp, "linkedin"))
+            print(f"        -> LinkedIn ({len(linkedin_draft.split())} words)")
         else:
-            print(f"        -> Skipped (API error)")
+            print(f"        -> LinkedIn skipped (API error)")
+
+        # OUTPUT B — Website article (with deep background research)
+        print(f"        -> Gathering background research...")
+        deep = gather_deep_research(cluster)
+        website_draft = draft_website_article(client, cluster, bundle, deep)
+        if website_draft:
+            website_draft = translate_to_english(client, website_draft)
+            posts.append(build_post_record(cluster, score, label, website_draft, i, timestamp, "website"))
+            print(f"        -> Website article ({len(website_draft.split())} words)")
+        else:
+            print(f"        -> Website article skipped (API error)")
 
     if not posts:
         print("\n  No posts drafted. Check your API key and try again.")

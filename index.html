@@ -26,8 +26,42 @@
   <meta name="twitter:description" content="IWF monitors Islamophobia and Muslim life in France. Daily news, analysis and context for English-speaking audiences.">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-11T3VLGFBX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+    gtag('config', 'G-11T3VLGFBX', { anonymize_ip: true });
+  </script>
 </head>
 <body>
+
+<!-- ── Cookie Consent ──────────────────────────────── -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;color:#ccc;padding:16px 24px;display:none;align-items:center;gap:16px;flex-wrap:wrap;border-top:3px solid #ED2939">
+  <p style="margin:0;flex:1;min-width:200px;font-size:14px">We use Google Analytics to understand how people find us. No personal data is sold. <a href="privacy.html" style="color:#ED2939">Privacy policy</a></p>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button id="cookie-accept" style="background:#ED2939;color:#fff;border:none;padding:8px 16px;cursor:pointer;font-size:14px;border-radius:3px">Accept</button>
+    <button id="cookie-decline" style="background:transparent;color:#ccc;border:1px solid #555;padding:8px 16px;cursor:pointer;font-size:14px;border-radius:3px">Decline</button>
+  </div>
+</div>
+<script>
+  (function () {
+    var b = document.getElementById('cookie-banner');
+    if (!localStorage.getItem('iwf_cookies')) { b.style.display = 'flex'; }
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+      localStorage.setItem('iwf_cookies', 'accepted');
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      b.style.display = 'none';
+    });
+    document.getElementById('cookie-decline').addEventListener('click', function () {
+      localStorage.setItem('iwf_cookies', 'declined');
+      b.style.display = 'none';
+    });
+  }());
+</script>
 
 <!-- ── Navigation ─────────────────────────────────── -->
 <header class="site-header">
@@ -118,6 +152,9 @@
 
   </section>
 
+  <!-- ── IWF Stats ─────────────────────────────────────── -->
+  <div id="iwf-stats" class="iwf-stats-bar">1 stories monitored · covering French Muslim life since May 2026</div>
+
   <!-- ── The Wire ─────────────────────────────────────── -->
   <section class="wire-section">
     <div class="container">
@@ -127,57 +164,57 @@
       </div>
       <div id="wire-feed" class="wire-feed">
         <div class="wire-item">
-          <span class="wire-time">2h ago</span>
+          <span class="wire-time">4h ago</span>
           <span class="wire-source">Anadolu Ajansı</span>
           <a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxQc3VUSEZlT19taW1LdlhKaklaeUJqZF8wMlg3cjBUUXZPWFlUY0ZDS2RvTnRRR3AyUzBJcnlaM293Mkt4UU94THUwaV9wQk1YejBkSDFLMHpXQW9kYkpyclBkVXFDemFYTzBTcHZxMjdUSWRiYzFqYUpTQmdLRWVnRVlYcW5WODl1SFN6NTNqbFdYTzBsQVY4MkZEZDFpZ1JjT0pJWU9uaXJJWWVjZU93cHlKQTc3cnpLRGJCSVNtRnQwR0c3aW1ZdGYwSQ?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">France: Controversy over the use of asset freezing against pro-Palestinian activists</a>
         </div>
 
         <div class="wire-item">
-          <span class="wire-time">2h ago</span>
-          <span class="wire-source">Grande Mosquée de Paris</span>
-          <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPNGxJb1FmeWJ2d3lCWkhneWlpcElIVm9nM2N0Wi1lQ1RHdG5HcTN6cWx1eU5tbFpwY3V1SnloekJuVGkwQzdCOEZUNlBpWHpSeXNNSk56U2xGRGE1YzBhOE5WVHpZTGFER2hKaDZXdlZJQU5IRjhKbGpXTGlhMlF6bXltaTR1MGNrWDlVNGpjR1lJZw?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">Commemoration of the 81st anniversary of May 8, 1945</a>
-        </div>
-
-        <div class="wire-item">
           <span class="wire-time">4h ago</span>
           <span class="wire-source">Grande Mosquée de Paris</span>
-          <a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPSXJQbmFEU3l4RUFfX0s3X3I2cGg2Z29kSlRseV9Sa3hrcVpCa3BTQTB0cTJ1Rkd1cHFCUHlCVWRoUFA4TlJxeDkwc1lUSHZFUGtXdW1KUFctZUhvZGRNR0phbTV5NmxISXdfTWI2Y2tXWTRoX3BHVzdhbFI1WTRTdkFqSzNNYmxJQ21iUjFR?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">Publication of Iqra No. 109: &#x27;The Breath of Speech&#x27;</a>
+          <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxPNGxJb1FmeWJ2d3lCWkhneWlpcElIVm9nM2N0Wi1lQ1RHdG5HcTN6cWx1eU5tbFpwY3V1SnloekJuVGkwQzdCOEZUNlBpWHpSeXNNSk56U2xGRGE1YzBhOE5WVHpZTGFER2hKaDZXdlZJQU5IRjhKbGpXTGlhMlF6bXltaTR1MGNrWDlVNGpjR1lJZw?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">Commemoration of the 81st Anniversary of May 8, 1945</a>
         </div>
 
         <div class="wire-item">
-          <span class="wire-time">20h ago</span>
+          <span class="wire-time">7h ago</span>
+          <span class="wire-source">Grande Mosquée de Paris</span>
+          <a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxPSXJQbmFEU3l4RUFfX0s3X3I2cGg2Z29kSlRseV9Sa3hrcVpCa3BTQTB0cTJ1Rkd1cHFCUHlCVWRoUFA4TlJxeDkwc1lUSHZFUGtXdW1KUFctZUhvZGRNR0phbTV5NmxISXdfTWI2Y2tXWTRoX3BHVzdhbFI1WTRTdkFqSzNNYmxJQ21iUjFR?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">In our magazine this week (Iqra No. 109): &#x27;The Breath of Speech&#x27;</a>
+        </div>
+
+        <div class="wire-item">
+          <span class="wire-time">23h ago</span>
           <span class="wire-source">Le Soir</span>
           <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxNTnBxelVjcW95WjktZ1NWNmVBUkZjZ2xQcDBxRmZlRTFEMktBMmRlNmdaSGpWVGFrY2hYUW5ZeWd2SUs2MlN0clJUY0FLdVUyT3VKQUlldm1RdkpLTC1MMHpBSm1LZ2dIS3ppQnhTTHRjdUFBMWdtWV9iR1ZaeExNWFFzd1lQTWItZXBJcVFiM3NGNXF0bi1HcjZuZ19xbWh6dTJkNDBnWHVXREczbTRiVkdSUzM5eEVkU1duVHVKeEQ?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">France: Islamist entryism, already debated at the dawn of the presidential campaign</a>
         </div>
 
         <div class="wire-item">
-          <span class="wire-time">23h ago</span>
+          <span class="wire-time">1d 2h ago</span>
           <span class="wire-source">Planet.fr</span>
-          <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxNcjU4Tk9MdU16emRnRlJfMHJFQXdsRWFsam45a29NaW5wNHBBY0dzWEhXY0tqVlVVdm93bjdfYkYzNGFoSm9teURHQndzRjk4RFVETkVRUVRDc0lqQ1hWT2RFM09PWk1HZEMxM001R0RwR3lDWFBNMmIyUlNaZUh4TFNndzlCdE5IWnlTRTBaYzAyOHVJTnpSY3dDdVNBZnZIM3FYMklxWTFWZ0RzTXM2SV9YQk83WnZuWnZKQzVTczI0b095QnoyQlhFS3pVTnM?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">&quot;Roast pig&quot;: The rector of the Great Mosque of Paris denounces the &quot;French Canon&quot;</a>
+          <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxNcjU4Tk9MdU16emRnRlJfMHJFQXdsRWFsam45a29NaW5wNHBBY0dzWEhXY0tqVlVVdm93bjdfYkYzNGFoSm9teURHQndzRjk4RFVETkVRUVRDc0lqQ1hWT2RFM09PWk1HZEMxM001R0RwR3lDWFBNMmIyUlNaZUh4TFNndzlCdE5IWnlTRTBaYzAyOHVJTnpSY3dDdVNBZnZIM3FYMklxWTFWZ0RzTXM2SV9YQk83WnZuWnZKQzVTczI0b095QnoyQlhFS3pVTnM?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">&quot;Roasted Pig&quot; : the rector of the Great Mosque of Paris denounces the &quot;French Canon&quot;</a>
         </div>
 
         <div class="wire-item">
-          <span class="wire-time">1d 5h ago</span>
-          <span class="wire-source">Bladi.net</span>
-          <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9jeU1nTU9wWWZ1MG15NEpLdHFZc3hwYlFYWUJZU044UkdoWDV5bFp1QlNxVUozYW9EYlJQby1TU242cUxqYUxWNlBmQldlellmUEkwUHRmdjN4MzRoZHhydndwbEo4SG9YWjJ4bGV5aDh5c1IyaE9fam1OOFU?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">France: a new law worries Muslims</a>
+          <span class="wire-time">1d 3h ago</span>
+          <span class="wire-source">reinformation.tv</span>
+          <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9KLXdpMzNBT0VlNHJpQWc4XzhpSXdaazZiZFQyVDIwMTllQnA2MFZwWHJwMk80ZHlwS08wRzZ0ZTVFSWV3RlF5VDBaQk1TeEtUZWNTcDdkVkwtWnNBMVcycTlqVkRoeGJELWNOc2xUVVU?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">Pork and civil war: the rector of the grand mosque accuses the French Canon of excluding Muslims</a>
         </div>
 
         <div class="wire-item">
           <span class="wire-time">1d 8h ago</span>
           <span class="wire-source">Bladi.net</span>
+          <a href="https://news.google.com/rss/articles/CBMifEFVX3lxTE9jeU1nTU9wWWZ1MG15NEpLdHFZc3hwYlFYWUJZU044UkdoWDV5bFp1QlNxVUozYW9EYlJQby1TU242cUxqYUxWNlBmQldlellmUEkwUHRmdjN4MzRoZHhydndwbEo4SG9YWjJ4bGV5aDh5c1IyaE9fam1OOFU?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">France: a new law worries Muslims</a>
+        </div>
+
+        <div class="wire-item">
+          <span class="wire-time">1d 11h ago</span>
+          <span class="wire-source">Bladi.net</span>
           <a href="https://news.google.com/rss/articles/CBMic0FVX3lxTE1xTGx3czRDM3hBRDY2RlA5QW1oSU5oRURidzJoWlhYdk1iVFd4SjVkYzJxS1R3eGJEVnczbFBkaVBXbEY5ZWFRNzRiYWlHc2pTei1abzg0di1wSFpPRHBzQXh4ZWJpeTd0cktDSnl5V2tHekU?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">Will Eid al-Adha be celebrated this year in France?</a>
         </div>
 
         <div class="wire-item">
-          <span class="wire-time">1d 19h ago</span>
+          <span class="wire-time">1d 21h ago</span>
           <span class="wire-source">europe1.fr</span>
-          <a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxPUmNTSHFPV2xxcU43VnNnVURoeTVNT1lMZzhwTmZrNUhEeDFBWHU3Nmh2SGMwcXZWZlBNSnp3N2pYWUY3MVlady0xR2g4Vjl2aFNkVFpjZEstZ2xiUERIb3dxQ0dSMk5LdVVCLUhfQzQ0c2t6Z0k2Z19jZTd4OThUQ19DOVU1SFl1REV2R18wc1RCbXFOX1V0WHd6bXM1M2RGVEl2a3FFdzdRc3NJbUpwdm1HeUNObFAyUkxxMGVHYnhPS0o4cldqbUtBM1Z1X3hTaFhvblBHeEhFTjZaekVrSUdjYUpLMGFuelVXVGV4TTc4R1ItTEhUSG13ZDFPYWlrMXppempmaldfZ9IBjwJBVV95cUxOZWhXTGpWZzROemE5cEN1ZXZPdnFFdUdLcGk0OGd2M2o0bTk4VXdKeTM0ZVRYRFF4a2JTLXBiREphaTRpT1NhMVhNY1JGdUJkWkJkeEJtZXEwVDg3eV9FZ2J0ck1ndTBSVUdXcWFuNmNsVEh6UUlKNHRHak45TVRicEdsT0JOMjBWUGZxeW5GZlNmMFhaYXA5Rjg5ZTROd3NzdVpHUFJkS3NERmxPUkk1QjMtSFVkdmpISU1PYV9HVWs2bkxBUHk5T1ZZYkJoWmo4RDUwbGdpbTNoYXZJWDFOTTVBX2RCTlhmanItWkh1YjhvZjRkai1PTG5VcmRzbmhTVlNJa25fT3BDVVhiaWJB?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">&quot;4,000 guests around a roasted pig&quot;: the Rector of the Great Mosque of Paris&#x27;s remarks on the French Canon denounced by the right</a>
-        </div>
-
-        <div class="wire-item">
-          <span class="wire-time">1d 22h ago</span>
-          <span class="wire-source">Mediapart</span>
-          <a href="https://news.google.com/rss/articles/CBMi6AFBVV95cUxQSG04Q2JQcDFwMEQyZnFHdUVPYTdzVFNwNUlnX3dNSjBjRk9VU2FNRFhrZTlzbTNBaFFpM0RQUHByY3VQbGNyeGlsVUVodjZUVzhOM0s5Vm5hTFZ4cDBBZ3llbkRlQmJlUmdVajg5UVFLLWVnRnJFaVAxYVdscEhmSWk3dTd2X196S2lKQW1MS3NiZmFYckRCUU5PSTlTSU1ma0s3bG5HQVRBWGI0YXRscWxTc1AyY25ubG8wM3h1WFBOd3RNWFhYM2tydU9TMFE4VzVyZXFXamgwcTRMdEJnQ21KY2R5QU1M?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">&quot;Islamist infiltrationism&quot;: The Senate adopts a bill citing a disputed report and survey on Muslims</a>
+          <a href="https://news.google.com/rss/articles/CBMiigJBVV95cUxPUmNTSHFPV2xxcU43VnNnVURoeTVNT1lMZzhwTmZrNUhEeDFBWHU3Nmh2SGMwcXZWZlBNSnp3N2pYWUY3MVlady0xR2g4Vjl2aFNkVFpjZEstZ2xiUERIb3dxQ0dSMk5LdVVCLUhfQzQ0c2t6Z0k2Z19jZTd4OThUQ19DOVU1SFl1REV2R18wc1RCbXFOX1V0WHd6bXM1M2RGVEl2a3FFdzdRc3NJbUpwdm1HeUNObFAyUkxxMGVHYnhPS0o4cldqbUtBM1Z1X3hTaFhvblBHeEhFTjZaekVrSUdjYUpLMGFuelVXVGV4TTc4R1ItTEhUSG13ZDFPYWlrMXppempmaldfZ9IBjwJBVV95cUxOZWhXTGpWZzROemE5cEN1ZXZPdnFFdUdLcGk0OGd2M2o0bTk4VXdKeTM0ZVRYRFF4a2JTLXBiREphaTRpT1NhMVhNY1JGdUJkWkJkeEJtZXEwVDg3eV9FZ2J0ck1ndTBSVUdXcWFuNmNsVEh6UUlKNHRHak45TVRicEdsT0JOMjBWUGZxeW5GZlNmMFhaYXA5Rjg5ZTROd3NzdVpHUFJkS3NERmxPUkk1QjMtSFVkdmpISU1PYV9HVWs2bkxBUHk5T1ZZYkJoWmo4RDUwbGdpbTNoYXZJWDFOTTVBX2RCTlhmanItWkh1YjhvZjRkai1PTG5VcmRzbmhTVlNJa25fT3BDVVhiaWJB?oc=5" class="wire-headline" target="_blank" rel="noopener noreferrer">&quot;4,000 guests around a roasted pig&quot;: the remarks by the rector of the Great Mosque of Paris on the French Canon denounced by the right</a>
         </div>
       </div><!-- /.wire-feed -->
       <p class="wire-note">Updated each time the pipeline runs. Stories are raw RSS headlines — not edited by IWF.</p>

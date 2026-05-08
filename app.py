@@ -65,11 +65,19 @@ TEMPLATE = r"""<!DOCTYPE html>
     .card {
       background: #fff; border-radius: 10px;
       border: 1px solid #e4e4e4; border-left: 4px solid #e0e0e0;
-      margin-bottom: 22px; padding: 22px 24px;
+      margin-bottom: 14px; padding: 22px 24px;
       transition: opacity 0.2s, border-left-color 0.2s;
     }
     .card.approved { border-left-color: #1e8e3e; }
     .card.rejected { border-left-color: #d93025; opacity: 0.5; }
+    .card.type-linkedin { border-left-color: #1a73e8; }
+    .card.type-website  { border-left-color: #ED2939; }
+    .cluster-group { margin-bottom: 28px; border: 1px solid #e8e8e8; border-radius: 12px; overflow: hidden; }
+    .cluster-group .card { border-radius: 0; border: none; border-bottom: 1px solid #f0f0f0; margin-bottom: 0; }
+    .cluster-group .card:last-child { border-bottom: none; }
+    .type-label { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; }
+    .type-label.linkedin { background: #e8f0fe; color: #1a73e8; }
+    .type-label.website  { background: #fce8e8; color: #c0392b; }
 
     /* ── Badges ── */
     .badges { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 13px; }
@@ -123,8 +131,11 @@ TEMPLATE = r"""<!DOCTYPE html>
     .btn-save:hover    { background: #1558b0; }
     .btn-copy    { background: #fff; color: #1a73e8; border: 1px solid #1a73e8; }
     .btn-copy:hover    { background: #e8f0fe; }
-    .btn-undo    { background: #fff; color: #888; border: 1px solid #ddd; font-size: 12px; }
-    .btn-undo:hover    { background: #f5f5f5; }
+    .btn-undo       { background: #fff; color: #888; border: 1px solid #ddd; font-size: 12px; }
+    .btn-undo:hover { background: #f5f5f5; }
+    .btn-regen      { background: #fff; color: #555; border: 1px solid #bbb; }
+    .btn-regen:hover { background: #f5f5f5; }
+    .btn-regen:disabled { opacity: 0.5; cursor: not-allowed; }
 
     /* ── Sources ── */
     .sources { margin-top: 10px; }
@@ -210,6 +221,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 <nav class="tab-nav">
   <button class="tab active" id="tab-queue"   onclick="switchTab('queue')">Queue</button>
   <button class="tab"        id="tab-archive" onclick="switchTab('archive')">Archive</button>
+  <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Sources</button>
 </nav>
 
 <div id="heat-bar"></div>
@@ -236,11 +248,44 @@ TEMPLATE = r"""<!DOCTYPE html>
     currentTab = tab;
     document.getElementById('tab-queue').classList.toggle('active', tab === 'queue');
     document.getElementById('tab-archive').classList.toggle('active', tab === 'archive');
+    document.getElementById('tab-sources').classList.toggle('active', tab === 'sources');
     document.getElementById('heat-bar').style.display = tab === 'queue' ? '' : 'none';
-    if (tab === 'queue') {
-      render();
-    } else {
-      loadArchive();
+    if (tab === 'queue')   { render(); loadGaps(); }
+    else if (tab === 'archive') loadArchive();
+    else if (tab === 'sources') loadSourceReport();
+  }
+
+  async function loadSourceReport() {
+    try {
+      const res  = await fetch('/api/source-report');
+      const data = await res.json();
+      if (data.error) { document.getElementById('main').innerHTML = `<div class="empty"><h2>${esc(data.error)}</h2><p>Run the pipeline to generate source data.</p></div>`; return; }
+      const updated = data.generated ? new Date(data.generated).toLocaleString('en-GB') : 'unknown';
+      let rows = (data.sources || []).map(s => {
+        const flagHtml = s.flag ? ' <span style="background:#fff3cd;color:#856404;font-size:10px;padding:1px 5px;border-radius:3px;">⚠ Over-relied</span>' : '';
+        const bar = `<div style="height:6px;background:#e4e4e4;border-radius:3px;margin-top:4px;"><div style="height:6px;background:${s.flag?'#ffc107':'#1a73e8'};border-radius:3px;width:${Math.min(100,s.percentage)}%;"></div></div>`;
+        return `<tr>
+          <td style="padding:10px 12px;font-weight:500;">${esc(s.name)}${flagHtml}</td>
+          <td style="padding:10px 12px;text-align:right;">${s.count}</td>
+          <td style="padding:10px 12px;min-width:140px;">${s.percentage.toFixed(1)}%${bar}</td>
+        </tr>`;
+      }).join('');
+      const rec = data.recommendation ? `<p style="margin-top:16px;padding:12px 14px;background:#fff3cd;border-radius:6px;font-size:13px;">⚠️ ${esc(data.recommendation)}</p>` : '';
+      document.getElementById('main').innerHTML = `
+        <div style="padding:8px 0;">
+          <div style="font-size:12px;color:#999;margin-bottom:16px;">Last updated: ${updated} · ${data.total_citations || 0} total citations</div>
+          <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:10px;border:1px solid #e4e4e4;overflow:hidden;font-size:13px;">
+            <thead><tr style="background:#f8f9fa;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#888;">
+              <th style="padding:10px 12px;text-align:left;">Source</th>
+              <th style="padding:10px 12px;text-align:right;">Citations</th>
+              <th style="padding:10px 12px;">Share</th>
+            </tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+          ${rec}
+        </div>`;
+    } catch (e) {
+      document.getElementById('main').innerHTML = '<div class="empty"><h2>No source data yet.</h2><p>Run the pipeline first.</p></div>';
     }
   }
 
@@ -254,7 +299,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     try {
       const res = await fetch('/api/queue');
       queue = await res.json();
-      if (currentTab === 'queue') render();
+      if (currentTab === 'queue') { render(); loadGaps(); }
     } catch (e) {
       renderEmpty('Could not reach the dashboard server.');
     }
@@ -292,26 +337,31 @@ TEMPLATE = r"""<!DOCTYPE html>
       body: JSON.stringify({ id, approved_at: new Date().toISOString() }),
     });
     render();
-    showToast('Approved — publishing to website…');
 
-    try {
-      const res  = await fetch('/api/publish', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id }),
-      });
-      const data = await res.json();
-      if (data.ok && data.url) {
-        post.published     = true;
-        post.published_url = data.url;
-        post.published_at  = new Date().toISOString();
-        render();
-        showToast('Published to islamophobiawatchfrance.com');
-      } else {
-        showToast('Approved — publish error: ' + (data.error || 'unknown'));
+    // Website articles get published; LinkedIn posts just get archived
+    if (post.type === 'website' || !post.type) {
+      showToast('Approved — publishing to website…');
+      try {
+        const res  = await fetch('/api/publish', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id }),
+        });
+        const data = await res.json();
+        if (data.ok && data.url) {
+          post.published     = true;
+          post.published_url = data.url;
+          post.published_at  = new Date().toISOString();
+          render();
+          showToast('Published to islamophobiawatchfrance.com');
+        } else {
+          showToast('Approved — publish error: ' + (data.error || 'unknown'));
+        }
+      } catch (e) {
+        showToast('Approved — publish failed (check server logs)');
       }
-    } catch (e) {
-      showToast('Approved — publish failed (check server logs)');
+    } else {
+      showToast('LinkedIn post approved');
     }
   }
 
@@ -353,6 +403,32 @@ TEMPLATE = r"""<!DOCTYPE html>
       saveBtn.style.display  = 'inline-block';
       editBtn.textContent    = 'Cancel';
       textarea.focus();
+    }
+  }
+
+  async function regenerateDraft(id) {
+    const btn = document.getElementById('regen-btn-' + id);
+    if (btn) { btn.disabled = true; btn.textContent = 'Regenerating…'; }
+    try {
+      const res  = await fetch('/api/regenerate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (data.ok && data.draft) {
+        const post = getPost(id);
+        if (post) post.draft = data.draft;
+        document.getElementById('draft-block-' + id).textContent = data.draft;
+        document.getElementById('draft-edit-' + id).value = data.draft;
+        showToast('Draft regenerated');
+      } else {
+        showToast('Regeneration failed: ' + (data.error || 'unknown'));
+      }
+    } catch (e) {
+      showToast('Regeneration failed (network error)');
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Regenerate'; }
     }
   }
 
@@ -421,61 +497,6 @@ TEMPLATE = r"""<!DOCTYPE html>
     return `<div class="sources"><a href="${esc(post.url)}" target="_blank" rel="noopener noreferrer">→ Read original article</a></div>`;
   }
 
-  function renderCard(post) {
-    const id = post.id;
-
-    const statusBadge = post.status !== 'pending'
-      ? `<span class="badge ${esc(post.status)}">${esc(post.status)}</span>` : '';
-
-    const approveRejectBtns = post.status === 'pending' ? `
-      <button class="btn btn-approve" onclick="approve('${id}')">Approve</button>
-      <button class="btn btn-reject"  onclick="reject('${id}')">Reject</button>` : '';
-
-    const copyBtn = post.status === 'approved'
-      ? `<button class="btn btn-copy" onclick="copyDraft('${id}')">Copy text</button>` : '';
-
-    const publishedLink = (post.published && post.published_url)
-      ? `<a class="published-link" href="${esc(post.published_url)}" target="_blank" rel="noopener noreferrer">View live article →</a>`
-      : (post.status === 'approved' && !post.published)
-        ? `<span class="publishing-notice">Publishing…</span>` : '';
-
-    const undoBtn = post.status !== 'pending'
-      ? `<button class="btn btn-undo" onclick="undoAction('${id}')">Undo</button>` : '';
-
-    const heatBadge = (() => {
-      const hl = post.heat_label;
-      if (!hl) return '';
-      const cls  = hl === 'HOT' ? 'heat-hot' : (hl === 'TRENDING' ? 'heat-trending' : 'heat-normal');
-      const icon = hl === 'HOT' ? '🔥' : (hl === 'TRENDING' ? '📈' : '📰');
-      const n    = post.heat_article_count || 1;
-      const word = n === 1 ? 'article' : 'articles';
-      return `<span class="badge ${cls}">${icon} ${esc(hl)} - ${n} ${word}</span>`;
-    })();
-
-    return `
-      <div class="card ${esc(post.status)}" id="card-${id}">
-        <div class="badges">
-          <span class="badge time">${esc(post.time_ago)}</span>
-          <span class="badge source">${esc(post.source)}</span>
-          ${heatBadge}
-          ${statusBadge}
-        </div>
-        <div class="headline">${esc(post.title)}</div>
-        <div class="summary">${esc(post.summary)}</div>
-        <div class="draft-block" id="draft-block-${id}">${esc(post.draft)}</div>
-        <textarea class="draft-edit" id="draft-edit-${id}">${esc(post.draft)}</textarea>
-        <div class="actions">
-          ${approveRejectBtns}
-          <button class="btn btn-edit" id="edit-btn-${id}" onclick="toggleEdit('${id}')">Edit Draft</button>
-          <button class="btn btn-save" id="save-btn-${id}" onclick="saveDraft('${id}')" style="display:none">Save</button>
-          ${copyBtn}
-          ${undoBtn}
-        </div>
-        ${publishedLink}
-        ${renderSources(post)}
-      </div>`;
-  }
-
   function renderArchiveEntry(post) {
     const sourcesHtml = (() => {
       if (post.sources && post.sources.length > 0) {
@@ -534,6 +555,65 @@ TEMPLATE = r"""<!DOCTYPE html>
       d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
   }
 
+  function renderCard(post) {
+    const id   = post.id;
+    const type = post.type || 'linkedin';
+
+    const typeLabelHtml = `<span class="type-label ${type}">${type === 'website' ? 'Website article' : 'LinkedIn'}</span>`;
+
+    const statusBadge = post.status !== 'pending'
+      ? `<span class="badge ${esc(post.status)}">${esc(post.status)}</span>` : '';
+
+    const approveRejectBtns = post.status === 'pending' ? `
+      <button class="btn btn-approve" onclick="approve('${id}')">Approve</button>
+      <button class="btn btn-reject"  onclick="reject('${id}')">Reject</button>` : '';
+
+    const copyBtn = (post.status === 'approved' && type === 'linkedin')
+      ? `<button class="btn btn-copy" onclick="copyDraft('${id}')">Copy text</button>` : '';
+
+    const publishedLink = (post.published && post.published_url)
+      ? `<a class="published-link" href="${esc(post.published_url)}" target="_blank" rel="noopener noreferrer">View live article →</a>`
+      : (post.status === 'approved' && !post.published && type === 'website')
+        ? `<span class="publishing-notice">Publishing…</span>` : '';
+
+    const undoBtn = post.status !== 'pending'
+      ? `<button class="btn btn-undo" onclick="undoAction('${id}')">Undo</button>` : '';
+
+    const heatBadge = (() => {
+      const hl = post.heat_label;
+      if (!hl) return '';
+      const cls  = hl === 'HOT' ? 'heat-hot' : (hl === 'TRENDING' ? 'heat-trending' : 'heat-normal');
+      const icon = hl === 'HOT' ? '🔥' : (hl === 'TRENDING' ? '📈' : '📰');
+      const n    = post.heat_article_count || 1;
+      return `<span class="badge ${cls}">${icon} ${esc(hl)} - ${n} ${n === 1 ? 'article' : 'articles'}</span>`;
+    })();
+
+    return `
+      <div class="card ${esc(post.status)} type-${type}" id="card-${id}">
+        <div class="badges">
+          ${typeLabelHtml}
+          <span class="badge time">${esc(post.time_ago)}</span>
+          <span class="badge source">${esc(post.source)}</span>
+          ${heatBadge}
+          ${statusBadge}
+        </div>
+        <div class="headline">${esc(post.title)}</div>
+        <div class="summary">${esc(post.summary)}</div>
+        <div class="draft-block" id="draft-block-${id}">${esc(post.draft)}</div>
+        <textarea class="draft-edit" id="draft-edit-${id}">${esc(post.draft)}</textarea>
+        <div class="actions">
+          ${approveRejectBtns}
+          <button class="btn btn-edit" id="edit-btn-${id}" onclick="toggleEdit('${id}')">Edit Draft</button>
+          <button class="btn btn-save" id="save-btn-${id}" onclick="saveDraft('${id}')" style="display:none">Save</button>
+          <button class="btn btn-regen" id="regen-btn-${id}" onclick="regenerateDraft('${id}')">Regenerate</button>
+          ${copyBtn}
+          ${undoBtn}
+        </div>
+        ${publishedLink}
+        ${renderSources(post)}
+      </div>`;
+  }
+
   function render() {
     if (!queue || !queue.posts || queue.posts.length === 0) {
       renderEmpty('No posts in the queue yet.');
@@ -546,8 +626,53 @@ TEMPLATE = r"""<!DOCTYPE html>
     updateStats(pending, approved, rejected);
     renderHeatBar();
 
-    document.getElementById('main').innerHTML =
-      queue.posts.map(renderCard).join('');
+    // Group paired linkedin+website cards into cluster groups
+    const grouped = {};
+    const order   = [];
+    for (const post of queue.posts) {
+      const key = post.id.replace(/_linkedin_|_website_/, '_');
+      if (!grouped[key]) { grouped[key] = []; order.push(key); }
+      grouped[key].push(post);
+    }
+
+    let html = gapBannerHtml();
+    for (const key of order) {
+      const cards = grouped[key];
+      if (cards.length > 1) {
+        html += `<div class="cluster-group">${cards.map(renderCard).join('')}</div>`;
+      } else {
+        html += renderCard(cards[0]);
+      }
+    }
+    document.getElementById('main').innerHTML = html;
+  }
+
+  function gapBannerHtml() {
+    return '';   // populated by loadGaps() after async fetch
+  }
+
+  async function loadGaps() {
+    try {
+      const res  = await fetch('/api/gaps');
+      const data = await res.json();
+      const gaps = data.gaps || [];
+      if (gaps.length === 0) return;
+      const list = gaps.map(g =>
+        `<li><a href="${esc(g.top_story_url)}" target="_blank" rel="noopener noreferrer">${esc(g.topic)}</a>
+         <span style="color:#856404;font-size:11px"> · ${esc(g.heat_label)} · ${g.article_count} sources</span></li>`
+      ).join('');
+      const banner = document.createElement('div');
+      banner.id = 'gap-banner';
+      banner.style.cssText = 'background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:13px;';
+      banner.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <strong>⚠️ ${gaps.length} uncovered ${gaps.length === 1 ? 'story' : 'stories'} detected</strong>
+          <button onclick="this.closest('#gap-banner').remove()" style="background:none;border:none;cursor:pointer;color:#666;font-size:16px;">✕</button>
+        </div>
+        <ul style="margin:0;padding-left:18px;line-height:1.8;">${list}</ul>`;
+      const main = document.getElementById('main');
+      main.insertBefore(banner, main.firstChild);
+    } catch (e) { /* gaps.json may not exist yet */ }
   }
 
   loadQueue();
@@ -654,6 +779,78 @@ def publish_article():
         json.dump(queue_data, f, indent=2, ensure_ascii=False)
 
     return jsonify({"ok": True, "url": url})
+
+
+@app.route("/api/gaps", methods=["GET"])
+def get_gaps():
+    path = "gaps.json"
+    if not os.path.exists(path):
+        return jsonify({"gaps": []}), 200
+    with open(path, "r", encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
+@app.route("/api/source-report", methods=["GET"])
+def get_source_report():
+    path = "source_report.json"
+    if not os.path.exists(path):
+        return jsonify({"error": "No source report yet"}), 200
+    with open(path, "r", encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
+@app.route("/api/regenerate", methods=["POST"])
+def regenerate_draft():
+    """
+    Re-draft one post using the Anthropic API and the existing SYSTEM_PROMPT.
+    Updates queue.json in place and returns the new draft text.
+    """
+    import anthropic
+    from drafter import SYSTEM_PROMPT, MODEL, USER_PROMPT_TEMPLATE
+
+    data = request.get_json(force=True)
+    if not data or "id" not in data:
+        return jsonify({"error": "Missing id"}), 400
+
+    if not os.path.exists(QUEUE_FILE):
+        return jsonify({"error": "Queue not found"}), 404
+
+    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+        queue_data = json.load(f)
+
+    post = next((p for p in queue_data.get("posts", []) if p.get("id") == data["id"]), None)
+    if not post:
+        return jsonify({"error": "Post not found"}), 404
+
+    api_key = os.getenv("ANTHROPIC_API_KEY") or ""
+    if not api_key:
+        return jsonify({"error": "ANTHROPIC_API_KEY not set"}), 500
+
+    bundle = (
+        f"Title: {post.get('title', '')}\n"
+        f"Source: {post.get('source', '')}\n"
+        f"Summary: {post.get('summary', '')}\n"
+        f"URL: {post.get('url', '')}"
+    )
+    user_msg = USER_PROMPT_TEMPLATE.format(count=1, bundle=bundle)
+
+    try:
+        client   = anthropic.Anthropic(api_key=api_key)
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=700,
+            system=SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": user_msg}],
+        )
+        new_draft = response.content[0].text.strip()
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    post["draft"] = new_draft
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+
+    return jsonify({"ok": True, "draft": new_draft})
 
 
 # =============================================================
