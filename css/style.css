@@ -837,6 +837,11 @@ p  { color: var(--text-secondary); }
 
   /* Wire */
   .wire-feed { max-height: 360px; }
+
+  /* Article split */
+  .article-split    { flex-direction: column; }
+  .article-main     { width: 100%; padding: 24px 20px 40px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  .article-sidebar  { width: 100%; position: static; height: auto; }
 }
 
 /* ── 25. Wire Section ─────────────────────────────── */
@@ -914,3 +919,208 @@ p  { color: var(--text-secondary); }
   padding: 2rem;
   text-align: center;
 }
+
+/* ── 26. Article Split Layout ─────────────────────── */
+
+.article-split {
+  display: flex;
+  align-items: flex-start;
+  min-height: calc(100vh - 62px);
+}
+
+.article-main {
+  width: 65%;
+  background: var(--bg);
+  padding: 40px 56px 64px;
+  border-right: 0.5px solid var(--border);
+  flex-shrink: 0;
+}
+
+.article-sidebar {
+  width: 35%;
+  background: #f7f7f7;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 62px);
+  overflow-y: auto;
+  flex-shrink: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) #f7f7f7;
+}
+
+/* ── Article left column ──────────────────────────── */
+
+.art-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-bottom: 20px;
+}
+.art-breadcrumb a       { color: var(--text-faint); }
+.art-breadcrumb a:hover { color: var(--text-muted); }
+.art-breadcrumb span    { color: var(--border); }
+
+.art-category {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.art-headline {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+  max-width: 640px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.art-dateline {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-bottom: 24px;
+}
+
+.art-standfirst {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.art-body { max-width: 640px; }
+
+.art-body p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 18px;
+}
+.art-body p:last-child { margin-bottom: 0; }
+
+.art-body p.pull-quote {
+  border-left: 3px solid var(--blue);
+  padding-left: 16px;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.art-sources {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  max-width: 640px;
+}
+
+.art-sources-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+
+/* ── Sidebar ──────────────────────────────────────── */
+
+.sidebar-section {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 0.5px solid var(--border);
+}
+.sidebar-section:last-child { border-bottom: none; }
+
+.sidebar-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+.sidebar-heat-score {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.sidebar-heat-note {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 8px;
+}
+
+.sidebar-source-card {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 6px;
+}
+.sidebar-source-card:last-child { margin-bottom: 0; }
+
+.sidebar-source-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.sidebar-source-link {
+  font-size: 11px;
+  color: var(--red);
+}
+.sidebar-source-link:hover { text-decoration: underline; }
+
+.sidebar-share {
+  display: flex;
+  gap: 8px;
+}
+
+.share-btn {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  transition: opacity 0.15s;
+}
+.share-btn:hover { opacity: 0.85; }
+
+.share-li { background: #0077B5; color: #ffffff; }
+.share-tw { background: #000000; color: #ffffff; }
+
+.sidebar-related-card {
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border-subtle);
+}
+.sidebar-related-card:last-child { border-bottom: none; }
+
+.sidebar-related-date {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+
+.sidebar-related-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  display: block;
+  transition: color 0.15s;
+}
+.sidebar-related-title:hover { color: var(--red); }

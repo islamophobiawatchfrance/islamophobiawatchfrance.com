@@ -11,15 +11,15 @@
   <link rel="canonical" href="https://islamophobiawatchfrance.com/news/{{filename}}">
 
   <!-- Open Graph -->
-  <meta property="og:type"              content="article">
-  <meta property="og:url"              content="https://islamophobiawatchfrance.com/news/{{filename}}">
-  <meta property="og:title"            content="{{title}} | Islamophobia Watch France">
-  <meta property="og:description"      content="{{meta_description}}">
-  <meta property="og:image"            content="https://islamophobiawatchfrance.com/img/og-default.jpg">
-  <meta property="og:site_name"        content="Islamophobia Watch France">
-  <meta property="og:locale"           content="en_GB">
+  <meta property="og:type"                content="article">
+  <meta property="og:url"                 content="https://islamophobiawatchfrance.com/news/{{filename}}">
+  <meta property="og:title"               content="{{title}} | Islamophobia Watch France">
+  <meta property="og:description"         content="{{meta_description}}">
+  <meta property="og:image"               content="https://islamophobiawatchfrance.com/img/og-default.jpg">
+  <meta property="og:site_name"           content="Islamophobia Watch France">
+  <meta property="og:locale"              content="en_GB">
   <meta property="article:published_time" content="{{published_iso}}">
-  <meta property="article:section"     content="{{category}}">
+  <meta property="article:section"        content="{{category}}">
 
   <!-- Twitter/X Card -->
   <meta name="twitter:card"        content="summary">
@@ -51,128 +51,75 @@
 </header>
 
 <main>
+  <div class="article-split">
 
-  <!-- ── Breadcrumb ────────────────────────────────── -->
-  <nav class="breadcrumb">
-    <div class="container">
-      <a href="../index.html">Home</a>
-      <span>›</span>
-      <a href="../news.html">News</a>
-      <span>›</span>
-      {{title}}
-    </div>
-  </nav>
+    <!-- ── Left column: article content ──────────────────── -->
+    <div class="article-main">
 
-  <!-- ── Article Header ────────────────────────────── -->
-  <div class="article-header">
-    <div class="container">
-      <div class="article-badges">
-        <span class="badge {{heat_badge_class}}">{{heat_icon}} {{heat_label}}</span>
-        <span class="badge badge-category">{{category}}</span>
+      <nav class="art-breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>›</span>
+        <a href="../news.html">News</a>
+        <span>›</span>
+        <span>{{category}}</span>
+      </nav>
+
+      <div class="art-category">{{category}}</div>
+
+      <h1 class="art-headline">{{title}}</h1>
+
+      <div class="art-dateline">{{date}} · {{reading_time}} min read</div>
+
+      <p class="art-standfirst">{{standfirst}}</p>
+
+      <div class="art-body">
+        {{body}}
       </div>
-      <span class="article-date">{{date}}</span>
-      <h1 class="article-headline">{{title}}</h1>
-      <p class="article-byline">Sources: {{sources_inline}}</p>
-    </div>
-  </div>
 
-  <!-- ── Article Body ───────────────────────────────── -->
-  <div class="article-body">
-    <div class="container">
-      {{body}}
-    </div>
-  </div>
+      <div class="art-sources">
+        <div class="art-sources-label">Sources</div>
+        {{sources}}
+      </div>
 
-  <!-- ── Sources ───────────────────────────────────── -->
-  <div class="sources-section">
-    <div class="container">
-      <h3>Sources</h3>
-      {{sources}}
-      <!--
-        The pipeline replaces {{sources}} with one .source-item per source:
+    </div><!-- /.article-main -->
 
-        <div class="source-item">
-          <span class="source-arrow">→</span>
-          <a href="[url]" target="_blank" rel="noopener noreferrer">[Publication Name]</a>
+    <!-- ── Right column: sticky sidebar ──────────────────── -->
+    <aside class="article-sidebar">
+
+      <!-- Coverage heat -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Coverage heat</div>
+        <div class="sidebar-heat-score">{{heat_score}}</div>
+        <span class="badge {{heat_badge_class}}">{{heat_icon}} {{heat_label}}</span>
+        <div class="sidebar-heat-note">{{heat_article_count}} sources covered this story</div>
+      </div>
+
+      <!-- Original sources -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Original sources</div>
+        {{sidebar_sources}}
+      </div>
+
+      <!-- Share -->
+      <div class="sidebar-section">
+        <div class="sidebar-label">Share this</div>
+        <div class="sidebar-share">
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url={{page_url}}"
+             target="_blank" rel="noopener noreferrer" class="share-btn share-li">LinkedIn</a>
+          <a href="https://twitter.com/intent/tweet?text={{title_encoded}}&amp;url={{page_url}}&amp;via=IslamophobiaWF"
+             target="_blank" rel="noopener noreferrer" class="share-btn share-tw">Twitter / X</a>
         </div>
-      -->
-    </div>
-  </div>
+      </div>
 
-  <!-- ── Back to News ──────────────────────────────── -->
-  <div class="article-nav">
-    <div class="container">
-      <a href="../news.html" class="btn btn-ghost">← Back to News</a>
-    </div>
-  </div>
+      <!-- ── Related Articles ─────────────────────────────── -->
+      <div class="sidebar-section sidebar-related">
+        <div class="sidebar-label">More from IWF</div>
+        {{sidebar_related}}
+      </div><!-- /.sidebar-related -->
 
-  <!-- ── Related Articles ──────────────────────────── -->
-  <section class="related-section">
-    <div class="container">
-      <h2>More from IWF</h2>
-      <div class="news-grid">
+    </aside>
 
-        <!-- Related card 1 (populated by pipeline) -->
-        <article class="news-card">
-          <div class="card-meta">
-            <span class="card-date">{{related_1_date}}</span>
-            <span class="card-source">{{related_1_source}}</span>
-          </div>
-          <div class="card-badges">
-            <span class="badge {{related_1_heat_class}}">{{related_1_heat_label}}</span>
-          </div>
-          <h3 class="card-headline">
-            <a href="{{related_1_url}}">{{related_1_title}}</a>
-          </h3>
-          <p class="card-excerpt">{{related_1_excerpt}}</p>
-          <div class="card-footer">
-            <span class="card-sources-label">{{related_1_sources}}</span>
-            <a href="{{related_1_url}}" class="card-read-more">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Related card 2 (populated by pipeline) -->
-        <article class="news-card">
-          <div class="card-meta">
-            <span class="card-date">{{related_2_date}}</span>
-            <span class="card-source">{{related_2_source}}</span>
-          </div>
-          <div class="card-badges">
-            <span class="badge {{related_2_heat_class}}">{{related_2_heat_label}}</span>
-          </div>
-          <h3 class="card-headline">
-            <a href="{{related_2_url}}">{{related_2_title}}</a>
-          </h3>
-          <p class="card-excerpt">{{related_2_excerpt}}</p>
-          <div class="card-footer">
-            <span class="card-sources-label">{{related_2_sources}}</span>
-            <a href="{{related_2_url}}" class="card-read-more">Read more →</a>
-          </div>
-        </article>
-
-        <!-- Related card 3 (populated by pipeline) -->
-        <article class="news-card">
-          <div class="card-meta">
-            <span class="card-date">{{related_3_date}}</span>
-            <span class="card-source">{{related_3_source}}</span>
-          </div>
-          <div class="card-badges">
-            <span class="badge {{related_3_heat_class}}">{{related_3_heat_label}}</span>
-          </div>
-          <h3 class="card-headline">
-            <a href="{{related_3_url}}">{{related_3_title}}</a>
-          </h3>
-          <p class="card-excerpt">{{related_3_excerpt}}</p>
-          <div class="card-footer">
-            <span class="card-sources-label">{{related_3_sources}}</span>
-            <a href="{{related_3_url}}" class="card-read-more">Read more →</a>
-          </div>
-        </article>
-
-      </div><!-- /.news-grid -->
-    </div>
-  </section>
-
+  </div><!-- /.article-split -->
 </main>
 
 <!-- ── Footer ─────────────────────────────────────── -->

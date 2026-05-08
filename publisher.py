@@ -10,10 +10,12 @@ Called by app.py when a post is approved in the dashboard.
 
 import html as _html
 import json
+import math
 import os
 import re
 import subprocess
 import unicodedata
+import urllib.parse
 from datetime import datetime, timezone
 
 TEMPLATE_FILE  = "article-template.html"
@@ -147,6 +149,7 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     draft      = post.get("draft", "")
     sources    = post.get("sources", [])
     heat_label = post.get("heat_label", "NORMAL")
+    heat_score = str(post.get("heat_score", 0))
     slug       = generate_slug(title)
     date_str   = _format_date(post)
     category   = _derive_category(post)
@@ -158,15 +161,28 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     except Exception:
         published_iso = datetime.now(timezone.utc).isoformat()
 
-    excerpt_text   = _excerpt(draft, 160)
-    meta_desc      = _meta_description(draft)
-    sources_inline = " / ".join(s.get("name", "") for s in sources) or post.get("source", "")
+    excerpt_text      = _excerpt(draft, 160)
+    meta_desc         = _meta_description(draft)
+    sources_inline    = " / ".join(s.get("name", "") for s in sources) or post.get("source", "")
+    page_url          = f"https://islamophobiawatchfrance.com/news/{filename}"
+    title_encoded     = urllib.parse.quote(title)
+    heat_article_count = str(post.get("heat_article_count", "Multiple"))
+    reading_time      = str(max(1, math.ceil(len(draft.split()) / 200)))
 
-    # Build <p>-wrapped body from double-newline paragraphs
-    paragraphs = [p.strip() for p in re.split(r"\n\n+", draft) if p.strip()]
-    body_html  = "\n".join(f"      <p>{_esc(p)}</p>" for p in paragraphs)
+    # Standfirst (first paragraph) + body (remaining, with pull-quote detection)
+    paragraphs      = [p.strip() for p in re.split(r"\n\n+", draft) if p.strip()]
+    standfirst_text = paragraphs[0] if paragraphs else ""
+    body_paragraphs = paragraphs[1:] if len(paragraphs) > 1 else []
 
-    # Build source list items
+    body_lines = []
+    for p in body_paragraphs:
+        if p.startswith('"') or p.startswith('“') or p.startswith('‘'):
+            body_lines.append(f'      <p class="pull-quote">{_esc(p)}</p>')
+        else:
+            body_lines.append(f'      <p>{_esc(p)}</p>')
+    body_html = "\n".join(body_lines)
+
+    # Inline source list (bottom of left column)
     source_items = "\n".join(
         f'      <div class="source-item">\n'
         f'        <span class="source-arrow">→</span>\n'
@@ -176,56 +192,69 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
         for s in sources
     )
 
+    # Sidebar source cards
+    sidebar_sources_html = "\n".join(
+        f'      <div class="sidebar-source-card">\n'
+        f'        <div class="sidebar-source-name">{_esc(s.get("name", "Source"))}</div>\n'
+        f'        <a href="{_esc(s.get("url", "#"))}" target="_blank" rel="noopener noreferrer"'
+        f' class="sidebar-source-link">Read original →</a>\n'
+        f'      </div>'
+        for s in sources
+    )
+
+    # Sidebar related articles
+    related = [
+        a for a in (published_articles or [])
+        if a.get("slug") != slug
+    ][-3:]
+
+    if related:
+        related_cards = []
+        for rel in related:
+            rel_title = _esc(rel.get("title", ""))
+            rel_url   = _esc(rel.get("filename", "#"))
+            rel_date  = _esc(_short_date(rel.get("date", "")))
+            related_cards.append(
+                f'        <div class="sidebar-related-card">\n'
+                f'          <div class="sidebar-related-date">{rel_date}</div>\n'
+                f'          <a href="{rel_url}" class="sidebar-related-title">{rel_title}</a>\n'
+                f'        </div>'
+            )
+        sidebar_related_html = "\n".join(related_cards)
+    else:
+        sidebar_related_html = ""
+
     subs = {
-        "{{title}}":            _esc(title),
-        "{{excerpt}}":          _esc(excerpt_text),
-        "{{meta_description}}": _esc(meta_desc),
-        "{{slug}}":             _esc(slug),
-        "{{filename}}":         _esc(filename),
-        "{{published_iso}}":    _esc(published_iso),
-        "{{date}}":             _esc(date_str),
-        "{{heat_badge_class}}": _heat_cls(heat_label),
-        "{{heat_icon}}":        _heat_icon(heat_label),
-        "{{heat_label}}":       _esc(heat_label),
-        "{{category}}":         _esc(category),
-        "{{sources_inline}}":   _esc(sources_inline),
-        "{{body}}":             body_html,
-        "{{sources}}":          source_items,
+        "{{title}}":              _esc(title),
+        "{{excerpt}}":            _esc(excerpt_text),
+        "{{meta_description}}":   _esc(meta_desc),
+        "{{slug}}":               _esc(slug),
+        "{{filename}}":           _esc(filename),
+        "{{published_iso}}":      _esc(published_iso),
+        "{{date}}":               _esc(date_str),
+        "{{reading_time}}":       reading_time,
+        "{{page_url}}":           _esc(page_url),
+        "{{title_encoded}}":      title_encoded,
+        "{{heat_badge_class}}":   _heat_cls(heat_label),
+        "{{heat_icon}}":          _heat_icon(heat_label),
+        "{{heat_label}}":         _esc(heat_label),
+        "{{heat_score}}":         heat_score,
+        "{{heat_article_count}}": heat_article_count,
+        "{{category}}":           _esc(category),
+        "{{sources_inline}}":     _esc(sources_inline),
+        "{{standfirst}}":         _esc(standfirst_text),
+        "{{body}}":               body_html,
+        "{{sources}}":            source_items,
+        "{{sidebar_sources}}":    sidebar_sources_html,
+        "{{sidebar_related}}":    sidebar_related_html,
     }
     for placeholder, value in subs.items():
         tmpl = tmpl.replace(placeholder, value)
 
-    # Populate up to 3 related articles if we have published history
-    related = [
-        a for a in (published_articles or [])
-        if a.get("slug") != slug
-    ][-3:]  # take the 3 most recent others (list is newest-last after append)
-
-    if related:
-        for i, rel in enumerate(related, start=1):
-            rel_heat = rel.get("heat_label", "NORMAL")
-            rel_subs = {
-                f"{{{{related_{i}_date}}}}":       _esc(rel.get("date", "")),
-                f"{{{{related_{i}_source}}}}":     _esc(rel.get("sources", [{}])[0].get("name", "")),
-                f"{{{{related_{i}_heat_class}}}}": _heat_cls(rel_heat),
-                f"{{{{related_{i}_heat_label}}}}": f"{_heat_icon(rel_heat)} {_esc(rel_heat)}",
-                f"{{{{related_{i}_url}}}}":        _esc(rel.get("filename", "#")),
-                f"{{{{related_{i}_title}}}}":      _esc(rel.get("title", "")),
-                f"{{{{related_{i}_excerpt}}}}":    _esc(_excerpt(rel.get("draft", ""), 160)),
-                f"{{{{related_{i}_sources}}}}":    _esc(" / ".join(
-                    s.get("name", "") for s in rel.get("sources", [])
-                )),
-            }
-            for ph, val in rel_subs.items():
-                tmpl = tmpl.replace(ph, val)
-
-    # Clear any remaining {{related_*}} placeholders; remove empty related cards
-    tmpl = re.sub(r"\{\{related_\w+\}\}", "", tmpl)
-
-    # If no related articles, strip the whole related section so we don't show blank cards
+    # Strip the sidebar-related section entirely if there are no related articles
     if not related:
         tmpl = re.sub(
-            r"\s*<!-- ── Related Articles.*?</section>",
+            r"\s*<!-- ── Related Articles.*?</div><!-- /\.sidebar-related -->",
             "",
             tmpl,
             flags=re.DOTALL,
