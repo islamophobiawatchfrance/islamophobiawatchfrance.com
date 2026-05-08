@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} | Islamophobia Watch France</title>
+  <meta name="description" content="{{excerpt}}">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article">
+  <meta property="og:url"         content="https://islamophobiawatchfrance.com/news/{{slug}}.html">
+  <meta property="og:title"       content="{{title}} | Islamophobia Watch France">
+  <meta property="og:description" content="{{excerpt}}">
+  <meta property="og:image"       content="https://islamophobiawatchfrance.com/img/og-default.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@IslamophobiaWF">
+  <meta name="twitter:title"       content="{{title}}">
+  <meta name="twitter:description" content="{{excerpt}}">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────── -->
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="../index.html" class="logo">
+      <span class="logo-iwf">IWF</span>
+      <span class="logo-full">Islamophobia Watch France</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../news.html" class="active">News</a></li>
+      <li><a href="../editorial.html">Editorial <span class="coming-soon-tag">Soon</span></a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ── Breadcrumb ────────────────────────────────── -->
+  <nav class="breadcrumb">
+    <div class="container">
+      <a href="../index.html">Home</a>
+      <span>›</span>
+      <a href="../news.html">News</a>
+      <span>›</span>
+      {{title}}
+    </div>
+  </nav>
+
+  <!-- ── Article Header ────────────────────────────── -->
+  <div class="article-header">
+    <div class="container">
+      <div class="article-badges">
+        <span class="badge {{heat_badge_class}}">{{heat_icon}} {{heat_label}}</span>
+        <span class="badge badge-category">{{category}}</span>
+      </div>
+      <span class="article-date">{{date}}</span>
+      <h1 class="article-headline">{{title}}</h1>
+      <p class="article-byline">Sources: {{sources_inline}}</p>
+    </div>
+  </div>
+
+  <!-- ── Article Body ───────────────────────────────── -->
+  <div class="article-body">
+    <div class="container">
+      {{body}}
+    </div>
+  </div>
+
+  <!-- ── Sources ───────────────────────────────────── -->
+  <div class="sources-section">
+    <div class="container">
+      <h3>Sources</h3>
+      {{sources}}
+      <!--
+        The pipeline replaces {{sources}} with one .source-item per source:
+
+        <div class="source-item">
+          <span class="source-arrow">→</span>
+          <a href="[url]" target="_blank" rel="noopener noreferrer">[Publication Name]</a>
+        </div>
+      -->
+    </div>
+  </div>
+
+  <!-- ── Back to News ──────────────────────────────── -->
+  <div class="article-nav">
+    <div class="container">
+      <a href="../news.html" class="btn btn-ghost">← Back to News</a>
+    </div>
+  </div>
+
+  <!-- ── Related Articles ──────────────────────────── -->
+  <section class="related-section">
+    <div class="container">
+      <h2>More from IWF</h2>
+      <div class="news-grid">
+
+        <!-- Related card 1 (populated by pipeline) -->
+        <article class="news-card">
+          <div class="card-meta">
+            <span class="card-date">{{related_1_date}}</span>
+            <span class="card-source">{{related_1_source}}</span>
+          </div>
+          <div class="card-badges">
+            <span class="badge {{related_1_heat_class}}">{{related_1_heat_label}}</span>
+          </div>
+          <h3 class="card-headline">
+            <a href="{{related_1_url}}">{{related_1_title}}</a>
+          </h3>
+          <p class="card-excerpt">{{related_1_excerpt}}</p>
+          <div class="card-footer">
+            <span class="card-sources-label">{{related_1_sources}}</span>
+            <a href="{{related_1_url}}" class="card-read-more">Read more →</a>
+          </div>
+        </article>
+
+        <!-- Related card 2 (populated by pipeline) -->
+        <article class="news-card">
+          <div class="card-meta">
+            <span class="card-date">{{related_2_date}}</span>
+            <span class="card-source">{{related_2_source}}</span>
+          </div>
+          <div class="card-badges">
+            <span class="badge {{related_2_heat_class}}">{{related_2_heat_label}}</span>
+          </div>
+          <h3 class="card-headline">
+            <a href="{{related_2_url}}">{{related_2_title}}</a>
+          </h3>
+          <p class="card-excerpt">{{related_2_excerpt}}</p>
+          <div class="card-footer">
+            <span class="card-sources-label">{{related_2_sources}}</span>
+            <a href="{{related_2_url}}" class="card-read-more">Read more →</a>
+          </div>
+        </article>
+
+        <!-- Related card 3 (populated by pipeline) -->
+        <article class="news-card">
+          <div class="card-meta">
+            <span class="card-date">{{related_3_date}}</span>
+            <span class="card-source">{{related_3_source}}</span>
+          </div>
+          <div class="card-badges">
+            <span class="badge {{related_3_heat_class}}">{{related_3_heat_label}}</span>
+          </div>
+          <h3 class="card-headline">
+            <a href="{{related_3_url}}">{{related_3_title}}</a>
+          </h3>
+          <p class="card-excerpt">{{related_3_excerpt}}</p>
+          <div class="card-footer">
+            <span class="card-sources-label">{{related_3_sources}}</span>
+            <a href="{{related_3_url}}" class="card-read-more">Read more →</a>
+          </div>
+        </article>
+
+      </div><!-- /.news-grid -->
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-left">
+        <p>Islamophobia Watch France — monitoring anti-Muslim discrimination and celebrating Muslim life in France.</p>
+      </div>
+      <div class="footer-centre">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../news.html">News</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <p class="footer-social-label">Follow IWF</p>
+        <a href="https://www.linkedin.com/company/islamophobia-watch-france/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.twitter.com/IslamophobiaWF" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Islamophobia Watch France. All content is sourced and attributed. IWF does not own the rights to third-party reporting.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn  = document.getElementById('hamburger');
+    var menu = document.getElementById('nav-links');
+    btn.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+      });
+    });
+  }());
+</script>
+
+</body>
+</html>

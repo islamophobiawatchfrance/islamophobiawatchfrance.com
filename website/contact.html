@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Islamophobia Watch France</title>
+  <meta name="description" content="Contact Islamophobia Watch France. For tips, press enquiries, or to report an incident of Islamophobia in France.">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://islamophobiawatchfrance.com/contact.html">
+  <meta property="og:title"       content="Contact | Islamophobia Watch France">
+  <meta property="og:description" content="For tips, press enquiries, or to report an incident of Islamophobia in France, contact IWF.">
+  <meta property="og:image"       content="https://islamophobiawatchfrance.com/img/og-default.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:site"        content="@IslamophobiaWF">
+  <meta name="twitter:title"       content="Contact | Islamophobia Watch France">
+  <meta name="twitter:description" content="For tips, press enquiries, or to report an incident of Islamophobia in France.">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────── -->
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-iwf">IWF</span>
+      <span class="logo-full">Islamophobia Watch France</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="editorial.html">Editorial <span class="coming-soon-tag">Soon</span></a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ── Page Header ───────────────────────────────── -->
+  <div class="page-header">
+    <div class="container">
+      <h1>Get in touch</h1>
+      <p>For tips, press enquiries, or to report an incident of Islamophobia in France, contact IWF.</p>
+    </div>
+  </div>
+
+  <!-- ── Contact Details ───────────────────────────── -->
+  <div class="container">
+    <div class="contact-content">
+
+      <div class="contact-item">
+        <p class="contact-label">Email</p>
+        <p class="contact-value">
+          <a href="mailto:info@islamophobiawatchfrance.com">info@islamophobiawatchfrance.com</a>
+        </p>
+      </div>
+
+      <div class="contact-item">
+        <p class="contact-label">Twitter / X</p>
+        <p class="contact-value">
+          <a href="https://www.twitter.com/IslamophobiaWF" target="_blank" rel="noopener noreferrer">@IslamophobiaWF</a>
+        </p>
+      </div>
+
+      <div class="contact-item">
+        <p class="contact-label">LinkedIn</p>
+        <p class="contact-value">
+          <a href="https://www.linkedin.com/company/islamophobia-watch-france/" target="_blank" rel="noopener noreferrer">Islamophobia Watch France</a>
+        </p>
+      </div>
+
+      <p class="contact-note">IWF welcomes tips from journalists, researchers, and community members.</p>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-left">
+        <p>Islamophobia Watch France — monitoring anti-Muslim discrimination and celebrating Muslim life in France.</p>
+      </div>
+      <div class="footer-centre">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <p class="footer-social-label">Follow IWF</p>
+        <a href="https://www.linkedin.com/company/islamophobia-watch-france/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.twitter.com/IslamophobiaWF" target="_blank" rel="noopener noreferrer">Twitter / X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Islamophobia Watch France. All content is sourced and attributed. IWF does not own the rights to third-party reporting.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn  = document.getElementById('hamburger');
+    var menu = document.getElementById('nav-links');
+    btn.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+      });
+    });
+  }());
+</script>
+
+</body>
+</html>
