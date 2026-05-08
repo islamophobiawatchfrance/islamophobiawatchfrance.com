@@ -1,0 +1,5 @@
+.env
+linkedin_auth.py
+linkedin_token.json
+queue.json
+archive.json
