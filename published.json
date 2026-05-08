@@ -1,50 +1,26 @@
 {
+  "posts": [],
   "articles": [
     {
-      "title": "Grand Mosque Rector Sparks Debate Over Pork at State Banquet",
-      "date": "6 May 2026",
-      "filename": "news/2026-05-06-grand-mosque-rector-sparks-debate-over-pork-at-state-banquet.html",
-      "slug": "grand-mosque-rector-sparks-debate-over-pork-at-state-banquet",
+      "title": "\"Roast pig\": The rector of the Great Mosque of Paris denounces the \"French Canon\"",
+      "date": "7 May 2026",
+      "filename": "news/2026-05-07-roast-pig-the-rector-of-the-great-mosque-of-paris-denounces.html",
+      "slug": "roast-pig-the-rector-of-the-great-mosque-of-paris-denounces",
       "sources": [
+        {
+          "name": "Planet.fr",
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNcjU4Tk9MdU16emRnRlJfMHJFQXdsRWFsam45a29NaW5wNHBBY0dzWEhXY0tqVlVVdm93bjdfYkYzNGFoSm9teURHQndzRjk4RFVETkVRUVRDc0lqQ1hWT2RFM09PWk1HZEMxM001R0RwR3lDWFBNMmIyUlNaZUh4TFNndzlCdE5IWnlTRTBaYzAyOHVJTnpSY3dDdVNBZnZIM3FYMklxWTFWZ0RzTXM2SV9YQk83WnZuWnZKQzVTczI0b095QnoyQlhFS3pVTnM?oc=5"
+        },
         {
           "name": "europe1.fr",
           "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxPUmNTSHFPV2xxcU43VnNnVURoeTVNT1lMZzhwTmZrNUhEeDFBWHU3Nmh2SGMwcXZWZlBNSnp3N2pYWUY3MVlady0xR2g4Vjl2aFNkVFpjZEstZ2xiUERIb3dxQ0dSMk5LdVVCLUhfQzQ0c2t6Z0k2Z19jZTd4OThUQ19DOVU1SFl1REV2R18wc1RCbXFOX1V0WHd6bXM1M2RGVEl2a3FFdzdRc3NJbUpwdm1HeUNObFAyUkxxMGVHYnhPS0o4cldqbUtBM1Z1X3hTaFhvblBHeEhFTjZaekVrSUdjYUpLMGFuelVXVGV4TTc4R1ItTEhUSG13ZDFPYWlrMXppempmaldfZ9IBjwJBVV95cUxOZWhXTGpWZzROemE5cEN1ZXZPdnFFdUdLcGk0OGd2M2o0bTk4VXdKeTM0ZVRYRFF4a2JTLXBiREphaTRpT1NhMVhNY1JGdUJkWkJkeEJtZXEwVDg3eV9FZ2J0ck1ndTBSVUdXcWFuNmNsVEh6UUlKNHRHak45TVRicEdsT0JOMjBWUGZxeW5GZlNmMFhaYXA5Rjg5ZTROd3NzdVpHUFJkS3NERmxPUkk1QjMtSFVkdmpISU1PYV9HVWs2bkxBUHk5T1ZZYkJoWmo4RDUwbGdpbTNoYXZJWDFOTTVBX2RCTlhmanItWkh1YjhvZjRkai1PTG5VcmRzbmhTVlNJa25fT3BDVVhiaWJB?oc=5"
-        },
-        {
-          "name": "lejdd.fr",
-          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNOVFOTXlGdHlZSXE0UVgzbVFNTDJuNDRhQ3YzZ0c4Y3FfWW5rYkRkVEhqZXh0QUFFVDdkVlQ5Nk9hbHB3TVVYYmJrUFJWWVJaUTdkbXBZOVRDYlYwb1I2Qm9uV2ZqUTRtV1RJejQ1VldTU3dYNDc0ZGtBLXdWWEhZRXZGenhfajJJYUluNkZTejVZY1Q1Q1E4N2VrTFV2YnRFSmhZNkFNdVpxeEVveXRKeS1nMW1oMWg1OFcwYkYtZGNCSjF4ZXhfYWthMzh0UTJMXzNrclpkdlMzdUlETzZYN1paaw?oc=5"
-        },
-        {
-          "name": "Valeurs actuelles",
-          "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxNSHQ0Y0NGSXpOeElLM29mVUU3MjIySWI3SWpSN1hDbmpYX2ZPVXV3N1llMjFLOElXWGpVVmdlZzZUZks4NTE4a3VyMkFyOXVQRU9ocFVTYTNaczBQcms5aFIwR3k0TnFVRldWSGVlQnBad1JlYlJXZkdzb1VVU2UxRGQ4UnZGRWNwWGJaTVNEX1hjSDByNGtvOVpQWFZwc19TLWpfVkx2WnB5UkpOMFRrdGZpWUZyTklldUJjdi1pRXRwNjFzRWw2ek16c3ZvWl9QQ1RnbEpLZDgyLS1aZldrWDQxUEwzMkFGbHA4dHhYRU41UUYwcDllOTNjWTN4Y0lUQ1NKQVJB?oc=5"
         }
       ],
       "heat_label": "TRENDING",
-      "heat_score": 6,
-      "category": "Islamophobia",
-      "draft": "The rector of Paris's Grand Mosque has sparked political backlash after criticising France's \"Canon français\" – a government-backed cultural initiative.\n\nAccording to reports, the rector made comments questioning the Canon's approach to French cultural identity, with right-wing politicians seizing on the remarks as evidence of ideological conflict over France's secular values and national heritage.\n\nThe Canon français is a state-endorsed list of essential French cultural works and figures designed to promote shared national identity. The initiative has drawn scrutiny from various quarters since its launch, with debates centring on whose cultural narratives it represents and how it reflects contemporary France.\n\nThe rector's comments have intensified existing tensions around how religious and secular institutions navigate France's commitment to laïcité – the constitutional principle separating religion from state affairs.\n\nRight-wing opposition figures have denounced the remarks as incompatible with French values, framing the exchange as part of broader concerns about institutional integration and shared civic frameworks.\n\nMuslim leaders and civil society organisations have not yet issued formal statements on the controversy at the time of reporting.\n\nSource: Europe 1 / Le JDD",
-      "published_at": "2026-05-08T09:39:52.125176+00:00"
-    },
-    {
-      "title": "France's Senate Adopts Bill Targeting Islamist Infiltration",
-      "date": "6 May 2026",
-      "filename": "news/2026-05-06-france-senate-adopts-bill-targeting-islamist-infiltration.html",
-      "slug": "france-senate-adopts-bill-targeting-islamist-infiltration",
-      "sources": [
-        {
-          "name": "Mediapart",
-          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQSG04Q2JQcDFwMEQyZnFHdUVPYTdzVFNwNUlnX3dNSjBjRk9VU2FNRFhrZTlzbTNBaFFpM0RQUHByY3VQbGNyeGlsVUVodjZUVzhOM0s5Vm5hTFZ4cDBBZ3llbkRlQmJlUmdVajg5UVFLLWVnRnJFaVAxYVdscEhmSWk3dTd2X196S2lKQW1MS3NiZmFYckRCUU5PSTlTSU1ma0s3bG5HQVRBWGI0YXRscWxTc1AyY25ubG8wM3h1WFBOd3RNWFhYM2tydU9TMFE4VzVyZXFXamgwcTRMdEJnQ21KY2R5QU1M?oc=5"
-        },
-        {
-          "name": "Bladi.net",
-          "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9jeU1nTU9wWWZ1MG15NEpLdHFZc3hwYlFYWUJZU044UkdoWDV5bFp1QlNxVUozYW9EYlJQby1TU242cUxqYUxWNlBmQldlellmUEkwUHRmdjN4MzRoZHhydndwbEo4SG9YWjJ4bGV5aDh5c1IyaE9fam1OOFU?oc=5"
-        }
-      ],
-      "heat_label": "TRENDING",
-      "heat_score": 7,
-      "category": "Policy & Law",
-      "draft": "France's Senate has passed legislation targeting alleged Islamist infiltration of state institutions, drawing immediate criticism from Muslim organisations.\n\nThe upper house adopted the bill on Wednesday, introducing new vetting procedures for public sector employees and expanding monitoring of associations deemed threats to state neutrality and secular principles.\n\nCritics, including Muslim groups cited by Bladi.net, have raised concerns about the legislation's scope and impact on Muslim communities. Mediapart reports the Senate relied on a contested report and survey about Muslims to justify the measure—sources that have faced scrutiny for methodological concerns.\n\nProponents argue the law protects France's laïcité, the constitutional separation of religion and state governance. The bill reflects ongoing legislative efforts since 2020 to address what the government characterises as political Islam's institutional presence.\n\nMuslim representatives warn the legislation could disproportionately affect their communities through expanded administrative scrutiny and monitoring frameworks.\n\nSource: Mediapart / Bladi.net",
-      "published_at": "2026-05-08T09:46:24.939467+00:00"
+      "heat_score": 5,
+      "category": "European Context",
+      "draft": "The rector of the Great Mosque of Paris has sparked political controversy over comments on French cultural identity.\n\nChadi Adraoui criticised what he termed the \"French Canon,\" referencing a traditional roasted pig dinner. Right-wing politicians accused him of attacking French cultural practices.\n\nThe comments centre on debates about integration and national identity that have intensified in France in recent years. Critics argue the rector was delegitimising established French traditions, while supporters suggest his comments were being misrepresented as culturally dismissive.\n\nThe incident reflects broader tensions in France around religious accommodation, secularism, and what constitutes shared national values. Similar disputes have erupted repeatedly over cultural practices, dietary restrictions, and religious expression in public spaces.\n\nThe Great Mosque of Paris, France's largest mosque, has previously found itself at the centre of integration debates.\n\nSource: Europe1 / Planet.fr",
+      "published_at": "2026-05-08T13:27:44.798322+00:00"
     }
   ]
 }
