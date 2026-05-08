@@ -16,6 +16,7 @@ import re
 import subprocess
 import unicodedata
 import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 
 TEMPLATE_FILE  = "article-template.html"
@@ -151,6 +152,131 @@ def generate_slug(title: str, max_chars: int = 60) -> str:
     return truncated[:last_hyphen] if last_hyphen > 0 else truncated
 
 
+_WIKIMEDIA_API = "https://commons.wikimedia.org/w/api.php"
+_WIKIMEDIA_UA  = "IWF-Aggregator/1.0 (https://islamophobiawatchfrance.com)"
+
+_CATEGORY_FALLBACK_QUERIES = {
+    "Islamophobia":     "mosque france islam",
+    "Policy & Law":     "france parliament protest",
+    "Muslim Life":      "france mosque muslim community",
+    "European Context": "europe france mosque",
+    "News":             "france paris",
+}
+
+
+def fetch_wikimedia_image(keywords: list, category: str) -> dict | None:
+    """
+    Search Wikimedia Commons for a relevant image (JPEG/PNG only).
+    Tries a focused keyword query first, then falls back to category terms.
+    Returns {"url", "title", "author", "licence", "source", "commons_url"} or None.
+    """
+    fallback_q = _CATEGORY_FALLBACK_QUERIES.get(category, "france")
+    # Category fallback first (reliable images), then title-specific keywords
+    # Title keywords can be too literal (e.g. "roast pig") or abstract ("controversy")
+    queries = [fallback_q]
+    if keywords:
+        queries.append(" ".join(keywords[:2]))
+
+    def _api(params: dict) -> dict:
+        qs  = urllib.parse.urlencode(params)
+        req = urllib.request.Request(
+            f"{_WIKIMEDIA_API}?{qs}",
+            headers={"User-Agent": _WIKIMEDIA_UA},
+        )
+        with urllib.request.urlopen(req, timeout=8) as r:
+            return json.loads(r.read())
+
+    def _first_photo(query: str) -> str | None:
+        results = _api({
+            "action": "query", "list": "search",
+            "srsearch": query, "srnamespace": 6,
+            "srlimit": 8, "format": "json",
+        }).get("query", {}).get("search", [])
+        for hit in results:
+            if hit["title"].lower().endswith((".jpg", ".jpeg", ".png")):
+                return hit["title"]
+        return None
+
+    try:
+        file_title = None
+        for q in queries:
+            file_title = _first_photo(q)
+            if file_title:
+                break
+        if not file_title:
+            return None
+
+        # Fetch image URL and licence metadata
+        pages = _api({
+            "action": "query", "titles": file_title,
+            "prop": "imageinfo", "iiprop": "url|extmetadata",
+            "format": "json",
+        }).get("query", {}).get("pages", {})
+
+        ii  = (next(iter(pages.values())).get("imageinfo") or [{}])[0]
+        url = ii.get("url", "").split("?")[0]   # strip UTM tracking params
+        if not url:
+            return None
+
+        meta    = ii.get("extmetadata", {})
+        author  = re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "Unknown")).strip() or "Unknown"
+        licence = meta.get("LicenseShortName", {}).get("value", "Unknown")
+
+        bare        = file_title.replace("File:", "").replace(" ", "_")
+        commons_url = f"https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(bare)}"
+
+        return {
+            "url":         url,
+            "title":       file_title.replace("File:", ""),
+            "author":      author,
+            "licence":     licence,
+            "source":      "Wikimedia Commons",
+            "commons_url": commons_url,
+        }
+    except Exception:
+        return None
+
+
+def generate_header_graphic(title: str, category: str, heat_label: str, date: str) -> str:
+    """Return an inline SVG header graphic (fallback when no Wikimedia image is found)."""
+    badge_color = {"HOT": "#ED2939", "TRENDING": "#D97706"}.get(heat_label.upper(), "#6B7280")
+
+    # Word-wrap title to ~42 chars per line (fits ~740px at ~26px font)
+    words, lines, current = title.split(), [], ""
+    for word in words:
+        candidate = f"{current} {word}".strip() if current else word
+        if len(candidate) > 42:
+            if current:
+                lines.append(current)
+            current = word
+        else:
+            current = candidate
+    if current:
+        lines.append(current)
+
+    tspans = "".join(
+        f'<tspan x="30" y="{120 + i * 38}">{_esc(line)}</tspan>'
+        for i, line in enumerate(lines[:4])
+    )
+
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" '
+        f'width="100%" style="display:block;background:#0a0a0a">'
+        f'<rect x="0"   y="0" width="6" height="300" fill="#ED2939"/>'
+        f'<rect x="794" y="0" width="6" height="300" fill="#002395"/>'
+        f'<text x="30" y="50" font-family="sans-serif" font-size="11" '
+        f'fill="#ED2939" letter-spacing="1">{_esc(category.upper())}</text>'
+        f'<text font-family="sans-serif" font-size="26" font-weight="500" fill="#ffffff">'
+        f'{tspans}</text>'
+        f'<text x="30" y="278" font-family="sans-serif" font-size="11" fill="#666">'
+        f'{_esc(date)}</text>'
+        f'<rect x="656" y="18" width="130" height="26" rx="4" fill="{badge_color}"/>'
+        f'<text x="721" y="35" font-family="sans-serif" font-size="11" fill="#fff" '
+        f'text-anchor="middle">{_esc(heat_label.upper())}</text>'
+        f'</svg>'
+    )
+
+
 def generate_article_html(post: dict, published_articles: list = None) -> str:
     """
     Read article-template.html and substitute all {{placeholders}}.
@@ -174,6 +300,28 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
         published_iso = datetime.fromisoformat(raw_pub.replace("Z", "+00:00")).isoformat()
     except Exception:
         published_iso = datetime.now(timezone.utc).isoformat()
+
+    # Header image: try Wikimedia Commons, fall back to generated SVG
+    img_keywords = [
+        w for w in re.sub(r"[^a-z0-9\s]", "", _ascii(title).lower()).split()
+        if w not in _STOP_WORDS
+    ][:4]
+    wikimedia = fetch_wikimedia_image(img_keywords, category)
+    if wikimedia:
+        attr = (
+            f'Image: <a href="{_esc(wikimedia["commons_url"])}" target="_blank" '
+            f'rel="noopener noreferrer">{_esc(wikimedia["title"])}</a>'
+            f' by {_esc(wikimedia["author"])} ({_esc(wikimedia["licence"])})'
+            f' via Wikimedia Commons'
+        )
+        header_image_html = (
+            f'<div class="art-header-img">\n'
+            f'  <img src="{_esc(wikimedia["url"])}" alt="{_esc(title)}" loading="lazy">\n'
+            f'  <p class="art-header-credit">{attr}</p>\n'
+            f'</div>'
+        )
+    else:
+        header_image_html = generate_header_graphic(title, category, heat_label, _format_date(post))
 
     excerpt_text      = _excerpt(draft, 160)
     meta_desc         = _meta_description(draft)
@@ -239,6 +387,7 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
         sidebar_related_html = ""
 
     subs = {
+        "{{header_image}}":       header_image_html,
         "{{title}}":              _esc(title),
         "{{excerpt}}":            _esc(excerpt_text),
         "{{meta_description}}":   _esc(meta_desc),
