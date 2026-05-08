@@ -156,24 +156,23 @@ _WIKIMEDIA_API = "https://commons.wikimedia.org/w/api.php"
 _WIKIMEDIA_UA  = "IWF-Aggregator/1.0 (https://islamophobiawatchfrance.com)"
 
 _CATEGORY_FALLBACK_QUERIES = {
-    "Islamophobia":     "mosque france islam",
-    "Policy & Law":     "france parliament protest",
-    "Muslim Life":      "france mosque muslim community",
-    "European Context": "europe france mosque",
-    "News":             "france paris",
+    "Islamophobia":     ["Grande Mosquee Paris", "mosque france", "paris france"],
+    "Policy & Law":     ["france parliament", "france protest demonstration", "paris france"],
+    "Muslim Life":      ["france mosque prayer", "paris mosque", "france community"],
+    "European Context": ["Paris cityscape", "france europe", "paris france aerial"],
+    "News":             ["france paris", "paris cityscape", "france landscape"],
 }
 
 
 def fetch_wikimedia_image(keywords: list, category: str) -> dict | None:
     """
-    Search Wikimedia Commons for a relevant image (JPEG/PNG only).
-    Tries a focused keyword query first, then falls back to category terms.
+    Search Wikimedia Commons for a landscape JPEG/PNG (aspect ratio 1.5–3.0, ≥600px wide).
+    Tries category fallback query first, then title keywords.
     Returns {"url", "title", "author", "licence", "source", "commons_url"} or None.
     """
-    fallback_q = _CATEGORY_FALLBACK_QUERIES.get(category, "france")
-    # Category fallback first (reliable images), then title-specific keywords
-    # Title keywords can be too literal (e.g. "roast pig") or abstract ("controversy")
-    queries = [fallback_q]
+    fallbacks = _CATEGORY_FALLBACK_QUERIES.get(category, ["france paris"])
+    # Category fallbacks first (reliable), then title keywords as a last attempt
+    queries = list(fallbacks)
     if keywords:
         queries.append(" ".join(keywords[:2]))
 
@@ -186,53 +185,65 @@ def fetch_wikimedia_image(keywords: list, category: str) -> dict | None:
         with urllib.request.urlopen(req, timeout=8) as r:
             return json.loads(r.read())
 
-    def _first_photo(query: str) -> str | None:
-        results = _api({
+    def _photo_titles(query: str) -> list:
+        """Return JPEG/PNG file titles from a search query (up to 10 results)."""
+        hits = _api({
             "action": "query", "list": "search",
             "srsearch": query, "srnamespace": 6,
-            "srlimit": 8, "format": "json",
+            "srlimit": 10, "format": "json",
         }).get("query", {}).get("search", [])
-        for hit in results:
-            if hit["title"].lower().endswith((".jpg", ".jpeg", ".png")):
-                return hit["title"]
-        return None
+        return [h["title"] for h in hits if h["title"].lower().endswith((".jpg", ".jpeg", ".png"))]
 
-    try:
-        file_title = None
-        for q in queries:
-            file_title = _first_photo(q)
-            if file_title:
-                break
-        if not file_title:
+    def _best_landscape(titles: list) -> dict | None:
+        """Batch-fetch imageinfo for all titles; return first that is landscape ≥600px."""
+        if not titles:
             return None
-
-        # Fetch image URL and licence metadata
         pages = _api({
-            "action": "query", "titles": file_title,
-            "prop": "imageinfo", "iiprop": "url|extmetadata",
+            "action": "query",
+            "titles": "|".join(titles),
+            "prop":   "imageinfo",
+            "iiprop": "url|extmetadata|size",
             "format": "json",
         }).get("query", {}).get("pages", {})
 
-        ii  = (next(iter(pages.values())).get("imageinfo") or [{}])[0]
-        url = ii.get("url", "").split("?")[0]   # strip UTM tracking params
-        if not url:
-            return None
+        # Re-order pages to match the original search ranking
+        title_index = {t: i for i, t in enumerate(titles)}
+        ordered = sorted(pages.values(), key=lambda p: title_index.get(p.get("title", ""), 999))
 
-        meta    = ii.get("extmetadata", {})
-        author  = re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "Unknown")).strip() or "Unknown"
-        licence = meta.get("LicenseShortName", {}).get("value", "Unknown")
+        for page in ordered:
+            ii  = (page.get("imageinfo") or [{}])[0]
+            w   = ii.get("width", 0)
+            h   = ii.get("height", 1)
+            url = ii.get("url", "").split("?")[0]
+            if not url or w < 600:
+                continue
+            ratio = w / h
+            if not (1.5 <= ratio <= 3.0):
+                continue
 
-        bare        = file_title.replace("File:", "").replace(" ", "_")
-        commons_url = f"https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(bare)}"
+            meta    = ii.get("extmetadata", {})
+            author  = re.sub(r"<[^>]+>", "", meta.get("Artist", {}).get("value", "Unknown")).strip() or "Unknown"
+            licence = meta.get("LicenseShortName", {}).get("value", "Unknown")
+            ft      = page.get("title", "")
+            bare    = ft.replace("File:", "").replace(" ", "_")
 
-        return {
-            "url":         url,
-            "title":       file_title.replace("File:", ""),
-            "author":      author,
-            "licence":     licence,
-            "source":      "Wikimedia Commons",
-            "commons_url": commons_url,
-        }
+            return {
+                "url":         url,
+                "title":       ft.replace("File:", ""),
+                "author":      author,
+                "licence":     licence,
+                "source":      "Wikimedia Commons",
+                "commons_url": f"https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(bare)}",
+            }
+        return None
+
+    try:
+        for q in queries:
+            titles = _photo_titles(q)
+            result = _best_landscape(titles)
+            if result:
+                return result
+        return None
     except Exception:
         return None
 
