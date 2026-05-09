@@ -427,16 +427,16 @@ def update_homepage(repo_path: str = ".") -> None:
         flags=re.DOTALL,
     )
 
-    # Inject live story count into #iwf-stats
-    wire_seen_path = os.path.join(repo_path, "wire_seen.json")
+    # Inject live story count into #iwf-stats (count from 7-day wire window)
     story_count = 0
-    if os.path.exists(wire_seen_path):
+    wire_path = os.path.join(repo_path, WIRE_FILE)
+    if os.path.exists(wire_path):
         try:
-            with open(wire_seen_path, "r", encoding="utf-8") as f:
-                story_count = len(json.load(f))
+            with open(wire_path, "r", encoding="utf-8") as f:
+                story_count = len(json.load(f).get("items", []))
         except Exception:
             pass
-    stats_text = f"{story_count} stories monitored · covering French Muslim life since May 2026"
+    stats_text = f"{story_count} stories monitored in the last 7 days"
     updated = re.sub(
         r'(<div id="iwf-stats"[^>]*>)[^<]*(</div>)',
         lambda m: m.group(1) + stats_text + m.group(2),
@@ -529,10 +529,14 @@ def _wire_item_html(item: dict) -> str:
     )
 
 
+def _wire_date_sep(label: str) -> str:
+    return f'        <div class="wire-date-sep"><span>{_esc(label)}</span></div>'
+
+
 def update_wire(repo_path: str = ".") -> None:
     """
-    Read wire.json and inject wire items into index.html and news.html.
-    Anchors: <!-- /.wire-feed --> and <!-- /.wire-feed-news -->
+    Read wire.json and inject all 7-day wire items into index.html and news.html,
+    with a date-separator divider between each calendar day.
     """
     wire_path = os.path.join(repo_path, WIRE_FILE)
     if not os.path.exists(wire_path):
@@ -542,10 +546,24 @@ def update_wire(repo_path: str = ".") -> None:
         wire = json.load(f)
     items = wire.get("items", [])
 
-    if items:
-        items_html = "\n\n".join(_wire_item_html(it) for it in items)
-    else:
+    if not items:
         items_html = '        <p class="wire-empty">No wire stories available yet.</p>'
+    else:
+        blocks: list = []
+        current_day: str = ""
+        for it in items:
+            pub_str = it.get("published", "")
+            day_label = ""
+            try:
+                pub_dt   = datetime.fromisoformat(pub_str.replace("Z", "+00:00"))
+                day_label = pub_dt.strftime("%A %-d %B")   # e.g. "Thursday 8 May"
+            except Exception:
+                pass
+            if day_label and day_label != current_day:
+                current_day = day_label
+                blocks.append(_wire_date_sep(day_label))
+            blocks.append(_wire_item_html(it))
+        items_html = "\n\n".join(blocks)
 
     new_block = f"\n{items_html}\n      "
 
@@ -566,7 +584,7 @@ def update_wire(repo_path: str = ".") -> None:
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(updated)
 
-    print(f"  Wire updated ({len(items)} items)")
+    print(f"  Wire updated ({len(items)} items across 7 days)")
 
 
 def update_sitemap(repo_path: str = ".") -> None:

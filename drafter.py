@@ -632,21 +632,39 @@ def archive_stale_queue() -> None:
 
 
 def save_wire(stories: list, timestamp) -> None:
-    """Saves up to 50 new (not seen in last 24 h) stories to wire.json."""
+    """
+    Accumulates stories in wire.json over a rolling 7-day window.
+    New stories are merged with existing ones, deduplicated by URL,
+    purged if older than 7 days, sorted newest-first, capped at 200.
+    """
     wire_seen_data, seen_urls = _load_wire_seen()
-    seen_titles = set()
-    items = []
-    new_urls = []
+    now      = datetime.datetime.now(datetime.timezone.utc)
+    cutoff   = now - datetime.timedelta(days=7)
+
+    # Load existing wire items
+    existing_items: list = []
+    if os.path.exists(WIRE_FILE):
+        try:
+            with open(WIRE_FILE, "r", encoding="utf-8") as f:
+                existing_items = json.load(f).get("items", [])
+        except Exception:
+            pass
+    existing_urls = {it["url"] for it in existing_items}
+
+    # Collect genuinely new stories (not seen in 24 h, not already in wire)
+    seen_titles: set = set()
+    new_items:   list = []
+    new_urls:    list = []
     for s in stories:
         url = s.get("url", "")
-        if url in seen_urls:
+        if url in seen_urls or url in existing_urls:
             continue
         key = simplify_title(s.get("title", ""))
         if key in seen_titles:
             continue
         seen_titles.add(key)
         published = s.get("published")
-        items.append({
+        new_items.append({
             "title":     s.get("title", ""),
             "source":    s.get("source", ""),
             "url":       url,
@@ -655,13 +673,30 @@ def save_wire(stories: list, timestamp) -> None:
             "query":     s.get("query", ""),
         })
         new_urls.append(url)
-        if len(items) >= 50:
-            break
+
+    # Merge, drop stories > 7 days old, refresh time_ago, sort, cap
+    merged = new_items + existing_items
+    fresh: list = []
+    for it in merged:
+        pub_str = it.get("published", "")
+        try:
+            pub_dt = datetime.datetime.fromisoformat(pub_str.replace("Z", "+00:00"))
+            if pub_dt < cutoff:
+                continue
+            it["time_ago"] = format_time_ago(pub_dt)
+        except Exception:
+            pass  # keep items whose timestamp can't be parsed
+        fresh.append(it)
+
+    fresh.sort(key=lambda x: x.get("published", ""), reverse=True)
+    fresh = fresh[:200]
+
     _save_wire_seen(wire_seen_data, new_urls)
-    wire = {"generated": timestamp.isoformat(), "items": items}
+    wire = {"generated": timestamp.isoformat(), "items": fresh}
     with open(WIRE_FILE, "w", encoding="utf-8") as f:
         json.dump(wire, f, indent=2, ensure_ascii=False)
-    print(f"  Saved {len(items)} wire item(s) ({len(seen_urls)} already seen this 24 h).")
+    print(f"  Wire: {len(new_items)} new, {len(fresh)} total "
+          f"({len(seen_urls)} skipped as seen today).")
 
 
 # =============================================================
