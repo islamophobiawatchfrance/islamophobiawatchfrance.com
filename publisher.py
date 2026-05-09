@@ -79,9 +79,15 @@ def _format_date(post: dict) -> str:
 
 def _date_prefix(post: dict) -> str:
     """Return YYYY-MM-DD for use in filenames."""
-    raw = post.get("published") or post.get("created") or ""
+    raw = post.get("published") or post.get("created") or post.get("published_at") or ""
     try:
         dt = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        return dt.strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    # Fallback: parse human-readable date e.g. "8 May 2026"
+    try:
+        dt = datetime.strptime(post.get("date", ""), "%d %B %Y")
         return dt.strftime("%Y-%m-%d")
     except Exception:
         return datetime.now(timezone.utc).strftime("%Y-%m-%d")

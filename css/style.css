@@ -21,7 +21,7 @@
 /* ── 2. Reset & Base ──────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -143,7 +143,7 @@ p  { color: var(--text-secondary); }
   background: none;
   border: none;
   cursor: pointer;
-  padding: 6px;
+  padding: 14px 8px;
   margin-left: auto;
 }
 .hamburger span {
@@ -762,7 +762,7 @@ p  { color: var(--text-secondary); }
   .footer-left { grid-column: 1 / -1; }
 }
 
-/* Hero split stacks at 768px */
+/* Hero split stacks at 768px — tablet and phone */
 @media (max-width: 768px) {
   .hero-split {
     flex-direction: column;
@@ -783,10 +783,14 @@ p  { color: var(--text-secondary); }
     flex-shrink: 0;
     padding-top: 0;
   }
+  /* Article split stacks at tablet too */
+  .article-split   { flex-direction: column; }
+  .article-main    { width: 100%; border-right: none; border-bottom: 1px solid var(--border-subtle); overflow-x: hidden; }
+  .article-sidebar { width: 100%; position: static; height: auto; }
 }
 
 @media (max-width: 640px) {
-  /* Hamburger */
+  /* ── Hamburger & nav ── */
   .hamburger { display: flex; }
 
   .nav-links {
@@ -794,55 +798,92 @@ p  { color: var(--text-secondary); }
     width: 100%;
     flex-direction: column;
     gap: 0;
-    padding: 4px 0 12px;
+    padding: 4px 0 8px;
     border-top: 1px solid var(--border-subtle);
   }
   .nav-links.open { display: flex; }
   .nav-links li   { width: 100%; }
   .nav-links a {
-    padding: 12px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
     border-bottom: 1px solid var(--border-subtle);
-    font-size: 14px;
+    font-size: 15px;
     width: 100%;
   }
   .nav-links li:last-child a { border-bottom: none; }
 
-  /* Hide the full name on very small screens */
+  /* Hide the long site name — "IWF" logo remains */
   .logo-full { display: none; }
 
-  /* Layout */
-  .news-grid  { grid-template-columns: 1fr; }
+  /* ── Layout ── */
+  .news-grid   { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; padding: 36px 0 24px; }
   .footer-left { grid-column: auto; }
 
-  /* Hero split CTA buttons */
-  .hero-split-ctas { flex-direction: column; }
+  /* ── Hero ── */
+  .hero-left         { padding: 32px 20px; }
+  .hero-left-inner   { gap: 20px; }
+  .hero-right        { height: 360px; }
+  .hero-split-ctas   { flex-direction: column; }
   .hero-split-ctas .btn { text-align: center; }
 
-  /* Sections */
+  /* ── Page headers ── */
+  .page-header { padding: 36px 0 24px; }
+
+  /* ── Sections ── */
   .coming-soon-section { padding: 64px 0 56px; }
   .article-body { padding: 28px 0; }
 
-  /* Cards */
+  /* ── Cards ── */
   .card-footer { flex-direction: column; align-items: flex-start; gap: 6px; }
 
-  /* Newsletter */
-  .newsletter-form { flex-direction: column; align-items: stretch; }
-  .newsletter-input { max-width: 100%; }
+  /* ── Newsletter ── */
+  .newsletter-form   { flex-direction: column; align-items: stretch; }
+  .newsletter-input  { max-width: 100%; }
   .newsletter-form .btn { text-align: center; }
 
-  /* News feed */
+  /* ── News feed ── */
   .news-feed-list { height: 420px; }
   .news-feed-item { grid-template-columns: 44px 1fr 20px; gap: 10px; padding: 14px 16px; }
 
-  /* Wire */
+  /* ── Wire: 2-row layout (time+source / headline) ── */
   .wire-feed { max-height: 360px; }
+  .wire-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px 10px;
+    padding: 10px 16px;
+  }
+  .wire-time     { grid-column: 1; grid-row: 1; white-space: nowrap; }
+  .wire-source   { grid-column: 2; grid-row: 1; }
+  .wire-headline {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    -webkit-line-clamp: 2;
+    white-space: normal;
+  }
 
-  /* Article split */
-  .article-split    { flex-direction: column; }
-  .article-main     { width: 100%; padding: 24px 20px 40px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  /* ── Article split ── */
+  .article-main { padding: 24px 20px 40px; }
   .article-main .art-header-img { margin: -24px -20px 24px; }
-  .article-sidebar  { width: 100%; position: static; height: auto; }
+
+  /* ── Share buttons: full-width stacked on mobile ── */
+  .sidebar-share       { flex-direction: column; gap: 10px; }
+  .share-btn           { width: 100%; padding: 12px 10px; font-size: 13px; }
+
+  /* ── Filter bar ── */
+  .filter-bar  { gap: 6px; }
+  .filter-btn  { padding: 8px 12px; font-size: 12px; }
+
+  /* ── Static pages ── */
+  .static-page { margin: 32px auto; }
+
+  /* ── Cookie consent banner: full-width buttons when stacked ── */
+  #cookie-banner > div        { width: 100%; }
+  #cookie-banner > div button { flex: 1; }
 }
 
 /* ── 25. Wire Section ─────────────────────────────── */
