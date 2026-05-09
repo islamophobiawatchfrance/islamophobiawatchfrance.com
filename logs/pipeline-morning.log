@@ -1,0 +1,28 @@
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Running 17 news searches...
+  Found 7 unique stories in the last 48h.
+  Translating French content...
+  Saved 2 wire item(s) (9 already seen this 24 h).
+Traceback (most recent call last):
+  File "/Users/christopher/Documents/iwf-aggregator/drafter.py", line 761, in <module>
+    main()
+  File "/Users/christopher/Documents/iwf-aggregator/drafter.py", line 715, in main
+    detect_gaps(clusters_with_heat, PUBLISHED_FILE)
+                                    ^^^^^^^^^^^^^^
+NameError: name 'PUBLISHED_FILE' is not defined
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+
+  ERROR: Drafter failed. See error messages above.
+  Check your ANTHROPIC_API_KEY in the .env file, then try again.
+

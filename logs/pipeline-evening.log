@@ -1,0 +1,28 @@
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Running 17 news searches...
+  Found 9 unique stories in the last 48h.
+  Translating French content...
+  Saved 9 wire item(s) (0 already seen this 24 h).
+Traceback (most recent call last):
+  File "/Users/christopher/Documents/iwf-aggregator/drafter.py", line 699, in <module>
+    main()
+  File "/Users/christopher/Documents/iwf-aggregator/drafter.py", line 653, in main
+    detect_gaps(clusters_with_heat, PUBLISHED_FILE)
+    ^^^^^^^^^^^
+NameError: name 'detect_gaps' is not defined
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+
+  ERROR: Drafter failed. See error messages above.
+  Check your ANTHROPIC_API_KEY in the .env file, then try again.
+

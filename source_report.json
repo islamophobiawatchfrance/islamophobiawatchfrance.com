@@ -1,70 +1,80 @@
 {
-  "total": 34,
+  "total": 59,
   "sources": [
+    {
+      "name": "Planet.fr",
+      "count": 8,
+      "pct": 13.6
+    },
+    {
+      "name": "tsa-algerie.com",
+      "count": 8,
+      "pct": 13.6
+    },
+    {
+      "name": "MSN",
+      "count": 6,
+      "pct": 10.2
+    },
+    {
+      "name": "reinformation.tv",
+      "count": 6,
+      "pct": 10.2
+    },
     {
       "name": "europe1.fr",
       "count": 5,
-      "pct": 14.7
+      "pct": 8.5
     },
     {
       "name": "lejdd.fr",
       "count": 5,
-      "pct": 14.7
+      "pct": 8.5
     },
     {
       "name": "Valeurs actuelles",
       "count": 5,
-      "pct": 14.7
+      "pct": 8.5
     },
     {
       "name": "Mediapart",
       "count": 4,
-      "pct": 11.8
+      "pct": 6.8
     },
     {
       "name": "Le Figaro",
       "count": 3,
-      "pct": 8.8
+      "pct": 5.1
     },
     {
       "name": "Bladi.net",
       "count": 3,
-      "pct": 8.8
-    },
-    {
-      "name": "Planet.fr",
-      "count": 2,
-      "pct": 5.9
+      "pct": 5.1
     },
     {
       "name": "Anadolu Ajansı",
       "count": 2,
-      "pct": 5.9
+      "pct": 3.4
     },
     {
       "name": "Public Sénat",
       "count": 1,
-      "pct": 2.9
-    },
-    {
-      "name": "tsa-algerie.com",
-      "count": 1,
-      "pct": 2.9
+      "pct": 1.7
     },
     {
       "name": "instagram.com",
       "count": 1,
-      "pct": 2.9
+      "pct": 1.7
     },
     {
       "name": "Le Soir",
       "count": 1,
-      "pct": 2.9
+      "pct": 1.7
     },
     {
       "name": "Yeni Şafak",
       "count": 1,
-      "pct": 2.9
+      "pct": 1.7
     }
   ],
   "flagged": []
