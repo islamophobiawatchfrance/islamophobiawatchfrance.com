@@ -712,7 +712,7 @@ def main():
 
     # Select distinct clusters prioritising heat
     selected = select_clusters(clusters_with_heat, MAX_CLUSTERS)
-    detect_gaps(clusters_with_heat, PUBLISHED_FILE)
+    detect_gaps(clusters_with_heat, "published.json")
     print(f"  Drafting posts for {len(selected)} topic cluster(s)...\n")
 
     posts = []

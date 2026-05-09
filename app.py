@@ -112,6 +112,21 @@ TEMPLATE = r"""<!DOCTYPE html>
     }
     .draft-edit:focus { outline: none; border-color: #1a73e8; }
 
+    /* ── Inline title editing ── */
+    .title-input {
+      display: none; width: 100%;
+      font-size: 16px; font-weight: 600; line-height: 1.45;
+      border: none; border-bottom: 1.5px solid #1a73e8;
+      outline: none; padding: 0; background: transparent;
+      font-family: inherit; color: #222;
+    }
+    .title-edit-btn {
+      font-size: 12px; color: #ccc; background: none;
+      border: none; cursor: pointer; padding: 0 0 0 7px;
+      vertical-align: middle; line-height: 1;
+    }
+    .title-edit-btn:hover { color: #1a73e8; }
+
     /* ── Action rows ── */
     .actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; }
 
@@ -432,6 +447,39 @@ TEMPLATE = r"""<!DOCTYPE html>
     }
   }
 
+  function editTitle(id) {
+    const span  = document.getElementById('title-text-'  + id);
+    const input = document.getElementById('title-input-' + id);
+    span.style.display  = 'none';
+    input.style.display = 'inline-block';
+    input.select();
+  }
+
+  async function saveTitle(id) {
+    const input = document.getElementById('title-input-' + id);
+    if (!input || input.style.display === 'none') return;
+    const span = document.getElementById('title-text-' + id);
+    const post = getPost(id);
+    if (!post) return;
+    const newTitle = input.value.trim() || post.title;
+    input.value        = newTitle;
+    post.title         = newTitle;
+    span.textContent   = newTitle;
+    input.style.display = 'none';
+    span.style.display  = '';
+    await saveQueue();
+    showToast('Title updated');
+  }
+
+  function cancelTitle(id) {
+    const span  = document.getElementById('title-text-'  + id);
+    const input = document.getElementById('title-input-' + id);
+    const post  = getPost(id);
+    if (post) input.value = post.title;
+    input.style.display = 'none';
+    span.style.display  = '';
+  }
+
   async function saveDraft(id) {
     const post = getPost(id);
     if (!post) return;
@@ -597,7 +645,12 @@ TEMPLATE = r"""<!DOCTYPE html>
           ${heatBadge}
           ${statusBadge}
         </div>
-        <div class="headline">${esc(post.title)}</div>
+        <div class="headline" id="title-wrap-${id}">
+          <span id="title-text-${id}">${esc(post.title)}</span><button class="title-edit-btn" onclick="editTitle('${id}')" title="Edit title">✎</button>
+          <input class="title-input" id="title-input-${id}" type="text" value="${esc(post.title)}"
+            onblur="saveTitle('${id}')"
+            onkeydown="if(event.key==='Enter'){event.preventDefault();saveTitle('${id}')}else if(event.key==='Escape'){cancelTitle('${id}')}">
+        </div>
         <div class="summary">${esc(post.summary)}</div>
         <div class="draft-block" id="draft-block-${id}">${esc(post.draft)}</div>
         <textarea class="draft-edit" id="draft-edit-${id}">${esc(post.draft)}</textarea>
