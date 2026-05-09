@@ -783,24 +783,44 @@ p  { color: var(--text-secondary); }
     flex-shrink: 0;
     padding-top: 0;
   }
-  /* Article split: single column, sidebar below content */
-  .article-split   { flex-direction: column; }
-  .article-main    {
-    width: 100%;
-    padding: 28px 24px 48px;
-    border-right: none;
-    border-bottom: 1px solid var(--border-subtle);
+  /* Article split: force single column, sidebar below content */
+  .article-split {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+  .article-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    border-right: none !important;
     overflow-x: hidden;
   }
-  .art-header-img  {
-    margin: -28px -24px 28px;
-    width: calc(100% + 48px);
+  .article-sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+    height: auto !important;
+    border-left: none !important;
+    border-top: 1px solid #e5e5e5 !important;
+    padding: 1rem !important;
   }
-  .article-sidebar { width: 100%; position: static; height: auto; }
 
-  /* Headline and standfirst scale down at tablet */
-  .art-headline    { font-size: 1.4rem; }
-  .art-standfirst  { font-size: 1rem; }
+  /* SVG header: full width, no bleed margins on mobile */
+  .art-header-img {
+    width: 100% !important;
+    margin: 0 0 1.5rem !important;
+  }
+  .art-header-img svg {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Headline and standfirst scale down at tablet/mobile */
+  .art-headline   { font-size: 1.4rem; }
+  .art-standfirst {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -880,12 +900,8 @@ p  { color: var(--text-secondary); }
     white-space: normal;
   }
 
-  /* ── Article split ── */
-  .article-main { padding: 20px 16px 40px; }
-  .art-header-img {
-    margin: -20px -16px 20px;
-    width: calc(100% + 32px);
-  }
+  /* ── Article split (640px inherits 768px block rules) ── */
+  .article-sidebar { padding: 0.75rem !important; }
 
   /* ── Share buttons: full-width stacked on mobile ── */
   .sidebar-share       { flex-direction: column; gap: 10px; }
