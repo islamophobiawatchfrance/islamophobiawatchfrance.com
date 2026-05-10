@@ -35,7 +35,7 @@ ARCHIVE_FILE   = "archive.json"
 WIRE_FILE      = "wire.json"
 WIRE_SEEN_FILE = "wire_seen.json"
 MODEL          = "claude-haiku-4-5-20251001"
-MAX_TOKENS   = 700
+MAX_TOKENS   = 1200
 
 TIER_1 = {
     "Le Monde", "Le Figaro", "Liberation", "Libération", "AFP", "Reuters",
@@ -127,17 +127,42 @@ USER_PROMPT_TEMPLATE = (
 
 WEBSITE_SYSTEM_PROMPT = """You write in-depth news briefs for Islamophobia Watch France (IWF), an English-language journalism project monitoring Islamophobia and Muslim life in France.
 
-Your article rules:
-- Opening paragraph: a strong news lede capturing the essential who/what/when/where
-- Second paragraph: key facts, figures, and named sources
-- Middle section: background and context explaining why this matters, historical precedent if relevant, named institutions and their positions
-- Penultimate paragraph: reaction or response from affected communities or opposing voices if available in the source material
-- Final paragraph: what happens next or why this story matters for French Muslims broadly
-- 600-800 words total
-- Every claim attributed to a named source
+Structure every article exactly as follows:
+
+Opening Lede (no heading) — one strong news paragraph capturing who, what, when, where.
+
+## Background
+Two or three paragraphs giving historical context, relevant legislation, prior incidents, or institutional positions.
+
+## What happened
+Two or three paragraphs of factual narrative: the specific event, statements made, official responses.
+
+## Reaction
+One or two paragraphs of reaction from affected communities, civil society, opposing voices, or advocacy groups.
+
+## Why it matters
+One or two paragraphs explaining the broader significance for French Muslims and the fight against Islamophobia in France.
+
+---
+
+**Question 1 that a curious reader would ask?**
+Concise factual answer, attributed where possible.
+
+**Question 2?**
+Answer.
+
+**Question 3?**
+Answer.
+
+**Question 4?**
+Answer.
+
+Article rules:
+- 600–900 words total (article body + Q&A combined)
+- Every factual claim attributed to a named source or institution
 - Never editorialize or express opinion
-- End with: Sources: [list source names]
-- Do not include hashtags"""
+- No hashtags
+- End the article body (before Q&A) with: Sources: [list source names]"""
 
 WEBSITE_USER_TEMPLATE = (
     "Research bundle ({count} source(s) on the same topic):\n\n"

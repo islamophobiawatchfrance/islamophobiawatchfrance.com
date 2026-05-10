@@ -1125,6 +1125,62 @@ p  { color: var(--text-secondary); }
   color: var(--text-secondary);
 }
 
+.art-h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 28px 0 10px;
+  line-height: 1.35;
+  max-width: 640px;
+}
+
+.art-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+  max-width: 640px;
+}
+
+.art-faq {
+  margin-top: 36px;
+  padding: 24px 28px;
+  background: var(--bg-raised);
+  border-radius: 8px;
+  border: 0.5px solid var(--border);
+  max-width: 640px;
+}
+
+.art-faq-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 18px;
+}
+
+.faq-list {
+  margin: 0;
+  padding: 0;
+}
+
+.faq-question {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+.faq-question:first-child { margin-top: 0; }
+
+.faq-answer {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
 .art-sources {
   margin-top: 40px;
   padding-top: 24px;

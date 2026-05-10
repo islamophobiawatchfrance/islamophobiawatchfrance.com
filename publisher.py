@@ -128,6 +128,14 @@ def _excerpt(draft: str, max_chars: int = 200) -> str:
     return first[:max_chars].rstrip(" .,;") + "…"
 
 
+def _render_inline(text: str) -> str:
+    """HTML-escape text then apply **bold** and *italic* markdown."""
+    s = _esc(text)
+    s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
+    s = re.sub(r'\*(.+?)\*', r'<em>\1</em>', s)
+    return s
+
+
 # ── Public API ────────────────────────────────────────────
 
 
@@ -255,17 +263,76 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     heat_article_count = str(post.get("heat_article_count", "Multiple"))
     reading_time      = str(max(1, math.ceil(len(draft.split()) / 200)))
 
-    # Standfirst (first paragraph) + body (remaining, with pull-quote detection)
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": title,
+        "datePublished": published_iso,
+        "description": meta_desc,
+        "url": page_url,
+        "articleSection": category,
+        "publisher": {
+            "@type": "Organization",
+            "name": "Islamophobia Watch France",
+            "url": "https://islamophobiawatchfrance.com",
+        },
+    }
+    schema_json_html = (
+        '<script type="application/ld+json">\n'
+        + json.dumps(schema, ensure_ascii=False, indent=2)
+        + '\n  </script>'
+    )
+
+    # Standfirst (first paragraph) + body (remaining)
     paragraphs      = [p.strip() for p in re.split(r"\n\n+", draft) if p.strip()]
     standfirst_text = paragraphs[0] if paragraphs else ""
-    body_paragraphs = paragraphs[1:] if len(paragraphs) > 1 else []
+
+    # Find the FAQ separator (first standalone "---")
+    faq_sep_idx = next(
+        (i for i, p in enumerate(paragraphs) if p.strip() == "---"), None
+    )
+    article_paras = paragraphs[1:faq_sep_idx] if faq_sep_idx is not None else paragraphs[1:]
+    faq_paras     = paragraphs[faq_sep_idx + 1:] if faq_sep_idx is not None else []
 
     body_lines = []
-    for p in body_paragraphs:
-        if p.startswith('"') or p.startswith('“') or p.startswith('‘'):
-            body_lines.append(f'      <p class="pull-quote">{_esc(p)}</p>')
+    for p in article_paras:
+        if p.startswith("## "):
+            body_lines.append(f'      <h2 class="art-h2">{_esc(p[3:].strip())}</h2>')
+        elif p.strip() == "---":
+            body_lines.append('      <hr class="art-divider">')
+        elif p.startswith("> "):
+            body_lines.append(f'      <p class="pull-quote">{_render_inline(p[2:])}</p>')
+        elif p.startswith(('"', '“', '”', '‘', '’')):
+            body_lines.append(f'      <p class="pull-quote">{_render_inline(p)}</p>')
         else:
-            body_lines.append(f'      <p>{_esc(p)}</p>')
+            body_lines.append(f'      <p>{_render_inline(p)}</p>')
+
+    if faq_paras:
+        faq_items = []
+        fi = 0
+        while fi < len(faq_paras):
+            p = faq_paras[fi]
+            m = re.match(r'^\*\*(.+?)\*\*\s*\n?(.*)', p, re.DOTALL)
+            if m:
+                question     = m.group(1).strip()
+                answer_inline = m.group(2).strip()
+                faq_items.append(f'          <dt class="faq-question">{_esc(question)}</dt>')
+                if answer_inline:
+                    faq_items.append(f'          <dd class="faq-answer">{_render_inline(answer_inline)}</dd>')
+                elif fi + 1 < len(faq_paras):
+                    fi += 1
+                    faq_items.append(f'          <dd class="faq-answer">{_render_inline(faq_paras[fi])}</dd>')
+            elif p.strip():
+                faq_items.append(f'          <dd class="faq-answer">{_render_inline(p)}</dd>')
+            fi += 1
+        body_lines.append(
+            '      <div class="art-faq">\n'
+            '        <h2 class="art-faq-heading">Q&amp;A</h2>\n'
+            '        <dl class="faq-list">\n' +
+            "\n".join(faq_items) +
+            '\n        </dl>\n      </div>'
+        )
+
     body_html = "\n".join(body_lines)
 
     # Inline source list (bottom of left column)
@@ -334,6 +401,7 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
         "{{sources}}":            source_items,
         "{{sidebar_sources}}":    sidebar_sources_html,
         "{{sidebar_related}}":    sidebar_related_html,
+        "{{schema_json}}":        schema_json_html,
     }
     for placeholder, value in subs.items():
         tmpl = tmpl.replace(placeholder, value)

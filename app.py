@@ -112,6 +112,15 @@ TEMPLATE = r"""<!DOCTYPE html>
     }
     .draft-edit:focus { outline: none; border-color: #1a73e8; }
 
+    /* ── Rich-text toolbar ── */
+    .rte-toolbar { display: flex; gap: 4px; margin-bottom: 6px; }
+    .rte-btn {
+      padding: 3px 9px; font-size: 11px; font-weight: 600;
+      border: 1px solid #ccc; border-radius: 4px; background: #f8f9fa;
+      color: #444; cursor: pointer; line-height: 1.4;
+    }
+    .rte-btn:hover { background: #e8eaed; border-color: #aaa; }
+
     /* ── Inline title editing ── */
     .title-input {
       display: none; width: 100%;
@@ -403,6 +412,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     const textarea = document.getElementById('draft-edit-' + id);
     const saveBtn  = document.getElementById('save-btn-' + id);
     const editBtn  = document.getElementById('edit-btn-' + id);
+    const toolbar  = document.getElementById('toolbar-' + id);
 
     const editing = textarea.style.display === 'block';
     if (editing) {
@@ -412,11 +422,13 @@ TEMPLATE = r"""<!DOCTYPE html>
       block.style.display    = 'block';
       saveBtn.style.display  = 'none';
       editBtn.textContent    = 'Edit Draft';
+      if (toolbar) toolbar.style.display = 'none';
     } else {
       textarea.style.display = 'block';
       block.style.display    = 'none';
       saveBtn.style.display  = 'inline-block';
       editBtn.textContent    = 'Cancel';
+      if (toolbar) toolbar.style.display = 'flex';
       textarea.focus();
     }
   }
@@ -478,6 +490,16 @@ TEMPLATE = r"""<!DOCTYPE html>
     if (post) input.value = post.title;
     input.style.display = 'none';
     span.style.display  = '';
+  }
+
+  function insertMarkdown(id, before, after) {
+    const ta = document.getElementById('draft-edit-' + id);
+    if (!ta) return;
+    const start = ta.selectionStart, end = ta.selectionEnd;
+    const sel   = ta.value.substring(start, end);
+    const replacement = before + (sel || 'text') + (after || '');
+    ta.setRangeText(replacement, start, end, 'select');
+    ta.focus();
   }
 
   async function saveDraft(id) {
@@ -653,6 +675,12 @@ TEMPLATE = r"""<!DOCTYPE html>
         </div>
         <div class="summary">${esc(post.summary)}</div>
         <div class="draft-block" id="draft-block-${id}">${esc(post.draft)}</div>
+        ${type === 'website' ? `<div class="rte-toolbar" id="toolbar-${id}" style="display:none">
+          <button class="rte-btn" onclick="insertMarkdown('${id}','## ','')">H2</button>
+          <button class="rte-btn" onclick="insertMarkdown('${id}','**','**')"><b>B</b></button>
+          <button class="rte-btn" onclick="insertMarkdown('${id}','*','*')"><i>I</i></button>
+          <button class="rte-btn" onclick="insertMarkdown('${id}','> ','')">Quote</button>
+        </div>` : ''}
         <textarea class="draft-edit" id="draft-edit-${id}">${esc(post.draft)}</textarea>
         <div class="actions">
           ${approveRejectBtns}
