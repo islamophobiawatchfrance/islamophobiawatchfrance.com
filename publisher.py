@@ -457,14 +457,7 @@ def update_homepage(repo_path: str = ".") -> None:
     with open(index_path, "r", encoding="utf-8") as f:
         html = f.read()
 
-    def _sort_key(a):
-        raw = a.get("published_at") or a.get("date", "")
-        try:
-            return datetime.fromisoformat(raw.replace("Z", "+00:00"))
-        except Exception:
-            return datetime.min.replace(tzinfo=timezone.utc)
-
-    articles = sorted(published_articles, key=_sort_key, reverse=True)[:10]
+    articles = sorted(published_articles, key=lambda x: x.get("published_at", ""), reverse=True)[:10]
 
     def _feed_item(a: dict) -> str:
         filename  = a.get("filename", "#")
@@ -539,14 +532,7 @@ def update_news_archive(repo_path: str = ".") -> None:
     with open(news_path, "r", encoding="utf-8") as f:
         html = f.read()
 
-    def _sort_key(a):
-        raw = a.get("published_at") or a.get("date", "")
-        try:
-            return datetime.fromisoformat(raw.replace("Z", "+00:00"))
-        except Exception:
-            return datetime.min.replace(tzinfo=timezone.utc)
-
-    articles = sorted(published_articles, key=_sort_key, reverse=True)
+    articles = sorted(published_articles, key=lambda x: x.get("published_at", ""), reverse=True)
 
     def _news_card(a: dict) -> str:
         filename     = a.get("filename", "#")
