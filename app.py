@@ -43,6 +43,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     .stat.pending  { color: #1a73e8; }
     .stat.approved { color: #1e8e3e; }
     .stat.rejected { color: #aaa;    }
+    .stat.scanned  { color: #888;    }
 
     /* ── Tab nav ── */
     .tab-nav {
@@ -195,6 +196,41 @@ TEMPLATE = r"""<!DOCTYPE html>
       color: #444; margin-bottom: 10px;
     }
 
+    /* ── Story Browser ── */
+    .stories-header { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .stories-title { font-size: 14px; font-weight: 600; }
+    .stories-meta { font-size: 12px; color: #888; }
+    .filter-bar { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .filter-btn {
+      padding: 4px 10px; font-size: 11px; font-weight: 600;
+      border: 1px solid #ddd; border-radius: 4px; background: #fff;
+      color: #555; cursor: pointer;
+    }
+    .filter-btn.active { background: #111; color: #fff; border-color: #111; }
+    .filter-btn:hover:not(.active) { background: #f5f5f5; }
+    .story-search {
+      width: 100%; padding: 7px 10px; font-size: 13px;
+      border: 1px solid #ccc; border-radius: 6px; margin-bottom: 12px;
+      font-family: inherit; box-sizing: border-box;
+    }
+    .story-search:focus { outline: none; border-color: #1a73e8; }
+    .story-list { display: flex; flex-direction: column; gap: 0; }
+    .story-row {
+      display: flex; align-items: center; gap: 8px; flex-wrap: nowrap;
+      padding: 8px 0; border-bottom: 1px solid #f0f0f0; overflow: hidden;
+    }
+    .story-row:last-child { border-bottom: none; }
+    .story-time { font-size: 11px; color: #aaa; white-space: nowrap; flex-shrink: 0; }
+    .story-link {
+      flex: 1; font-size: 13px; color: #111; line-height: 1.4;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      min-width: 0; text-decoration: none;
+    }
+    .story-link:hover { color: #1a73e8; text-decoration: underline; }
+    .story-selected { background: #e6f4ea; color: #1e8e3e; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; flex-shrink: 0; }
+    .btn-generate { padding: 4px 10px; font-size: 11px; white-space: nowrap; flex-shrink: 0; }
+    .btn-generate.done { background: #1e8e3e; color: #fff; border-color: #1e8e3e; }
+
     /* ── Empty state ── */
     .empty { text-align: center; padding: 80px 20px; color: #888; }
     .empty h2 { font-size: 22px; font-weight: 600; color: #444; margin-bottom: 12px; }
@@ -239,12 +275,13 @@ TEMPLATE = r"""<!DOCTYPE html>
     <span class="stat pending"  id="stat-pending">—</span>
     <span class="stat approved" id="stat-approved">—</span>
     <span class="stat rejected" id="stat-rejected">—</span>
+    <span class="stat scanned"  id="stat-scanned">—</span>
   </div>
 </header>
 
 <nav class="tab-nav">
   <button class="tab active" id="tab-queue"   onclick="switchTab('queue')">Queue</button>
-  <button class="tab"        id="tab-archive" onclick="switchTab('archive')">Archive</button>
+  <button class="tab"        id="tab-stories" onclick="switchTab('stories')">Story Browser</button>
   <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Sources</button>
 </nav>
 
@@ -271,11 +308,11 @@ TEMPLATE = r"""<!DOCTYPE html>
   function switchTab(tab) {
     currentTab = tab;
     document.getElementById('tab-queue').classList.toggle('active', tab === 'queue');
-    document.getElementById('tab-archive').classList.toggle('active', tab === 'archive');
+    document.getElementById('tab-stories').classList.toggle('active', tab === 'stories');
     document.getElementById('tab-sources').classList.toggle('active', tab === 'sources');
     document.getElementById('heat-bar').style.display = tab === 'queue' ? '' : 'none';
     if (tab === 'queue')   { render(); loadGaps(); }
-    else if (tab === 'archive') loadArchive();
+    else if (tab === 'stories') loadStoryBrowser();
     else if (tab === 'sources') loadSourceReport();
   }
 
@@ -625,6 +662,16 @@ TEMPLATE = r"""<!DOCTYPE html>
       d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
   }
 
+  async function loadScannedCount() {
+    try {
+      const res  = await fetch('/api/stories');
+      const data = await res.json();
+      if (data.total != null) {
+        document.getElementById('stat-scanned').textContent = data.total + ' scanned';
+      }
+    } catch (e) { /* stories_today.json may not exist yet */ }
+  }
+
   function renderCard(post) {
     const id   = post.id;
     const type = post.type || 'linkedin';
@@ -756,7 +803,135 @@ TEMPLATE = r"""<!DOCTYPE html>
     } catch (e) { /* gaps.json may not exist yet */ }
   }
 
+  // ── Story Browser ─────────────────────────────────────────
+
+  let allStories = [];
+  let storyFilter = 'all';
+  let storySearch = '';
+
+  async function loadStoryBrowser() {
+    document.getElementById('main').innerHTML =
+      '<div class="empty"><h2 style="font-size:15px">Loading stories…</h2></div>';
+    try {
+      const res  = await fetch('/api/stories');
+      const data = await res.json();
+      if (data.error) {
+        document.getElementById('main').innerHTML =
+          `<div class="empty"><h2>${esc(data.error)}</h2><p>Run python3 drafter.py to scan stories.</p></div>`;
+        return;
+      }
+      allStories = data.stories || [];
+      if (data.total != null) {
+        document.getElementById('stat-scanned').textContent = data.total + ' scanned';
+      }
+      renderStoryBrowser();
+    } catch (e) {
+      document.getElementById('main').innerHTML =
+        '<div class="empty"><h2>No stories yet.</h2><p>Run python3 drafter.py to scan stories.</p></div>';
+    }
+  }
+
+  function filterStories(f) {
+    storyFilter = f;
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.filter === f);
+    });
+    renderStoryList();
+  }
+
+  function searchStories(q) {
+    storySearch = q.toLowerCase();
+    renderStoryList();
+  }
+
+  function visibleStories() {
+    return allStories.filter(s => {
+      if (storyFilter === 'hot')      return s.heat_label === 'HOT';
+      if (storyFilter === 'trending') return s.heat_label === 'TRENDING';
+      if (storyFilter === 'normal')   return s.heat_label === 'NORMAL';
+      if (storyFilter === 'selected') return s.selected;
+      return true;
+    }).filter(s => {
+      if (!storySearch) return true;
+      return (s.title + ' ' + s.source + ' ' + s.summary).toLowerCase().includes(storySearch);
+    });
+  }
+
+  function renderStoryRow(s) {
+    const heatCls  = s.heat_label === 'HOT' ? 'heat-hot' : (s.heat_label === 'TRENDING' ? 'heat-trending' : 'heat-normal');
+    const selBadge = s.selected ? '<span class="story-selected">Selected</span>' : '';
+    return `<div class="story-row" id="story-row-${esc(s.id)}">
+      <span class="badge ${heatCls}" style="flex-shrink:0;font-size:9px">${esc(s.heat_label)}</span>
+      <span class="story-time">${esc(s.time_ago)}</span>
+      <span class="badge source" style="flex-shrink:0">${esc(s.source)}</span>
+      <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" class="story-link" title="${esc(s.title)}">${esc(s.title)}</a>
+      ${selBadge}
+      <button class="btn btn-regen btn-generate" id="gen-btn-${esc(s.id)}" onclick="generatePosts('${esc(s.id)}')">Generate posts</button>
+    </div>`;
+  }
+
+  function renderStoryList() {
+    const list = document.getElementById('story-list');
+    if (!list) return;
+    const visible = visibleStories();
+    list.innerHTML = visible.length
+      ? visible.map(renderStoryRow).join('')
+      : '<div style="padding:24px 0;color:#888;font-size:13px;">No stories match this filter.</div>';
+  }
+
+  function renderStoryBrowser() {
+    const generated = allStories.length > 0
+      ? '' : '';
+    document.getElementById('main').innerHTML = `
+      <div style="padding:4px 0;">
+        <div class="stories-header">
+          <span class="stories-title">${allStories.length} stories scanned today</span>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all"      onclick="filterStories('all')">All</button>
+          <button class="filter-btn"        data-filter="hot"      onclick="filterStories('hot')">HOT</button>
+          <button class="filter-btn"        data-filter="trending" onclick="filterStories('trending')">TRENDING</button>
+          <button class="filter-btn"        data-filter="normal"   onclick="filterStories('normal')">NORMAL</button>
+          <button class="filter-btn"        data-filter="selected" onclick="filterStories('selected')">Selected</button>
+        </div>
+        <input class="story-search" type="text" placeholder="Filter by keyword…" oninput="searchStories(this.value)">
+        <div class="story-list" id="story-list"></div>
+      </div>`;
+    storyFilter = 'all';
+    storySearch = '';
+    renderStoryList();
+  }
+
+  async function generatePosts(storyId) {
+    const btn = document.getElementById('gen-btn-' + storyId);
+    if (!btn || btn.disabled) return;
+    btn.disabled    = true;
+    btn.textContent = 'Generating…';
+    try {
+      const res  = await fetch('/api/generate_manual', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ story_id: storyId }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        btn.textContent = 'Generated ✓';
+        btn.classList.add('done');
+        showToast(data.message || '2 posts added to queue');
+      } else {
+        btn.textContent = 'Generate posts';
+        btn.disabled    = false;
+        showToast('Error: ' + (data.error || 'unknown'));
+      }
+    } catch (e) {
+      btn.textContent = 'Generate posts';
+      btn.disabled    = false;
+      showToast('Network error — check server logs');
+    }
+  }
+
   loadQueue();
+  loadScannedCount();
 </script>
 </body>
 </html>"""
@@ -869,6 +1044,99 @@ def get_gaps():
         return jsonify({"gaps": []}), 200
     with open(path, "r", encoding="utf-8") as f:
         return jsonify(json.load(f))
+
+
+@app.route("/api/stories", methods=["GET"])
+def get_stories():
+    path = "stories_today.json"
+    if not os.path.exists(path):
+        return jsonify({"error": "No stories yet — run python3 drafter.py"}), 200
+    with open(path, "r", encoding="utf-8") as f:
+        return jsonify(json.load(f))
+
+
+@app.route("/api/generate_manual", methods=["POST"])
+def generate_manual():
+    """Draft LinkedIn + website posts from a single story in stories_today.json."""
+    import anthropic as _anthropic
+    import datetime as _dt
+    from drafter import (
+        draft_post, draft_website_article, build_post_record,
+        build_cluster_bundle, fetch_article_text, gather_deep_research,
+    )
+
+    data = request.get_json(force=True)
+    if not data or "story_id" not in data:
+        return jsonify({"error": "Missing story_id"}), 400
+
+    stories_path = "stories_today.json"
+    if not os.path.exists(stories_path):
+        return jsonify({"error": "stories_today.json not found — run drafter.py first"}), 404
+
+    with open(stories_path, "r", encoding="utf-8") as f:
+        stories_data = json.load(f)
+
+    story = next(
+        (s for s in stories_data.get("stories", []) if s.get("id") == data["story_id"]),
+        None,
+    )
+    if not story:
+        return jsonify({"error": "Story not found"}), 404
+
+    api_key = os.getenv("ANTHROPIC_API_KEY") or ""
+    if not api_key:
+        return jsonify({"error": "ANTHROPIC_API_KEY not set"}), 500
+
+    # Build a minimal cluster dict from the single story
+    try:
+        pub_dt = _dt.datetime.fromisoformat(story["published"].replace("Z", "+00:00"))
+    except Exception:
+        pub_dt = _dt.datetime.now(_dt.timezone.utc)
+
+    cluster_story = {
+        "title":   story["title"],
+        "source":  story["source"],
+        "url":     story["url"],
+        "published": pub_dt,
+        "summary": story.get("summary", ""),
+        "query":   story.get("query", ""),
+    }
+    cluster = {"stories": [cluster_story]}
+    score   = story.get("heat_score", 0)
+    label   = story.get("heat_label", "NORMAL")
+
+    article_texts = {story["title"]: fetch_article_text(story["url"])}
+    bundle        = build_cluster_bundle(cluster, article_texts)
+
+    client    = _anthropic.Anthropic(api_key=api_key)
+    timestamp = _dt.datetime.now(_dt.timezone.utc)
+    post_idx  = int(timestamp.timestamp()) % 100000
+
+    posts = []
+    li_draft = draft_post(client, cluster, bundle)
+    if li_draft:
+        posts.append(build_post_record(cluster, score, label, li_draft, post_idx, timestamp, "linkedin"))
+
+    deep      = gather_deep_research(cluster)
+    web_draft = draft_website_article(client, cluster, bundle, deep)
+    if web_draft:
+        posts.append(build_post_record(cluster, score, label, web_draft, post_idx, timestamp, "website"))
+
+    if not posts:
+        return jsonify({"error": "Draft generation failed — check API key"}), 500
+
+    # Append to queue.json
+    if os.path.exists(QUEUE_FILE):
+        with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+            queue_data = json.load(f)
+    else:
+        queue_data = {"generated": timestamp.isoformat(), "posts": []}
+
+    queue_data["posts"].extend(posts)
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+
+    return jsonify({"ok": True, "message": f"{len(posts)} posts added to queue"})
 
 
 @app.route("/api/source-report", methods=["GET"])

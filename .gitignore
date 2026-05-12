@@ -4,6 +4,7 @@ linkedin_token.json
 queue.json
 archive.json
 wire_seen.json
+stories_today.json
 pipeline.lock
 __pycache__/
 *.pyc

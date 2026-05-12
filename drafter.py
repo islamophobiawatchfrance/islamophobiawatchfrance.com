@@ -9,6 +9,7 @@ Saves results to queue.json for review in the dashboard.
 Run with: python3 drafter.py
 """
 
+import hashlib
 import json
 import datetime
 import os
@@ -34,6 +35,7 @@ QUEUE_FILE     = "queue.json"
 ARCHIVE_FILE   = "archive.json"
 WIRE_FILE      = "wire.json"
 WIRE_SEEN_FILE = "wire_seen.json"
+STORIES_FILE   = "stories_today.json"
 MODEL          = "claude-haiku-4-5-20251001"
 MAX_TOKENS   = 1200
 
@@ -656,6 +658,49 @@ def archive_stale_queue() -> None:
     print(f"  Archived {len(undecided)} undecided post(s) from {date_str}.")
 
 
+def save_stories_today(stories: list, clusters_with_heat: list, selected: list, timestamp) -> None:
+    """Save all scanned stories to stories_today.json with heat and selection metadata."""
+    # Build URL → (score, label) from every cluster
+    url_to_heat: dict = {}
+    for cluster, score, label, _ in clusters_with_heat:
+        for s in cluster["stories"]:
+            url_to_heat[s["url"]] = (score, label)
+
+    # URLs of stories that were auto-selected for drafting
+    selected_urls: set = set()
+    for cluster, _, _, _ in selected:
+        for s in cluster["stories"]:
+            selected_urls.add(s["url"])
+
+    records = []
+    for s in stories:
+        url = s.get("url", "")
+        heat_score, heat_label = url_to_heat.get(url, (0, "NORMAL"))
+        pub = s.get("published")
+        records.append({
+            "id":         hashlib.md5(url.encode()).hexdigest()[:8],
+            "title":      s.get("title", ""),
+            "source":     s.get("source", ""),
+            "url":        url,
+            "published":  pub.isoformat() if pub else "",
+            "time_ago":   format_time_ago(pub) if pub else "",
+            "heat_score": heat_score,
+            "heat_label": heat_label,
+            "query":      s.get("query", ""),
+            "summary":    s.get("summary", ""),
+            "selected":   url in selected_urls,
+        })
+
+    result = {
+        "generated": timestamp.isoformat(),
+        "total":     len(records),
+        "stories":   records,
+    }
+    with open(STORIES_FILE, "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
+    print(f"  Saved {len(records)} stories to {STORIES_FILE}.")
+
+
 def save_wire(stories: list, timestamp) -> None:
     """
     Accumulates stories in wire.json over a rolling 7-day window.
@@ -772,6 +817,7 @@ def main():
 
     # Select distinct clusters prioritising heat
     selected = select_clusters(clusters_with_heat, MAX_CLUSTERS)
+    save_stories_today(stories, clusters_with_heat, selected, timestamp)
     detect_gaps(clusters_with_heat, "published.json")
     print(f"  Drafting posts for {len(selected)} topic cluster(s)...\n")
 
