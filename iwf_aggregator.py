@@ -62,6 +62,29 @@ QUERIES = [
     # --- European context ---
     ("islamophobia europe",                "EN"),
 
+    # --- RN / Far right (French) ---
+    ("\"Marine Le Pen\" islam OR musulmans OR islamophobie", "FR"),
+    ("\"Jordan Bardella\" immigration OR minorités OR islam", "FR"),
+    ("\"Rassemblement National\" musulmans OR islam OR laïcité", "FR"),
+    ("RN immigration islam france",        "FR"),
+    ("\"valeurs françaises\" islam OR musulmans", "FR"),
+    ("\"identité nationale\" islam OR immigration", "FR"),
+
+    # --- RN / Far right (English) ---
+    ("\"Marine Le Pen\" muslims OR islam OR immigration", "EN"),
+    ("\"National Rally\" muslims OR minorities OR french values", "EN"),
+    ("\"Jordan Bardella\" immigration OR islam", "EN"),
+
+    # --- Muslim community / positive coverage (French) ---
+    ("musulmans france culture sport art", "FR"),
+    ("islam france réussite OR succès OR culture", "FR"),
+    ("communauté musulmane france initiatives", "FR"),
+    ("mosquée france culture OR art OR sport", "FR"),
+
+    # --- Muslim community / positive coverage (English) ---
+    ("french muslims culture sport business", "EN"),
+    ("muslim community france achievement",  "EN"),
+
 ]
 
 # HOW MANY HOURS BACK to include articles from.
