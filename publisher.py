@@ -16,7 +16,7 @@ import re
 import subprocess
 import unicodedata
 import urllib.parse
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 TEMPLATE_FILE  = "article-template.html"
 PUBLISHED_FILE = "published.json"
@@ -107,6 +107,17 @@ def _heat_cls(heat_label: str) -> str:
 
 def _heat_icon(heat_label: str) -> str:
     return {"HOT": "🔥", "TRENDING": "📈"}.get(heat_label.upper(), "📰")
+
+
+def _heat_badge_fresh(published_at: str, hours: int = 72) -> bool:
+    """Return True if published_at is within the last `hours` hours."""
+    try:
+        dt = datetime.fromisoformat(published_at)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return datetime.now(timezone.utc) - dt < timedelta(hours=hours)
+    except (ValueError, TypeError):
+        return False
 
 
 def _meta_description(draft: str) -> str:
@@ -466,6 +477,11 @@ def update_homepage(repo_path: str = ".") -> None:
         heat_lbl  = a.get("heat_label", "NORMAL")
         source    = _esc(a.get("sources", [{}])[0].get("name", "") or a.get("source", ""))
         expt      = _esc(_excerpt(a.get("draft", ""), 160))
+        heat_html = (
+            f'<span class="badge {_heat_cls(heat_lbl)}">'
+            f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
+            if _heat_badge_fresh(a.get("published_at", "")) else ""
+        )
 
         return (
             f'        <article class="news-feed-item">\n'
@@ -477,8 +493,7 @@ def update_homepage(repo_path: str = ".") -> None:
             f'            <p class="feed-excerpt">{expt}</p>\n'
             f'            <div class="feed-meta">\n'
             f'              <span class="feed-source">{source}</span>\n'
-            f'              <span class="badge {_heat_cls(heat_lbl)}">'
-            f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
+            f'              {heat_html}'
             f'            </div>\n'
             f'          </div>\n'
             f'          <a href="{filename}" class="feed-arrow">→</a>\n'
@@ -544,6 +559,11 @@ def update_news_archive(repo_path: str = ".") -> None:
         source_name  = _esc(sources[0].get("name", "") if sources else a.get("source", ""))
         sources_lbl  = _esc(" / ".join(s.get("name", "") for s in sources) or source_name)
         expt         = _esc(_excerpt(a.get("draft", ""), 220))
+        heat_html = (
+            f'            <span class="badge {_heat_cls(heat_lbl)}">'
+            f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
+            if _heat_badge_fresh(a.get("published_at", "")) else ""
+        )
 
         return (
             f'        <article class="news-card">\n'
@@ -552,8 +572,7 @@ def update_news_archive(repo_path: str = ".") -> None:
             f'            <span class="card-source">{source_name}</span>\n'
             f'          </div>\n'
             f'          <div class="card-badges">\n'
-            f'            <span class="badge {_heat_cls(heat_lbl)}">'
-            f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
+            f'{heat_html}'
             f'            <span class="badge badge-category">{category}</span>\n'
             f'          </div>\n'
             f'          <h3 class="card-headline">\n'
@@ -782,8 +801,9 @@ def git_publish(article_path: str, commit_message: str, repo_path: str = ".") ->
 
     code, _, err = _run(["git", "push"])
     if code != 0:
-        print(f"  [git push failed] {err}")
-        print("  Files saved locally — push manually when ready: git push")
+        print(f"\nWARNING: Git push failed. Article saved locally but not live.")
+        print(f"  Error: {err}")
+        print(f"  Run: git add . && git commit -m 'Manual push' && git push\n")
         return False
 
     print("  Pushed to GitHub. Live in ~60 seconds.")
@@ -849,8 +869,8 @@ def publish_post(post: dict, repo_path: str = ".") -> str:
 
     # 7. Git
     commit_msg = f"Publish: {title[:60]}"
-    git_publish(article_path, commit_msg, repo_path)
+    push_ok = git_publish(article_path, commit_msg, repo_path)
 
     url = f"https://islamophobiawatchfrance.com/{article_path}"
     print(f"  URL: {url}\n")
-    return url
+    return url, push_ok
