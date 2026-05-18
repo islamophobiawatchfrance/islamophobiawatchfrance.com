@@ -302,6 +302,13 @@ TEMPLATE = r"""<!DOCTYPE html>
     .write-preview-body hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
     .write-preview-body ul { padding-left: 1.4em; margin: 8px 0; }
     .badge.manual-badge { background: #f1f3f4; color: #666; }
+    .badge.conf-high   { background: #e6f4ea; color: #1e8e3e; }
+    .badge.conf-medium { background: #fef7e0; color: #854f0b; }
+    .badge.conf-low    { background: #fce8e6; color: #d93025; }
+    .low-confidence-bar {
+      margin-top: 6px; padding: 5px 10px; font-size: 12px; color: #856404;
+      background: #fff3cd; border-radius: 4px; border-left: 3px solid #ffc107;
+    }
 
     /* ── Empty state ── */
     .empty { text-align: center; padding: 80px 20px; color: #888; }
@@ -813,6 +820,17 @@ TEMPLATE = r"""<!DOCTYPE html>
     const manualBadge = post.manual
       ? `<span class="badge manual-badge">Manual</span>` : '';
 
+    const confBadge = (() => {
+      const c = post.content_confidence;
+      if (!c) return '';
+      if (c === 'high')   return `<span class="badge conf-high">✓ Full article</span>`;
+      if (c === 'medium') return `<span class="badge conf-medium">~ Partial content</span>`;
+      return `<span class="badge conf-low">⚠ Limited source</span>`;
+    })();
+
+    const lowConfBar = (post.content_confidence === 'low')
+      ? `<div class="low-confidence-bar">This draft was generated from limited source material (RSS summary only). Verify facts before publishing.</div>` : '';
+
     const heatBadge = (() => {
       const hl = post.heat_label;
       if (!hl) return '';
@@ -830,6 +848,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           <span class="badge source">${esc(post.source)}</span>
           ${heatBadge}
           ${manualBadge}
+          ${confBadge}
           ${statusBadge}
         </div>
         <div class="headline" id="title-wrap-${id}">
@@ -855,6 +874,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           ${copyBtn}
           ${undoBtn}
         </div>
+        ${lowConfBar}
         ${publishedLink}
         ${pushFailedBar}
         ${renderSources(post)}

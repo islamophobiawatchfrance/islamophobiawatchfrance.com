@@ -295,12 +295,13 @@ def _extract_key_phrase(headline):
     return " ".join(key[:4])
 
 
-def gather_research(story, article_text):
+def gather_research(story, fetch_result: dict):
     """
     Builds a research bundle for one story.
     If the original article fetch was thin, runs supplementary searches.
     Returns a combined text string.
     """
+    article_text = fetch_result.get("text", "") if fetch_result else ""
     if article_text and len(article_text) >= 200:
         return article_text[:2000]
 
@@ -380,19 +381,49 @@ def draft_website_article(client, cluster, bundle: str, deep_research: str) -> s
         return None
 
 
-def build_cluster_bundle(cluster, article_texts):
+def build_cluster_bundle(cluster, article_fetches: dict) -> str:
     """
     Assembles the multi-source research bundle for a cluster.
-    article_texts maps story title -> fetched article text (or None).
+    article_fetches maps story title -> fetch_result dict from fetch_article_text().
+    Each source block is prefixed with content-quality metadata and
+    anti-hallucination instructions.
     """
     parts = []
     for i, story in enumerate(cluster["stories"], 1):
-        text = article_texts.get(story["title"])
-        research = gather_research(story, text)
+        fetch_result = article_fetches.get(story["title"]) or {
+            "text": story.get("summary", ""),
+            "char_count": len(story.get("summary", "")),
+            "source": "rss_fallback",
+            "success": False,
+        }
+        confidence  = _content_confidence(fetch_result)
+        chars       = fetch_result["char_count"]
+        fetch_src   = fetch_result["source"]
+        research    = gather_research(story, fetch_result)
+
+        thin_note = (
+            "\n[Note: Limited source material available for this story. "
+            "Write only what you can verify and add a note for readers to consult the original source.]"
+            if chars < 300 else ""
+        )
+
+        preamble = (
+            f"CONTENT QUALITY NOTE:\n"
+            f"- Characters retrieved: {chars:,}\n"
+            f"- Fetch method: {fetch_src}\n"
+            f"- Confidence: {confidence.upper()}\n\n"
+            f"STRICT ANTI-HALLUCINATION RULES:\n"
+            f"- Only state facts explicitly present in the content below\n"
+            f"- Never invent quotes, statistics, names, or details not in the source\n"
+            f"- Never speculate about what 'likely' happened or 'may' have occurred\n"
+            f"- If content is thin (under 300 chars), write the shortest accurate version possible{thin_note}\n\n"
+            f"CONTENT:\n{research}"
+        )
+
         parts.append(
             f"[SOURCE {i}] {story['source']} | {format_time_ago(story['published'])}\n"
             f"Title: {story['title']}\n"
-            f"Research:\n{research}"
+            f"{preamble}"
         )
     return "\n\n---\n\n".join(parts)
 
@@ -401,19 +432,77 @@ def build_cluster_bundle(cluster, article_texts):
 # CORE FUNCTIONS
 # =============================================================
 
-def fetch_article_text(url):
-    """Fetches the article page and returns stripped body text, or None on any failure."""
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            raw = resp.read().decode("utf-8", errors="replace")
-        raw = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", raw, flags=re.DOTALL | re.IGNORECASE)
-        text = re.sub(r"<[^>]+>", " ", raw)
-        text = re.sub(r"[ \t]+", " ", text)
-        text = "\n".join(line.strip() for line in text.splitlines() if line.strip())
-        return text
-    except Exception:
-        return None
+_FETCH_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-GB,en;q=0.9,fr;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+}
+
+_BLOCK_TAGS = re.compile(
+    r"<(script|style|nav|header|footer|aside)[^>]*>.*?</\1>",
+    re.DOTALL | re.IGNORECASE,
+)
+
+def _strip_html(raw: str) -> str:
+    """Aggressively strip HTML, collapse whitespace, drop short navigation lines."""
+    text = _BLOCK_TAGS.sub("", raw)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"[ \t]+", " ", text)
+    lines = [ln.strip() for ln in text.splitlines() if len(ln.strip()) >= 40]
+    return "\n".join(lines)
+
+
+def fetch_article_text(url: str, summary_fallback: str = "") -> dict:
+    """
+    Fetch and clean article text from url.
+    Returns {text, char_count, source, success}.
+    Tries direct URL first; falls back to Google cache; then RSS summary.
+    """
+    def _try(target_url, label):
+        try:
+            req = urllib.request.Request(target_url, headers=_FETCH_HEADERS)
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                raw = resp.read().decode("utf-8", errors="replace")
+            text = _strip_html(raw)
+            return text if len(text) >= 200 else None
+        except Exception:
+            return None
+
+    # 1. Direct
+    text = _try(url, "direct")
+    if text:
+        return {"text": text, "char_count": len(text), "source": "direct", "success": True}
+
+    # 2. Google cache
+    cache_url = f"https://webcache.googleusercontent.com/search?q=cache:{urllib.parse.quote(url)}"
+    text = _try(cache_url, "cache")
+    if text:
+        return {"text": text, "char_count": len(text), "source": "cache", "success": True}
+
+    # 3. RSS fallback
+    fallback = summary_fallback or ""
+    return {
+        "text": fallback,
+        "char_count": len(fallback),
+        "source": "rss_fallback",
+        "success": False,
+    }
+
+
+def _content_confidence(fetch_result: dict) -> str:
+    """Return 'high', 'medium', or 'low' based on fetch result."""
+    chars  = fetch_result.get("char_count", 0)
+    source = fetch_result.get("source", "rss_fallback")
+    if chars > 800 and source == "direct":
+        return "high"
+    if 300 <= chars <= 800 or source == "cache":
+        return "medium"
+    return "low"
 
 
 def fetch_all_stories():
@@ -476,11 +565,16 @@ def draft_post(client, cluster, bundle):
         return None
 
 
-def build_post_record(cluster, score, label, draft_text, index, timestamp, post_type="linkedin"):
+def build_post_record(cluster, score, label, draft_text, index, timestamp,
+                      post_type="linkedin", primary_fetch: dict | None = None):
     """Assembles one post dict in the queue.json format."""
     primary = cluster["stories"][0]
     date_str = timestamp.strftime("%Y%m%d")
     published_dt = primary["published"]
+
+    fetch = primary_fetch or {"source": "rss_fallback", "char_count": 0, "success": False}
+    confidence = _content_confidence(fetch)
+
     return {
         "id": f"post_{index}_{post_type}_{date_str}",
         "type": post_type,
@@ -497,6 +591,9 @@ def build_post_record(cluster, score, label, draft_text, index, timestamp, post_
         "heat_label": label,
         "heat_article_count": len(cluster["stories"]),
         "sources": [{"name": s["source"], "url": s["url"]} for s in cluster["stories"]],
+        "content_confidence": confidence,
+        "content_chars": fetch["char_count"],
+        "fetch_source": fetch["source"],
     }
 
 
@@ -828,17 +925,28 @@ def main():
         n = len(cluster["stories"])
         print(f"  [{i}/{len(selected)}] [{label}] {primary['title'][:55]}... ({n} source(s))")
 
-        article_texts = {}
+        article_fetches = {}
         for story in cluster["stories"]:
-            article_texts[story["title"]] = fetch_article_text(story["url"])
+            result = fetch_article_text(story["url"], summary_fallback=story.get("summary", ""))
+            article_fetches[story["title"]] = result
 
-        bundle = build_cluster_bundle(cluster, article_texts)
+        # Print fetch summary for the primary story
+        pf = article_fetches.get(primary["title"], {})
+        conf = _content_confidence(pf)
+        chars = pf.get("char_count", 0)
+        src   = pf.get("source", "rss_fallback")
+        conf_suffix = " - draft may be unreliable" if conf == "low" else ""
+        print(f"        Fetch: {src} | {chars:,} chars | confidence: {conf.upper()}{conf_suffix}")
+
+        bundle = build_cluster_bundle(cluster, article_fetches)
+        primary_fetch = article_fetches.get(primary["title"])
 
         # OUTPUT A — LinkedIn post
         linkedin_draft = draft_post(client, cluster, bundle)
         if linkedin_draft:
             linkedin_draft = translate_to_english(client, linkedin_draft)
-            posts.append(build_post_record(cluster, score, label, linkedin_draft, i, timestamp, "linkedin"))
+            posts.append(build_post_record(cluster, score, label, linkedin_draft, i, timestamp,
+                                           "linkedin", primary_fetch=primary_fetch))
             print(f"        -> LinkedIn ({len(linkedin_draft.split())} words)")
         else:
             print(f"        -> LinkedIn skipped (API error)")
@@ -849,7 +957,8 @@ def main():
         website_draft = draft_website_article(client, cluster, bundle, deep)
         if website_draft:
             website_draft = translate_to_english(client, website_draft)
-            posts.append(build_post_record(cluster, score, label, website_draft, i, timestamp, "website"))
+            posts.append(build_post_record(cluster, score, label, website_draft, i, timestamp,
+                                           "website", primary_fetch=primary_fetch))
             print(f"        -> Website article ({len(website_draft.split())} words)")
         else:
             print(f"        -> Website article skipped (API error)")
