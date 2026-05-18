@@ -10,6 +10,7 @@ Run with: python3 app.py
 
 import json
 import os
+import subprocess
 from datetime import datetime, timezone
 from flask import Flask, jsonify, request, render_template_string
 
@@ -231,6 +232,77 @@ TEMPLATE = r"""<!DOCTYPE html>
     .btn-generate { padding: 4px 10px; font-size: 11px; white-space: nowrap; flex-shrink: 0; }
     .btn-generate.done { background: #1e8e3e; color: #fff; border-color: #1e8e3e; }
 
+    /* ── Write article tab ── */
+    .write-form { display: flex; flex-direction: column; gap: 14px; }
+    .write-field-label { font-size: 11px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .write-input, .write-select, .write-textarea {
+      width: 100%; box-sizing: border-box; font-family: inherit; font-size: 13px;
+      padding: 8px 10px; border: 1px solid #ddd; border-radius: 6px;
+      background: #fff; color: #111; outline: none;
+    }
+    .write-input:focus, .write-select:focus, .write-textarea:focus { border-color: #1a73e8; }
+    .write-input.headline { font-size: 18px; font-weight: 600; padding: 10px 12px; }
+    .write-textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+    .write-row { display: flex; gap: 12px; }
+    .write-row > div { flex: 1; }
+    /* RTE */
+    .rte-wrap { border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
+    .rte-toolbar-full {
+      display: flex; flex-wrap: wrap; gap: 4px;
+      background: #f5f5f3; border-bottom: 0.5px solid #ddd;
+      padding: 6px 8px;
+    }
+    .rte-tbtn {
+      height: 28px; padding: 0 10px; font-size: 12px; font-weight: 500;
+      background: #fff; border: 1px solid #d0d0d0; border-radius: 4px;
+      cursor: pointer; font-family: monospace; color: #333; white-space: nowrap;
+    }
+    .rte-tbtn:hover { background: #e8f0fe; color: #1a73e8; border-color: #1a73e8; }
+    .rte-tbtn.active { background: #e8f0fe; color: #1a73e8; border-color: #1a73e8; }
+    .rte-body {
+      min-height: 400px; padding: 1rem; font-size: 14px; line-height: 1.75;
+      outline: none; color: #111;
+    }
+    .rte-body h2 { font-size: 1.15rem; font-weight: 700; margin: 20px 0 8px; }
+    .rte-body h3 { font-size: 1rem; font-weight: 700; margin: 16px 0 6px; }
+    .rte-body blockquote { border-left: 3px solid #c8502a; margin: 12px 0; padding: 8px 14px; background: #fdf5f2; font-style: italic; color: #555; }
+    .rte-body hr { border: none; border-top: 1px solid #ddd; margin: 20px 0; }
+    .rte-body ul { padding-left: 1.4em; margin: 8px 0; }
+    .rte-body a { color: #1a73e8; }
+    /* Write action buttons */
+    .write-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .btn-write-preview  { background: #fff; color: #555; border: 1px solid #ccc; }
+    .btn-write-preview:hover  { background: #f5f5f5; }
+    .btn-write-draft    { background: #fff; color: #1a73e8; border: 1px solid #1a73e8; }
+    .btn-write-draft:hover    { background: #e8f0fe; }
+    .btn-write-publish  { background: #1e8e3e; color: #fff; border: none; }
+    .btn-write-publish:hover  { background: #157234; }
+    .btn-write-publish:disabled, .btn-write-draft:disabled { opacity: 0.6; cursor: not-allowed; }
+    /* Preview modal */
+    .write-preview-backdrop {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 1000; align-items: center; justify-content: center;
+    }
+    .write-preview-backdrop.open { display: flex; }
+    .write-preview-modal {
+      background: #fff; border-radius: 10px; max-width: 680px; width: 90%;
+      max-height: 80vh; overflow-y: auto; padding: 28px 32px; position: relative;
+    }
+    .write-preview-close {
+      position: absolute; top: 14px; right: 18px; background: none; border: none;
+      font-size: 20px; cursor: pointer; color: #888;
+    }
+    .write-preview-close:hover { color: #333; }
+    .write-preview-headline { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+    .write-preview-meta { font-size: 12px; color: #aaa; margin-bottom: 18px; }
+    .write-preview-body { font-size: 14px; line-height: 1.75; }
+    .write-preview-body h2 { font-size: 1.1rem; font-weight: 700; margin: 18px 0 7px; }
+    .write-preview-body h3 { font-size: 0.95rem; font-weight: 700; margin: 14px 0 5px; }
+    .write-preview-body blockquote { border-left: 3px solid #c8502a; margin: 10px 0; padding: 7px 12px; background: #fdf5f2; font-style: italic; color: #555; }
+    .write-preview-body hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
+    .write-preview-body ul { padding-left: 1.4em; margin: 8px 0; }
+    .badge.manual-badge { background: #f1f3f4; color: #666; }
+
     /* ── Empty state ── */
     .empty { text-align: center; padding: 80px 20px; color: #888; }
     .empty h2 { font-size: 22px; font-weight: 600; color: #444; margin-bottom: 12px; }
@@ -248,6 +320,14 @@ TEMPLATE = r"""<!DOCTYPE html>
     }
     .published-link:hover { text-decoration: underline; }
     .publishing-notice { font-size: 12px; color: #999; font-style: italic; margin-top: 4px; }
+    .push-failed-bar {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 8px; padding: 6px 10px;
+      background: #fce8e6; border-radius: 4px; border-left: 3px solid #d93025;
+    }
+    .push-failed-bar .push-failed-msg { font-size: 12px; color: #d93025; font-weight: 600; flex: 1; }
+    .btn-retry-push { font-size: 11px; padding: 3px 10px; background: #d93025; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-retry-push:hover { background: #b31412; }
 
     /* ── Toast ── */
     #toast {
@@ -282,6 +362,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 <nav class="tab-nav">
   <button class="tab active" id="tab-queue"   onclick="switchTab('queue')">Queue</button>
   <button class="tab"        id="tab-stories" onclick="switchTab('stories')">Story Browser</button>
+  <button class="tab"        id="tab-write"   onclick="switchTab('write')">Write article</button>
   <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Sources</button>
 </nav>
 
@@ -309,10 +390,12 @@ TEMPLATE = r"""<!DOCTYPE html>
     currentTab = tab;
     document.getElementById('tab-queue').classList.toggle('active', tab === 'queue');
     document.getElementById('tab-stories').classList.toggle('active', tab === 'stories');
+    document.getElementById('tab-write').classList.toggle('active', tab === 'write');
     document.getElementById('tab-sources').classList.toggle('active', tab === 'sources');
     document.getElementById('heat-bar').style.display = tab === 'queue' ? '' : 'none';
-    if (tab === 'queue')   { render(); loadGaps(); }
+    if (tab === 'queue')        { render(); loadGaps(); }
     else if (tab === 'stories') loadStoryBrowser();
+    else if (tab === 'write')   renderWriteTab();
     else if (tab === 'sources') loadSourceReport();
   }
 
@@ -493,6 +576,31 @@ TEMPLATE = r"""<!DOCTYPE html>
       showToast('Regeneration failed (network error)');
     } finally {
       if (btn) { btn.disabled = false; btn.textContent = 'Regenerate'; }
+    }
+  }
+
+  async function retryPush(id) {
+    const btn = document.querySelector(`#card-${id} .btn-retry-push`);
+    if (btn) { btn.disabled = true; btn.textContent = 'Pushing…'; }
+    try {
+      const res  = await fetch('/api/retry_push', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        const post = getPost(id);
+        if (post) { post.push_failed = false; }
+        render();
+        showToast('Push succeeded — article is live');
+      } else {
+        showToast('Push failed: ' + (data.error || 'unknown error'));
+        if (btn) { btn.disabled = false; btn.textContent = 'Retry push'; }
+      }
+    } catch (e) {
+      showToast('Push failed (network error)');
+      if (btn) { btn.disabled = false; btn.textContent = 'Retry push'; }
     }
   }
 
@@ -693,8 +801,17 @@ TEMPLATE = r"""<!DOCTYPE html>
       : (post.status === 'approved' && !post.published && type === 'website')
         ? `<span class="publishing-notice">Publishing…</span>` : '';
 
+    const pushFailedBar = post.push_failed
+      ? `<div class="push-failed-bar">
+           <span class="push-failed-msg">⚠ Push failed — article saved locally but not live</span>
+           <button class="btn-retry-push" onclick="retryPush('${id}')">Retry push</button>
+         </div>` : '';
+
     const undoBtn = post.status !== 'pending'
       ? `<button class="btn btn-undo" onclick="undoAction('${id}')">Undo</button>` : '';
+
+    const manualBadge = post.manual
+      ? `<span class="badge manual-badge">Manual</span>` : '';
 
     const heatBadge = (() => {
       const hl = post.heat_label;
@@ -712,6 +829,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           <span class="badge time">${esc(post.time_ago)}</span>
           <span class="badge source">${esc(post.source)}</span>
           ${heatBadge}
+          ${manualBadge}
           ${statusBadge}
         </div>
         <div class="headline" id="title-wrap-${id}">
@@ -738,6 +856,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           ${undoBtn}
         </div>
         ${publishedLink}
+        ${pushFailedBar}
         ${renderSources(post)}
       </div>`;
   }
@@ -801,6 +920,204 @@ TEMPLATE = r"""<!DOCTYPE html>
       const main = document.getElementById('main');
       main.insertBefore(banner, main.firstChild);
     } catch (e) { /* gaps.json may not exist yet */ }
+  }
+
+  // ── Write article tab ─────────────────────────────────────
+
+  function renderWriteTab() {
+    const main = document.getElementById('main');
+    main.innerHTML = `
+      <div class="write-form" id="write-form">
+        <div>
+          <div class="write-field-label">Headline</div>
+          <input class="write-input headline" id="wf-headline" type="text" placeholder="Article headline">
+        </div>
+        <div class="write-row">
+          <div>
+            <div class="write-field-label">Category</div>
+            <select class="write-select" id="wf-category">
+              <option>Islamophobia</option>
+              <option>Policy &amp; Law</option>
+              <option>Muslim Life</option>
+              <option>European Context</option>
+              <option>Far Right</option>
+              <option>Community</option>
+            </select>
+          </div>
+          <div>
+            <div class="write-field-label">Heat label</div>
+            <select class="write-select" id="wf-heat">
+              <option value="NORMAL">NORMAL</option>
+              <option value="TRENDING">TRENDING</option>
+              <option value="HOT">HOT</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="write-field-label">Sources <span style="font-weight:400;text-transform:none;letter-spacing:0">(Name | URL, Name | URL)</span></div>
+          <input class="write-input" id="wf-sources" type="text" placeholder="Le Monde | https://lemonde.fr/..., Reuters | https://reuters.com/...">
+        </div>
+        <div>
+          <div class="write-field-label">Body</div>
+          <div class="rte-wrap" id="rte-wrap">
+            <div class="rte-toolbar-full" id="rte-toolbar">
+              <button class="rte-tbtn" onclick="rteCmd('h2')">H2</button>
+              <button class="rte-tbtn" onclick="rteCmd('h3')">H3</button>
+              <button class="rte-tbtn" onclick="rteCmd('bold')"><b>B</b></button>
+              <button class="rte-tbtn" onclick="rteCmd('italic')"><i>I</i></button>
+              <button class="rte-tbtn" onclick="rteCmd('quote')">Quote</button>
+              <button class="rte-tbtn" onclick="rteCmd('link')">Link</button>
+              <button class="rte-tbtn" onclick="rteCmd('list')">• List</button>
+              <button class="rte-tbtn" onclick="rteCmd('divider')">― Divider</button>
+            </div>
+            <div class="rte-body" id="rte-body" contenteditable="true" spellcheck="true"></div>
+          </div>
+        </div>
+        <div>
+          <div class="write-field-label">LinkedIn post</div>
+          <textarea class="write-textarea" id="wf-linkedin" rows="5" placeholder="Short LinkedIn version of this story (200–280 words)…"></textarea>
+        </div>
+        <div class="write-actions">
+          <button class="btn btn-write-preview" onclick="writePreview()">Preview</button>
+          <button class="btn btn-write-draft"   id="btn-wdraft"   onclick="writeSaveDraft()">Save draft</button>
+          <button class="btn btn-write-publish" id="btn-wpublish" onclick="writePublish()">Publish directly</button>
+        </div>
+      </div>
+
+      <!-- Preview modal -->
+      <div class="write-preview-backdrop" id="write-preview-backdrop" onclick="closeWritePreview(event)">
+        <div class="write-preview-modal">
+          <button class="write-preview-close" onclick="closeWritePreview()">✕</button>
+          <div class="write-preview-headline" id="wp-headline"></div>
+          <div class="write-preview-meta" id="wp-meta"></div>
+          <div class="write-preview-body" id="wp-body"></div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ── RTE commands ──────────────────────────────────────────
+
+  function rteCmd(cmd) {
+    const body = document.getElementById('rte-body');
+    if (!body) return;
+    body.focus();
+    const sel = window.getSelection();
+
+    if (cmd === 'bold')   { document.execCommand('bold',   false, null); return; }
+    if (cmd === 'italic') { document.execCommand('italic', false, null); return; }
+
+    if (cmd === 'link') {
+      const url = prompt('Enter URL:');
+      if (!url) return;
+      document.execCommand('createLink', false, url);
+      return;
+    }
+
+    if (cmd === 'list') {
+      document.execCommand('insertUnorderedList', false, null);
+      return;
+    }
+
+    if (cmd === 'divider') {
+      document.execCommand('insertHTML', false, '<hr class="art-divider"><p><br></p>');
+      return;
+    }
+
+    // Block-level commands: h2, h3, quote — wrap current block
+    const tag = cmd === 'h2' ? 'H2' : cmd === 'h3' ? 'H3' : 'BLOCKQUOTE';
+    if (!sel || sel.rangeCount === 0) return;
+    const range = sel.getRangeAt(0);
+    let block = range.commonAncestorContainer;
+    if (block.nodeType === 3) block = block.parentNode;
+    // Walk up to find a direct child of rte-body
+    while (block.parentNode && block.parentNode !== body) block = block.parentNode;
+
+    if (block === body || !body.contains(block)) {
+      // No existing block — just insert
+      document.execCommand('formatBlock', false, tag);
+    } else if (block.tagName === tag) {
+      // Toggle off — convert back to p
+      document.execCommand('formatBlock', false, 'P');
+    } else {
+      document.execCommand('formatBlock', false, tag);
+    }
+  }
+
+  // ── Write actions ─────────────────────────────────────────
+
+  function writeFormData() {
+    return {
+      headline:    document.getElementById('wf-headline')?.value.trim() || '',
+      category:    document.getElementById('wf-category')?.value || 'Islamophobia',
+      heat_label:  document.getElementById('wf-heat')?.value || 'NORMAL',
+      sources_raw: document.getElementById('wf-sources')?.value.trim() || '',
+      body_html:   document.getElementById('rte-body')?.innerHTML || '',
+      linkedin_text: document.getElementById('wf-linkedin')?.value.trim() || '',
+    };
+  }
+
+  function writePreview() {
+    const d = writeFormData();
+    if (!d.headline) { showToast('Enter a headline first'); return; }
+    document.getElementById('wp-headline').textContent = d.headline;
+    document.getElementById('wp-meta').textContent = d.category + ' · ' + d.heat_label;
+    document.getElementById('wp-body').innerHTML = d.body_html;
+    document.getElementById('write-preview-backdrop').classList.add('open');
+  }
+
+  function closeWritePreview(e) {
+    if (!e || e.target === document.getElementById('write-preview-backdrop') || e.type !== 'click' || !e.target.closest) {
+      document.getElementById('write-preview-backdrop')?.classList.remove('open');
+    } else if (!e.target.closest('.write-preview-modal')) {
+      document.getElementById('write-preview-backdrop').classList.remove('open');
+    }
+  }
+
+  async function writeSaveDraft() {
+    const d = writeFormData();
+    if (!d.headline) { showToast('Enter a headline first'); return; }
+    const btn = document.getElementById('btn-wdraft');
+    btn.disabled = true; btn.textContent = 'Saving…';
+    try {
+      const res  = await fetch('/api/manual_draft', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(d),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showToast(data.message || 'Draft saved to queue');
+        // reload queue so it reflects the new post
+        const r2 = await fetch('/api/queue');
+        queue = await r2.json();
+      } else {
+        showToast('Error: ' + (data.error || 'unknown'));
+      }
+    } catch { showToast('Network error'); }
+    finally { btn.disabled = false; btn.textContent = 'Save draft'; }
+  }
+
+  async function writePublish() {
+    const d = writeFormData();
+    if (!d.headline) { showToast('Enter a headline first'); return; }
+    if (!confirm('Publish this article directly without queuing?')) return;
+    const btn = document.getElementById('btn-wpublish');
+    btn.disabled = true; btn.textContent = 'Publishing…';
+    try {
+      const res  = await fetch('/api/manual_publish', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(d),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showToast('Published! ' + (data.url || ''));
+        document.getElementById('main').innerHTML =
+          `<div class="empty"><h2>Article published</h2><p><a href="${esc(data.url)}" target="_blank" rel="noopener">${esc(data.url)}</a></p><button class="btn btn-write-draft" onclick="renderWriteTab()" style="margin-top:12px">Write another</button></div>`;
+      } else {
+        showToast('Error: ' + (data.error || 'unknown'));
+        btn.disabled = false; btn.textContent = 'Publish directly';
+      }
+    } catch { showToast('Network error'); btn.disabled = false; btn.textContent = 'Publish directly'; }
   }
 
   // ── Story Browser ─────────────────────────────────────────
@@ -1021,7 +1338,7 @@ def publish_article():
         return jsonify({"error": "Post not found in queue"}), 404
 
     try:
-        url = publisher.publish_post(post)
+        url, push_ok = publisher.publish_post(post)
     except Exception as e:
         print(f"  [publish error] {e}")
         return jsonify({"error": str(e)}), 500
@@ -1031,10 +1348,39 @@ def publish_article():
     post["published"]     = True
     post["published_url"] = url
     post["published_at"]  = now
+    post["push_failed"]   = not push_ok
     with open(QUEUE_FILE, "w", encoding="utf-8") as f:
         json.dump(queue_data, f, indent=2, ensure_ascii=False)
 
-    return jsonify({"ok": True, "url": url})
+    return jsonify({"ok": True, "url": url, "push_failed": not push_ok})
+
+
+@app.route("/api/retry_push", methods=["POST"])
+def retry_push():
+    data = request.get_json(silent=True) or {}
+    post_id = data.get("id")
+    if not post_id:
+        return jsonify({"error": "Missing id"}), 400
+
+    if not os.path.exists(QUEUE_FILE):
+        return jsonify({"error": "Queue not found"}), 404
+
+    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+        queue_data = json.load(f)
+
+    post = next((p for p in queue_data.get("posts", []) if p.get("id") == post_id), None)
+    if not post:
+        return jsonify({"error": "Post not found"}), 404
+
+    result = subprocess.run(["git", "push"], capture_output=True, text=True)
+    if result.returncode != 0:
+        return jsonify({"ok": False, "error": result.stderr.strip()}), 500
+
+    post["push_failed"] = False
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+
+    return jsonify({"ok": True})
 
 
 @app.route("/api/gaps", methods=["GET"])
@@ -1200,6 +1546,101 @@ def regenerate_draft():
         json.dump(queue_data, f, indent=2, ensure_ascii=False)
 
     return jsonify({"ok": True, "draft": new_draft})
+
+
+def _build_manual_post(data: dict) -> dict:
+    """Build a queue post record from the Write article form payload."""
+    import re as _re
+    import publisher as pub
+
+    headline     = data.get("headline", "Untitled").strip()
+    category     = data.get("category", "Islamophobia")
+    heat_label   = data.get("heat_label", "NORMAL").upper()
+    sources_raw  = data.get("sources_raw", "")
+    body_html    = data.get("body_html", "")
+    linkedin_text = data.get("linkedin_text", "")
+
+    # Parse sources: "Name | URL, Name | URL"
+    sources = []
+    for entry in sources_raw.split(","):
+        entry = entry.strip()
+        if not entry:
+            continue
+        if "|" in entry:
+            parts = entry.split("|", 1)
+            sources.append({"name": parts[0].strip(), "url": parts[1].strip()})
+        else:
+            sources.append({"name": entry, "url": ""})
+
+    first_source_name = sources[0]["name"] if sources else "IWF"
+    first_source_url  = sources[0]["url"]  if sources else ""
+
+    # Strip HTML tags for summary
+    summary = _re.sub(r"<[^>]+>", "", body_html)[:200].strip()
+
+    heat_score = {"HOT": 8, "TRENDING": 5}.get(heat_label, 2)
+    now_iso    = datetime.now(timezone.utc).isoformat()
+    post_id    = "manual_" + datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
+
+    return {
+        "id":                post_id,
+        "title":             headline,
+        "source":            first_source_name,
+        "url":               first_source_url,
+        "created":           now_iso,
+        "time_ago":          "just now",
+        "summary":           summary,
+        "draft":             linkedin_text,
+        "website_draft":     body_html,
+        "status":            "pending",
+        "type":              "website",
+        "manual":            True,
+        "category":          category,
+        "heat_label":        heat_label,
+        "heat_score":        heat_score,
+        "heat_article_count": "Manual entry",
+        "sources":           sources,
+    }
+
+
+@app.route("/api/manual_draft", methods=["POST"])
+def manual_draft():
+    data = request.get_json(silent=True) or {}
+    if not data.get("headline"):
+        return jsonify({"error": "headline required"}), 400
+
+    post = _build_manual_post(data)
+
+    if os.path.exists(QUEUE_FILE):
+        with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+            queue_data = json.load(f)
+    else:
+        queue_data = {"posts": []}
+
+    queue_data.setdefault("posts", []).insert(0, post)
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+
+    return jsonify({"ok": True, "message": "Draft saved to queue"})
+
+
+@app.route("/api/manual_publish", methods=["POST"])
+def manual_publish():
+    data = request.get_json(silent=True) or {}
+    if not data.get("headline"):
+        return jsonify({"error": "headline required"}), 400
+
+    import publisher
+    post = _build_manual_post(data)
+    # publish_post expects website_draft as the body; patch draft field too
+    post["draft"] = post.get("website_draft", "")
+
+    try:
+        url, push_ok = publisher.publish_post(post)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    return jsonify({"ok": True, "url": url, "push_failed": not push_ok})
 
 
 # =============================================================
