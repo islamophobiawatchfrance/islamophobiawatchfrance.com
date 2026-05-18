@@ -257,6 +257,7 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     date_str   = _format_date(post)
     category   = _derive_category(post)
     filename   = f"{_date_prefix(post)}-{slug}.html"
+    is_manual  = bool(post.get("manual"))
 
     raw_pub = post.get("published") or post.get("created") or ""
     try:
@@ -266,13 +267,16 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
 
     header_image_html = generate_header_graphic(title, category, heat_label, date_str)
 
-    excerpt_text      = _excerpt(draft, 160)
-    meta_desc         = _meta_description(draft)
+    # For manual posts, draft is pre-rendered HTML; strip tags for text-only fields
+    draft_text = re.sub(r"<[^>]+>", " ", draft).strip() if is_manual else draft
+
+    excerpt_text      = _excerpt(draft_text, 160)
+    meta_desc         = _meta_description(draft_text)
     sources_inline    = " / ".join(s.get("name", "") for s in sources) or post.get("source", "")
     page_url          = f"https://islamophobiawatchfrance.com/news/{filename}"
     title_encoded     = urllib.parse.quote(title)
     heat_article_count = str(post.get("heat_article_count", "Multiple"))
-    reading_time      = str(max(1, math.ceil(len(draft.split()) / 200)))
+    reading_time      = str(max(1, math.ceil(len(draft_text.split()) / 200)))
 
     schema = {
         "@context": "https://schema.org",
@@ -294,57 +298,62 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
         + '\n  </script>'
     )
 
-    # Standfirst (first paragraph) + body (remaining)
-    paragraphs      = [p.strip() for p in re.split(r"\n\n+", draft) if p.strip()]
-    standfirst_text = paragraphs[0] if paragraphs else ""
+    if is_manual:
+        # draft is already rendered HTML from the rich text editor; use it directly
+        standfirst_text = ""
+        body_html = draft
+    else:
+        # Standfirst (first paragraph) + body (remaining)
+        paragraphs      = [p.strip() for p in re.split(r"\n\n+", draft) if p.strip()]
+        standfirst_text = paragraphs[0] if paragraphs else ""
 
-    # Find the FAQ separator (first standalone "---")
-    faq_sep_idx = next(
-        (i for i, p in enumerate(paragraphs) if p.strip() == "---"), None
-    )
-    article_paras = paragraphs[1:faq_sep_idx] if faq_sep_idx is not None else paragraphs[1:]
-    faq_paras     = paragraphs[faq_sep_idx + 1:] if faq_sep_idx is not None else []
-
-    body_lines = []
-    for p in article_paras:
-        if p.startswith("## "):
-            body_lines.append(f'      <h2 class="art-h2">{_esc(p[3:].strip())}</h2>')
-        elif p.strip() == "---":
-            body_lines.append('      <hr class="art-divider">')
-        elif p.startswith("> "):
-            body_lines.append(f'      <p class="pull-quote">{_render_inline(p[2:])}</p>')
-        elif p.startswith(('"', '“', '”', '‘', '’')):
-            body_lines.append(f'      <p class="pull-quote">{_render_inline(p)}</p>')
-        else:
-            body_lines.append(f'      <p>{_render_inline(p)}</p>')
-
-    if faq_paras:
-        faq_items = []
-        fi = 0
-        while fi < len(faq_paras):
-            p = faq_paras[fi]
-            m = re.match(r'^\*\*(.+?)\*\*\s*\n?(.*)', p, re.DOTALL)
-            if m:
-                question     = m.group(1).strip()
-                answer_inline = m.group(2).strip()
-                faq_items.append(f'          <dt class="faq-question">{_esc(question)}</dt>')
-                if answer_inline:
-                    faq_items.append(f'          <dd class="faq-answer">{_render_inline(answer_inline)}</dd>')
-                elif fi + 1 < len(faq_paras):
-                    fi += 1
-                    faq_items.append(f'          <dd class="faq-answer">{_render_inline(faq_paras[fi])}</dd>')
-            elif p.strip():
-                faq_items.append(f'          <dd class="faq-answer">{_render_inline(p)}</dd>')
-            fi += 1
-        body_lines.append(
-            '      <div class="art-faq">\n'
-            '        <h2 class="art-faq-heading">Q&amp;A</h2>\n'
-            '        <dl class="faq-list">\n' +
-            "\n".join(faq_items) +
-            '\n        </dl>\n      </div>'
+        # Find the FAQ separator (first standalone "---")
+        faq_sep_idx = next(
+            (i for i, p in enumerate(paragraphs) if p.strip() == "---"), None
         )
+        article_paras = paragraphs[1:faq_sep_idx] if faq_sep_idx is not None else paragraphs[1:]
+        faq_paras     = paragraphs[faq_sep_idx + 1:] if faq_sep_idx is not None else []
 
-    body_html = "\n".join(body_lines)
+        body_lines = []
+        for p in article_paras:
+            if p.startswith("## "):
+                body_lines.append(f'      <h2 class="art-h2">{_esc(p[3:].strip())}</h2>')
+            elif p.strip() == "---":
+                body_lines.append('      <hr class="art-divider">')
+            elif p.startswith("> "):
+                body_lines.append(f'      <p class="pull-quote">{_render_inline(p[2:])}</p>')
+            elif p.startswith(('"', '"', '"', ''', ''')):
+                body_lines.append(f'      <p class="pull-quote">{_render_inline(p)}</p>')
+            else:
+                body_lines.append(f'      <p>{_render_inline(p)}</p>')
+
+        if faq_paras:
+            faq_items = []
+            fi = 0
+            while fi < len(faq_paras):
+                p = faq_paras[fi]
+                m = re.match(r'^\*\*(.+?)\*\*\s*\n?(.*)', p, re.DOTALL)
+                if m:
+                    question      = m.group(1).strip()
+                    answer_inline = m.group(2).strip()
+                    faq_items.append(f'          <dt class="faq-question">{_esc(question)}</dt>')
+                    if answer_inline:
+                        faq_items.append(f'          <dd class="faq-answer">{_render_inline(answer_inline)}</dd>')
+                    elif fi + 1 < len(faq_paras):
+                        fi += 1
+                        faq_items.append(f'          <dd class="faq-answer">{_render_inline(faq_paras[fi])}</dd>')
+                elif p.strip():
+                    faq_items.append(f'          <dd class="faq-answer">{_render_inline(p)}</dd>')
+                fi += 1
+            body_lines.append(
+                '      <div class="art-faq">\n'
+                '        <h2 class="art-faq-heading">Q&amp;A</h2>\n'
+                '        <dl class="faq-list">\n' +
+                "\n".join(faq_items) +
+                '\n        </dl>\n      </div>'
+            )
+
+        body_html = "\n".join(body_lines)
 
     # Inline source list (bottom of left column)
     source_items = "\n".join(

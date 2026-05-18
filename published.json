@@ -2,35 +2,6 @@
   "posts": [],
   "articles": [
     {
-      "title": "What is Collectif Némésis, the French-far right group fuelling anti-Muslim hatred?",
-      "date": "18 May 2026",
-      "filename": "news/2026-05-18-what-collectif-nemesis-french-far-right-group-fuelling-anti.html",
-      "slug": "what-collectif-nemesis-french-far-right-group-fuelling-anti",
-      "sources": [
-        {
-          "name": "National Assembly of France",
-          "url": "https://questions.assemblee-nationale.fr"
-        },
-        {
-          "name": "Le Monde",
-          "url": "https://lemonde.fr"
-        },
-        {
-          "name": "L'Humanité",
-          "url": "https://humanite.fr"
-        },
-        {
-          "name": "StreetPress",
-          "url": "https://streetpress.com"
-        }
-      ],
-      "heat_label": "TRENDING",
-      "heat_score": 5,
-      "category": "News",
-      "draft": "",
-      "published_at": "2026-05-18T11:55:50.725068+00:00"
-    },
-    {
       "title": "France: Islamophobic tags discovered on walls of a hall before an interfaith dinner in Lot-et-Garonne",
       "date": "14 May 2026",
       "filename": "news/2026-05-14-france-islamophobic-tags-discovered-walls-hall-interfaith.html",
