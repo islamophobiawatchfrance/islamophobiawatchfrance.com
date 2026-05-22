@@ -1014,6 +1014,7 @@ TEMPLATE = r"""<!DOCTYPE html>
         </div>
       </div>
     `;
+    _attachPasteHandler();
   }
 
   // ── RTE commands ──────────────────────────────────────────
@@ -1062,6 +1063,73 @@ TEMPLATE = r"""<!DOCTYPE html>
     } else {
       document.execCommand('formatBlock', false, tag);
     }
+  }
+
+  // ── Paste sanitizer for the Write Article editor ──────────
+  // Strips all classes, styles, and data-* attrs from pasted HTML so that
+  // content copied from Claude.ai (or any other rich UI) arrives as clean
+  // semantic markup.  Runs entirely in the browser before the content lands
+  // in the editor, so nothing dirty ever reaches published.json.
+
+  function _cleanNode(node) {
+    if (node.nodeType === Node.TEXT_NODE) return node.cloneNode();
+    if (node.nodeType !== Node.ELEMENT_NODE) return null;
+
+    const tag = node.tagName.toUpperCase();
+
+    // Tags we promote/allow
+    const MAP = {
+      P: 'P', DIV: 'P', SECTION: 'P',
+      H1: 'H2', H2: 'H2', H3: 'H2', H4: 'H2', H5: 'H2', H6: 'H2',
+      STRONG: 'STRONG', B: 'STRONG', EM: 'EM', I: 'EM',
+      A: 'A', BR: 'BR', HR: 'HR',
+      UL: 'UL', OL: 'OL', LI: 'LI',
+      BLOCKQUOTE: 'BLOCKQUOTE',
+      DL: 'DL', DT: 'DT', DD: 'DD',
+    };
+
+    const newTag = MAP[tag];
+
+    if (!newTag) {
+      // Unknown wrapper (span, article, header, etc.) — flatten, keep children
+      const frag = document.createDocumentFragment();
+      node.childNodes.forEach(c => { const n = _cleanNode(c); if (n) frag.appendChild(n); });
+      return frag;
+    }
+
+    const el = document.createElement(newTag);
+    if (newTag === 'A' && node.href) el.href = node.href;
+    node.childNodes.forEach(c => { const n = _cleanNode(c); if (n) el.appendChild(n); });
+
+    // Drop empty block wrappers (e.g. <p><br></p> spacers)
+    if (['P','H2','DT','DD'].includes(newTag)) {
+      const text = el.textContent.trim();
+      if (!text && !el.querySelector('img')) return null;
+    }
+
+    return el;
+  }
+
+  function _sanitizeHtml(html) {
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    const out = document.createElement('div');
+    div.childNodes.forEach(c => { const n = _cleanNode(c); if (n) out.appendChild(n); });
+    return out.innerHTML;
+  }
+
+  // Wire up the paste handler once the editor is rendered
+  function _attachPasteHandler() {
+    const body = document.getElementById('rte-body');
+    if (!body || body._pasteHandlerAttached) return;
+    body._pasteHandlerAttached = true;
+    body.addEventListener('paste', function(e) {
+      e.preventDefault();
+      const html = e.clipboardData.getData('text/html');
+      const text = e.clipboardData.getData('text/plain');
+      const clean = html ? _sanitizeHtml(html) : text.replace(/\n\n+/g, '</p><p>').replace(/\n/g, '<br>');
+      document.execCommand('insertHTML', false, clean || '');
+    });
   }
 
   // ── Write actions ─────────────────────────────────────────
@@ -1569,6 +1637,28 @@ def regenerate_draft():
     return jsonify({"ok": True, "draft": new_draft})
 
 
+def _sanitize_body_html(html: str) -> str:
+    """
+    Server-side backstop: strip class/style/data-* attributes and Claude UI
+    markup from article body HTML before it is stored or published.
+    Runs even if the browser paste handler is bypassed.
+    """
+    import re as _re
+    # Remove all class, style, and data-* attributes
+    html = _re.sub(r'\s+class="[^"]*"', '', html)
+    html = _re.sub(r'\s+style="[^"]*"', '', html)
+    html = _re.sub(r'\s+data-[a-z][a-z0-9-]*="[^"]*"', '', html)
+    # Promote h3–h6 to h2 (Claude uses h3 for article sections)
+    html = _re.sub(r'<h[3-6](\s[^>]*)?>', '<h2>', html)
+    html = _re.sub(r'</h[3-6]>', '</h2>', html)
+    # Strip div wrappers entirely (keep their children)
+    html = _re.sub(r'<div[^>]*>', '', html)
+    html = _re.sub(r'</div>', '', html)
+    # Remove empty paragraphs (just whitespace/br)
+    html = _re.sub(r'<p>\s*(<br\s*/?>\s*)*</p>', '', html)
+    return html.strip()
+
+
 def _build_manual_post(data: dict) -> dict:
     """Build a queue post record from the Write article form payload."""
     import re as _re
@@ -1578,7 +1668,7 @@ def _build_manual_post(data: dict) -> dict:
     category     = data.get("category", "Islamophobia")
     heat_label   = data.get("heat_label", "NORMAL").upper()
     sources_raw  = data.get("sources_raw", "")
-    body_html    = data.get("body_html", "")
+    body_html    = _sanitize_body_html(data.get("body_html", ""))
     linkedin_text = data.get("linkedin_text", "")
 
     # Parse sources: "Name | URL, Name | URL"
