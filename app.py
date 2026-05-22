@@ -1647,23 +1647,30 @@ def manual_draft():
 
 @app.route("/api/manual_publish", methods=["POST"])
 def manual_publish():
-    data = request.get_json(silent=True) or {}
-    if not data.get("headline"):
-        return jsonify({"error": "headline required"}), 400
-
+    import traceback as _tb
     import publisher
-    post = _build_manual_post(data)
-    # publish_post expects website_draft as the body; patch draft field too
-    post["draft"] = post.get("website_draft", "")
 
     try:
-        url, push_ok = publisher.publish_post(post)
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({"error": str(e)}), 500
+        data = request.get_json(silent=True) or {}
+        if not data.get("headline"):
+            return jsonify({"error": "headline required"}), 400
 
-    return jsonify({"ok": True, "url": url, "push_failed": not push_ok})
+        post = _build_manual_post(data)
+        post["draft"] = post.get("website_draft", "")
+
+        url, push_ok = publisher.publish_post(post)
+
+        if not push_ok:
+            return jsonify({
+                "ok": True,
+                "url": url,
+                "warning": "Article saved but git push failed. Run git push manually.",
+            })
+        return jsonify({"ok": True, "url": url})
+
+    except Exception as e:
+        _tb.print_exc()
+        return jsonify({"error": str(e)}), 500
 
 
 # =============================================================

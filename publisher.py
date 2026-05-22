@@ -870,16 +870,26 @@ def publish_post(post: dict, repo_path: str = ".") -> str:
         json.dump(published, f, indent=2, ensure_ascii=False)
     print(f"  published.json: {len(existing)} article(s) total")
 
-    # 4–7. Regenerate pages
-    update_homepage(repo_path)
-    update_news_archive(repo_path)
-    update_wire(repo_path)
-    update_sitemap(repo_path)
-    generate_source_report(repo_path)
+    # 4–7. Regenerate pages (each step isolated so one failure doesn't block git)
+    for _fn, _label in [
+        (lambda: update_homepage(repo_path),       "update_homepage"),
+        (lambda: update_news_archive(repo_path),   "update_news_archive"),
+        (lambda: update_wire(repo_path),           "update_wire"),
+        (lambda: update_sitemap(repo_path),        "update_sitemap"),
+        (lambda: generate_source_report(repo_path),"generate_source_report"),
+    ]:
+        try:
+            _fn()
+        except Exception as _e:
+            print(f"  [{_label} error] {_e}")
 
-    # 7. Git
+    # 8. Git
     commit_msg = f"Publish: {title[:60]}"
-    push_ok = git_publish(article_path, commit_msg, repo_path)
+    try:
+        push_ok = git_publish(article_path, commit_msg, repo_path)
+    except Exception as _e:
+        print(f"  [git_publish error] {_e}")
+        push_ok = False
 
     url = f"https://islamophobiawatchfrance.com/{article_path}"
     print(f"  URL: {url}\n")
