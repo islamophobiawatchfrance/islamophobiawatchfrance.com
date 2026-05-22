@@ -1360,7 +1360,8 @@ def publish_article():
     try:
         url, push_ok = publisher.publish_post(post)
     except Exception as e:
-        print(f"  [publish error] {e}")
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
     # Persist publish metadata back into queue.json
@@ -1658,6 +1659,8 @@ def manual_publish():
     try:
         url, push_ok = publisher.publish_post(post)
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
     return jsonify({"ok": True, "url": url, "push_failed": not push_ok})
