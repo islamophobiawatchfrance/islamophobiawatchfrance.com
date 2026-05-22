@@ -969,6 +969,16 @@ def main():
 
     save_queue(posts, timestamp, total_stories_scanned=len(stories))
     append_to_archive(posts, timestamp)
+
+    # Regenerate homepage feed, news archive, and wire section with fresh data
+    import publisher as _publisher
+    try:
+        _publisher.update_homepage()
+        _publisher.update_news_archive()
+        _publisher.update_wire()
+    except Exception as _e:
+        print(f"  [page regeneration warning] {_e}")
+
     print("\n  Done. Open the dashboard to review your posts.\n")
 
 
