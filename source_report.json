@@ -1,80 +1,195 @@
 {
-  "total": 59,
+  "total": 365,
   "sources": [
     {
-      "name": "Planet.fr",
-      "count": 8,
-      "pct": 13.6
+      "name": "Actu.fr",
+      "count": 52,
+      "pct": 14.2
     },
     {
       "name": "tsa-algerie.com",
-      "count": 8,
-      "pct": 13.6
+      "count": 35,
+      "pct": 9.6
+    },
+    {
+      "name": "Grande Mosquée de Paris",
+      "count": 29,
+      "pct": 7.9
     },
     {
       "name": "MSN",
-      "count": 6,
-      "pct": 10.2
+      "count": 21,
+      "pct": 5.8
+    },
+    {
+      "name": "Planet.fr",
+      "count": 18,
+      "pct": 4.9
+    },
+    {
+      "name": "France 24",
+      "count": 18,
+      "pct": 4.9
     },
     {
       "name": "reinformation.tv",
-      "count": 6,
-      "pct": 10.2
+      "count": 16,
+      "pct": 4.4
     },
     {
       "name": "europe1.fr",
-      "count": 5,
-      "pct": 8.5
+      "count": 13,
+      "pct": 3.6
+    },
+    {
+      "name": "L'Union",
+      "count": 13,
+      "pct": 3.6
     },
     {
       "name": "lejdd.fr",
-      "count": 5,
-      "pct": 8.5
+      "count": 13,
+      "pct": 3.6
     },
     {
       "name": "Valeurs actuelles",
+      "count": 13,
+      "pct": 3.6
+    },
+    {
+      "name": "Le Figaro",
+      "count": 12,
+      "pct": 3.3
+    },
+    {
+      "name": "Ouest-France",
+      "count": 12,
+      "pct": 3.3
+    },
+    {
+      "name": "Breizh-info.com",
+      "count": 10,
+      "pct": 2.7
+    },
+    {
+      "name": "Le Parisien",
+      "count": 9,
+      "pct": 2.5
+    },
+    {
+      "name": "Beur FM",
+      "count": 8,
+      "pct": 2.2
+    },
+    {
+      "name": "Sortir à Paris",
+      "count": 8,
+      "pct": 2.2
+    },
+    {
+      "name": "Anadolu Ajansı",
+      "count": 6,
+      "pct": 1.6
+    },
+    {
+      "name": "Atlantico",
+      "count": 6,
+      "pct": 1.6
+    },
+    {
+      "name": "Libération",
+      "count": 6,
+      "pct": 1.6
+    },
+    {
+      "name": "Bladi.net",
       "count": 5,
-      "pct": 8.5
+      "pct": 1.4
+    },
+    {
+      "name": "EL PAÍS English",
+      "count": 4,
+      "pct": 1.1
+    },
+    {
+      "name": "Georgetown University",
+      "count": 4,
+      "pct": 1.1
     },
     {
       "name": "Mediapart",
       "count": 4,
-      "pct": 6.8
+      "pct": 1.1
     },
     {
-      "name": "Le Figaro",
+      "name": "Muslim Network TV",
+      "count": 4,
+      "pct": 1.1
+    },
+    {
+      "name": "L'Algérie Aujourd'hui",
+      "count": 4,
+      "pct": 1.1
+    },
+    {
+      "name": "The Guardian",
+      "count": 4,
+      "pct": 1.1
+    },
+    {
+      "name": "Algerie360",
+      "count": 4,
+      "pct": 1.1
+    },
+    {
+      "name": "Visas & Voyages Algérie",
       "count": 3,
-      "pct": 5.1
+      "pct": 0.8
     },
     {
-      "name": "Bladi.net",
+      "name": "Yeni Şafak",
       "count": 3,
-      "pct": 5.1
+      "pct": 0.8
     },
     {
-      "name": "Anadolu Ajansı",
-      "count": 2,
-      "pct": 3.4
+      "name": "ShiaWaves",
+      "count": 1,
+      "pct": 0.3
+    },
+    {
+      "name": "National Assembly of France",
+      "count": 1,
+      "pct": 0.3
+    },
+    {
+      "name": "Le Monde",
+      "count": 1,
+      "pct": 0.3
+    },
+    {
+      "name": "L'Humanité",
+      "count": 1,
+      "pct": 0.3
+    },
+    {
+      "name": "StreetPress",
+      "count": 1,
+      "pct": 0.3
     },
     {
       "name": "Public Sénat",
       "count": 1,
-      "pct": 1.7
+      "pct": 0.3
     },
     {
       "name": "instagram.com",
       "count": 1,
-      "pct": 1.7
+      "pct": 0.3
     },
     {
       "name": "Le Soir",
       "count": 1,
-      "pct": 1.7
-    },
-    {
-      "name": "Yeni Şafak",
-      "count": 1,
-      "pct": 1.7
+      "pct": 0.3
     }
   ],
   "flagged": []

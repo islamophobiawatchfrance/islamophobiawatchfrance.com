@@ -26,3 +26,532 @@ NameError: name 'PUBLISHED_FILE' is not defined
   ERROR: Drafter failed. See error messages above.
   Check your ANTHROPIC_API_KEY in the .env file, then try again.
 
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-09.
+  Running 17 news searches...
+  [WARNING] Failed on query 'CFCM islam france': Remote end closed connection without response
+  Found 4 unique stories in the last 48h.
+  Translating French content...
+  Wire: 1 new, 9 total (8 skipped as seen today).
+  Gap detector: 1 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] First days of the "Memory Caravan" in Algiers: photo re... (1 source(s))
+        -> LinkedIn (135 words)
+        -> Gathering background research...
+        -> Website article (629 words)
+  [2/2] [TRENDING] Eid al-Adha 2026: The Great Mosque of Paris will soon a... (2 source(s))
+        -> LinkedIn (123 words)
+        -> Gathering background research...
+        -> Website article (491 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+  Stale lock file found (13.0 h old). Removing.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 2 undecided post(s) from 2026-05-11.
+  Running 17 news searches...
+  Found 9 unique stories in the last 48h.
+  Translating French content...
+  Wire: 6 new, 15 total (1 skipped as seen today).
+  Gap detector: 1 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] Chems-Eddine Hafiz received by Pope Leo XIV at the Vati... (2 source(s))
+        -> LinkedIn (103 words)
+        -> Gathering background research...
+        -> Website article (759 words)
+  [2/2] [NORMAL] France sends ambassador back to Algeria and commemorate... (1 source(s))
+        -> LinkedIn (179 words)
+        -> Gathering background research...
+        -> Website article (790 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 3 undecided post(s) from 2026-05-12.
+  Running 32 news searches...
+  Found 12 unique stories in the last 48h.
+  Translating French content...
+  Wire: 2 new, 24 total (7 skipped as seen today).
+  Saved 12 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] France Travail: Imam job offers rekindle the debate on ... (3 source(s))
+        -> LinkedIn (156 words)
+        -> Gathering background research...
+        -> Website article (684 words)
+  [2/2] [TRENDING] May 8, 1945: Commemoration with the military governor o... (1 source(s))
+        -> LinkedIn (138 words)
+        -> Gathering background research...
+        -> Website article (690 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 3 undecided post(s) from 2026-05-13.
+  Running 32 news searches...
+  Found 15 unique stories in the last 48h.
+  Translating French content...
+  Wire: 10 new, 34 total (0 skipped as seen today).
+  Saved 15 stories to stories_today.json.
+  Gap detector: 1 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] "Memory Caravan" in Algeria - recap #2: Béjaïa, Kherrat... (3 source(s))
+        -> LinkedIn (144 words)
+        -> Gathering background research...
+        -> Website article (763 words)
+  [2/2] [TRENDING] Marine Le Pen’s party hits back at Kylian Mbappé commen... (1 source(s))
+        -> LinkedIn (140 words)
+        -> Gathering background research...
+        -> Website article (215 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-14.
+  Running 32 news searches...
+  Found 16 unique stories in the last 48h.
+  Translating French content...
+  Wire: 11 new, 43 total (10 skipped as seen today).
+  Saved 16 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] A nocturnal journey through the mysteries of the univer... (3 source(s))
+        -> LinkedIn (115 words)
+        -> Gathering background research...
+        -> Website article (713 words)
+  [2/2] [TRENDING] The Black, Muslim mayor who embodies changes in the new... (2 source(s))
+        -> LinkedIn (140 words)
+        -> Gathering background research...
+        -> Website article (252 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-15.
+  Running 32 news searches...
+  Found 10 unique stories in the last 48h.
+  Translating French content...
+  Wire: 3 new, 44 total (0 skipped as seen today).
+  Saved 10 stories to stories_today.json.
+  Gap detector: all hot topics covered.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] The rector of the Great Mosque of Paris is afraid for F... (3 source(s))
+        -> LinkedIn (142 words)
+        -> Gathering background research...
+        -> Website article (578 words)
+  [2/2] [NORMAL] France: the law on "Islamist entryism" revives the tria... (1 source(s))
+        -> LinkedIn (144 words)
+        -> Gathering background research...
+        -> Website article (757 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-16.
+  Running 32 news searches...
+  Found 5 unique stories in the last 48h.
+  Translating French content...
+  Wire: 5 new, 43 total (0 skipped as seen today).
+  Saved 5 stories to stories_today.json.
+  Gap detector: 1 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] Eid al-Adha 2026: the date has been set, here's when th... (2 source(s))
+        -> LinkedIn (140 words)
+        -> Gathering background research...
+        -> Website article (735 words)
+  [2/2] [NORMAL] Mbappe and Bardella trade barbs over far right’s gains ... (1 source(s))
+        -> LinkedIn (116 words)
+        -> Gathering background research...
+        -> Website article (244 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-18.
+  Running 32 news searches...
+  Found 9 unique stories in the last 48h.
+  Translating French content...
+  Wire: 4 new, 46 total (11 skipped as seen today).
+  Saved 9 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] Eid al-Adha is set for May 27, announces the Grand Mosq... (7 source(s))
+        Fetch: direct | 38,942 chars | confidence: HIGH
+        -> LinkedIn (138 words)
+        -> Gathering background research...
+        -> Website article (662 words)
+  [2/2] [TRENDING] Nigeria conducts new strikes with the United States aga... (1 source(s))
+        Fetch: direct | 37,857 chars | confidence: HIGH
+        -> LinkedIn (90 words)
+        -> Gathering background research...
+        -> Website article (109 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-19.
+  Running 32 news searches...
+  Found 15 unique stories in the last 48h.
+  Translating French content...
+  Wire: 4 new, 49 total (6 skipped as seen today).
+  Saved 15 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] Eid al-Adha 2026: French Council of Muslim Worship sets... (7 source(s))
+        Fetch: direct | 38,734 chars | confidence: HIGH
+        -> LinkedIn (124 words)
+        -> Gathering background research...
+        -> Website article (727 words)
+  [2/2] [HOT] The attack on a San Diego mosque kills three people... (3 source(s))
+        Fetch: direct | 40,069 chars | confidence: HIGH
+        -> LinkedIn (68 words)
+        -> Gathering background research...
+        -> Website article (151 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-20.
+  Running 32 news searches...
+  Found 0 unique stories in the last 48h.
+  No stories found. Try increasing HOURS_BACK in iwf_aggregator.py.
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-21.
+  Running 32 news searches...
+  Found 11 unique stories in the last 48h.
+  Translating French content...
+  Wire: 3 new, 42 total (6 skipped as seen today).
+  Saved 11 stories to stories_today.json.
+  Gap detector: 3 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] Parution d'Iqra n°111 : 'Nos temps sacrés, notre temps ... (1 source(s))
+        Fetch: direct | 39,326 chars | confidence: HIGH
+  [WARNING] Claude API failed for 'Parution d'Iqra n°111 : 'Nos temps sacrés, notre t': Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': 'req_011CbH28cSaFhvrsJ2SsapvG'}
+        -> LinkedIn skipped (API error)
+        -> Gathering background research...
+  [WARNING] Website draft failed for 'Parution d'Iqra n°111 : 'Nos temps sacrés, notre t': Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}, 'request_id': 'req_011CbH29PR2SYnaQAcJzEw8a'}
+        -> Website article skipped (API error)
+  [2/2] [TRENDING] United States: FBI mentions radicalization following at... (1 source(s))
+        Fetch: direct | 40,191 chars | confidence: HIGH
+        -> LinkedIn (106 words)
+        -> Gathering background research...
+        -> Website article (114 words)
+  Saved 2 post(s) to queue.json.
+  Appended 2 post(s) to archive.json.
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+Address already in use
+Port 5000 is in use by another program. Either identify and stop that program, or start the server with a different port.
+On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
