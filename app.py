@@ -177,6 +177,17 @@ TEMPLATE = r"""<!DOCTYPE html>
       max-width: 740px; margin: 10px auto 0; padding: 0 16px;
       font-size: 12px; color: #999; letter-spacing: 0.01em;
     }
+    #push-fail-banner {
+      display: none; position: sticky; top: 48px; z-index: 90;
+      background: #c0392b; color: #fff; font-size: 13px; font-weight: 600;
+      padding: 10px 16px; text-align: center; cursor: pointer;
+    }
+    #push-fail-banner span { font-weight: 400; margin-left: 8px; opacity: 0.85; }
+    #push-fail-banner button {
+      margin-left: 16px; padding: 2px 10px; font-size: 12px; font-weight: 700;
+      background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.5);
+      color: #fff; border-radius: 4px; cursor: pointer;
+    }
 
     /* ── Archive ── */
     .archive-date-heading {
@@ -373,6 +384,12 @@ TEMPLATE = r"""<!DOCTYPE html>
   <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Sources</button>
 </nav>
 
+<div id="push-fail-banner" onclick="dismissPushFail()">
+  ⚠ Git push failed — article saved locally but not live.
+  <span id="push-fail-title"></span>
+  <button onclick="event.stopPropagation();runGitPush()">Retry push</button>
+  <button onclick="event.stopPropagation();dismissPushFail()">✕</button>
+</div>
 <div id="heat-bar"></div>
 <main id="main"></main>
 <div id="toast"></div>
@@ -503,8 +520,13 @@ TEMPLATE = r"""<!DOCTYPE html>
           post.published     = true;
           post.published_url = data.url;
           post.published_at  = new Date().toISOString();
+          post.push_failed   = !!data.push_failed;
           render();
-          showToast('Published to islamophobiawatchfrance.com');
+          if (data.push_failed) {
+            showPushFailBanner(post.title);
+          } else {
+            showToast('Published to islamophobiawatchfrance.com');
+          }
         } else {
           showToast('Approved — publish error: ' + (data.error || 'unknown'));
         }
@@ -608,6 +630,34 @@ TEMPLATE = r"""<!DOCTYPE html>
     } catch (e) {
       showToast('Push failed (network error)');
       if (btn) { btn.disabled = false; btn.textContent = 'Retry push'; }
+    }
+  }
+
+  function showPushFailBanner(title) {
+    const banner = document.getElementById('push-fail-banner');
+    document.getElementById('push-fail-title').textContent = title ? '— ' + title : '';
+    banner.style.display = 'block';
+  }
+
+  function dismissPushFail() {
+    document.getElementById('push-fail-banner').style.display = 'none';
+  }
+
+  async function runGitPush() {
+    const banner = document.getElementById('push-fail-banner');
+    banner.textContent = '↻ Retrying git push…';
+    try {
+      const res  = await fetch('/api/retry_push', { method: 'POST',
+        headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({}) });
+      const data = await res.json();
+      if (data.ok) {
+        banner.style.display = 'none';
+        showToast('Push succeeded — article is live');
+      } else {
+        banner.innerHTML = '⚠ Push failed again. <button onclick="dismissPushFail()" style="margin-left:8px;padding:2px 8px;background:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.5);color:#fff;border-radius:4px;cursor:pointer">Dismiss</button>';
+      }
+    } catch {
+      banner.innerHTML = '⚠ Network error. <button onclick="dismissPushFail()" style="margin-left:8px;padding:2px 8px;background:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.5);color:#fff;border-radius:4px;cursor:pointer">Dismiss</button>';
     }
   }
 
@@ -1198,9 +1248,13 @@ TEMPLATE = r"""<!DOCTYPE html>
       });
       const data = await res.json();
       if (data.ok) {
-        showToast('Published! ' + (data.url || ''));
         document.getElementById('main').innerHTML =
           `<div class="empty"><h2>Article published</h2><p><a href="${esc(data.url)}" target="_blank" rel="noopener">${esc(data.url)}</a></p><button class="btn btn-write-draft" onclick="renderWriteTab()" style="margin-top:12px">Write another</button></div>`;
+        if (data.warning) {
+          showPushFailBanner(d.headline);
+        } else {
+          showToast('Published to islamophobiawatchfrance.com');
+        }
       } else {
         showToast('Error: ' + (data.error || 'unknown'));
         btn.disabled = false; btn.textContent = 'Publish directly';

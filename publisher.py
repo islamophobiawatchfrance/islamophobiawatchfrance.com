@@ -793,31 +793,51 @@ def git_publish(article_path: str, commit_message: str, repo_path: str = ".") ->
     Returns True on success. On push failure, prints the error
     and returns False — files are already saved locally.
     """
+    import time as _time
+
+    # Always resolve to an absolute path so git works regardless of the
+    # calling process's working directory (e.g. Flask started from /tmp).
+    abs_repo = os.path.abspath(repo_path)
+
     def _run(cmd: list):
-        r = subprocess.run(cmd, capture_output=True, text=True, cwd=repo_path)
+        r = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            cwd=abs_repo,
+            env=os.environ.copy(),   # inherit credentials / SSH agent / etc.
+        )
         return r.returncode, r.stdout.strip(), r.stderr.strip()
 
     files = [article_path, INDEX_FILE, NEWS_FILE, PUBLISHED_FILE, WIRE_FILE, SITEMAP_FILE]
 
-    code, _, err = _run(["git", "add"] + files)
+    code, out, err = _run(["git", "add"] + files)
     if code != 0:
-        print(f"  [git add failed] {err}")
+        print(f"  [git add failed]\n    stdout: {out}\n    stderr: {err}")
         return False
 
-    code, _, err = _run(["git", "commit", "-m", commit_message])
+    code, out, err = _run(["git", "commit", "-m", commit_message])
     if code != 0:
-        print(f"  [git commit failed] {err}")
+        # "nothing to commit" is exit 1 but is not a real failure
+        if "nothing to commit" in out or "nothing to commit" in err:
+            print("  [git commit] nothing new to commit — skipping push")
+            return True
+        print(f"  [git commit failed]\n    stdout: {out}\n    stderr: {err}")
         return False
 
-    code, _, err = _run(["git", "push"])
-    if code != 0:
-        print(f"\nWARNING: Git push failed. Article saved locally but not live.")
-        print(f"  Error: {err}")
-        print(f"  Run: git add . && git commit -m 'Manual push' && git push\n")
-        return False
+    # Push with one automatic retry
+    for attempt in range(1, 3):
+        code, out, err = _run(["git", "push"])
+        if code == 0:
+            print("  Pushed to GitHub. Live in ~60 seconds.")
+            return True
+        print(f"  [git push attempt {attempt}/2 failed]\n    stdout: {out}\n    stderr: {err}")
+        if attempt < 2:
+            _time.sleep(2)
 
-    print("  Pushed to GitHub. Live in ~60 seconds.")
-    return True
+    print(f"\nWARNING: Git push failed after 2 attempts. Article saved locally.")
+    print(f"  Run manually: cd {abs_repo} && git push\n")
+    return False
 
 
 def publish_post(post: dict, repo_path: str = ".") -> str:
