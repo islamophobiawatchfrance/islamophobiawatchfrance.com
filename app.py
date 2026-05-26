@@ -14,9 +14,14 @@ import subprocess
 from datetime import datetime, timezone
 from flask import Flask, jsonify, request, render_template_string
 
+# Anchor all file operations to the directory containing app.py, regardless
+# of the working directory from which Flask is launched.
+REPO_PATH  = os.path.dirname(os.path.abspath(__file__))
+os.chdir(REPO_PATH)
+
 app = Flask(__name__)
 
-QUEUE_FILE = "queue.json"
+QUEUE_FILE   = "queue.json"
 ARCHIVE_FILE = "archive.json"
 
 # All HTML, CSS, and JS in one string — no separate template files.
@@ -1480,7 +1485,7 @@ def publish_article():
         return jsonify({"error": "Post not found in queue"}), 404
 
     try:
-        url, push_ok = publisher.publish_post(post)
+        url, push_ok = publisher.publish_post(post, repo_path=REPO_PATH)
     except Exception as e:
         import traceback
         traceback.print_exc()
@@ -1502,21 +1507,19 @@ def publish_article():
 def retry_push():
     data = request.get_json(silent=True) or {}
     post_id = data.get("id")
-    if not post_id:
-        return jsonify({"error": "Missing id"}), 400
 
-    if not os.path.exists(QUEUE_FILE):
-        return jsonify({"error": "Queue not found"}), 404
+    # If a post id was given, mark it as no longer push-failed in queue.json
+    if post_id and os.path.exists(QUEUE_FILE):
+        with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+            queue_data = json.load(f)
+        post = next((p for p in queue_data.get("posts", []) if p.get("id") == post_id), None)
+    else:
+        post = None
 
-    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-        queue_data = json.load(f)
-
-    post = next((p for p in queue_data.get("posts", []) if p.get("id") == post_id), None)
-    if not post:
-        return jsonify({"error": "Post not found"}), 404
-
-    result = subprocess.run(["git", "push"], capture_output=True, text=True)
+    result = subprocess.run(["git", "push"], capture_output=True, text=True,
+                            cwd=REPO_PATH, env=os.environ.copy())
     if result.returncode != 0:
+        print(f"  [retry_push failed] stdout={result.stdout!r} stderr={result.stderr!r}")
         return jsonify({"ok": False, "error": result.stderr.strip()}), 500
 
     post["push_failed"] = False
@@ -1802,7 +1805,7 @@ def manual_publish():
         post = _build_manual_post(data)
         post["draft"] = post.get("website_draft", "")
 
-        url, push_ok = publisher.publish_post(post)
+        url, push_ok = publisher.publish_post(post, repo_path=REPO_PATH)
 
         if not push_ok:
             return jsonify({
