@@ -670,3 +670,16 @@ On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
 127.0.0.1 - - [26/May/2026 13:19:24] "POST /api/publish HTTP/1.1" 200 -
 127.0.0.1 - - [26/May/2026 13:23:36] "GET /api/stories HTTP/1.1" 200 -
 127.0.0.1 - - [26/May/2026 13:27:28] "POST /api/manual_publish HTTP/1.1" 200 -
+
+=======================================================
+  IWF Publishing Pipeline
+  Good morning. Let's see what's happening in France.
+=======================================================
+
+  Step 1: Fetching stories and drafting posts...
+
+  Step 2: Starting dashboard server...
+  Step 3: Opening http://localhost:5000 in your browser...
+
+  Dashboard is running. Press Ctrl+C to stop.
+
