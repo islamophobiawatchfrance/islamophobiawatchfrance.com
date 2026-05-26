@@ -599,3 +599,74 @@ On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
 
   Dashboard is running. Press Ctrl+C to stop.
 
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-05-21.
+  Running 32 news searches...
+  Found 9 unique stories in the last 48h.
+  Translating French content...
+  Wire: 2 new, 43 total (9 skipped as seen today).
+  Saved 9 stories to stories_today.json.
+  Gap detector: 1 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] Muslim Brotherhood Infiltration: The Work of the French... (1 source(s))
+        Fetch: direct | 39,395 chars | confidence: HIGH
+        -> LinkedIn (152 words)
+        -> Gathering background research...
+        -> Website article (103 words)
+  [2/2] [TRENDING] "Form of Desecration": Barbara Butch Invests Parisian C... (1 source(s))
+        Fetch: direct | 37,640 chars | confidence: HIGH
+        -> LinkedIn (73 words)
+        -> Gathering background research...
+        -> Website article (129 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+  index.html updated (10 items in feed)
+  news.html updated (15 cards in grid)
+  Wire updated (43 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [22/May/2026 18:01:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 18:01:06] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 18:01:06] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 18:01:06] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 18:01:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [22/May/2026 22:42:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 22:42:30] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 22:42:30] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [22/May/2026 22:42:31] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2026 07:01:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2026 07:01:04] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2026 07:01:04] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [23/May/2026 07:01:04] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [24/May/2026 07:01:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/May/2026 07:01:13] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [24/May/2026 07:01:13] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [24/May/2026 07:01:13] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 09:17:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 09:17:22] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 09:17:22] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 09:17:24] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 09:17:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [26/May/2026 11:52:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:18:49] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:19:15] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:19:21] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:19:21] "POST /api/archive/approve HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:19:24] "POST /api/publish HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:23:36] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [26/May/2026 13:27:28] "POST /api/manual_publish HTTP/1.1" 200 -
