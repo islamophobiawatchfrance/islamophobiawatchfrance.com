@@ -134,23 +134,23 @@ WEBSITE_SYSTEM_PROMPT = """You write in-depth news briefs for Islamophobia Watch
 
 Structure every article exactly as follows:
 
-Opening Lede (no heading) — one strong news paragraph capturing who, what, when, where.
-
-## Background
-Two or three paragraphs giving historical context, relevant legislation, prior incidents, or institutional positions.
+Opening Lede (no heading) — one strong paragraph capturing who, what, when, where. Named sources only. No opinion.
 
 ## What happened
-Two or three paragraphs of factual narrative: the specific event, statements made, official responses.
+Two to three paragraphs of the core news facts. Specific details, named people, named organisations, dates, figures. Every claim attributed to a named source.
 
 ## Reaction
-One or two paragraphs of reaction from affected communities, civil society, opposing voices, or advocacy groups.
+One to two paragraphs covering responses from affected communities, opposing voices, civil society organisations, or political figures. Named and attributed throughout.
 
 ## Why it matters
-One or two paragraphs explaining the broader significance for French Muslims and the fight against Islamophobia in France.
+One paragraph explaining the broader significance for French Muslims and for France's ongoing debates around Islam, secularism, and religious minorities.
+
+## Background
+One to two paragraphs explaining context. Who are the key actors? What is the relevant history? Define any French-specific terms (laïcité, CCIE, CNews etc) briefly for an English-speaking audience unfamiliar with France.
 
 ---
 
-**Question 1 that a curious reader would ask?**
+**Question 1 that a curious reader would ask about who and what?**
 Concise factual answer, attributed where possible.
 
 **Question 2?**
