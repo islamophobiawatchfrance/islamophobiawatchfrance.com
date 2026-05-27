@@ -9,11 +9,13 @@ Saves results to queue.json for review in the dashboard.
 Run with: python3 drafter.py
 """
 
+import gzip
 import hashlib
 import json
 import datetime
 import os
 import re
+import urllib.parse
 import urllib.request
 from dotenv import load_dotenv
 import anthropic
@@ -102,6 +104,7 @@ Voice rules:
 - Never use first person
 - Never editorialize
 - Never refuse or ask for clarification
+- If source material appears garbled, corrupted, or unreadable, still write the best post you can from the headline and any readable fragments. A short accurate post is always better than a refusal.
 - You may be given multiple sources on the same topic. Synthesise them into one coherent post. Cite the most authoritative source in the Source line. If multiple strong sources exist, list up to three separated by slashes e.g. Source: Le Monde / AFP / i24NEWS
 
 Here is a gold standard example. Match this length, structure, and level of factual detail in every post:
@@ -164,7 +167,8 @@ Article rules:
 - Every factual claim attributed to a named source or institution
 - Never editorialize or express opinion
 - No hashtags
-- End the article body (before Q&A) with: Sources: [list source names]"""
+- End the article body (before Q&A) with: Sources: [list source names]
+- If source material appears garbled, corrupted, or unreadable, still write the best article you can from the headline and any readable fragments. Never refuse to write. A short accurate article is always better than a refusal."""
 
 WEBSITE_USER_TEMPLATE = (
     "Research bundle ({count} source(s) on the same topic):\n\n"
@@ -360,6 +364,15 @@ def gather_deep_research(cluster) -> str:
     return "\n\n".join(parts[:6])
 
 
+_REFUSAL_PHRASES = (
+    "I need more", "I can't", "Could you provide",
+    "I would need", "I appreciate the task",
+    "cannot write", "unable to publish", "unreadable",
+    "corrupted", "garbled", "cannot produce",
+    "I cannot", "I am unable", "not possible to write",
+)
+
+
 def draft_website_article(client, cluster, bundle: str, deep_research: str) -> str | None:
     """Calls Claude to write a long-form website article for a cluster. Returns text or None."""
     combined = bundle
@@ -375,7 +388,21 @@ def draft_website_article(client, cluster, bundle: str, deep_research: str) -> s
             system=WEBSITE_SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_msg}],
         )
-        return response.content[0].text.strip()
+        text = response.content[0].text.strip()
+        if any(phrase in text for phrase in _REFUSAL_PHRASES):
+            fallback_prompt = (
+                f"Write a 400 word news article about this headline for Islamophobia Watch France. "
+                f"Use whatever information you have. Do not refuse. "
+                f"Headline: {primary['title']}. Source: {primary['source']}."
+            )
+            response = client.messages.create(
+                model=MODEL,
+                max_tokens=1200,
+                system=WEBSITE_SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": fallback_prompt}],
+            )
+            text = response.content[0].text.strip()
+        return text
     except Exception as e:
         print(f"  [WARNING] Website draft failed for '{primary['title'][:50]}': {e}")
         return None
@@ -439,7 +466,9 @@ _FETCH_HEADERS = {
     ),
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-GB,en;q=0.9,fr;q=0.8",
-    "Accept-Encoding": "gzip, deflate, br",
+    # Request uncompressed content so we never receive gzip/brotli we can't decode.
+    # Servers that ignore this will send gzip; we handle that explicitly below.
+    "Accept-Encoding": "identity",
     "Connection": "keep-alive",
 }
 
@@ -457,34 +486,93 @@ def _strip_html(raw: str) -> str:
     return "\n".join(lines)
 
 
+def _decode_response(resp) -> str:
+    """
+    Read response bytes, decompress if needed, and decode with robust
+    encoding fallback (utf-8 → latin-1 → windows-1252).
+    """
+    raw_bytes = resp.read()
+
+    # Decompress gzip even when we requested identity (some servers ignore it)
+    ce = resp.headers.get("Content-Encoding", "")
+    if "gzip" in ce:
+        try:
+            raw_bytes = gzip.decompress(raw_bytes)
+        except Exception:
+            pass
+    elif raw_bytes[:2] == b"\x1f\x8b":
+        # Magic bytes for gzip without the header saying so
+        try:
+            raw_bytes = gzip.decompress(raw_bytes)
+        except Exception:
+            pass
+
+    # Prefer the charset declared by the server
+    ct = resp.headers.get("Content-Type", "")
+    m = re.search(r"charset=([^\s;\"']+)", ct, re.I)
+    declared = m.group(1).strip().lower().replace("-", "_") if m else None
+
+    for enc in ([declared] if declared else []) + ["utf_8", "latin_1", "cp1252"]:
+        if not enc:
+            continue
+        try:
+            return raw_bytes.decode(enc)
+        except (UnicodeDecodeError, LookupError):
+            continue
+    return raw_bytes.decode("latin_1")  # latin-1 never raises
+
+
 def fetch_article_text(url: str, summary_fallback: str = "") -> dict:
     """
     Fetch and clean article text from url.
     Returns {text, char_count, source, success}.
-    Tries direct URL first; falls back to Google cache; then RSS summary.
+    Chain: direct → AMP variant (if thin) → Google cache → RSS summary.
     """
-    def _try(target_url, label):
+    def _try(target_url):
         try:
             req = urllib.request.Request(target_url, headers=_FETCH_HEADERS)
             with urllib.request.urlopen(req, timeout=8) as resp:
-                raw = resp.read().decode("utf-8", errors="replace")
+                raw = _decode_response(resp)
             text = _strip_html(raw)
             return text if len(text) >= 200 else None
         except Exception:
             return None
 
+    def _amp_url(original: str) -> str | None:
+        """Return an AMP variant URL, or None if we can't guess one."""
+        try:
+            p = urllib.parse.urlparse(original)
+            # France 24 has a dedicated AMP subdomain
+            if "france24.com" in p.netloc:
+                return original.replace("www.france24.com", "amp.france24.com")
+            # Generic fallback: append ?amp=1
+            sep = "&" if p.query else "?"
+            return original + sep + "amp=1"
+        except Exception:
+            return None
+
     # 1. Direct
-    text = _try(url, "direct")
+    text = _try(url)
     if text:
         return {"text": text, "char_count": len(text), "source": "direct", "success": True}
 
-    # 2. Google cache
-    cache_url = f"https://webcache.googleusercontent.com/search?q=cache:{urllib.parse.quote(url)}"
-    text = _try(cache_url, "cache")
+    # 2. AMP variant (for sites that block scrapers but serve lighter AMP pages)
+    amp = _amp_url(url)
+    if amp:
+        text = _try(amp)
+        if text:
+            return {"text": text, "char_count": len(text), "source": "amp", "success": True}
+
+    # 3. Google cache
+    cache_url = (
+        "https://webcache.googleusercontent.com/search?q=cache:"
+        + urllib.parse.quote(url)
+    )
+    text = _try(cache_url)
     if text:
         return {"text": text, "char_count": len(text), "source": "cache", "success": True}
 
-    # 3. RSS fallback
+    # 4. RSS fallback
     fallback = summary_fallback or ""
     return {
         "text": fallback,
@@ -533,10 +621,6 @@ def draft_post(client, cluster, bundle):
     user_message = USER_PROMPT_TEMPLATE.format(
         count=len(cluster["stories"]),
         bundle=bundle,
-    )
-    _REFUSAL_PHRASES = (
-        "I need more", "I can't", "Could you provide",
-        "I would need", "I appreciate the task",
     )
     primary = cluster["stories"][0]
     try:
