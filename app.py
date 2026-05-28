@@ -13,6 +13,7 @@ import os
 import subprocess
 from datetime import datetime, timezone
 from flask import Flask, jsonify, request, render_template_string
+from werkzeug.utils import secure_filename
 
 # Anchor all file operations to the directory containing app.py, regardless
 # of the working directory from which Flask is launched.
@@ -285,6 +286,15 @@ TEMPLATE = r"""<!DOCTYPE html>
     .rte-body hr { border: none; border-top: 1px solid #ddd; margin: 20px 0; }
     .rte-body ul { padding-left: 1.4em; margin: 8px 0; }
     .rte-body a { color: #1a73e8; }
+    .rte-body img { max-width: 100%; height: auto; border-radius: 6px; margin: 0.5rem 0; }
+    .rte-body figure { margin: 1rem 0; }
+    .rte-body figcaption { font-size: 12px; color: #888; font-style: italic; min-width: 20px; display: block; }
+    .rte-body figcaption:empty::before { content: 'Add caption…'; color: #bbb; }
+    /* Article image styles (also in css/style.css for live pages) */
+    .art-img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 6px; margin: 1rem 0 0.25rem; display: block; }
+    .art-figure { margin: 1.5rem 0; }
+    .art-caption { font-size: 12px; color: #888; font-style: italic; padding: 0.25rem 0 0; display: block; }
+    .art-caption:empty { display: none; }
     /* Write action buttons */
     .write-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
     .btn-write-preview  { background: #fff; color: #555; border: 1px solid #ccc; }
@@ -709,6 +719,31 @@ TEMPLATE = r"""<!DOCTYPE html>
     ta.focus();
   }
 
+  function cardImageUpload(id) {
+    const inp = document.getElementById('card-img-input-' + id);
+    if (inp) inp.click();
+  }
+
+  async function cardImageSelected(input, id) {
+    const file = input.files[0];
+    if (!file) return;
+    input.value = '';
+    const fd = new FormData();
+    fd.append('image', file);
+    try {
+      const res  = await fetch('/api/upload_image', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (!data.ok) { showToast('Upload failed: ' + (data.error || 'unknown')); return; }
+      const ta = document.getElementById('draft-edit-' + id);
+      if (!ta) return;
+      const pos = ta.selectionStart;
+      const insert = '\n' + data.html + '\n';
+      ta.setRangeText(insert, pos, pos, 'end');
+      ta.focus();
+      showToast('Image uploaded');
+    } catch { showToast('Network error uploading image'); }
+  }
+
   async function saveDraft(id) {
     const post = getPost(id);
     if (!post) return;
@@ -919,6 +954,8 @@ TEMPLATE = r"""<!DOCTYPE html>
           <button class="rte-btn" onclick="insertMarkdown('${id}','**','**')"><b>B</b></button>
           <button class="rte-btn" onclick="insertMarkdown('${id}','*','*')"><i>I</i></button>
           <button class="rte-btn" onclick="insertMarkdown('${id}','> ','')">Quote</button>
+          <button class="rte-btn" onclick="cardImageUpload('${id}')">🖼 Image</button>
+          <input type="file" id="card-img-input-${id}" accept="image/jpeg,image/jpg,image/png,image/gif,image/webp" style="display:none" onchange="cardImageSelected(this,'${id}')">
         </div>` : ''}
         <textarea class="draft-edit" id="draft-edit-${id}">${esc(post.draft)}</textarea>
         <div class="actions">
@@ -1044,7 +1081,9 @@ TEMPLATE = r"""<!DOCTYPE html>
               <button class="rte-tbtn" onclick="rteCmd('link')">Link</button>
               <button class="rte-tbtn" onclick="rteCmd('list')">• List</button>
               <button class="rte-tbtn" onclick="rteCmd('divider')">― Divider</button>
+              <button class="rte-tbtn" onclick="rteImage()">🖼 Image</button>
             </div>
+            <input type="file" id="rte-img-input" accept="image/jpeg,image/jpg,image/png,image/gif,image/webp" style="display:none" onchange="rteImageSelected(this)">
             <div class="rte-body" id="rte-body" contenteditable="true" spellcheck="true"></div>
           </div>
         </div>
@@ -1118,6 +1157,42 @@ TEMPLATE = r"""<!DOCTYPE html>
     } else {
       document.execCommand('formatBlock', false, tag);
     }
+  }
+
+  // ── Image upload (Write Article tab) ─────────────────────
+
+  function rteImage() {
+    const inp = document.getElementById('rte-img-input');
+    if (inp) inp.click();
+  }
+
+  async function rteImageSelected(input) {
+    const file = input.files[0];
+    if (!file) return;
+    input.value = '';
+    const fd = new FormData();
+    fd.append('image', file);
+    try {
+      const res  = await fetch('/api/upload_image', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (!data.ok) { showToast('Upload failed: ' + (data.error || 'unknown')); return; }
+      const body = document.getElementById('rte-body');
+      if (!body) return;
+      body.focus();
+      document.execCommand('insertHTML', false, data.html + '<p><br></p>');
+      // Place cursor inside the new figcaption
+      const caps = body.querySelectorAll('figcaption');
+      const cap  = caps[caps.length - 1];
+      if (cap) {
+        const range = document.createRange();
+        range.selectNodeContents(cap);
+        range.collapse(false);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      showToast('Image uploaded');
+    } catch { showToast('Network error uploading image'); }
   }
 
   // ── Paste sanitizer for the Write Article editor ──────────
@@ -1818,6 +1893,34 @@ def manual_publish():
     except Exception as e:
         _tb.print_exc()
         return jsonify({"error": str(e)}), 500
+
+
+@app.route("/api/upload_image", methods=["POST"])
+def upload_image():
+    ALLOWED = {"jpg", "jpeg", "png", "gif", "webp"}
+    if "image" not in request.files:
+        return jsonify({"error": "No image field in request"}), 400
+    f = request.files["image"]
+    if not f or not f.filename:
+        return jsonify({"error": "No file selected"}), 400
+    ext = f.filename.rsplit(".", 1)[-1].lower() if "." in f.filename else ""
+    if ext not in ALLOWED:
+        return jsonify({"error": f"File type .{ext} not allowed"}), 400
+    safe_name = secure_filename(f.filename)
+    timestamp  = datetime.now().strftime("%Y%m%d")
+    filename   = f"{timestamp}-{safe_name}"
+    img_dir    = os.path.join(REPO_PATH, "img")
+    os.makedirs(img_dir, exist_ok=True)
+    dest = os.path.join(img_dir, filename)
+    f.save(dest)
+    url  = f"img/{filename}"
+    html = (
+        f'<figure class="art-figure">'
+        f'<img src="{url}" alt="" class="art-img">'
+        f'<figcaption class="art-caption" contenteditable="true"></figcaption>'
+        f'</figure>'
+    )
+    return jsonify({"ok": True, "url": url, "html": html})
 
 
 # =============================================================

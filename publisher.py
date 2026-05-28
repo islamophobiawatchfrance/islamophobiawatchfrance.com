@@ -809,9 +809,7 @@ def git_publish(article_path: str, commit_message: str, repo_path: str = ".") ->
         )
         return r.returncode, r.stdout.strip(), r.stderr.strip()
 
-    files = [article_path, INDEX_FILE, NEWS_FILE, PUBLISHED_FILE, WIRE_FILE, SITEMAP_FILE]
-
-    code, out, err = _run(["git", "add"] + files)
+    code, out, err = _run(["git", "add", "-A"])
     if code != 0:
         print(f"  [git add failed]\n    stdout: {out}\n    stderr: {err}")
         return False
