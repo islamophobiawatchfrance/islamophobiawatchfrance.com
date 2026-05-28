@@ -12,7 +12,7 @@ import json
 import os
 import subprocess
 from datetime import datetime, timezone
-from flask import Flask, jsonify, request, render_template_string
+from flask import Flask, jsonify, request, render_template_string, send_from_directory
 from werkzeug.utils import secure_filename
 
 # Anchor all file operations to the directory containing app.py, regardless
@@ -1161,7 +1161,24 @@ TEMPLATE = r"""<!DOCTYPE html>
 
   // ── Image upload (Write Article tab) ─────────────────────
 
+  let _rteImgRange = null;  // selection saved before file dialog steals focus
+
   function rteImage() {
+    // Save the current cursor position before the file dialog opens and
+    // blurs the editor — execCommand needs an active selection to insert at.
+    const body = document.getElementById('rte-body');
+    if (body) {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0 && body.contains(sel.getRangeAt(0).commonAncestorContainer)) {
+        _rteImgRange = sel.getRangeAt(0).cloneRange();
+      } else {
+        // No cursor in editor — default to end of content
+        const r = document.createRange();
+        r.selectNodeContents(body);
+        r.collapse(false);
+        _rteImgRange = r;
+      }
+    }
     const inp = document.getElementById('rte-img-input');
     if (inp) inp.click();
   }
@@ -1178,9 +1195,16 @@ TEMPLATE = r"""<!DOCTYPE html>
       if (!data.ok) { showToast('Upload failed: ' + (data.error || 'unknown')); return; }
       const body = document.getElementById('rte-body');
       if (!body) return;
+      // Restore saved selection so execCommand inserts at the right position
       body.focus();
+      if (_rteImgRange) {
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(_rteImgRange);
+        _rteImgRange = null;
+      }
       document.execCommand('insertHTML', false, data.html + '<p><br></p>');
-      // Place cursor inside the new figcaption
+      // Place cursor inside the new figcaption so user can type a caption
       const caps = body.querySelectorAll('figcaption');
       const cap  = caps[caps.length - 1];
       if (cap) {
@@ -1913,14 +1937,19 @@ def upload_image():
     os.makedirs(img_dir, exist_ok=True)
     dest = os.path.join(img_dir, filename)
     f.save(dest)
-    url  = f"img/{filename}"
+    url  = f"/img/{filename}"
     html = (
         f'<figure class="art-figure">'
         f'<img src="{url}" alt="" class="art-img">'
-        f'<figcaption class="art-caption" contenteditable="true"></figcaption>'
+        f'<figcaption class="art-caption"></figcaption>'
         f'</figure>'
     )
     return jsonify({"ok": True, "url": url, "html": html})
+
+
+@app.route("/img/<path:filename>")
+def serve_image(filename):
+    return send_from_directory(os.path.join(REPO_PATH, "img"), filename)
 
 
 # =============================================================
