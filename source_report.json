@@ -1,203 +1,233 @@
 {
-  "total": 495,
+  "total": 553,
   "sources": [
     {
       "name": "Actu.fr",
       "count": 52,
-      "pct": 10.5
+      "pct": 9.4
     },
     {
       "name": "France 24",
-      "count": 44,
-      "pct": 8.9
+      "count": 52,
+      "pct": 9.4
     },
     {
       "name": "Grande Mosquée de Paris",
-      "count": 39,
-      "pct": 7.9
+      "count": 51,
+      "pct": 9.2
     },
     {
       "name": "tsa-algerie.com",
       "count": 35,
-      "pct": 7.1
+      "pct": 6.3
     },
     {
       "name": "Le Figaro",
       "count": 30,
-      "pct": 6.1
+      "pct": 5.4
     },
     {
       "name": "Ouest-France",
-      "count": 22,
-      "pct": 4.4
+      "count": 28,
+      "pct": 5.1
+    },
+    {
+      "name": "Le Parisien",
+      "count": 25,
+      "pct": 4.5
     },
     {
       "name": "MSN",
       "count": 21,
-      "pct": 4.2
+      "pct": 3.8
     },
     {
       "name": "Planet.fr",
       "count": 18,
-      "pct": 3.6
+      "pct": 3.3
     },
     {
       "name": "Valeurs actuelles",
       "count": 17,
-      "pct": 3.4
+      "pct": 3.1
     },
     {
       "name": "reinformation.tv",
       "count": 16,
-      "pct": 3.2
-    },
-    {
-      "name": "Le Parisien",
-      "count": 15,
-      "pct": 3.0
+      "pct": 2.9
     },
     {
       "name": "europe1.fr",
       "count": 13,
-      "pct": 2.6
+      "pct": 2.4
     },
     {
       "name": "L'Union",
       "count": 13,
-      "pct": 2.6
+      "pct": 2.4
     },
     {
       "name": "lejdd.fr",
       "count": 13,
-      "pct": 2.6
+      "pct": 2.4
     },
     {
       "name": "Breizh-info.com",
       "count": 12,
-      "pct": 2.4
+      "pct": 2.2
     },
     {
       "name": "Bladi.net",
       "count": 11,
-      "pct": 2.2
+      "pct": 2.0
+    },
+    {
+      "name": "Sortir à Paris",
+      "count": 10,
+      "pct": 1.8
     },
     {
       "name": "Visas & Voyages Algérie",
       "count": 9,
-      "pct": 1.8
+      "pct": 1.6
     },
     {
       "name": "Beur FM",
       "count": 8,
-      "pct": 1.6
-    },
-    {
-      "name": "Sortir à Paris",
-      "count": 8,
-      "pct": 1.6
+      "pct": 1.4
     },
     {
       "name": "Anadolu Ajansı",
       "count": 6,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "Atlantico",
       "count": 6,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "Libération",
       "count": 6,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "franceinfo",
       "count": 6,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "thecanary.co",
       "count": 6,
-      "pct": 1.2
+      "pct": 1.1
+    },
+    {
+      "name": "France 3 Régions",
+      "count": 6,
+      "pct": 1.1
     },
     {
       "name": "ABNA English",
       "count": 5,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "ShiaWaves",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "EL PAÍS English",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "Georgetown University",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "Mediapart",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "Muslim Network TV",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "L'Algérie Aujourd'hui",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "The Guardian",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "Algerie360",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "Le HuffPost",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "CNews",
       "count": 4,
-      "pct": 0.8
-    },
-    {
-      "name": "France 3 Régions",
-      "count": 4,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "Programme TV Ouest-France",
       "count": 4,
-      "pct": 0.8
+      "pct": 0.7
+    },
+    {
+      "name": "خبرگزاری بین المللی قرآن",
+      "count": 4,
+      "pct": 0.7
+    },
+    {
+      "name": "Le Devoir",
+      "count": 4,
+      "pct": 0.7
+    },
+    {
+      "name": "Radio France",
+      "count": 4,
+      "pct": 0.7
     },
     {
       "name": "5Pillars",
       "count": 3,
-      "pct": 0.6
+      "pct": 0.5
     },
     {
       "name": "Yeni Şafak",
       "count": 3,
-      "pct": 0.6
+      "pct": 0.5
     },
     {
       "name": "Contre Attaque",
+      "count": 2,
+      "pct": 0.4
+    },
+    {
+      "name": "beaufortcountynow.com",
+      "count": 2,
+      "pct": 0.4
+    },
+    {
+      "name": "E&E News by POLITICO",
+      "count": 2,
+      "pct": 0.4
+    },
+    {
+      "name": "Houston Chronicle",
       "count": 2,
       "pct": 0.4
     },
