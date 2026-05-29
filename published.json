@@ -2,6 +2,43 @@
   "posts": [],
   "articles": [
     {
+      "title": "A sheep delivered, a clear conscience: Eid in France in the age of uberization",
+      "date": "28 May 2026",
+      "filename": "news/2026-05-28-sheep-delivered-clear-conscience-eid-france-age-uberization.html",
+      "slug": "sheep-delivered-clear-conscience-eid-france-age-uberization",
+      "sources": [
+        {
+          "name": "Causeur",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZFd4cWNoRjBudmk2VjYxYUtQZS1ZUW5mdGQwSkwzRE9WVTl3cVJMQmVxRFhlUFF4ZC1STmxUN3N1ZDZCbm92RlpNTjFLWlh0X0hmQ29XVTJEY0lsaDhHUEtPMVUyOHJCdF9najdGVXY5bTMySnFPeEh0YzZhLWlLczlGaVpGWndPeGhtOGxJZ3NsODV2dTdSQ2w4REVqN29LZmRwSHRscWtHWDdOdklrSWVMNDVGaTZqNVRXTGIxUEZwUQ?oc=5"
+        },
+        {
+          "name": "France 3 Régions",
+          "url": "https://news.google.com/rss/articles/CBMixAJBVV95cUxPX1AwQ09fX01xUzZVY0xCZW9GWENhMDdobVp0MFJacEhEZGJaYTVVbVlOaDNMNWtLeVZTWllmeW5wZUdybXNyUWZQOXFad0R2Zk9QbGRzanRlT05SNWExMG96dzk3QUV2MWNUa1JLSVl6Yk9ueURnQ1RiRWtPMVplM0FJZDFlYTQ5bHl1T0ZOVVUyc0QzYTc2aEtsby01ZzBJblpCY1RnTUJMNE9xZjMzM1ZaUFpReDVBVzRBeTZ0SklmSTBCekRXWURDYnR6ai1uT1BCSU9iS2puM3FDLTRYZ1lUVjdfV2RPZ0ptQXJxWGtCTk9oejIzd2YtOVRjMG1CcGNrOWVkZVZ3SHlycWF1YXZRWjFwUHg3elhHVGU4M1gzZXg3b1RSRkR4anJybUlOcGZqRDN3OFFOdkEwbjI4cVZ1Zk0?oc=5"
+        },
+        {
+          "name": "Grande Mosquée de Paris",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdjZDbkZ2aEhWelFnOGRBMnFhVHlnYXpMemFuS21WWnB4Q0hSMDFhYVB0WlBwcHBuVUVsSVBkUnVFcEMzX2hLcWJ2Rjk1ZnBiOFhRRlFpTnhwOW9qWHZMSElhR253X1pSWDdvZkUtN3U5ZHBiU2tNdFpwTXJ2X0RLcXRHd2U3STBXTmk5Q0o0UW5XV2JrTVdsVFY5cUVTNHJ3bmlWV3hMSzRHbzVL?oc=5"
+        },
+        {
+          "name": "Radio France",
+          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPdnNmQzhxZ3YzUC1NOVhPeWxXcS1VWWJOTHpBM1I0MkNHeklIdHl1Z1RFay1hTmdxM0I4WmpPdV9vcVlreEhKYWlJbEk3eE9GeHdBSS1PdWZaRW0wMWNlNHJRMi1CVzlSZWd1MW5MdW5abUNNYVhHZzQ1UXdTNGdaS3ZPVTlYVHluWm1jNnRxeERzZTZHb2hKX1JlMmpkYXhIVTNXUGxmUE1kYU1RUndhSGpCUkYtaENWbUZyX2RQdHFKYXM2dWpZMmZIbmZMeEhCUGUtNG5KeVFtT3pyaVE1WFRTRm54Z1Njb0pkSkNNMng3YTk5TElYQTExakY1WkFyMHhadWpGd181WTZjaklGSXc5MHhnMm8?oc=5"
+        },
+        {
+          "name": "Radio France",
+          "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNV1N1ejR2TFRmS0lPeDU2eTFMS2RLbmtIY0hDektaX2ZEQXFkZUVSUDdGVHcyNHVBU1dmTHBoS3VmeXFRTkRaOXc2RkxVcDBCNjExaUxTUEdJVjBtMEFiZWdQdVc3UHlTRnQ2QkZuSzNHa1AtMUQ1QUM3VTduN1VrdnJCS2k1VzRxelg0bWd2Y2NKWTFxVnRxbi1NbnRPcTJZM21hNlpUckVyelBnUmlDVlFOaFd4OWt1b0NjdUtYN2tyS0NaWjFvU3ltNGZRbUpWMXo2bHVnRVBNblUwemxYNTFwNTFnSkZOY0JVUEhKN2djYXFVQjI3RkRpNjZ1dTJLVnlQVDFGOXpqbmo3bnFTc2ZB?oc=5"
+        },
+        {
+          "name": "Sortir à Paris",
+          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOUTRRMXRuMWJ6Qk9FVjY3WDlzRGdjNGNTVDNYRFBPYU9XdDFIY3VYdHlZaDBQcEt2empxWmppTjBJVnhqdE5aRHBkNnRhQ1hpZ04wXzBJenJCTUUzMnphYjA4ZDhYeklxcjlIb254YkdHakYtYXhqYkYxck9MeVNONmRXVlliYVZQbHR2TXZLbE9IUGVJeklydzJBSXJsNG9nNHFibmNXcWozTlY5R2lrVUJOQzRnSVdXMkZQaXA0eUtpWjl3eHJNMWNoWUNCTjNzQ3N1Tk9fRWROMmw5?oc=5"
+        }
+      ],
+      "heat_label": "HOT",
+      "heat_score": 13,
+      "category": "Muslim Life",
+      "draft": "# A sheep delivered, a clear conscience: Eid in France in the age of uberization\n\nFrance's Muslim communities are increasingly turning to online platforms and delivery services to obtain sacrificial animals for Eid al-Adha, a shift that reflects broader changes in how religious practice adapts to urban life and digital commerce, according to reporting in Causeur.\n\n## What happened\n\nThe traditional practice of purchasing and keeping livestock for the Eid al-Adha sacrifice—one of Islam's two major holidays—has become logistically challenging in metropolitan France, where most Muslims live in cities with limited space for animals. In response, digital platforms and specialized services have emerged to bridge this gap, allowing French Muslims to arrange animal purchases and slaughter remotely, with the meat processed and sometimes delivered to their homes.\n\nThe development represents what Causeur describes as the \"uberization\" of religious observance, applying the model of on-demand service platforms to the ritual requirements of Islamic practice. Rather than purchasing sheep or goats weeks in advance and managing their care until Eid, participants can now use intermediary services to handle logistics entirely. Some platforms coordinate with halal butchers and slaughterhouses to ensure compliance with Islamic dietary law, while delivery services manage the final mile to households across French cities.\n\nThis evolution has enabled broader participation in the holiday among French Muslims who lack rural connections or the means to maintain animals until the festival date. It has also created new commercial opportunities, with entrepreneurs recognizing demand for services that blend religious obligation with urban convenience.\n\n## Reaction\n\nThe trend has generated discussion within French Muslim communities about the balance between religious authenticity and practical necessity. While some Muslims have embraced digital solutions as enabling fuller observance in secular urban contexts, others have expressed concern about the spiritual dimensions of the practice being reduced to transactional exchange.\n\nReligious scholars and community leaders have offered varying perspectives on whether such arrangements satisfy the theological requirements of the sacrifice (qurbani), though many acknowledge the legitimacy of delegating slaughter to qualified professionals under Islamic law.\n\n## Why it matters\n\nThe phenomenon illuminates broader tensions in contemporary France around religious minorities navigating secular republicanism and urban modernity. It demonstrates how Muslim communities are innovating to maintain religious practice within the constraints of French urban life, while also raising questions about cultural continuity and the commercialization of faith practice. The trend reflects wider patterns of digital service adoption across French society, but carries particular significance given ongoing debates about Islam's place in French public life and the integration of Muslim communities.\n\n## Background\n\nEid al-Adha is celebrated by Muslims worldwide to commemorate Abraham's willingness to sacrifice his son in obedience to God; Islamic tradition permits animal sacrifice and distribution of the meat to family, friends, and the poor. In France, where approximately 5 to 6 million Muslims constitute the country's second-largest religious community, observing such practices within secular urban environments requires creative adaptation.\n\n**Why are digital services emerging for this religious practice?**\nUrban Muslims in France lack space and rural connections to maintain livestock, making traditional approaches impractical in cities.\n\n**Does Islamic law permit remote sacrifice arrangements?**\nMany Islamic scholars recognize delegation to qualified professionals as permissible under traditional jurisprudence, though scholarly opinions vary.\n\n**How widespread is this practice?**\nCauseur reporting indicates growing adoption, though exact figures remain unavailable.\n\n**What does \"uberization\" mean in this context?**\nIt refers to applying on-demand platform business models to religious service provision.\n\nSources: Causeur",
+      "published_at": "2026-05-29T13:45:18.727595+00:00"
+    },
+    {
       "title": "Far-right's Bardella on course for presidency: poll",
       "date": "28 May 2026",
       "filename": "news/2026-05-28-far-rights-bardella-course-presidency-poll.html",

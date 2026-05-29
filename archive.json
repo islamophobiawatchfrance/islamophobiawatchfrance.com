@@ -7141,7 +7141,8 @@
       "content_chars": 2448,
       "fetch_source": "cache",
       "date": "2026-05-29",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-05-29T13:44:54.545Z"
     },
     {
       "id": "post_1_website_20260529",
@@ -7188,7 +7189,8 @@
       "content_chars": 2448,
       "fetch_source": "cache",
       "date": "2026-05-29",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-05-29T13:45:18.540Z"
     },
     {
       "id": "post_2_linkedin_20260529",
