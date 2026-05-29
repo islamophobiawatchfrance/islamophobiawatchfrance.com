@@ -66,12 +66,17 @@ p  { color: var(--text-secondary); }
 .text-muted  { color: var(--text-muted); }
 .text-center { text-align: center; }
 
+/* ── Tricolore stripe ─────────────────────────────── */
+.tricolore-stripe { height: 3px; display: flex; width: 100%; }
+.tri-blue  { background: #002395; flex: 1; }
+.tri-white { background: #FFFFFF; flex: 1; }
+.tri-red   { background: #ED2939; flex: 1; }
+
 /* ── 5. Navigation ────────────────────────────────── */
 .site-header {
   position: sticky;
   top: 0;
-  background: var(--bg);
-  border-bottom: 2px solid var(--red);
+  background: #0a0a0a;
   z-index: 1000;
 }
 
@@ -88,24 +93,12 @@ p  { color: var(--text-secondary); }
 
 .logo {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   flex-shrink: 0;
 }
-.logo-iwf {
-  font-size: 21px;
-  font-weight: 800;
-  color: var(--text);
-  border-bottom: 2px solid var(--red);
-  padding-bottom: 1px;
-  letter-spacing: -0.5px;
-}
-.logo-full {
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
+.logo-iwf  { display: none; }
+.logo-full { display: none; }
 
 .nav-links {
   display: flex;
@@ -113,16 +106,16 @@ p  { color: var(--text-secondary); }
   gap: 28px;
 }
 .nav-links a {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+  color: #666;
   transition: color 0.15s;
   display: flex;
   align-items: center;
   gap: 5px;
 }
 .nav-links a:hover,
-.nav-links a.active { color: var(--text); }
+.nav-links a.active { color: #ED2939; }
 
 .coming-soon-tag {
   font-size: 9px;
@@ -150,7 +143,7 @@ p  { color: var(--text-secondary); }
   display: block;
   width: 22px;
   height: 2px;
-  background: var(--text);
+  background: #aaa;
   transition: transform 0.2s, opacity 0.2s;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -194,16 +187,16 @@ p  { color: var(--text-secondary); }
 /* ── 8. Badges ────────────────────────────────────── */
 .badge {
   display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border-radius: 2px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.heat-hot      { background: #fde8e8; color: #a32020; border: 1px solid #f5c0c0; }
-.heat-trending { background: #fef3e2; color: #854f0b; border: 1px solid #f5d9a0; }
-.heat-normal   { background: #f5f5f5; color: var(--text-muted); border: 1px solid var(--border); }
+.heat-hot      { background: #3a0a0a; color: #ED2939; border: 1px solid #5a1010; }
+.heat-trending { background: #2a1e00; color: #c8860a; border: 1px solid #4a3200; }
+.heat-normal   { background: #1a1a1a; color: #444;    border: 1px solid #252525; }
 .badge-category { background: #e8eeff; color: #2244bb; border: 1px solid #b8c8ff; }
 
 /* ── 9. News Cards ────────────────────────────────── */
@@ -651,23 +644,27 @@ p  { color: var(--text-secondary); }
 .footer-left p      { font-size: 13px; color: #555; line-height: 1.7; max-width: 300px; }
 
 .footer-centre ul   { display: flex; flex-direction: column; gap: 10px; }
-.footer-centre a    { font-size: 13px; color: #666; transition: color 0.15s; }
+.footer-centre a    { font-size: 13px; color: #444; transition: color 0.15s; }
 .footer-centre a:hover { color: #f0f0f0; }
 
 .footer-right       { display: flex; flex-direction: column; gap: 0; }
 .footer-social-label {
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #444;
-  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #2a2a2a;
+  font-weight: 600;
   margin-bottom: 10px;
 }
-.footer-right a     { font-size: 13px; color: #666; transition: color 0.15s; padding: 4px 0; }
+.footer-right a     { font-size: 13px; color: #444; transition: color 0.15s; padding: 4px 0; }
 .footer-right a:hover { color: #f0f0f0; }
 
-.footer-bottom { padding: 20px 0; text-align: center; }
-.footer-bottom p { font-size: 11px; color: #444; line-height: 1.6; }
+.footer-bottom {
+  padding: 20px 0;
+  text-align: center;
+  border-top: 1px solid #161616;
+}
+.footer-bottom p { font-size: 10px; color: #2a2a2a; line-height: 1.6; }
 
 /* ── 20. News Feed List (standalone) ─────────────── */
 .news-feed-list {
@@ -1048,14 +1045,14 @@ p  { color: var(--text-secondary); }
 
 .article-sidebar {
   width: 35%;
-  background: #f7f7f7;
+  background: #f9f9f7;
   position: sticky;
   top: 0;
   height: calc(100vh - 62px);
   overflow-y: auto;
   flex-shrink: 0;
   scrollbar-width: thin;
-  scrollbar-color: var(--border) #f7f7f7;
+  scrollbar-color: var(--border) #f9f9f7;
 }
 
 /* ── Article left column ──────────────────────────── */
@@ -1126,12 +1123,15 @@ p  { color: var(--text-secondary); }
 }
 
 .art-h2 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0a0a0a;
   margin: 28px 0 10px;
   line-height: 1.35;
   max-width: 640px;
+  display: inline-block;
+  border-bottom: 2px solid #ED2939;
+  padding-bottom: 4px;
 }
 
 .art-divider {
@@ -1230,11 +1230,11 @@ p  { color: var(--text-secondary); }
 .sidebar-section:last-child { border-bottom: none; }
 
 .sidebar-label {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  color: #aaa;
   margin-bottom: 10px;
 }
 
@@ -1253,8 +1253,8 @@ p  { color: var(--text-secondary); }
 }
 
 .sidebar-source-card {
-  background: var(--bg);
-  border: 0.5px solid var(--border);
+  background: #fff;
+  border: 1px solid #eee;
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 6px;
@@ -1291,7 +1291,7 @@ p  { color: var(--text-secondary); }
 .share-btn:hover { opacity: 0.85; }
 
 .share-li { background: #0077B5; color: #ffffff; }
-.share-tw { background: #000000; color: #ffffff; }
+.share-tw { background: #0a0a0a; color: #ffffff; border: 1px solid #333; }
 
 .sidebar-related-card {
   padding: 10px 0;

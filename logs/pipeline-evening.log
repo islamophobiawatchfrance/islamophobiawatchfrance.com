@@ -764,3 +764,57 @@ On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
 
   Dashboard is running. Press Ctrl+C to stop.
 
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Running 32 news searches...
+  Found 15 unique stories in the last 48h.
+  Translating French content...
+  Wire: 5 new, 58 total (12 skipped as seen today).
+  Saved 15 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] A Sheep Delivered, A Peace of Mind: Eid in France in th... (8 source(s))
+        Fetch: cache | 2,448 chars | confidence: MEDIUM
+        -> LinkedIn (153 words)
+        -> Gathering background research...
+        -> Website article (541 words)
+  [2/2] [HOT] poll: anti-immigration National Rally's Bardella leads ... (4 source(s))
+        Fetch: cache | 2,504 chars | confidence: MEDIUM
+        -> LinkedIn (158 words)
+        -> Gathering background research...
+        -> Website article (454 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+  index.html updated (10 items in feed)
+  news.html updated (18 cards in grid)
+  Wire updated (58 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [28/May/2026 18:01:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 18:01:59] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 18:01:59] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [28/May/2026 18:01:59] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 07:01:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 07:01:32] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 07:01:32] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 07:01:32] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 09:26:37] "[33mPOST /api/regenerate HTTP/1.1[0m" 404 -
+127.0.0.1 - - [29/May/2026 15:28:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 15:28:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 15:28:04] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 15:28:04] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 15:28:04] "GET /api/gaps HTTP/1.1" 200 -

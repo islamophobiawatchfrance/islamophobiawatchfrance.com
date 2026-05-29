@@ -178,8 +178,8 @@ def generate_slug(title: str, max_chars: int = 60) -> str:
 
 def generate_header_graphic(title: str, category: str, heat_label: str, date: str) -> str:
     """Return a branded inline SVG banner for every article header."""
-    badge_bg    = {"HOT": "#A32D2D", "TRENDING": "#854F0B"}.get(heat_label.upper(), "#444444")
-    badge_fg    = {"HOT": "#FFAAAA", "TRENDING": "#FFD580"}.get(heat_label.upper(), "#AAAAAA")
+    badge_bg    = {"HOT": "#3a0a0a", "TRENDING": "#2a1e00"}.get(heat_label.upper(), "#1a1a1a")
+    badge_fg    = {"HOT": "#ED2939", "TRENDING": "#c8860a"}.get(heat_label.upper(), "#444444")
 
     # Word-wrap title: max 42 chars per line, two lines max (rest truncated with ellipsis)
     words, lines, current = title.split(), [], ""
@@ -215,13 +215,13 @@ def generate_header_graphic(title: str, category: str, heat_label: str, date: st
         f'width="100%" style="display:block">'
         # Background
         f'<rect width="800" height="220" fill="#0a0a0a"/>'
-        # Top red bar
-        f'<rect x="0" y="0" width="800" height="4" fill="#ED2939"/>'
-        # Bottom blue bar
-        f'<rect x="0" y="216" width="800" height="4" fill="#002395"/>'
+        # Top blue bar
+        f'<rect x="0" y="0" width="800" height="3" fill="#002395"/>'
+        # Bottom red bar
+        f'<rect x="0" y="217" width="800" height="3" fill="#ED2939"/>'
         # IWF watermark — faint, far right
         f'<text x="580" y="180" font-family="sans-serif" font-size="120" font-weight="bold" '
-        f'fill="#1a1a1a" dominant-baseline="auto">IWF</text>'
+        f'fill="#141414" dominant-baseline="auto">IWF</text>'
         # Category label
         f'<text x="40" y="50" font-family="sans-serif" font-size="11" font-weight="normal" '
         f'fill="#ED2939" letter-spacing="0.15em">{_esc(category.upper())}</text>'
