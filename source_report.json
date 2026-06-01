@@ -1,55 +1,55 @@
 {
-  "total": 623,
+  "total": 636,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
-      "count": 58,
-      "pct": 9.3
+      "count": 62,
+      "pct": 9.7
     },
     {
       "name": "Actu.fr",
       "count": 52,
-      "pct": 8.3
+      "pct": 8.2
     },
     {
       "name": "France 24",
       "count": 52,
-      "pct": 8.3
+      "pct": 8.2
     },
     {
       "name": "tsa-algerie.com",
       "count": 35,
-      "pct": 5.6
+      "pct": 5.5
     },
     {
       "name": "Le Figaro",
       "count": 30,
-      "pct": 4.8
+      "pct": 4.7
     },
     {
       "name": "Ouest-France",
       "count": 28,
-      "pct": 4.5
+      "pct": 4.4
     },
     {
       "name": "Le Parisien",
       "count": 25,
-      "pct": 4.0
+      "pct": 3.9
     },
     {
       "name": "MSN",
       "count": 21,
-      "pct": 3.4
+      "pct": 3.3
     },
     {
       "name": "Radio France",
       "count": 18,
-      "pct": 2.9
+      "pct": 2.8
     },
     {
       "name": "Planet.fr",
       "count": 18,
-      "pct": 2.9
+      "pct": 2.8
     },
     {
       "name": "Sortir à Paris",
@@ -64,27 +64,27 @@
     {
       "name": "reinformation.tv",
       "count": 16,
-      "pct": 2.6
+      "pct": 2.5
     },
     {
       "name": "France 3 Régions",
       "count": 13,
-      "pct": 2.1
+      "pct": 2.0
     },
     {
       "name": "europe1.fr",
       "count": 13,
-      "pct": 2.1
+      "pct": 2.0
     },
     {
       "name": "L'Union",
       "count": 13,
-      "pct": 2.1
+      "pct": 2.0
     },
     {
       "name": "lejdd.fr",
       "count": 13,
-      "pct": 2.1
+      "pct": 2.0
     },
     {
       "name": "Breizh-info.com",
@@ -94,7 +94,12 @@
     {
       "name": "Bladi.net",
       "count": 11,
-      "pct": 1.8
+      "pct": 1.7
+    },
+    {
+      "name": "beaufortcountynow.com",
+      "count": 10,
+      "pct": 1.6
     },
     {
       "name": "Visas & Voyages Algérie",
@@ -112,7 +117,7 @@
       "pct": 1.3
     },
     {
-      "name": "beaufortcountynow.com",
+      "name": "Politico",
       "count": 8,
       "pct": 1.3
     },
@@ -124,37 +129,37 @@
     {
       "name": "Anadolu Ajansı",
       "count": 6,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "Atlantico",
       "count": 6,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "Libération",
       "count": 6,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "franceinfo",
       "count": 6,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "thecanary.co",
       "count": 6,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "Houston Chronicle",
       "count": 6,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
-      "name": "Politico",
-      "count": 6,
-      "pct": 1.0
+      "name": "Reporterre, le média de l'écologie",
+      "count": 5,
+      "pct": 0.8
     },
     {
       "name": "ABNA English",

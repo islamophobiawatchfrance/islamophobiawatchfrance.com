@@ -822,3 +822,17 @@ On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
 127.0.0.1 - - [29/May/2026 15:44:54] "POST /api/archive/approve HTTP/1.1" 200 -
 127.0.0.1 - - [29/May/2026 15:45:18] "POST /api/queue HTTP/1.1" 200 -
 127.0.0.1 - - [29/May/2026 15:45:18] "POST /api/archive/approve HTTP/1.1" 200 -
+127.0.0.1 - - [29/May/2026 15:45:20] "POST /api/publish HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 11:25:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 11:25:46] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 11:25:46] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [31/May/2026 11:25:47] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:01] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:01] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:02] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:21] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:23] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:14:24] "POST /api/archive/approve HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:15:59] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jun/2026 14:15:59] "POST /api/archive/approve HTTP/1.1" 200 -

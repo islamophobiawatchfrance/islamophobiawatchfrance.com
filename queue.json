@@ -1,154 +1,106 @@
 {
-  "generated": "2026-05-29T07:00:39.190576",
+  "generated": "2026-05-30T07:53:39.530330",
   "posts": [
     {
-      "content_chars": 2448,
+      "content_chars": 2340,
       "content_confidence": "medium",
-      "created": "2026-05-29T07:00:39.190576",
-      "draft": "Muslims across France celebrated Eid al-Adha this week amid mixed experiences of institutional accommodation and ongoing infrastructure gaps.\n\nOne slaughterhouse became notably significant during the festival. France 3 Régions reported on a facility that hired Muslim volunteers to ensure ritual animal sacrifice could proceed according to Islamic requirements, describing staff as \"completely overwhelmed\" by demand.\n\nThe Great Mosque of Paris hosted celebrations marking the 1447 Islamic calendar year, with photo documentation of the observance shared widely.\n\nHowever, access to prayer facilities remains unequal across the country. In Marseille, Muslim worshippers continued to face infrastructure shortages during Eid. Radio France reported that communities \"are forced to pray in stadiums,\" highlighting the ongoing absence of a grand mosque despite years of waiting for the facility to materialise.\n\nThe contrast between cities underscores broader tensions in French Muslim life: while some institutions adapt to accommodate religious practice, municipal investment in dedicated prayer spaces remains inconsistent, leaving major urban centres reliant on temporary or improvised facilities during peak observance periods.\n\nSource: Radio France / France 3 Régions\n\n#IslamophobiaWatchFrance #France #Eid",
+      "created": "2026-05-30T07:53:39.530330",
+      "draft": "WWF France is facing criticism over its approach to diversity and inclusion within the organisation.\n\nAn investigation by Reporterre highlights concerns that the environmental NGO, while championing planetary protection, has not adequately addressed representation and experiences of Black people, Muslims, and Arabs within its ranks.\n\nThe report suggests a disconnect between WWF's external messaging on universal environmental values and internal workplace practices affecting staff from these communities.\n\nThe criticism reflects broader conversations in France about institutional accountability across major organisations, from environmental bodies to other sectors, regarding how diversity commitments translate into concrete workplace action.\n\nWWF's environmental work remains significant, but the investigation underscores questions about who gets included in building solutions to global challenges.\n\nSource: Reporterre",
       "fetch_source": "cache",
-      "heat_article_count": 6,
-      "heat_label": "HOT",
-      "heat_score": 13,
-      "id": "post_1_linkedin_20260529",
-      "published": "2026-05-28T09:01:00+00:00",
-      "source": "Causeur",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_1_linkedin_20260530",
+      "published": "2026-05-29T14:41:00+00:00",
+      "source": "Reporterre, le média de l'écologie",
       "sources": [
         {
-          "name": "Causeur",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZFd4cWNoRjBudmk2VjYxYUtQZS1ZUW5mdGQwSkwzRE9WVTl3cVJMQmVxRFhlUFF4ZC1STmxUN3N1ZDZCbm92RlpNTjFLWlh0X0hmQ29XVTJEY0lsaDhHUEtPMVUyOHJCdF9najdGVXY5bTMySnFPeEh0YzZhLWlLczlGaVpGWndPeGhtOGxJZ3NsODV2dTdSQ2w4REVqN29LZmRwSHRscWtHWDdOdklrSWVMNDVGaTZqNVRXTGIxUEZwUQ?oc=5"
-        },
-        {
-          "name": "France 3 Régions",
-          "url": "https://news.google.com/rss/articles/CBMixAJBVV95cUxPX1AwQ09fX01xUzZVY0xCZW9GWENhMDdobVp0MFJacEhEZGJaYTVVbVlOaDNMNWtLeVZTWllmeW5wZUdybXNyUWZQOXFad0R2Zk9QbGRzanRlT05SNWExMG96dzk3QUV2MWNUa1JLSVl6Yk9ueURnQ1RiRWtPMVplM0FJZDFlYTQ5bHl1T0ZOVVUyc0QzYTc2aEtsby01ZzBJblpCY1RnTUJMNE9xZjMzM1ZaUFpReDVBVzRBeTZ0SklmSTBCekRXWURDYnR6ai1uT1BCSU9iS2puM3FDLTRYZ1lUVjdfV2RPZ0ptQXJxWGtCTk9oejIzd2YtOVRjMG1CcGNrOWVkZVZ3SHlycWF1YXZRWjFwUHg3elhHVGU4M1gzZXg3b1RSRkR4anJybUlOcGZqRDN3OFFOdkEwbjI4cVZ1Zk0?oc=5"
-        },
-        {
-          "name": "Grande Mosquée de Paris",
-          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdjZDbkZ2aEhWelFnOGRBMnFhVHlnYXpMemFuS21WWnB4Q0hSMDFhYVB0WlBwcHBuVUVsSVBkUnVFcEMzX2hLcWJ2Rjk1ZnBiOFhRRlFpTnhwOW9qWHZMSElhR253X1pSWDdvZkUtN3U5ZHBiU2tNdFpwTXJ2X0RLcXRHd2U3STBXTmk5Q0o0UW5XV2JrTVdsVFY5cUVTNHJ3bmlWV3hMSzRHbzVL?oc=5"
-        },
-        {
-          "name": "Radio France",
-          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPdnNmQzhxZ3YzUC1NOVhPeWxXcS1VWWJOTHpBM1I0MkNHeklIdHl1Z1RFay1hTmdxM0I4WmpPdV9vcVlreEhKYWlJbEk3eE9GeHdBSS1PdWZaRW0wMWNlNHJRMi1CVzlSZWd1MW5MdW5abUNNYVhHZzQ1UXdTNGdaS3ZPVTlYVHluWm1jNnRxeERzZTZHb2hKX1JlMmpkYXhIVTNXUGxmUE1kYU1RUndhSGpCUkYtaENWbUZyX2RQdHFKYXM2dWpZMmZIbmZMeEhCUGUtNG5KeVFtT3pyaVE1WFRTRm54Z1Njb0pkSkNNMng3YTk5TElYQTExakY1WkFyMHhadWpGd181WTZjaklGSXc5MHhnMm8?oc=5"
-        },
-        {
-          "name": "Radio France",
-          "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNV1N1ejR2TFRmS0lPeDU2eTFMS2RLbmtIY0hDektaX2ZEQXFkZUVSUDdGVHcyNHVBU1dmTHBoS3VmeXFRTkRaOXc2RkxVcDBCNjExaUxTUEdJVjBtMEFiZWdQdVc3UHlTRnQ2QkZuSzNHa1AtMUQ1QUM3VTduN1VrdnJCS2k1VzRxelg0bWd2Y2NKWTFxVnRxbi1NbnRPcTJZM21hNlpUckVyelBnUmlDVlFOaFd4OWt1b0NjdUtYN2tyS0NaWjFvU3ltNGZRbUpWMXo2bHVnRVBNblUwemxYNTFwNTFnSkZOY0JVUEhKN2djYXFVQjI3RkRpNjZ1dTJLVnlQVDFGOXpqbmo3bnFTc2ZB?oc=5"
-        },
-        {
-          "name": "Sortir à Paris",
-          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOUTRRMXRuMWJ6Qk9FVjY3WDlzRGdjNGNTVDNYRFBPYU9XdDFIY3VYdHlZaDBQcEt2empxWmppTjBJVnhqdE5aRHBkNnRhQ1hpZ04wXzBJenJCTUUzMnphYjA4ZDhYeklxcjlIb254YkdHakYtYXhqYkYxck9MeVNONmRXVlliYVZQbHR2TXZLbE9IUGVJeklydzJBSXJsNG9nNHFibmNXcWozTlY5R2lrVUJOQzRnSVdXMkZQaXA0eUtpWjl3eHJNMWNoWUNCTjNzQ3N1Tk9fRWROMmw5?oc=5"
+          "name": "Reporterre, le média de l'écologie",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
         }
       ],
       "status": "approved",
-      "summary": "A sheep delivered, a peaceful conscience: Eid in France in the age of uberization",
-      "time_ago": "19h ago",
-      "title": "A sheep delivered, a clear conscience: Eid in France in the age of uberization",
+      "summary": "\"The WWF defends the 'planet'... but not Black people, Muslims and Arabs\"   Reporterre, the ecology media",
+      "time_ago": "15h ago",
+      "title": "\"The WWF defends the 'planet'... but not Black people, Muslims, and Arabs\"",
       "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZFd4cWNoRjBudmk2VjYxYUtQZS1ZUW5mdGQwSkwzRE9WVTl3cVJMQmVxRFhlUFF4ZC1STmxUN3N1ZDZCbm92RlpNTjFLWlh0X0hmQ29XVTJEY0lsaDhHUEtPMVUyOHJCdF9najdGVXY5bTMySnFPeEh0YzZhLWlLczlGaVpGWndPeGhtOGxJZ3NsODV2dTdSQ2w4REVqN29LZmRwSHRscWtHWDdOdklrSWVMNDVGaTZqNVRXTGIxUEZwUQ?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
     },
     {
-      "content_chars": 2448,
+      "content_chars": 2340,
       "content_confidence": "medium",
-      "created": "2026-05-29T07:00:39.190576",
-      "draft": "# A sheep delivered, a clear conscience: Eid in France in the age of uberization\n\nFrance's Muslim communities are increasingly turning to online platforms and delivery services to obtain sacrificial animals for Eid al-Adha, a shift that reflects broader changes in how religious practice adapts to urban life and digital commerce, according to reporting in Causeur.\n\n## What happened\n\nThe traditional practice of purchasing and keeping livestock for the Eid al-Adha sacrifice—one of Islam's two major holidays—has become logistically challenging in metropolitan France, where most Muslims live in cities with limited space for animals. In response, digital platforms and specialized services have emerged to bridge this gap, allowing French Muslims to arrange animal purchases and slaughter remotely, with the meat processed and sometimes delivered to their homes.\n\nThe development represents what Causeur describes as the \"uberization\" of religious observance, applying the model of on-demand service platforms to the ritual requirements of Islamic practice. Rather than purchasing sheep or goats weeks in advance and managing their care until Eid, participants can now use intermediary services to handle logistics entirely. Some platforms coordinate with halal butchers and slaughterhouses to ensure compliance with Islamic dietary law, while delivery services manage the final mile to households across French cities.\n\nThis evolution has enabled broader participation in the holiday among French Muslims who lack rural connections or the means to maintain animals until the festival date. It has also created new commercial opportunities, with entrepreneurs recognizing demand for services that blend religious obligation with urban convenience.\n\n## Reaction\n\nThe trend has generated discussion within French Muslim communities about the balance between religious authenticity and practical necessity. While some Muslims have embraced digital solutions as enabling fuller observance in secular urban contexts, others have expressed concern about the spiritual dimensions of the practice being reduced to transactional exchange.\n\nReligious scholars and community leaders have offered varying perspectives on whether such arrangements satisfy the theological requirements of the sacrifice (qurbani), though many acknowledge the legitimacy of delegating slaughter to qualified professionals under Islamic law.\n\n## Why it matters\n\nThe phenomenon illuminates broader tensions in contemporary France around religious minorities navigating secular republicanism and urban modernity. It demonstrates how Muslim communities are innovating to maintain religious practice within the constraints of French urban life, while also raising questions about cultural continuity and the commercialization of faith practice. The trend reflects wider patterns of digital service adoption across French society, but carries particular significance given ongoing debates about Islam's place in French public life and the integration of Muslim communities.\n\n## Background\n\nEid al-Adha is celebrated by Muslims worldwide to commemorate Abraham's willingness to sacrifice his son in obedience to God; Islamic tradition permits animal sacrifice and distribution of the meat to family, friends, and the poor. In France, where approximately 5 to 6 million Muslims constitute the country's second-largest religious community, observing such practices within secular urban environments requires creative adaptation.\n\n**Why are digital services emerging for this religious practice?**\nUrban Muslims in France lack space and rural connections to maintain livestock, making traditional approaches impractical in cities.\n\n**Does Islamic law permit remote sacrifice arrangements?**\nMany Islamic scholars recognize delegation to qualified professionals as permissible under traditional jurisprudence, though scholarly opinions vary.\n\n**How widespread is this practice?**\nCauseur reporting indicates growing adoption, though exact figures remain unavailable.\n\n**What does \"uberization\" mean in this context?**\nIt refers to applying on-demand platform business models to religious service provision.\n\nSources: Causeur",
+      "created": "2026-05-30T07:53:39.530330",
+      "draft": "# WWF under fire for alleged racial and religious blind spots in environmental work\n\nThe World Wildlife Fund's French operations face criticism from environmental journalists for what advocates describe as a failure to address discrimination against Black people, Muslims, and Arabs within its conservation efforts, according to reporting by Reporterre, a French-language environmental media outlet.\n\n## What happened\n\nReporterre published an investigation examining the WWF's environmental protection initiatives and their relationship to racial equity and religious inclusion. The reporting suggests that while the organisation prioritises ecological preservation, it has not adequately confronted systemic discrimination or ensured equal representation and protection for communities of colour and religious minorities affected by its projects.\n\nThe investigation does not detail specific incidents or named individuals but characterises a broader pattern within the organisation's operational approach in France and internationally.\n\n## Reaction\n\nEnvironmental justice advocates and civil society organisations monitoring discrimination in the non-profit sector have drawn attention to Reporterre's findings. Critics argue that conservation organisations must integrate anti-racism and religious inclusion frameworks into their mission statements and staffing practices, not treat these concerns as secondary to ecological goals.\n\nThe WWF has not issued a detailed public response to Reporterre's specific allegations, according to available reporting on the investigation.\n\n## Why it matters\n\nThis scrutiny reflects a growing debate in French environmentalism about whether conservation efforts inadvertently reinforce structural inequalities. As France grapples with persistent discrimination against Muslim citizens and communities of African descent, questions about institutional inclusion in major non-profits carry particular weight. Environmental movements increasingly face pressure to demonstrate that climate action and biodiversity protection do not come at the expense of marginalised communities.\n\n## Background\n\nReporterre, founded in 2008, is France's primary independent digital media outlet focused on environmental investigation and ecology. The WWF operates in France as part of its global conservation network, managing projects related to biodiversity, climate change, and sustainable development.\n\nFrance's environmental sector, like many institutional spaces, has faced growing scrutiny regarding diversity and inclusion. The country's approach to discussing race and religion in institutional contexts differs from Anglo-American frameworks, complicating conversations about discrimination within organisations that do not typically collect racial or religious demographic data.\n\n---\n\n**Did WWF France respond to Reporterre's investigation?**\nNo detailed public response from WWF France to the specific allegations has been widely reported.\n\n**What specific projects did Reporterre examine?**\nThe available reporting does not detail which conservation initiatives or geographic locations were central to the investigation.\n\n**Has this sparked broader French environmental sector debate?**\nThe investigation contributes to existing conversations about diversity in French non-profits, though specific institutional reactions have not been documented.\n\n**Where can readers access Reporterre's full investigation?**\nReporterre's website publishes investigations in French and maintains an archive of environmental journalism.\n\nSources: Reporterre",
       "fetch_source": "cache",
-      "heat_article_count": 6,
-      "heat_label": "HOT",
-      "heat_score": 13,
-      "id": "post_1_website_20260529",
-      "published": "2026-05-28T09:01:00+00:00",
-      "source": "Causeur",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_1_website_20260530",
+      "published": "2026-05-29T14:41:00+00:00",
+      "source": "Reporterre, le média de l'écologie",
       "sources": [
         {
-          "name": "Causeur",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZFd4cWNoRjBudmk2VjYxYUtQZS1ZUW5mdGQwSkwzRE9WVTl3cVJMQmVxRFhlUFF4ZC1STmxUN3N1ZDZCbm92RlpNTjFLWlh0X0hmQ29XVTJEY0lsaDhHUEtPMVUyOHJCdF9najdGVXY5bTMySnFPeEh0YzZhLWlLczlGaVpGWndPeGhtOGxJZ3NsODV2dTdSQ2w4REVqN29LZmRwSHRscWtHWDdOdklrSWVMNDVGaTZqNVRXTGIxUEZwUQ?oc=5"
-        },
-        {
-          "name": "France 3 Régions",
-          "url": "https://news.google.com/rss/articles/CBMixAJBVV95cUxPX1AwQ09fX01xUzZVY0xCZW9GWENhMDdobVp0MFJacEhEZGJaYTVVbVlOaDNMNWtLeVZTWllmeW5wZUdybXNyUWZQOXFad0R2Zk9QbGRzanRlT05SNWExMG96dzk3QUV2MWNUa1JLSVl6Yk9ueURnQ1RiRWtPMVplM0FJZDFlYTQ5bHl1T0ZOVVUyc0QzYTc2aEtsby01ZzBJblpCY1RnTUJMNE9xZjMzM1ZaUFpReDVBVzRBeTZ0SklmSTBCekRXWURDYnR6ai1uT1BCSU9iS2puM3FDLTRYZ1lUVjdfV2RPZ0ptQXJxWGtCTk9oejIzd2YtOVRjMG1CcGNrOWVkZVZ3SHlycWF1YXZRWjFwUHg3elhHVGU4M1gzZXg3b1RSRkR4anJybUlOcGZqRDN3OFFOdkEwbjI4cVZ1Zk0?oc=5"
-        },
-        {
-          "name": "Grande Mosquée de Paris",
-          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOdjZDbkZ2aEhWelFnOGRBMnFhVHlnYXpMemFuS21WWnB4Q0hSMDFhYVB0WlBwcHBuVUVsSVBkUnVFcEMzX2hLcWJ2Rjk1ZnBiOFhRRlFpTnhwOW9qWHZMSElhR253X1pSWDdvZkUtN3U5ZHBiU2tNdFpwTXJ2X0RLcXRHd2U3STBXTmk5Q0o0UW5XV2JrTVdsVFY5cUVTNHJ3bmlWV3hMSzRHbzVL?oc=5"
-        },
-        {
-          "name": "Radio France",
-          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPdnNmQzhxZ3YzUC1NOVhPeWxXcS1VWWJOTHpBM1I0MkNHeklIdHl1Z1RFay1hTmdxM0I4WmpPdV9vcVlreEhKYWlJbEk3eE9GeHdBSS1PdWZaRW0wMWNlNHJRMi1CVzlSZWd1MW5MdW5abUNNYVhHZzQ1UXdTNGdaS3ZPVTlYVHluWm1jNnRxeERzZTZHb2hKX1JlMmpkYXhIVTNXUGxmUE1kYU1RUndhSGpCUkYtaENWbUZyX2RQdHFKYXM2dWpZMmZIbmZMeEhCUGUtNG5KeVFtT3pyaVE1WFRTRm54Z1Njb0pkSkNNMng3YTk5TElYQTExakY1WkFyMHhadWpGd181WTZjaklGSXc5MHhnMm8?oc=5"
-        },
-        {
-          "name": "Radio France",
-          "url": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNV1N1ejR2TFRmS0lPeDU2eTFMS2RLbmtIY0hDektaX2ZEQXFkZUVSUDdGVHcyNHVBU1dmTHBoS3VmeXFRTkRaOXc2RkxVcDBCNjExaUxTUEdJVjBtMEFiZWdQdVc3UHlTRnQ2QkZuSzNHa1AtMUQ1QUM3VTduN1VrdnJCS2k1VzRxelg0bWd2Y2NKWTFxVnRxbi1NbnRPcTJZM21hNlpUckVyelBnUmlDVlFOaFd4OWt1b0NjdUtYN2tyS0NaWjFvU3ltNGZRbUpWMXo2bHVnRVBNblUwemxYNTFwNTFnSkZOY0JVUEhKN2djYXFVQjI3RkRpNjZ1dTJLVnlQVDFGOXpqbmo3bnFTc2ZB?oc=5"
-        },
-        {
-          "name": "Sortir à Paris",
-          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOUTRRMXRuMWJ6Qk9FVjY3WDlzRGdjNGNTVDNYRFBPYU9XdDFIY3VYdHlZaDBQcEt2empxWmppTjBJVnhqdE5aRHBkNnRhQ1hpZ04wXzBJenJCTUUzMnphYjA4ZDhYeklxcjlIb254YkdHakYtYXhqYkYxck9MeVNONmRXVlliYVZQbHR2TXZLbE9IUGVJeklydzJBSXJsNG9nNHFibmNXcWozTlY5R2lrVUJOQzRnSVdXMkZQaXA0eUtpWjl3eHJNMWNoWUNCTjNzQ3N1Tk9fRWROMmw5?oc=5"
+          "name": "Reporterre, le média de l'écologie",
+          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
         }
       ],
       "status": "approved",
-      "summary": "A sheep delivered, a peaceful conscience: Eid in France in the age of uberization",
-      "time_ago": "20h ago",
-      "title": "A sheep delivered, a clear conscience: Eid in France in the age of uberization",
+      "summary": "\"The WWF defends the 'planet'... but not Black people, Muslims and Arabs\"   Reporterre, the ecology media",
+      "time_ago": "1d 18h ago",
+      "title": "\"The WWF defends the 'planet'... but not Black people, Muslims, and Arabs\"",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQZFd4cWNoRjBudmk2VjYxYUtQZS1ZUW5mdGQwSkwzRE9WVTl3cVJMQmVxRFhlUFF4ZC1STmxUN3N1ZDZCbm92RlpNTjFLWlh0X0hmQ29XVTJEY0lsaDhHUEtPMVUyOHJCdF9najdGVXY5bTMySnFPeEh0YzZhLWlLczlGaVpGWndPeGhtOGxJZ3NsODV2dTdSQ2w4REVqN29LZmRwSHRscWtHWDdOdklrSWVMNDVGaTZqNVRXTGIxUEZwUQ?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
     },
     {
-      "content_chars": 2504,
+      "content_chars": 2368,
       "content_confidence": "medium",
-      "created": "2026-05-29T07:00:39.190576",
-      "draft": "A poll shows the National Rally's Jordan Bardella leading for France's presidency, including in runoff scenarios.\n\nThe anti-immigration candidate tops voting intention surveys as France navigates ongoing political shifts. Bardella's lead reflects the far-right party's continued prominence in national electoral calculations.\n\nThe polling data underscores the National Rally's sustained influence over French political discourse and voter preferences ahead of potential presidential contests.\n\nSource: Beaufort County Now\n\n#IslamophobiaWatchFrance #France #NationalRally",
+      "created": "2026-05-30T07:53:39.530330",
+      "draft": "Grande Mosquée de Paris has published issue 112 of its magazine, featuring the theme \"Hajj & Eid: A Living Heritage.\"\n\nThe publication explores the spiritual and cultural significance of the Islamic pilgrimage and celebrations central to Muslim practice and community life.\n\nThe magazine represents the mosque's ongoing commitment to documenting and sharing aspects of Islamic heritage with French and international audiences.\n\nSource: Grande Mosquée de Paris\n\n#IslamophobiaWatchFrance #France #IslamicHeritage",
       "fetch_source": "cache",
-      "heat_article_count": 2,
-      "heat_label": "TRENDING",
-      "heat_score": 4,
-      "id": "post_2_linkedin_20260529",
-      "published": "2026-05-27T20:10:14+00:00",
-      "source": "beaufortcountynow.com",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_2_linkedin_20260530",
+      "published": "2026-05-29T13:50:08+00:00",
+      "source": "Grande Mosquée de Paris",
       "sources": [
         {
-          "name": "beaufortcountynow.com",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNdk9GTnVHUlNMYk5aQU9rdXNjZWNqeVI5UWI0OGZieC1xWUZQdHpFZzFBcWRBTkZZV0xpclh6TEgzZXQzakNfdERSVE9rV2JlYWZmbUtZazhMSmlCVlltTU5DeFVpaHZQdmxUSUhQLWxuX2F2c1hIRzItcEtQYXpSeUtNMXUyMW1ZNDZfVW9rQUxucmkxNzBmdnQtT2MwOGhmTkItOVVjVFBXM19qVll4QlNubFdENW1PSUIyNmc2QzBuTlN6dnJkcVNicVBlVTJtbDJQRGVNYw?oc=5"
-        },
-        {
-          "name": "Politico",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQbHNVdXNobWJmZnlHMEdTY3hhci1uUHh0RUVhbHZWcHBzQmZaUDQxRDFodGNudGtGWHJOcFpwR1JkcXVFbnZIWXlyMFc4dUdKZmx0aU8tdmNBSXpGTDYzVHBNc2N3dUxOeTlwX0t0RkFhSkxuTkhTZWFkaldUa29WaXdfRFF0UlBVZDJn?oc=5"
+          "name": "Grande Mosquée de Paris",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "poll: anti-immigration National Rally's Bardella leads for France president, including runoff | Eastern NC Now&nbsp;&nbsp;beaufortcountynow.com",
-      "time_ago": "1d 8h ago",
-      "title": "poll: anti-immigration National Rally's Bardella leads for France president, including runoff | Eastern NC Now",
+      "summary": "Discover from our magazine no. 112: 'Hajj & Eid: a living heritage'   Great Mosque of Paris",
+      "time_ago": "1d 19h ago",
+      "title": "Discover our magazine no. 112: 'Hajj & Eid: A Living Heritage'",
       "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNdk9GTnVHUlNMYk5aQU9rdXNjZWNqeVI5UWI0OGZieC1xWUZQdHpFZzFBcWRBTkZZV0xpclh6TEgzZXQzakNfdERSVE9rV2JlYWZmbUtZazhMSmlCVlltTU5DeFVpaHZQdmxUSUhQLWxuX2F2c1hIRzItcEtQYXpSeUtNMXUyMW1ZNDZfVW9rQUxucmkxNzBmdnQtT2MwOGhmTkItOVVjVFBXM19qVll4QlNubFdENW1PSUIyNmc2QzBuTlN6dnJkcVNicVBlVTJtbDJQRGVNYw?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
     },
     {
-      "content_chars": 2504,
+      "content_chars": 2368,
       "content_confidence": "medium",
-      "created": "2026-05-29T07:00:39.190576",
-      "draft": "# National Rally's Bardella Leads French Presidential Polling, Including in Runoff Scenarios\n\nJordan Bardella, the 28-year-old president of France's far-right National Rally party, has emerged as the frontrunner in multiple French presidential polling scenarios, according to recent survey data. The polling numbers, which include both first-round and runoff projections, reflect the anti-immigration party's sustained electoral momentum ahead of potential presidential contests.\n\n## What happened\n\nRecent polling aggregates show Bardella performing strongly across different electoral formats. In runoff scenarios—the format used in French presidential elections where candidates advance to a second round if no candidate wins a majority in the first ballot—Bardella registers leading support levels, according to reporting on French electoral surveys. The National Rally, which has campaigned heavily on immigration restriction and what it frames as cultural preservation, continues to attract substantial voter backing despite competition from centrist and left-wing candidates.\n\nBardella has led the National Rally since 2022, following Marine Le Pen's 2022 presidential campaign. The party, historically known as the National Front before its 2018 rebranding, maintains a core anti-immigration platform as a central policy pillar. The polling data suggests this messaging continues to resonate with portions of the French electorate.\n\n## Why it matters\n\nThe polling positions the far-right party as a potential kingmaker in French politics and raises questions about the future direction of French immigration policy and integration debates. A Bardella-led presidency or significant National Rally gains would likely reshape French discourse around Islam, secularism, and minority rights. The party has previously supported stricter regulations on religious expression and has been critical of what it characterizes as insufficient assimilation policies.\n\nFor French Muslim communities and civil society organisations monitoring Islamophobia, strong National Rally polling signals intensified political pressure around religious visibility, secular governance principles, and immigration enforcement that disproportionately affects North African and Muslim immigrant communities.\n\n## Background\n\nThe National Rally represents France's largest anti-immigration political force. The party operates within France's electoral framework, where presidential elections typically involve two rounds: candidates compete in an initial round, and the top two advance to a runoff. This structure can amplify the influence of parties with concentrated voter bases.\n\nFrance's political debate around Islam, immigration, and laïcité (the constitutional principle of state secularism and religious neutrality in public institutions) has intensified over the past decade. These debates often centre on questions of religious expression in public spaces, education, and national identity—issues the National Rally has positioned itself to capitalize on electorally.\n\nSources: Eastern NC Now reporting; French electoral polling data cited in coverage; National Rally party statements and public record.\n\n---\n\n**Why is Jordan Bardella significant in French politics?**\nBardella leads the National Rally, France's primary anti-immigration party, and polls consistently show him as a leading presidential contender.\n\n**What is laïcité?**\nIt is France's constitutional principle establishing state secularism and requiring religious neutrality in public institutions and governance.\n\n**How do French presidential elections work?**\nFrench presidents are elected through a two-round system where the top two candidates from the first round advance to a runoff if no candidate wins a majority initially.",
+      "created": "2026-05-30T07:53:39.530330",
+      "draft": "# Grande Mosquée de Paris releases 112th edition focused on hajj and Eid traditions\n\nThe Grande Mosquée de Paris has published the 112th issue of its magazine, featuring \"Hajj & Eid: A Living Heritage\" as the primary theme, according to an announcement from the institution. The edition explores Islamic pilgrimage practices and festival celebrations within the context of French Muslim life and cultural continuity.\n\n## What happened\n\nThe Grande Mosquée de Paris, the oldest and largest mosque in France, released magazine issue 112 with a focus on hajj—the Islamic pilgrimage to Mecca—and Eid, the major Islamic festivals marking the end of Ramadan and the conclusion of the pilgrimage season. The magazine's thematic approach frames these observances as living cultural and spiritual traditions relevant to Muslim communities in France. The publication represents the mosque's ongoing effort to document and communicate aspects of Islamic practice to both French Muslims and broader French audiences seeking understanding of Muslim religious life.\n\nThe edition's emphasis on \"living heritage\" suggests the magazine examines how hajj and Eid practices are maintained, adapted, and transmitted within contemporary French society. The Grande Mosquée de Paris, founded in 1926 and located in the 5th arrondissement, has historically served as an institutional voice for Muslim communities in France and a bridge between Islamic traditions and French civic life.\n\n## Reaction\n\nThe magazine's publication was announced directly by the Grande Mosquée de Paris, an institution that functions as both a religious centre and a cultural ambassador. The choice to dedicate an entire issue to hajj and Eid reflects the mosque's commitment to contextualizing significant Islamic observances within French public discourse at moments when these celebrations occur or approach in the calendar year.\n\n## Why it matters\n\nThe Grande Mosquée de Paris's decision to dedicate substantial editorial space to hajj and Eid observances carries significance amid ongoing French debates around laïcité—the French principle of state secularism and religious neutrality in public institutions—and the visibility of Muslim religious practices in French society. By framing these practices as \"living heritage,\" the magazine positions Islamic traditions as integral to French cultural life rather than external or incompatible with it. This approach contributes to efforts by French Muslim institutions to normalize religious observance and foster understanding among non-Muslim French citizens.\n\n## Background\n\nThe Grande Mosquée de Paris, established in 1926 with support from the French government as recognition of Muslim contributions to France, has long functioned as a cultural and religious institution serving France's Muslim population—currently estimated at between 5 and 8 million people. The mosque's magazine represents one avenue through which the institution communicates with both Muslim communities and the broader French public about Islamic practice, theology, and integration within French society.\n\nSources: Grande Mosquée de Paris\n\n---\n\n**What is hajj?**\nHajj is the Islamic pilgrimage to Mecca, Saudi Arabia, undertaken by Muslims who are physically and financially able. It is one of the Five Pillars of Islam and occurs annually during a specific Islamic calendar month.\n\n**What are Eid celebrations?**\nEid al-Fitr marks the end of Ramadan fasting, while Eid al-Adha commemorates Abraham's willingness to sacrifice his son. Both are major Islamic festivals celebrated with prayer, family gatherings, and feasting.\n\n**What is laïcité?**\nLaïcité is the French constitutional principle establishing separation between religious institutions and state affairs, ensuring state neutrality toward all religions.\n\n**How many issues has the magazine published?**\nThe 112th edition indicates the magazine has been in continuous publication for an extended period, though the exact founding date of the publication is not specified in available information.",
       "fetch_source": "cache",
-      "heat_article_count": 2,
-      "heat_label": "TRENDING",
-      "heat_score": 4,
-      "id": "post_2_website_20260529",
-      "published": "2026-05-27T20:10:14+00:00",
-      "source": "beaufortcountynow.com",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_2_website_20260530",
+      "published": "2026-05-29T13:50:08+00:00",
+      "source": "Grande Mosquée de Paris",
       "sources": [
         {
-          "name": "beaufortcountynow.com",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNdk9GTnVHUlNMYk5aQU9rdXNjZWNqeVI5UWI0OGZieC1xWUZQdHpFZzFBcWRBTkZZV0xpclh6TEgzZXQzakNfdERSVE9rV2JlYWZmbUtZazhMSmlCVlltTU5DeFVpaHZQdmxUSUhQLWxuX2F2c1hIRzItcEtQYXpSeUtNMXUyMW1ZNDZfVW9rQUxucmkxNzBmdnQtT2MwOGhmTkItOVVjVFBXM19qVll4QlNubFdENW1PSUIyNmc2QzBuTlN6dnJkcVNicVBlVTJtbDJQRGVNYw?oc=5"
-        },
-        {
-          "name": "Politico",
-          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQbHNVdXNobWJmZnlHMEdTY3hhci1uUHh0RUVhbHZWcHBzQmZaUDQxRDFodGNudGtGWHJOcFpwR1JkcXVFbnZIWXlyMFc4dUdKZmx0aU8tdmNBSXpGTDYzVHBNc2N3dUxOeTlwX0t0RkFhSkxuTkhTZWFkaldUa29WaXdfRFF0UlBVZDJn?oc=5"
+          "name": "Grande Mosquée de Paris",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "poll: anti-immigration National Rally's Bardella leads for France president, including runoff | Eastern NC Now&nbsp;&nbsp;beaufortcountynow.com",
-      "time_ago": "1d 8h ago",
-      "title": "poll: anti-immigration National Rally's Bardella leads for France president, including runoff | Eastern NC Now",
+      "summary": "Discover from our magazine no. 112: 'Hajj & Eid: a living heritage'   Great Mosque of Paris",
+      "time_ago": "1d 19h ago",
+      "title": "Discover our magazine no. 112: 'Hajj & Eid: A Living Heritage'",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNdk9GTnVHUlNMYk5aQU9rdXNjZWNqeVI5UWI0OGZieC1xWUZQdHpFZzFBcWRBTkZZV0xpclh6TEgzZXQzakNfdERSVE9rV2JlYWZmbUtZazhMSmlCVlltTU5DeFVpaHZQdmxUSUhQLWxuX2F2c1hIRzItcEtQYXpSeUtNMXUyMW1ZNDZfVW9rQUxucmkxNzBmdnQtT2MwOGhmTkItOVVjVFBXM19qVll4QlNubFdENW1PSUIyNmc2QzBuTlN6dnJkcVNicVBlVTJtbDJQRGVNYw?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
     }
   ],
-  "total_stories_scanned": 12
+  "total_stories_scanned": 8
 }

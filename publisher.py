@@ -139,6 +139,37 @@ def _excerpt(draft: str, max_chars: int = 200) -> str:
     return first[:max_chars].rstrip(" .,;") + "…"
 
 
+def clean_excerpt(text: str, max_chars: int = 200) -> str:
+    """Return plain-text preview safe for card display.
+
+    Strips HTML tags, entities, markdown syntax (headings, bold, italic,
+    blockquotes, hashtags) and URLs before truncating.
+    """
+    if not text:
+        return ""
+    # Remove full HTML tags
+    text = re.sub(r'<[^>]+>', ' ', text)
+    # Remove HTML entities
+    text = re.sub(r'&[a-zA-Z]+;', ' ', text)
+    text = re.sub(r'&#[0-9]+;', ' ', text)
+    # Remove markdown headings
+    text = re.sub(r'^#{1,6}\s+', '', text, flags=re.MULTILINE)
+    # Remove markdown bold/italic
+    text = re.sub(r'\*{1,3}([^*]+)\*{1,3}', r'\1', text)
+    # Remove blockquotes
+    text = re.sub(r'^>\s+', '', text, flags=re.MULTILINE)
+    # Remove hashtags
+    text = re.sub(r'#\w+', '', text)
+    # Remove URLs
+    text = re.sub(r'https?://\S+', '', text)
+    # Collapse whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    # Truncate at word boundary
+    if len(text) > max_chars:
+        text = text[:max_chars].rsplit(' ', 1)[0] + '...'
+    return text
+
+
 def _render_inline(text: str) -> str:
     """HTML-escape text then apply **bold** and *italic* markdown."""
     s = _esc(text)
@@ -486,7 +517,7 @@ def update_homepage(repo_path: str = ".") -> None:
         heat_lbl  = a.get("heat_label", "NORMAL")
         _srcs  = a.get("sources") or []
         source = _esc((_srcs[0].get("name", "") if _srcs else "") or a.get("source", ""))
-        expt      = _esc(_excerpt(a.get("draft", ""), 160))
+        expt      = _esc(clean_excerpt(a.get("draft", ""), 160))
         heat_html = (
             f'<span class="badge {_heat_cls(heat_lbl)}">'
             f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
@@ -568,7 +599,7 @@ def update_news_archive(repo_path: str = ".") -> None:
         sources      = a.get("sources", [])
         source_name  = _esc(sources[0].get("name", "") if sources else a.get("source", ""))
         sources_lbl  = _esc(" / ".join(s.get("name", "") for s in sources) or source_name)
-        expt         = _esc(_excerpt(a.get("draft", ""), 220))
+        expt         = _esc(clean_excerpt(a.get("draft", ""), 220))
         heat_html = (
             f'            <span class="badge {_heat_cls(heat_lbl)}">'
             f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
