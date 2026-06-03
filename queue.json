@@ -1,106 +1,130 @@
 {
-  "generated": "2026-05-30T07:53:39.530330",
+  "generated": "2026-06-03T07:00:42.542271",
   "posts": [
     {
-      "content_chars": 2340,
+      "content_chars": 2536,
       "content_confidence": "medium",
-      "created": "2026-05-30T07:53:39.530330",
-      "draft": "WWF France is facing criticism over its approach to diversity and inclusion within the organisation.\n\nAn investigation by Reporterre highlights concerns that the environmental NGO, while championing planetary protection, has not adequately addressed representation and experiences of Black people, Muslims, and Arabs within its ranks.\n\nThe report suggests a disconnect between WWF's external messaging on universal environmental values and internal workplace practices affecting staff from these communities.\n\nThe criticism reflects broader conversations in France about institutional accountability across major organisations, from environmental bodies to other sectors, regarding how diversity commitments translate into concrete workplace action.\n\nWWF's environmental work remains significant, but the investigation underscores questions about who gets included in building solutions to global challenges.\n\nSource: Reporterre",
+      "created": "2026-06-03T07:00:42.542271",
+      "draft": "France's far-right is seizing on violence following PSG's Champion's League win to argue for stricter immigration measures.\n\nViolence erupted following PSG celebrations, triggering political responses on urban security.\n\nNational Rally leader Jordan Bardella then described the scenes as \"civil war\" and used the incident to advance the party's security agenda. \n\nHe proposed halting immigration as a primary measure to restore security in France, alongside other measures including changes to family allowances.\n\nThe party framed the post-match disorder as evidence supporting its broader policy platform on urban violence and social cohesion. Bardella positioned immigration restriction as central to addressing public safety concerns.\n\nThe incidents underscore how security flashpoints continue to shape political debate around immigration and integration policy in France.\n\nSource: Le Figaro / BFM / CNews",
       "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_1_linkedin_20260530",
-      "published": "2026-05-29T14:41:00+00:00",
-      "source": "Reporterre, le média de l'écologie",
+      "heat_article_count": 4,
+      "heat_label": "HOT",
+      "heat_score": 11,
+      "id": "post_1_linkedin_20260603",
+      "published": "2026-06-01T09:01:33+00:00",
+      "source": "Le Figaro",
       "sources": [
         {
-          "name": "Reporterre, le média de l'écologie",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
-        }
-      ],
-      "status": "approved",
-      "summary": "\"The WWF defends the 'planet'... but not Black people, Muslims and Arabs\"   Reporterre, the ecology media",
-      "time_ago": "15h ago",
-      "title": "\"The WWF defends the 'planet'... but not Black people, Muslims, and Arabs\"",
-      "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
-    },
-    {
-      "content_chars": 2340,
-      "content_confidence": "medium",
-      "created": "2026-05-30T07:53:39.530330",
-      "draft": "# WWF under fire for alleged racial and religious blind spots in environmental work\n\nThe World Wildlife Fund's French operations face criticism from environmental journalists for what advocates describe as a failure to address discrimination against Black people, Muslims, and Arabs within its conservation efforts, according to reporting by Reporterre, a French-language environmental media outlet.\n\n## What happened\n\nReporterre published an investigation examining the WWF's environmental protection initiatives and their relationship to racial equity and religious inclusion. The reporting suggests that while the organisation prioritises ecological preservation, it has not adequately confronted systemic discrimination or ensured equal representation and protection for communities of colour and religious minorities affected by its projects.\n\nThe investigation does not detail specific incidents or named individuals but characterises a broader pattern within the organisation's operational approach in France and internationally.\n\n## Reaction\n\nEnvironmental justice advocates and civil society organisations monitoring discrimination in the non-profit sector have drawn attention to Reporterre's findings. Critics argue that conservation organisations must integrate anti-racism and religious inclusion frameworks into their mission statements and staffing practices, not treat these concerns as secondary to ecological goals.\n\nThe WWF has not issued a detailed public response to Reporterre's specific allegations, according to available reporting on the investigation.\n\n## Why it matters\n\nThis scrutiny reflects a growing debate in French environmentalism about whether conservation efforts inadvertently reinforce structural inequalities. As France grapples with persistent discrimination against Muslim citizens and communities of African descent, questions about institutional inclusion in major non-profits carry particular weight. Environmental movements increasingly face pressure to demonstrate that climate action and biodiversity protection do not come at the expense of marginalised communities.\n\n## Background\n\nReporterre, founded in 2008, is France's primary independent digital media outlet focused on environmental investigation and ecology. The WWF operates in France as part of its global conservation network, managing projects related to biodiversity, climate change, and sustainable development.\n\nFrance's environmental sector, like many institutional spaces, has faced growing scrutiny regarding diversity and inclusion. The country's approach to discussing race and religion in institutional contexts differs from Anglo-American frameworks, complicating conversations about discrimination within organisations that do not typically collect racial or religious demographic data.\n\n---\n\n**Did WWF France respond to Reporterre's investigation?**\nNo detailed public response from WWF France to the specific allegations has been widely reported.\n\n**What specific projects did Reporterre examine?**\nThe available reporting does not detail which conservation initiatives or geographic locations were central to the investigation.\n\n**Has this sparked broader French environmental sector debate?**\nThe investigation contributes to existing conversations about diversity in French non-profits, though specific institutional reactions have not been documented.\n\n**Where can readers access Reporterre's full investigation?**\nReporterre's website publishes investigations in French and maintains an archive of environmental journalism.\n\nSources: Reporterre",
-      "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_1_website_20260530",
-      "published": "2026-05-29T14:41:00+00:00",
-      "source": "Reporterre, le média de l'écologie",
-      "sources": [
+          "name": "Le Figaro",
+          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
+        },
         {
-          "name": "Reporterre, le média de l'écologie",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
-        }
-      ],
-      "status": "approved",
-      "summary": "\"The WWF defends the 'planet'... but not Black people, Muslims and Arabs\"   Reporterre, the ecology media",
-      "time_ago": "1d 18h ago",
-      "title": "\"The WWF defends the 'planet'... but not Black people, Muslims, and Arabs\"",
-      "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQSDhsZ253TWUtal85MTE1VUR4bDVSWWZaS1lGdy1nbTNBWm00aUdOeGNVMjJ6MUpiQjhHVVN3UkNhVzVjMTQtazdFSzVXY2RfT0lGNDJvNTM3NTU1WDZyemRGY3hQMDE5dUU0a25kMWlwcHhQTFprdzBCQnliUzdfMXZLd29XLWVEa3Fyd2NTbUN2aE96b3pzWHBR?oc=5"
-    },
-    {
-      "content_chars": 2368,
-      "content_confidence": "medium",
-      "created": "2026-05-30T07:53:39.530330",
-      "draft": "Grande Mosquée de Paris has published issue 112 of its magazine, featuring the theme \"Hajj & Eid: A Living Heritage.\"\n\nThe publication explores the spiritual and cultural significance of the Islamic pilgrimage and celebrations central to Muslim practice and community life.\n\nThe magazine represents the mosque's ongoing commitment to documenting and sharing aspects of Islamic heritage with French and international audiences.\n\nSource: Grande Mosquée de Paris\n\n#IslamophobiaWatchFrance #France #IslamicHeritage",
-      "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_2_linkedin_20260530",
-      "published": "2026-05-29T13:50:08+00:00",
-      "source": "Grande Mosquée de Paris",
-      "sources": [
+          "name": "CNews",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcDdEZE0tOUgxZjRQb2RnZndVZ0VxMHhpeXpoNWlocE04dklYb1J0ZjFqVjBnNzRuNW1Sd3R0SXJoaDRWOC1aZWhhbFNIQXZ3SXNrcVk4UVZnZjZ1RTg0azU2czV5X3JXSVB0NW9EWjJnclRkV0FMeGFfbzVXUFpjc3dIRG9xaEJYTWhGR2IycU9XSkQ2c0hDd2lvMXYwTnlRTkI1U1RqcmYxN1oxWFNiN1ltb2xPUdIBuwFBVV95cUxPeU5LdTRUZmxZek9aQ0VBY3k1Z0E0NjlvNEJuMWZWU1J2NnpWdjVzblBEcVZXc1hiZmZwNUdMeEVvNk5NYzAzUHRnSmlzeVVaXzl4RHVjS011QmNvVTZ1dTFYS0x2SUN3MTlGMWtxMkpaZWx2NDA4RFB5c2JCZ00xOHpMN2w5Z25MV2hObTNPdzh4UVFLZEJwTnRSVjA1YVNBcG5mOEV0eXF5Ym5zSGdIVWR4cjdoTzFsei00?oc=5"
+        },
         {
-          "name": "Grande Mosquée de Paris",
-          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
+          "name": "l'Opinion",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSEFCNTczcEdTM0k5cndwTkZVOG9jcDVkNWVPWnBwU29iTjA1WVAwSGpxcTMyenZkUnVMOEVlX3JnT1BnVHBKcXFEUmtIUy1YVVJNUlhMdmRpYWNSdWoyd2RuQjNsTE8ydTJHOF9aSnJyYkFWb0VCUVE0OEltellqTTR5ejR4ZzB2LUN3aFQ5dkd5ZG5GRVY1QkN0X192S05zLThEem9maV9Yd1VQdXVEZHBUX3Y2TnJtQmpYUVV1ajQwdjR3WmNmb0xSSWdOVS1yMnhHaC1Waw?oc=5"
+        },
+        {
+          "name": "BFM",
+          "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNeGZoRWdfcV9vSUptZWt0VEVvdmxFLWZkRTlRYnJCWkFwdFJ5eklBd3Ruc0tYUzQxb0d3T1Y4TDVyR2UxOXY3QVRER2VWWk11VlhWRzBsbDdFRGJIY0dzbWdXa2kwcXk1c3lZTjBaUnRFR09IUFdPVHhMVE9nT1EzNllja2M5bU8wRks3UW5nRnRwZjZzZmo3S1lFbG5XWW44VHVmR1h6MVg1WjQ2R1R1WVpmWlhNbTlxSGQ1OXA1ZzQya1psLTQwREVEVXN0bnVzcFRZSlJOazc5SXB4UXJPXzN6RC1zT1lRU2NCcVF2TkFIVG1tdWJZcA?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "Discover from our magazine no. 112: 'Hajj & Eid: a living heritage'   Great Mosque of Paris",
+      "summary": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes to \"stop immigration\" — Le Figaro",
       "time_ago": "1d 19h ago",
-      "title": "Discover our magazine no. 112: 'Hajj & Eid: A Living Heritage'",
+      "title": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes \"stopping immigration\"",
       "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
     },
     {
-      "content_chars": 2368,
+      "content_chars": 2536,
       "content_confidence": "medium",
-      "created": "2026-05-30T07:53:39.530330",
-      "draft": "# Grande Mosquée de Paris releases 112th edition focused on hajj and Eid traditions\n\nThe Grande Mosquée de Paris has published the 112th issue of its magazine, featuring \"Hajj & Eid: A Living Heritage\" as the primary theme, according to an announcement from the institution. The edition explores Islamic pilgrimage practices and festival celebrations within the context of French Muslim life and cultural continuity.\n\n## What happened\n\nThe Grande Mosquée de Paris, the oldest and largest mosque in France, released magazine issue 112 with a focus on hajj—the Islamic pilgrimage to Mecca—and Eid, the major Islamic festivals marking the end of Ramadan and the conclusion of the pilgrimage season. The magazine's thematic approach frames these observances as living cultural and spiritual traditions relevant to Muslim communities in France. The publication represents the mosque's ongoing effort to document and communicate aspects of Islamic practice to both French Muslims and broader French audiences seeking understanding of Muslim religious life.\n\nThe edition's emphasis on \"living heritage\" suggests the magazine examines how hajj and Eid practices are maintained, adapted, and transmitted within contemporary French society. The Grande Mosquée de Paris, founded in 1926 and located in the 5th arrondissement, has historically served as an institutional voice for Muslim communities in France and a bridge between Islamic traditions and French civic life.\n\n## Reaction\n\nThe magazine's publication was announced directly by the Grande Mosquée de Paris, an institution that functions as both a religious centre and a cultural ambassador. The choice to dedicate an entire issue to hajj and Eid reflects the mosque's commitment to contextualizing significant Islamic observances within French public discourse at moments when these celebrations occur or approach in the calendar year.\n\n## Why it matters\n\nThe Grande Mosquée de Paris's decision to dedicate substantial editorial space to hajj and Eid observances carries significance amid ongoing French debates around laïcité—the French principle of state secularism and religious neutrality in public institutions—and the visibility of Muslim religious practices in French society. By framing these practices as \"living heritage,\" the magazine positions Islamic traditions as integral to French cultural life rather than external or incompatible with it. This approach contributes to efforts by French Muslim institutions to normalize religious observance and foster understanding among non-Muslim French citizens.\n\n## Background\n\nThe Grande Mosquée de Paris, established in 1926 with support from the French government as recognition of Muslim contributions to France, has long functioned as a cultural and religious institution serving France's Muslim population—currently estimated at between 5 and 8 million people. The mosque's magazine represents one avenue through which the institution communicates with both Muslim communities and the broader French public about Islamic practice, theology, and integration within French society.\n\nSources: Grande Mosquée de Paris\n\n---\n\n**What is hajj?**\nHajj is the Islamic pilgrimage to Mecca, Saudi Arabia, undertaken by Muslims who are physically and financially able. It is one of the Five Pillars of Islam and occurs annually during a specific Islamic calendar month.\n\n**What are Eid celebrations?**\nEid al-Fitr marks the end of Ramadan fasting, while Eid al-Adha commemorates Abraham's willingness to sacrifice his son. Both are major Islamic festivals celebrated with prayer, family gatherings, and feasting.\n\n**What is laïcité?**\nLaïcité is the French constitutional principle establishing separation between religious institutions and state affairs, ensuring state neutrality toward all religions.\n\n**How many issues has the magazine published?**\nThe 112th edition indicates the magazine has been in continuous publication for an extended period, though the exact founding date of the publication is not specified in available information.",
+      "created": "2026-06-03T07:00:42.542271",
+      "draft": "Jordan Bardella, leader of France's far-right National Rally (Rassemblement National, or RN), has called for halting immigration and introduced a package of security measures following violent scenes at PSG celebrations in Paris. The incidents occurred after a football match between Paris Saint-Germain and Arsenal, with Bardella characterizing the disorder as \"scenes of civil war\" and stating that \"the first way to restore security in France is to stop immigration.\"\n\n## What happened\n\nMultiple French news outlets reported on Bardella's statements and policy proposals in response to the violence. According to CNews, the National Rally leader unveiled measures to combat urban violence that included stopping immigration and eliminating family allowances. BFM quoted Bardella directly as saying \"the first way to restore security in France is to stop immigration.\" L'Opinion's reporting noted that celebrations related to PSG had turned into what the RN characterized as \"scenes of near civil war.\"\n\nThe timing of these statements placed Bardella's comments within broader debates about public order and security in France. The incidents have drawn attention from right-wing political figures ahead of the 2027 presidential election, according to background reporting from politico.eu.\n\n## Reaction\n\nNo direct responses from Muslim organizations, civil rights groups, or opposing political figures are documented in the available source material. The sources provided focus exclusively on the National Rally leader's statements and policy proposals without recording immediate reactions from other political parties, community leaders, or civil society organizations.\n\n## Why it matters\n\nBardella's use of street violence as a platform for anti-immigration messaging reflects a broader pattern in France where security incidents become leverage for far-right political arguments. Linking immigration to urban disorder—without documented evidence connecting the two—reinforces narratives that may intensify scrutiny of Muslim and immigrant communities. These statements occur in the context of France's ongoing tensions around integration, secularism (laïcité), and national identity, where the far right frequently frames immigration as incompatible with French values and public safety.\n\n## Background\n\nJordan Bardella is the leader of the National Rally (RN), France's far-right political party. The party has made immigration restriction central to its platform. Football-related violence in France has periodically surfaced as a political issue, with right-wing figures often using such incidents to advance stricter security and immigration policies. The 2027 presidential election provides political incentive for high-profile statements on security, a traditional strength of the far right in French electoral politics.\n\n---\n\n**Who is Jordan Bardella and what is the National Rally?**\nJordan Bardella leads the National Rally (Rassemblement National), France's far-right political party. The party has positioned immigration as a primary policy target and frames security issues through an immigration-restriction lens.\n\n**What specific measures did Bardella propose?**\nAccording to CNews, the National Rally unveiled measures including stopping immigration and eliminating family allowances. BFM reported his statement that halting immigration is \"the first way to restore security in France.\"\n\n**What violence triggered these statements?**\nViolent scenes occurred following a PSG-Arsenal football match in Paris. Bardella characterized the disorder as \"scenes of civil war,\" though source material does not provide detailed accounts of what occurred or casualty figures.\n\n**Why are these statements significant for French Muslims?**\nLinking immigration to urban violence without documented evidence can reinforce negative stereotypes affecting Muslim and immigrant communities. France's Muslim population, largely composed of immigrants and their descendants, faces increased social and political scrutiny when such rhetoric gains prominence.\n\nSources: Le Figaro, CNews, l'Opinion, BFM, politico.eu",
       "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_2_website_20260530",
-      "published": "2026-05-29T13:50:08+00:00",
-      "source": "Grande Mosquée de Paris",
+      "heat_article_count": 4,
+      "heat_label": "HOT",
+      "heat_score": 11,
+      "id": "post_1_website_20260603",
+      "published": "2026-06-01T09:01:33+00:00",
+      "source": "Le Figaro",
       "sources": [
         {
-          "name": "Grande Mosquée de Paris",
-          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
+          "name": "Le Figaro",
+          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
+        },
+        {
+          "name": "CNews",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcDdEZE0tOUgxZjRQb2RnZndVZ0VxMHhpeXpoNWlocE04dklYb1J0ZjFqVjBnNzRuNW1Sd3R0SXJoaDRWOC1aZWhhbFNIQXZ3SXNrcVk4UVZnZjZ1RTg0azU2czV5X3JXSVB0NW9EWjJnclRkV0FMeGFfbzVXUFpjc3dIRG9xaEJYTWhGR2IycU9XSkQ2c0hDd2lvMXYwTnlRTkI1U1RqcmYxN1oxWFNiN1ltb2xPUdIBuwFBVV95cUxPeU5LdTRUZmxZek9aQ0VBY3k1Z0E0NjlvNEJuMWZWU1J2NnpWdjVzblBEcVZXc1hiZmZwNUdMeEVvNk5NYzAzUHRnSmlzeVVaXzl4RHVjS011QmNvVTZ1dTFYS0x2SUN3MTlGMWtxMkpaZWx2NDA4RFB5c2JCZ00xOHpMN2w5Z25MV2hObTNPdzh4UVFLZEJwTnRSVjA1YVNBcG5mOEV0eXF5Ym5zSGdIVWR4cjdoTzFsei00?oc=5"
+        },
+        {
+          "name": "l'Opinion",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSEFCNTczcEdTM0k5cndwTkZVOG9jcDVkNWVPWnBwU29iTjA1WVAwSGpxcTMyenZkUnVMOEVlX3JnT1BnVHBKcXFEUmtIUy1YVVJNUlhMdmRpYWNSdWoyd2RuQjNsTE8ydTJHOF9aSnJyYkFWb0VCUVE0OEltellqTTR5ejR4ZzB2LUN3aFQ5dkd5ZG5GRVY1QkN0X192S05zLThEem9maV9Yd1VQdXVEZHBUX3Y2TnJtQmpYUVV1ajQwdjR3WmNmb0xSSWdOVS1yMnhHaC1Waw?oc=5"
+        },
+        {
+          "name": "BFM",
+          "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNeGZoRWdfcV9vSUptZWt0VEVvdmxFLWZkRTlRYnJCWkFwdFJ5eklBd3Ruc0tYUzQxb0d3T1Y4TDVyR2UxOXY3QVRER2VWWk11VlhWRzBsbDdFRGJIY0dzbWdXa2kwcXk1c3lZTjBaUnRFR09IUFdPVHhMVE9nT1EzNllja2M5bU8wRks3UW5nRnRwZjZzZmo3S1lFbG5XWW44VHVmR1h6MVg1WjQ2R1R1WVpmWlhNbTlxSGQ1OXA1ZzQya1psLTQwREVEVXN0bnVzcFRZSlJOazc5SXB4UXJPXzN6RC1zT1lRU2NCcVF2TkFIVG1tdWJZcA?oc=5"
+        }
+      ],
+      "status": "approved",
+      "summary": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes to \"stop immigration\" — Le Figaro",
+      "time_ago": "1d 19h ago",
+      "title": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes \"stopping immigration\"",
+      "type": "website",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
+    },
+    {
+      "content_chars": 2481,
+      "content_confidence": "medium",
+      "created": "2026-06-03T07:00:42.542271",
+      "draft": "France reported 890 arrests following violence at PSG celebrations.\n\nAuthorities documented the incidents as crowds gathered to mark the football club's achievements. The scale of arrests underscores tensions during large public gatherings in the country.\n\nDetails on the specific nature of the violence and circumstances surrounding individual arrests remain limited in available reporting.\n\nSource: RFI\n\n#IslamophobiaWatchFrance #France #PublicOrder",
+      "fetch_source": "cache",
+      "heat_article_count": 1,
+      "heat_label": "TRENDING",
+      "heat_score": 5,
+      "id": "post_2_linkedin_20260603",
+      "published": "2026-06-01T11:23:47+00:00",
+      "source": "RFI",
+      "sources": [
+        {
+          "name": "RFI",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "Discover from our magazine no. 112: 'Hajj & Eid: a living heritage'   Great Mosque of Paris",
-      "time_ago": "1d 19h ago",
-      "title": "Discover our magazine no. 112: 'Hajj & Eid: A Living Heritage'",
+      "summary": "PSG celebrations marred by violence as French authorities report 890 arrests&nbsp;&nbsp;RFI",
+      "time_ago": "1d 17h ago",
+      "title": "PSG celebrations marred by violence as French authorities report 890 arrests",
+      "type": "linkedin",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
+    },
+    {
+      "content_chars": 2481,
+      "content_confidence": "medium",
+      "created": "2026-06-03T07:00:42.542271",
+      "draft": "# PSG Victory Celebrations Turn Violent as Paris Police Make Hundreds of Arrests\n\nParis police arrested 890 people during celebrations following Paris Saint-Germain's victory, according to reporting from RFI on the incident that unfolded across the capital.\n\n## What happened\n\nLarge crowds gathered in central Paris to celebrate PSG's win, but disorder broke out in multiple locations across the city. According to RFI, French authorities made 890 arrests during the celebrations and subsequent police operations. The violence disrupted what had been anticipated as a celebratory evening for the football club's supporters.\n\nPolice deployed across Paris neighborhoods known to draw heavy concentrations of PSG fans. The exact nature of the violence—whether looting, vehicle damage, confrontations with police, or other forms of disorder—was not specified in available reporting. The scale of arrests, however, indicated authorities faced a significant public order challenge across multiple districts simultaneously.\n\n## Reaction\n\nLocal residents in affected neighborhoods experienced disruptions to normal evening life as police responded to unrest. Business owners in central Paris areas frequented by celebration crowds faced the prospect of damage or security concerns during the disturbances. PSG, as an institution, did not issue a public statement regarding the violence attributed to some of its supporters, though the arrests suggest authorities treated the incidents as criminal matters rather than sanctioned club activity.\n\n## Why it matters\n\nThe incident reflects broader tensions around public celebrations and policing in Paris, where large sporting events frequently draw diverse crowds. The scale of arrests—nearly 900 individuals—underscores the challenge French authorities face in managing mass gatherings, particularly those centered on popular football culture. For France's broader social fabric, such incidents can sometimes fuel discussions about integration, community relations, and public safety that touch on demographic and religious dimensions, though the available reporting does not indicate whether such factors were present in this specific incident.\n\n## Background\n\nPSG is France's most prominent football club, based in Paris and commanding a large, passionate supporter base across the country. Victory celebrations in the capital can draw tens of thousands of people into streets and public squares. French police maintain specialized units for managing crowd control at major sporting events, though large spontaneous gatherings sometimes exceed planning capacity. The arrests reported by RFI would be processed through Paris's criminal justice system, with charges varying depending on the specific conduct involved.\n\n---\n\n**Was this the first time PSG celebrations turned violent?**\nLarge sporting events in Paris have occasionally resulted in disorder and police responses, though specific historical comparisons would require additional reporting beyond the RFI account.\n\n**How many people typically attend PSG celebration gatherings?**\nExact figures were not specified in the available reporting, though major victories draw substantial crowds to central Paris.\n\n**What were the specific charges against arrested individuals?**\nDetails on individual charges were not included in the RFI reporting consulted.\n\n**Did PSG issue a statement?**\nNo public statement from the club regarding the violence was noted in available sources.\n\nSources: RFI",
+      "fetch_source": "cache",
+      "heat_article_count": 1,
+      "heat_label": "TRENDING",
+      "heat_score": 5,
+      "id": "post_2_website_20260603",
+      "published": "2026-06-01T11:23:47+00:00",
+      "source": "RFI",
+      "sources": [
+        {
+          "name": "RFI",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "PSG celebrations marred by violence as French authorities report 890 arrests&nbsp;&nbsp;RFI",
+      "time_ago": "1d 17h ago",
+      "title": "PSG celebrations marred by violence as French authorities report 890 arrests",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOaElfRzh1VlhtTVJmVV96dlE2VUhVaVM2MjYxN1ZiODV1bVlDUWs5ekg5bEFBT09jSnJBRGhobkxjcEEwVmxteWJIaExGT3Z6azFtQ3dWZ0cwc1laV0xoZ1ZpZG1qTUd5YlBRMENYRUtCR0pkQmpNbG4xT29WUmVaQkJrdHNVLTNEZmNWeXB4ZlpVWXpEalB0c0ViaGVEa2JTbDVtdg?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
     }
   ],
-  "total_stories_scanned": 8
+  "total_stories_scanned": 10
 }

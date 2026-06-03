@@ -1,130 +1,145 @@
 {
-  "total": 636,
+  "total": 686,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
       "count": 62,
-      "pct": 9.7
+      "pct": 9.0
     },
     {
       "name": "Actu.fr",
       "count": 52,
-      "pct": 8.2
+      "pct": 7.6
     },
     {
       "name": "France 24",
       "count": 52,
-      "pct": 8.2
+      "pct": 7.6
+    },
+    {
+      "name": "Le Figaro",
+      "count": 41,
+      "pct": 6.0
     },
     {
       "name": "tsa-algerie.com",
       "count": 35,
-      "pct": 5.5
-    },
-    {
-      "name": "Le Figaro",
-      "count": 30,
-      "pct": 4.7
+      "pct": 5.1
     },
     {
       "name": "Ouest-France",
       "count": 28,
-      "pct": 4.4
+      "pct": 4.1
     },
     {
       "name": "Le Parisien",
       "count": 25,
-      "pct": 3.9
+      "pct": 3.6
     },
     {
       "name": "MSN",
       "count": 21,
-      "pct": 3.3
+      "pct": 3.1
     },
     {
       "name": "Radio France",
       "count": 18,
-      "pct": 2.8
+      "pct": 2.6
     },
     {
       "name": "Planet.fr",
       "count": 18,
-      "pct": 2.8
+      "pct": 2.6
     },
     {
       "name": "Sortir à Paris",
       "count": 17,
-      "pct": 2.7
+      "pct": 2.5
     },
     {
       "name": "Valeurs actuelles",
       "count": 17,
-      "pct": 2.7
+      "pct": 2.5
     },
     {
       "name": "reinformation.tv",
       "count": 16,
-      "pct": 2.5
+      "pct": 2.3
     },
     {
       "name": "France 3 Régions",
       "count": 13,
-      "pct": 2.0
+      "pct": 1.9
     },
     {
       "name": "europe1.fr",
       "count": 13,
-      "pct": 2.0
+      "pct": 1.9
     },
     {
       "name": "L'Union",
       "count": 13,
-      "pct": 2.0
+      "pct": 1.9
     },
     {
       "name": "lejdd.fr",
       "count": 13,
-      "pct": 2.0
+      "pct": 1.9
     },
     {
       "name": "Breizh-info.com",
       "count": 12,
-      "pct": 1.9
+      "pct": 1.7
+    },
+    {
+      "name": "CNews",
+      "count": 11,
+      "pct": 1.6
     },
     {
       "name": "Bladi.net",
       "count": 11,
-      "pct": 1.7
+      "pct": 1.6
     },
     {
       "name": "beaufortcountynow.com",
       "count": 10,
-      "pct": 1.6
+      "pct": 1.5
     },
     {
       "name": "Visas & Voyages Algérie",
       "count": 9,
-      "pct": 1.4
+      "pct": 1.3
     },
     {
       "name": "Beur FM",
       "count": 8,
-      "pct": 1.3
+      "pct": 1.2
     },
     {
       "name": "خبرگزاری بین المللی قرآن",
       "count": 8,
-      "pct": 1.3
+      "pct": 1.2
     },
     {
       "name": "Politico",
       "count": 8,
-      "pct": 1.3
+      "pct": 1.2
+    },
+    {
+      "name": "Le Courrier de l'Atlas",
+      "count": 8,
+      "pct": 1.2
+    },
+    {
+      "name": "l'Opinion",
+      "count": 7,
+      "pct": 1.0
     },
     {
       "name": "Causeur",
       "count": 7,
-      "pct": 1.1
+      "pct": 1.0
     },
     {
       "name": "Anadolu Ajansı",
@@ -159,12 +174,12 @@
     {
       "name": "Reporterre, le média de l'écologie",
       "count": 5,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "ABNA English",
       "count": 5,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "ShiaWaves",
@@ -212,11 +227,6 @@
       "pct": 0.6
     },
     {
-      "name": "CNews",
-      "count": 4,
-      "pct": 0.6
-    },
-    {
       "name": "Programme TV Ouest-France",
       "count": 4,
       "pct": 0.6
@@ -237,14 +247,34 @@
       "pct": 0.6
     },
     {
+      "name": "Gentside",
+      "count": 4,
+      "pct": 0.6
+    },
+    {
+      "name": "Orange Actualités",
+      "count": 4,
+      "pct": 0.6
+    },
+    {
+      "name": "politico.eu",
+      "count": 4,
+      "pct": 0.6
+    },
+    {
+      "name": "BFM",
+      "count": 3,
+      "pct": 0.4
+    },
+    {
       "name": "5Pillars",
       "count": 3,
-      "pct": 0.5
+      "pct": 0.4
     },
     {
       "name": "Yeni Şafak",
       "count": 3,
-      "pct": 0.5
+      "pct": 0.4
     },
     {
       "name": "Contre Attaque",
@@ -257,44 +287,49 @@
       "pct": 0.3
     },
     {
+      "name": "RFI",
+      "count": 2,
+      "pct": 0.3
+    },
+    {
       "name": "France 3 Auvergne-Rhône-Alpes / France 3 Rhône-Alpes",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "National Assembly of France",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "Le Monde",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "L'Humanité",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "StreetPress",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "Public Sénat",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "instagram.com",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     },
     {
       "name": "Le Soir",
       "count": 1,
-      "pct": 0.2
+      "pct": 0.1
     }
   ],
   "flagged": []
