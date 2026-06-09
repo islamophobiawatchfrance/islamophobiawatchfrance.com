@@ -1,130 +1,106 @@
 {
-  "generated": "2026-06-03T07:00:42.542271",
+  "generated": "2026-06-09T07:00:35.058234",
   "posts": [
     {
-      "content_chars": 2536,
+      "content_chars": 2468,
       "content_confidence": "medium",
-      "created": "2026-06-03T07:00:42.542271",
-      "draft": "France's far-right is seizing on violence following PSG's Champion's League win to argue for stricter immigration measures.\n\nViolence erupted following PSG celebrations, triggering political responses on urban security.\n\nNational Rally leader Jordan Bardella then described the scenes as \"civil war\" and used the incident to advance the party's security agenda. \n\nHe proposed halting immigration as a primary measure to restore security in France, alongside other measures including changes to family allowances.\n\nThe party framed the post-match disorder as evidence supporting its broader policy platform on urban violence and social cohesion. Bardella positioned immigration restriction as central to addressing public safety concerns.\n\nThe incidents underscore how security flashpoints continue to shape political debate around immigration and integration policy in France.\n\nSource: Le Figaro / BFM / CNews",
+      "created": "2026-06-09T07:00:35.058234",
+      "draft": "Immigration is shaping up as an unavoidable issue in France's 2027 presidential race.\n\nLes Échos reports the topic has already emerged as central to campaign positioning ahead of the election cycle.\n\nThe prominence of immigration in French electoral discourse reflects broader political divisions over border policy, integration, and demographic change. The issue has dominated French politics since 2015, with competing visions on integration and security consistently dividing left and right.\n\nPolitical parties across the spectrum are preparing positions on immigration as candidates position themselves for the 2027 contest. The debate encompasses questions of asylum policy, labour migration, and social cohesion.\n\nSource: Les Échos\n\n#IslamophobiaWatchFrance #France #Immigration",
       "fetch_source": "cache",
-      "heat_article_count": 4,
-      "heat_label": "HOT",
-      "heat_score": 11,
-      "id": "post_1_linkedin_20260603",
-      "published": "2026-06-01T09:01:33+00:00",
-      "source": "Le Figaro",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_1_linkedin_20260609",
+      "published": "2026-06-08T14:44:57+00:00",
+      "source": "Les Echos",
       "sources": [
         {
-          "name": "Le Figaro",
-          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
-        },
-        {
-          "name": "CNews",
-          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcDdEZE0tOUgxZjRQb2RnZndVZ0VxMHhpeXpoNWlocE04dklYb1J0ZjFqVjBnNzRuNW1Sd3R0SXJoaDRWOC1aZWhhbFNIQXZ3SXNrcVk4UVZnZjZ1RTg0azU2czV5X3JXSVB0NW9EWjJnclRkV0FMeGFfbzVXUFpjc3dIRG9xaEJYTWhGR2IycU9XSkQ2c0hDd2lvMXYwTnlRTkI1U1RqcmYxN1oxWFNiN1ltb2xPUdIBuwFBVV95cUxPeU5LdTRUZmxZek9aQ0VBY3k1Z0E0NjlvNEJuMWZWU1J2NnpWdjVzblBEcVZXc1hiZmZwNUdMeEVvNk5NYzAzUHRnSmlzeVVaXzl4RHVjS011QmNvVTZ1dTFYS0x2SUN3MTlGMWtxMkpaZWx2NDA4RFB5c2JCZ00xOHpMN2w5Z25MV2hObTNPdzh4UVFLZEJwTnRSVjA1YVNBcG5mOEV0eXF5Ym5zSGdIVWR4cjdoTzFsei00?oc=5"
-        },
-        {
-          "name": "l'Opinion",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSEFCNTczcEdTM0k5cndwTkZVOG9jcDVkNWVPWnBwU29iTjA1WVAwSGpxcTMyenZkUnVMOEVlX3JnT1BnVHBKcXFEUmtIUy1YVVJNUlhMdmRpYWNSdWoyd2RuQjNsTE8ydTJHOF9aSnJyYkFWb0VCUVE0OEltellqTTR5ejR4ZzB2LUN3aFQ5dkd5ZG5GRVY1QkN0X192S05zLThEem9maV9Yd1VQdXVEZHBUX3Y2TnJtQmpYUVV1ajQwdjR3WmNmb0xSSWdOVS1yMnhHaC1Waw?oc=5"
-        },
-        {
-          "name": "BFM",
-          "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNeGZoRWdfcV9vSUptZWt0VEVvdmxFLWZkRTlRYnJCWkFwdFJ5eklBd3Ruc0tYUzQxb0d3T1Y4TDVyR2UxOXY3QVRER2VWWk11VlhWRzBsbDdFRGJIY0dzbWdXa2kwcXk1c3lZTjBaUnRFR09IUFdPVHhMVE9nT1EzNllja2M5bU8wRks3UW5nRnRwZjZzZmo3S1lFbG5XWW44VHVmR1h6MVg1WjQ2R1R1WVpmWlhNbTlxSGQ1OXA1ZzQya1psLTQwREVEVXN0bnVzcFRZSlJOazc5SXB4UXJPXzN6RC1zT1lRU2NCcVF2TkFIVG1tdWJZcA?oc=5"
+          "name": "Les Echos",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOWEh3Z0pQRFBuVzJMd3JwTU9ONkJFejdXWm5iUjEwdFdkNUFISG0yYllMb1pDemJ3V3FrckRoR3ZENmZMeWVMb3dfNVVRNFBoeDVlbG9XTjR3azgyVzBtQU1QZElIeEVSV3NKcDZ5NWxFdk1zRmNoczBqaWlxWmFMTUh4ZzZENElGMXE0cVRESUZiWllDcnNQVHRYc1dITzR1bVN1ZmtHZVpEVXRrNEVvRmx4TWwyZG5ZbjRVdW5SbG1fRDh4NXM2NDJB?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes to \"stop immigration\" — Le Figaro",
-      "time_ago": "1d 19h ago",
-      "title": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes \"stopping immigration\"",
+      "summary": "2027 Presidential Election: Immigration, Already an Unavoidable Campaign Topic — Les Echos",
+      "time_ago": "14h ago",
+      "title": "2027 Presidential Election: Immigration, Already an Unavoidable Campaign Issue",
       "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOWEh3Z0pQRFBuVzJMd3JwTU9ONkJFejdXWm5iUjEwdFdkNUFISG0yYllMb1pDemJ3V3FrckRoR3ZENmZMeWVMb3dfNVVRNFBoeDVlbG9XTjR3azgyVzBtQU1QZElIeEVSV3NKcDZ5NWxFdk1zRmNoczBqaWlxWmFMTUh4ZzZENElGMXE0cVRESUZiWllDcnNQVHRYc1dITzR1bVN1ZmtHZVpEVXRrNEVvRmx4TWwyZG5ZbjRVdW5SbG1fRDh4NXM2NDJB?oc=5"
     },
     {
-      "content_chars": 2536,
+      "content_chars": 2468,
       "content_confidence": "medium",
-      "created": "2026-06-03T07:00:42.542271",
-      "draft": "Jordan Bardella, leader of France's far-right National Rally (Rassemblement National, or RN), has called for halting immigration and introduced a package of security measures following violent scenes at PSG celebrations in Paris. The incidents occurred after a football match between Paris Saint-Germain and Arsenal, with Bardella characterizing the disorder as \"scenes of civil war\" and stating that \"the first way to restore security in France is to stop immigration.\"\n\n## What happened\n\nMultiple French news outlets reported on Bardella's statements and policy proposals in response to the violence. According to CNews, the National Rally leader unveiled measures to combat urban violence that included stopping immigration and eliminating family allowances. BFM quoted Bardella directly as saying \"the first way to restore security in France is to stop immigration.\" L'Opinion's reporting noted that celebrations related to PSG had turned into what the RN characterized as \"scenes of near civil war.\"\n\nThe timing of these statements placed Bardella's comments within broader debates about public order and security in France. The incidents have drawn attention from right-wing political figures ahead of the 2027 presidential election, according to background reporting from politico.eu.\n\n## Reaction\n\nNo direct responses from Muslim organizations, civil rights groups, or opposing political figures are documented in the available source material. The sources provided focus exclusively on the National Rally leader's statements and policy proposals without recording immediate reactions from other political parties, community leaders, or civil society organizations.\n\n## Why it matters\n\nBardella's use of street violence as a platform for anti-immigration messaging reflects a broader pattern in France where security incidents become leverage for far-right political arguments. Linking immigration to urban disorder—without documented evidence connecting the two—reinforces narratives that may intensify scrutiny of Muslim and immigrant communities. These statements occur in the context of France's ongoing tensions around integration, secularism (laïcité), and national identity, where the far right frequently frames immigration as incompatible with French values and public safety.\n\n## Background\n\nJordan Bardella is the leader of the National Rally (RN), France's far-right political party. The party has made immigration restriction central to its platform. Football-related violence in France has periodically surfaced as a political issue, with right-wing figures often using such incidents to advance stricter security and immigration policies. The 2027 presidential election provides political incentive for high-profile statements on security, a traditional strength of the far right in French electoral politics.\n\n---\n\n**Who is Jordan Bardella and what is the National Rally?**\nJordan Bardella leads the National Rally (Rassemblement National), France's far-right political party. The party has positioned immigration as a primary policy target and frames security issues through an immigration-restriction lens.\n\n**What specific measures did Bardella propose?**\nAccording to CNews, the National Rally unveiled measures including stopping immigration and eliminating family allowances. BFM reported his statement that halting immigration is \"the first way to restore security in France.\"\n\n**What violence triggered these statements?**\nViolent scenes occurred following a PSG-Arsenal football match in Paris. Bardella characterized the disorder as \"scenes of civil war,\" though source material does not provide detailed accounts of what occurred or casualty figures.\n\n**Why are these statements significant for French Muslims?**\nLinking immigration to urban violence without documented evidence can reinforce negative stereotypes affecting Muslim and immigrant communities. France's Muslim population, largely composed of immigrants and their descendants, faces increased social and political scrutiny when such rhetoric gains prominence.\n\nSources: Le Figaro, CNews, l'Opinion, BFM, politico.eu",
+      "created": "2026-06-09T07:00:35.058234",
+      "draft": "# Immigration Emerges as Unavoidable Issue in France's 2027 Presidential Campaign\n\nImmigration is already shaping the landscape of France's 2027 presidential election, according to reporting from Les Échos, as political figures across the spectrum prepare their positions on border control, integration policy, and demographic change ahead of the vote.\n\n## What happened\n\nThe topic of immigration has begun to dominate early campaign discussions, with multiple political camps staking out distinct positions on how France should manage migration flows and integrate newcomers into society. Les Échos reported that the issue is becoming unavoidable for candidates preparing their platforms for the 2027 presidential race.\n\nThe timing reflects broader European concerns about migration policy, asylum, and demographic composition—issues that have intensified across French political debate in recent years and now appear certain to anchor the next presidential campaign cycle.\n\n## Reaction\n\nPolitical movements across France's ideological spectrum have begun signalling their campaign priorities. The far-right has historically emphasized strict immigration controls and border security, while left-wing candidates including Jean-Luc Mélenchon have framed their approach around integration and identity questions from different angles. Centrist and mainstream right-wing parties continue developing their own policy positions on immigration management within the European Union's asylum framework.\n\nCivil society organisations focused on migrant rights and religious minorities have not yet publicly responded to these early campaign signals, though immigration policy directly affects Muslim communities in France, many of whom include first and second-generation migrants and their descendants.\n\n## Why it matters\n\nImmigration policy remains deeply intertwined with France's ongoing debates about secularism (laïcité), religious minorities, and national identity. Because Muslim communities in France are disproportionately affected by immigration rhetoric and border policy, campaign messaging on these issues carries particular significance for French Muslim voters, civil rights groups, and religious organisations monitoring political discourse around Islam and integration.\n\n## Background\n\nFrance's 2027 presidential election will take place against a backdrop of intensified European migration debates. The far-right National Rally (Rassemblement National), led by Marine Le Pen, has gained significant electoral ground in recent years and is positioning itself as a major contender. Mainstream parties including President Emmanuel Macron's centrist coalition and the Republican right have also hardened their immigration stances in response to public concern and right-wing electoral pressure.\n\nJean-Luc Mélenchon leads France's main left-wing coalition (La France Insoumise), which contests far-right framing of immigration while addressing what Mélenchon describes as identity-based concerns. These competing visions of immigration, integration, and national identity will likely define the 2027 campaign's central cleavages.\n\nSources: Les Échos\n\n---\n\n**Why is immigration such a central campaign issue in France right now?**\n\nMigration and integration remain salient political topics across Europe. In France specifically, population demographics, religious diversity, and secularism intersect with immigration policy, making the issue resonant across multiple voter constituencies.\n\n**Which political parties are most likely to emphasize immigration in their 2027 campaigns?**\n\nBased on recent electoral trends, the far-right National Rally, mainstream conservative parties, and centrist formations have all prioritized immigration messaging. Left-wing candidates present alternative framings focused on integration and anti-discrimination.\n\n**How does immigration policy affect Muslim communities in France?**\n\nMuslim populations in France—many with family histories of migration—are significantly impacted by immigration rhetoric, border policy, and integration frameworks. Campaign discourse on these topics carries direct implications for Muslim rights, representation, and social inclusion.\n\n**When will the 2027 presidential campaign officially begin?**\n\nFormal campaign periods are typically brief in France, though pre-campaign positioning and policy announcements have already commenced among major political movements.",
       "fetch_source": "cache",
-      "heat_article_count": 4,
-      "heat_label": "HOT",
-      "heat_score": 11,
-      "id": "post_1_website_20260603",
-      "published": "2026-06-01T09:01:33+00:00",
-      "source": "Le Figaro",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_1_website_20260609",
+      "published": "2026-06-08T14:44:57+00:00",
+      "source": "Les Echos",
       "sources": [
         {
-          "name": "Le Figaro",
-          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
-        },
+          "name": "Les Echos",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOWEh3Z0pQRFBuVzJMd3JwTU9ONkJFejdXWm5iUjEwdFdkNUFISG0yYllMb1pDemJ3V3FrckRoR3ZENmZMeWVMb3dfNVVRNFBoeDVlbG9XTjR3azgyVzBtQU1QZElIeEVSV3NKcDZ5NWxFdk1zRmNoczBqaWlxWmFMTUh4ZzZENElGMXE0cVRESUZiWllDcnNQVHRYc1dITzR1bVN1ZmtHZVpEVXRrNEVvRmx4TWwyZG5ZbjRVdW5SbG1fRDh4NXM2NDJB?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "2027 Presidential Election: Immigration, Already an Unavoidable Campaign Topic — Les Echos",
+      "time_ago": "14h ago",
+      "title": "2027 Presidential Election: Immigration, Already an Unavoidable Campaign Issue",
+      "type": "website",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOWEh3Z0pQRFBuVzJMd3JwTU9ONkJFejdXWm5iUjEwdFdkNUFISG0yYllMb1pDemJ3V3FrckRoR3ZENmZMeWVMb3dfNVVRNFBoeDVlbG9XTjR3azgyVzBtQU1QZElIeEVSV3NKcDZ5NWxFdk1zRmNoczBqaWlxWmFMTUh4ZzZENElGMXE0cVRESUZiWllDcnNQVHRYc1dITzR1bVN1ZmtHZVpEVXRrNEVvRmx4TWwyZG5ZbjRVdW5SbG1fRDh4NXM2NDJB?oc=5"
+    },
+    {
+      "content_chars": 2425,
+      "content_confidence": "medium",
+      "created": "2026-06-09T07:00:35.058234",
+      "draft": "France's nuclear sector faces scrutiny over alleged Islamist infiltration concerns.\n\nThe Washington Examiner reports on what it characterises as an \"Islamist nuclear shadow\" affecting French atomic energy infrastructure and oversight.\n\nThe article raises questions about ideological penetration within France's nuclear establishment, reflecting broader French government concerns about political Islam's reach into sensitive state sectors.\n\nThis reflects an ongoing pattern of legislative and administrative focus on monitoring what French officials describe as Islamist institutional presence across critical infrastructure.\n\nSource: Washington Examiner\n\n#IslamophobiaWatchFrance #France #NuclearSecurity",
+      "fetch_source": "cache",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_2_linkedin_20260609",
+      "published": "2026-06-08T11:00:00+00:00",
+      "source": "Washington Examiner",
+      "sources": [
         {
-          "name": "CNews",
-          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcDdEZE0tOUgxZjRQb2RnZndVZ0VxMHhpeXpoNWlocE04dklYb1J0ZjFqVjBnNzRuNW1Sd3R0SXJoaDRWOC1aZWhhbFNIQXZ3SXNrcVk4UVZnZjZ1RTg0azU2czV5X3JXSVB0NW9EWjJnclRkV0FMeGFfbzVXUFpjc3dIRG9xaEJYTWhGR2IycU9XSkQ2c0hDd2lvMXYwTnlRTkI1U1RqcmYxN1oxWFNiN1ltb2xPUdIBuwFBVV95cUxPeU5LdTRUZmxZek9aQ0VBY3k1Z0E0NjlvNEJuMWZWU1J2NnpWdjVzblBEcVZXc1hiZmZwNUdMeEVvNk5NYzAzUHRnSmlzeVVaXzl4RHVjS011QmNvVTZ1dTFYS0x2SUN3MTlGMWtxMkpaZWx2NDA4RFB5c2JCZ00xOHpMN2w5Z25MV2hObTNPdzh4UVFLZEJwTnRSVjA1YVNBcG5mOEV0eXF5Ym5zSGdIVWR4cjdoTzFsei00?oc=5"
-        },
+          "name": "Washington Examiner",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOM2pRelI4dDdmZE4zMklVVVpTb094dDY5eWhPaVRwdTRGbHlxVU1Sa2JMRVhaLVQ0VGxnMGsxcTMwdW96aWFJdVRHbGZtbnBONF8yd2hBRFdPbU5qVGI0X3NXT0NLazNlakpjVW9wMFVmWFU1Q1p1bmE5bGd3TkRnVUM2b203cTBzX0VwQXg2c2hLWV96WkRKU21QMXVaREE?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "France’s Islamist nuclear shadow&nbsp;&nbsp;Washington Examiner",
+      "time_ago": "18h ago",
+      "title": "France’s Islamist nuclear shadow",
+      "type": "linkedin",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOM2pRelI4dDdmZE4zMklVVVpTb094dDY5eWhPaVRwdTRGbHlxVU1Sa2JMRVhaLVQ0VGxnMGsxcTMwdW96aWFJdVRHbGZtbnBONF8yd2hBRFdPbU5qVGI0X3NXT0NLazNlakpjVW9wMFVmWFU1Q1p1bmE5bGd3TkRnVUM2b203cTBzX0VwQXg2c2hLWV96WkRKU21QMXVaREE?oc=5"
+    },
+    {
+      "content_chars": 2425,
+      "content_confidence": "medium",
+      "created": "2026-06-09T07:00:35.058234",
+      "draft": "# France Grapples with Security Concerns Over Islamist Extremism Near Nuclear Facilities\n\nThe Washington Examiner, a right-wing American publication, reports that the question of Islamist extremist activity in proximity to France's nuclear infrastructure has surfaced in international security discussions.\n\nConcerns have reportedly been raised by observers monitoring potential threats to critical French national assets.\n\n## What happened\n\nSecurity analysts and officials have flagged concerns about the proximity of Islamist extremist networks to France's nuclear energy sector, according to reporting by the Washington Examiner. France operates the largest nuclear power fleet in Europe, with 56 reactors across multiple sites, making the country heavily dependent on atomic energy for electricity generation. The concern centres on whether extremist cells could pose a direct or indirect threat to these facilities through infiltration, sabotage, or other means.\n\nFrench authorities have historically conducted counter-terrorism operations targeting suspected jihadist networks. The country has faced numerous security incidents linked to extremist groups over the past two decades, leading to increased vigilance around sensitive infrastructure. Nuclear sites in France fall under heightened security protocols managed by the French Nuclear Safety Authority (Autorité de Sûreté Nucléaire, ASN) and intelligence services.\n\n## Why it matters\n\nThe intersection of Islamist extremism and nuclear security represents one of France's most sensitive national security challenges. France relies on nuclear power for approximately 70 percent of its electricity supply, making any threat to reactor sites a matter of critical infrastructure protection. How French authorities balance security measures with civil liberties  – particularly regarding Muslim communities – remains a contentious issue in French politics and society. \n\nHeightened security protocols, if perceived as disproportionately targeting Muslim workers or communities, can fuel grievances and feed into broader debates about integration and discrimination in France.\n\n## Background\n\nSuccessive French governments have implemented extensive counter-terrorism legislation and intelligence operations. French security agencies operate under a framework that includes domestic surveillance programs and international intelligence cooperation through NATO and European Union channels.\n\nSources: Washington Examiner, Autorité de Sûreté Nucléaire (ASN), French government security frameworks\n\n---\n\n**What is France's primary energy source?**\nNuclear power accounts for approximately 70 percent of France's electricity generation, making it Europe's largest nuclear power consumer.\n\n**How many reactors does France operate?**\nFrance operates 56 nuclear reactors across multiple sites nationwide, according to international energy data.\n\n**What is laïcité?**\nLaïcité is the French constitutional principle mandating strict separation between religious institutions and the state, deeply embedded in French civic culture since 1905.\n\n**What counter-terrorism operations has France conducted?**\nFrench authorities have conducted multiple counter-terrorism operations targeting suspected jihadist networks, particularly following attacks from 2012 onwards.",
+      "fetch_source": "cache",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_2_website_20260609",
+      "published": "2026-06-08T11:00:00+00:00",
+      "source": "Washington Examiner",
+      "sources": [
         {
-          "name": "l'Opinion",
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQSEFCNTczcEdTM0k5cndwTkZVOG9jcDVkNWVPWnBwU29iTjA1WVAwSGpxcTMyenZkUnVMOEVlX3JnT1BnVHBKcXFEUmtIUy1YVVJNUlhMdmRpYWNSdWoyd2RuQjNsTE8ydTJHOF9aSnJyYkFWb0VCUVE0OEltellqTTR5ejR4ZzB2LUN3aFQ5dkd5ZG5GRVY1QkN0X192S05zLThEem9maV9Yd1VQdXVEZHBUX3Y2TnJtQmpYUVV1ajQwdjR3WmNmb0xSSWdOVS1yMnhHaC1Waw?oc=5"
-        },
-        {
-          "name": "BFM",
-          "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNeGZoRWdfcV9vSUptZWt0VEVvdmxFLWZkRTlRYnJCWkFwdFJ5eklBd3Ruc0tYUzQxb0d3T1Y4TDVyR2UxOXY3QVRER2VWWk11VlhWRzBsbDdFRGJIY0dzbWdXa2kwcXk1c3lZTjBaUnRFR09IUFdPVHhMVE9nT1EzNllja2M5bU8wRks3UW5nRnRwZjZzZmo3S1lFbG5XWW44VHVmR1h6MVg1WjQ2R1R1WVpmWlhNbTlxSGQ1OXA1ZzQya1psLTQwREVEVXN0bnVzcFRZSlJOazc5SXB4UXJPXzN6RC1zT1lRU2NCcVF2TkFIVG1tdWJZcA?oc=5"
+          "name": "Washington Examiner",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOM2pRelI4dDdmZE4zMklVVVpTb094dDY5eWhPaVRwdTRGbHlxVU1Sa2JMRVhaLVQ0VGxnMGsxcTMwdW96aWFJdVRHbGZtbnBONF8yd2hBRFdPbU5qVGI0X3NXT0NLazNlakpjVW9wMFVmWFU1Q1p1bmE5bGd3TkRnVUM2b203cTBzX0VwQXg2c2hLWV96WkRKU21QMXVaREE?oc=5"
         }
       ],
       "status": "approved",
-      "summary": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes to \"stop immigration\" — Le Figaro",
-      "time_ago": "1d 19h ago",
-      "title": "Violence after PSG-Arsenal: Jordan Bardella denounces \"scenes of civil war\" and proposes \"stopping immigration\"",
+      "summary": "France’s Islamist nuclear shadow&nbsp;&nbsp;Washington Examiner",
+      "time_ago": "18h ago",
+      "title": "France’s Islamist nuclear shadow",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOU3d6QjhaREJHWVo5c19wS0RYQTl1dHhRYnI3QllfSDJ1OW90UWx2RVpuMGREemVyWk5aZzlZQTNySU5NS2FrLURWR1hHeGMydTl1V2tDTW1tVkpLbVREUFBHV3BQWkp6bjFlYVV5R0xWSlAxTURJTm8tVDZvdHM1X0ZEa3BkMllCVXdtenJEdlBDU1lWWi12aUVEUEU2YmhLMXdycFVQZ3k0ODBSb29YTzNUdktaVlAwa2hFcHpXazFXQzlhekZieHhSc1ZMSGlpOWVDMDV3RjczSGJZY01ZYUF2QQ?oc=5"
-    },
-    {
-      "content_chars": 2481,
-      "content_confidence": "medium",
-      "created": "2026-06-03T07:00:42.542271",
-      "draft": "France reported 890 arrests following violence at PSG celebrations.\n\nAuthorities documented the incidents as crowds gathered to mark the football club's achievements. The scale of arrests underscores tensions during large public gatherings in the country.\n\nDetails on the specific nature of the violence and circumstances surrounding individual arrests remain limited in available reporting.\n\nSource: RFI\n\n#IslamophobiaWatchFrance #France #PublicOrder",
-      "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "TRENDING",
-      "heat_score": 5,
-      "id": "post_2_linkedin_20260603",
-      "published": "2026-06-01T11:23:47+00:00",
-      "source": "RFI",
-      "sources": [
-        {
-          "name": "RFI",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
-        }
-      ],
-      "status": "pending",
-      "summary": "PSG celebrations marred by violence as French authorities report 890 arrests&nbsp;&nbsp;RFI",
-      "time_ago": "1d 17h ago",
-      "title": "PSG celebrations marred by violence as French authorities report 890 arrests",
-      "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
-    },
-    {
-      "content_chars": 2481,
-      "content_confidence": "medium",
-      "created": "2026-06-03T07:00:42.542271",
-      "draft": "# PSG Victory Celebrations Turn Violent as Paris Police Make Hundreds of Arrests\n\nParis police arrested 890 people during celebrations following Paris Saint-Germain's victory, according to reporting from RFI on the incident that unfolded across the capital.\n\n## What happened\n\nLarge crowds gathered in central Paris to celebrate PSG's win, but disorder broke out in multiple locations across the city. According to RFI, French authorities made 890 arrests during the celebrations and subsequent police operations. The violence disrupted what had been anticipated as a celebratory evening for the football club's supporters.\n\nPolice deployed across Paris neighborhoods known to draw heavy concentrations of PSG fans. The exact nature of the violence—whether looting, vehicle damage, confrontations with police, or other forms of disorder—was not specified in available reporting. The scale of arrests, however, indicated authorities faced a significant public order challenge across multiple districts simultaneously.\n\n## Reaction\n\nLocal residents in affected neighborhoods experienced disruptions to normal evening life as police responded to unrest. Business owners in central Paris areas frequented by celebration crowds faced the prospect of damage or security concerns during the disturbances. PSG, as an institution, did not issue a public statement regarding the violence attributed to some of its supporters, though the arrests suggest authorities treated the incidents as criminal matters rather than sanctioned club activity.\n\n## Why it matters\n\nThe incident reflects broader tensions around public celebrations and policing in Paris, where large sporting events frequently draw diverse crowds. The scale of arrests—nearly 900 individuals—underscores the challenge French authorities face in managing mass gatherings, particularly those centered on popular football culture. For France's broader social fabric, such incidents can sometimes fuel discussions about integration, community relations, and public safety that touch on demographic and religious dimensions, though the available reporting does not indicate whether such factors were present in this specific incident.\n\n## Background\n\nPSG is France's most prominent football club, based in Paris and commanding a large, passionate supporter base across the country. Victory celebrations in the capital can draw tens of thousands of people into streets and public squares. French police maintain specialized units for managing crowd control at major sporting events, though large spontaneous gatherings sometimes exceed planning capacity. The arrests reported by RFI would be processed through Paris's criminal justice system, with charges varying depending on the specific conduct involved.\n\n---\n\n**Was this the first time PSG celebrations turned violent?**\nLarge sporting events in Paris have occasionally resulted in disorder and police responses, though specific historical comparisons would require additional reporting beyond the RFI account.\n\n**How many people typically attend PSG celebration gatherings?**\nExact figures were not specified in the available reporting, though major victories draw substantial crowds to central Paris.\n\n**What were the specific charges against arrested individuals?**\nDetails on individual charges were not included in the RFI reporting consulted.\n\n**Did PSG issue a statement?**\nNo public statement from the club regarding the violence was noted in available sources.\n\nSources: RFI",
-      "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "TRENDING",
-      "heat_score": 5,
-      "id": "post_2_website_20260603",
-      "published": "2026-06-01T11:23:47+00:00",
-      "source": "RFI",
-      "sources": [
-        {
-          "name": "RFI",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
-        }
-      ],
-      "status": "pending",
-      "summary": "PSG celebrations marred by violence as French authorities report 890 arrests&nbsp;&nbsp;RFI",
-      "time_ago": "1d 17h ago",
-      "title": "PSG celebrations marred by violence as French authorities report 890 arrests",
-      "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQQlFvdlpHREt4ZGl3OXlWQ2N3cDdwcGJTYk9yaDVvajZZcmtTSWJ0dHlfNllfSncwc05NdTJyR2tvb1BVNkdIeEh4NERtNVJ1Y29fTkRWa0pRdGt0NFFjeVk3OGRZQ25tQU9va2h5UDZxVlI0NzNMSFhYdUxkVmJ4dzZ2RFBRc3hoTGlZcEpCaDlSNm12bHNRUWY2S3k4V0VkY3BiX182LXNrOF9abVNRQXRhbzI?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOM2pRelI4dDdmZE4zMklVVVpTb094dDY5eWhPaVRwdTRGbHlxVU1Sa2JMRVhaLVQ0VGxnMGsxcTMwdW96aWFJdVRHbGZtbnBONF8yd2hBRFdPbU5qVGI0X3NXT0NLazNlakpjVW9wMFVmWFU1Q1p1bmE5bGd3TkRnVUM2b203cTBzX0VwQXg2c2hLWV96WkRKU21QMXVaREE?oc=5"
     }
   ],
-  "total_stories_scanned": 10
+  "total_stories_scanned": 6
 }
