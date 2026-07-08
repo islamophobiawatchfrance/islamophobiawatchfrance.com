@@ -1,5 +1,5 @@
 {
-  "total": 1047,
+  "total": 1048,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
@@ -112,9 +112,14 @@
       "pct": 1.1
     },
     {
+      "name": "TRT Français",
+      "count": 11,
+      "pct": 1.0
+    },
+    {
       "name": "Bladi.net",
       "count": 11,
-      "pct": 1.1
+      "pct": 1.0
     },
     {
       "name": "beaufortcountynow.com",
@@ -123,11 +128,6 @@
     },
     {
       "name": "RFI",
-      "count": 10,
-      "pct": 1.0
-    },
-    {
-      "name": "TRT Français",
       "count": 10,
       "pct": 1.0
     },

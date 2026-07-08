@@ -1092,3 +1092,6 @@ On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
 127.0.0.1 - - [08/Jul/2026 13:59:28] "GET /api/gaps HTTP/1.1" 200 -
 127.0.0.1 - - [08/Jul/2026 15:42:12] "POST /api/queue HTTP/1.1" 200 -
 127.0.0.1 - - [08/Jul/2026 15:42:12] "POST /api/archive/approve HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 15:42:15] "POST /api/publish HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 15:42:26] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 15:42:26] "POST /api/archive/approve HTTP/1.1" 200 -

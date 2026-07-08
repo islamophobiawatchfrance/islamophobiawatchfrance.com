@@ -14790,7 +14790,8 @@
       "content_chars": 2244,
       "fetch_source": "cache",
       "date": "2026-07-08",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-07-08T13:42:26.265Z"
     }
   ]
 }

@@ -36,7 +36,7 @@
       "heat_label": "NORMAL",
       "heat_score": 3,
       "id": "post_1_website_20260708",
-      "published": "2026-07-07T21:12:21+00:00",
+      "published": true,
       "source": "CBC",
       "sources": [
         {
@@ -49,7 +49,10 @@
       "time_ago": "14h ago",
       "title": "French far-right leader Marine Le Pen to run for president after appeals court shortens public-office ban",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE01MlhWWnpycThVRTBaSHRFVFRTU2hDeVJWS0czRHZnTXY3WGxPQjRWRTRramhjWnRZUWJlTEpWdDRNTHRwTVZMMVdUdk9LVVcxeHJOcDFlbFMxUGp5UTl4bVdTNkhzNThpZl9aX3lpbFlrWnp5RWV4SEFZSjNPUQ?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE01MlhWWnpycThVRTBaSHRFVFRTU2hDeVJWS0czRHZnTXY3WGxPQjRWRTRramhjWnRZUWJlTEpWdDRNTHRwTVZMMVdUdk9LVVcxeHJOcDFlbFMxUGp5UTl4bVdTNkhzNThpZl9aX3lpbFlrWnp5RWV4SEFZSjNPUQ?oc=5",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-07-07-french-far-right-leader-marine-le-pen-run-president-appeals.html",
+      "published_at": "2026-07-08T13:42:15.572Z",
+      "push_failed": false
     },
     {
       "content_chars": 2244,
@@ -94,7 +97,7 @@
           "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBoVjBUTUNEWGp3OTVXTGszZkdFcFBlS0ZpUXYxb0k4eDlmcTVvcDhETG5VcVJyaGg2c2NxdXQ4SlcyckVBQU5xMXBlaUFYYlp6MXRpdS1rVno3a3lj?oc=5"
         }
       ],
-      "status": "pending",
+      "status": "approved",
       "summary": "Burkini in Grenoble: secularism, eternal screen for anti-Muslim hatred - TRT Français",
       "time_ago": "16h ago",
       "title": "Burkini in Grenoble: secularism, eternal cover for anti-Muslim hatred",
