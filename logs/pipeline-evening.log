@@ -902,3 +902,193 @@ On macOS, try searching for and disabling 'AirPlay Receiver' in System Settings.
 127.0.0.1 - - [09/Jun/2026 11:08:52] "POST /api/queue HTTP/1.1" 200 -
 127.0.0.1 - - [09/Jun/2026 11:08:54] "POST /api/queue HTTP/1.1" 200 -
 127.0.0.1 - - [09/Jun/2026 11:08:54] "POST /api/archive/approve HTTP/1.1" 200 -
+127.0.0.1 - - [09/Jun/2026 11:08:56] "POST /api/publish HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jun/2026 07:01:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jun/2026 07:01:26] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jun/2026 07:01:26] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jun/2026 07:01:26] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [11/Jun/2026 07:01:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Jun/2026 07:01:13] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [11/Jun/2026 07:01:13] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [11/Jun/2026 07:01:13] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jun/2026 07:01:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jun/2026 07:01:16] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jun/2026 07:01:16] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [12/Jun/2026 07:01:16] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jun/2026 10:06:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jun/2026 10:06:30] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jun/2026 10:06:30] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [13/Jun/2026 10:06:31] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [14/Jun/2026 20:04:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [14/Jun/2026 20:04:03] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [14/Jun/2026 20:04:03] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [14/Jun/2026 20:04:04] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 08:54:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 08:54:52] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 08:54:52] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 08:54:52] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 16:11:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 16:11:59] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 16:11:59] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jun/2026 16:12:00] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 07:01:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 07:01:16] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 07:01:16] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 07:01:16] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 12:20:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 12:20:30] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 12:20:30] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 12:20:31] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [16/Jun/2026 14:08:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [17/Jun/2026 12:36:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [17/Jun/2026 12:36:48] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [17/Jun/2026 12:36:48] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [17/Jun/2026 12:36:49] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [17/Jun/2026 17:38:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [18/Jun/2026 07:01:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [18/Jun/2026 07:01:27] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [18/Jun/2026 07:01:27] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [18/Jun/2026 07:01:27] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [19/Jun/2026 09:45:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [19/Jun/2026 09:45:51] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [19/Jun/2026 09:45:51] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [19/Jun/2026 09:45:51] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [20/Jun/2026 08:38:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [20/Jun/2026 08:38:56] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [20/Jun/2026 08:38:56] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [20/Jun/2026 08:38:56] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [20/Jun/2026 08:38:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Jun/2026 07:33:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Jun/2026 07:33:46] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [21/Jun/2026 07:33:46] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [21/Jun/2026 07:33:46] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [22/Jun/2026 07:22:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Jun/2026 07:22:59] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [22/Jun/2026 07:22:59] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [22/Jun/2026 07:22:59] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2026 08:33:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:34] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:34] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:34] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:34] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 00:22:35] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:19] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:19] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:19] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:19] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 07:01:19] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jun/2026 10:00:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:14] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:14] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:14] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:14] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jun/2026 07:01:14] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:29] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:29] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:30] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:30] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [26/Jun/2026 08:05:30] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:07] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:07] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:07] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:07] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 08:53:08] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 13:14:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 13:14:02] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 13:14:02] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [30/Jun/2026 13:14:03] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 07:01:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 07:01:19] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 07:01:19] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [01/Jul/2026 07:01:20] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [02/Jul/2026 10:47:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [02/Jul/2026 10:47:47] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [02/Jul/2026 10:47:47] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [02/Jul/2026 10:47:48] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [02/Jul/2026 11:53:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 09:30:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 09:30:42] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 09:30:42] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 09:30:42] "GET /api/gaps HTTP/1.1" 200 -
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 4 undecided post(s) from 2026-07-02.
+  Running 32 news searches...
+  Found 12 unique stories in the last 48h.
+  Translating French content...
+  Wire: 10 new, 24 total (0 skipped as seen today).
+  Saved 12 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] The RN deputy Marine Hamelet targeted by a complaint fr... (4 source(s))
+        Fetch: cache | 2,616 chars | confidence: MEDIUM
+        -> LinkedIn (95 words)
+        -> Gathering background research...
+        -> Website article (549 words)
+  [2/2] [HOT] July 15, 1926: The inauguration of the Paris Mosque, si... (4 source(s))
+        Fetch: cache | 2,586 chars | confidence: MEDIUM
+        -> LinkedIn (145 words)
+        -> Gathering background research...
+        -> Website article (520 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+  index.html updated (10 items in feed)
+  news.html updated (22 cards in grid)
+  Wire updated (24 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
+
+  IWF Dashboard running at http://localhost:5000
+  Press Ctrl+C to stop.
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [03/Jul/2026 18:01:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 18:01:38] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 18:01:38] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 18:01:39] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jul/2026 18:01:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [04/Jul/2026 07:01:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jul/2026 07:01:32] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jul/2026 07:01:32] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [04/Jul/2026 07:01:32] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [05/Jul/2026 07:01:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [05/Jul/2026 07:01:11] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [05/Jul/2026 07:01:11] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [05/Jul/2026 07:01:11] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2026 07:01:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2026 07:01:25] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2026 07:01:25] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jul/2026 07:01:25] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 09:23:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 09:23:23] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 09:23:23] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 09:23:23] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 13:18:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 13:18:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 13:18:51] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jul/2026 13:18:51] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 13:59:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 13:59:28] "GET /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 13:59:28] "GET /api/stories HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 13:59:28] "GET /api/gaps HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 15:42:12] "POST /api/queue HTTP/1.1" 200 -
+127.0.0.1 - - [08/Jul/2026 15:42:12] "POST /api/archive/approve HTTP/1.1" 200 -
