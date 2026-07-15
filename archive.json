@@ -15786,7 +15786,8 @@
       "content_chars": 2468,
       "fetch_source": "cache",
       "date": "2026-07-15",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-07-15T08:48:02.036Z"
     }
   ]
 }

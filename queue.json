@@ -52,7 +52,7 @@
       "heat_label": "HOT",
       "heat_score": 16,
       "id": "post_1_website_20260715",
-      "published": "2026-07-15T05:07:19+00:00",
+      "published": true,
       "source": "RFI",
       "sources": [
         {
@@ -81,7 +81,10 @@
       "time_ago": "1h ago",
       "title": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-07-15-great-mosque-paris-it-been-part-republic-hundred-years.html",
+      "published_at": "2026-07-15T08:47:59.430Z",
+      "push_failed": false
     },
     {
       "content_chars": 2468,
@@ -134,7 +137,7 @@
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTm0wa1N3MGVsWThwaXhsZW1FT01QUjlGaFQ5YTFCUi03dEdlYlZGN0tWMFpnanR1MVdTM0FfcS1VWXlxMmRaZVpKbHUyX25JX0w3MVJRemJNYkkxcm1fanZKd193TDRhb3RDa1U0d0FZd1V2eDBobUdiR3U4dWcxQjltd0I2RWNnWDVDckNzUXcyN0M4c1BDZTdyWkxSRjM5cFR3NklJbFQ4bFRmU3hUdEc5VVI?oc=5"
         }
       ],
-      "status": "pending",
+      "status": "approved",
       "summary": "France marks 10 years since Bastille Day terror attack in Nice killed 86&nbsp;&nbsp;RFI",
       "time_ago": "20h ago",
       "title": "France marks 10 years since Bastille Day terror attack in Nice killed 86",

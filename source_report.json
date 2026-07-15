@@ -1,5 +1,5 @@
 {
-  "total": 1129,
+  "total": 1131,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
@@ -24,7 +24,7 @@
     {
       "name": "tsa-algerie.com",
       "count": 39,
-      "pct": 3.5
+      "pct": 3.4
     },
     {
       "name": "Ouest-France",
@@ -67,14 +67,14 @@
       "pct": 1.9
     },
     {
-      "name": "reinformation.tv",
+      "name": "RFI",
       "count": 20,
       "pct": 1.8
     },
     {
-      "name": "RFI",
-      "count": 19,
-      "pct": 1.7
+      "name": "reinformation.tv",
+      "count": 20,
+      "pct": 1.8
     },
     {
       "name": "franceinfo",
@@ -104,17 +104,17 @@
     {
       "name": "France 3 Régions",
       "count": 13,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "europe1.fr",
       "count": 13,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "L'Union",
       "count": 13,
-      "pct": 1.2
+      "pct": 1.1
     },
     {
       "name": "TRT Français",
@@ -130,6 +130,11 @@
       "name": "beaufortcountynow.com",
       "count": 10,
       "pct": 0.9
+    },
+    {
+      "name": "Muslim Network TV",
+      "count": 9,
+      "pct": 0.8
     },
     {
       "name": "l'Opinion",
@@ -148,11 +153,6 @@
     },
     {
       "name": "Beur FM",
-      "count": 8,
-      "pct": 0.7
-    },
-    {
-      "name": "Muslim Network TV",
       "count": 8,
       "pct": 0.7
     },
