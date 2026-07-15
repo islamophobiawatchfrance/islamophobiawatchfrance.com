@@ -1,108 +1,145 @@
 {
-  "generated": "2026-07-08T13:58:41.995472",
+  "generated": "2026-07-15T07:43:50.111132",
   "posts": [
     {
-      "content_chars": 2336,
+      "content_chars": 2674,
       "content_confidence": "medium",
-      "created": "2026-07-08T13:58:41.995472",
-      "draft": "France's far-right National Rally leader Marine Le Pen will run for president after an appeals court reduced her public-office ban.\n\nThe court shortened the suspension that had threatened to bar her from candidacy in upcoming elections. The decision removes a significant legal obstacle to her presidential ambitions.\n\nLe Pen has long positioned herself as a leading alternative to France's mainstream political establishment. The ruling clears the way for her formal entry into the presidential race.\n\nSource: CBC\n\n#IslamophobiaWatchFrance #France #FarRight",
+      "created": "2026-07-15T07:43:50.111132",
+      "draft": "The Great Mosque of Paris is marking its centenary this week.\n\nThe landmark institution, located in the 5th arrondissement, has operated for a hundred years as a space for Muslim worship and cultural life in the French capital. Multiple French media outlets are marking the milestone with coverage of the mosque's historical significance and institutional role.\n\nThe mosque was originally conceived as a symbol of Franco-Muslim relations. Its proximity to Notre-Dame Cathedral carries symbolic weight in Paris's religious geography.\n\nThe institution combines functions beyond worship—serving cultural and educational purposes for the city's Muslim community throughout its first century of operation.\n\nThe centenary celebrations reflect broader recognition of the mosque's established place within French civic life and Paris's pluralistic landscape.\n\nSource: RFI / Libération / Le Parisien / Ouest-France / franceinfo\n\n#IslamophobiaWatchFrance #France #Paris",
       "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_1_linkedin_20260708",
-      "published": "2026-07-07T21:12:21+00:00",
-      "source": "CBC",
+      "heat_article_count": 5,
+      "heat_label": "HOT",
+      "heat_score": 16,
+      "id": "post_1_linkedin_20260715",
+      "published": "2026-07-15T05:07:19+00:00",
+      "source": "RFI",
       "sources": [
         {
-          "name": "CBC",
-          "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE01MlhWWnpycThVRTBaSHRFVFRTU2hDeVJWS0czRHZnTXY3WGxPQjRWRTRramhjWnRZUWJlTEpWdDRNTHRwTVZMMVdUdk9LVVcxeHJOcDFlbFMxUGp5UTl4bVdTNkhzNThpZl9aX3lpbFlrWnp5RWV4SEFZSjNPUQ?oc=5"
+          "name": "RFI",
+          "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5"
+        },
+        {
+          "name": "Libération",
+          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOc3g0U052VGFnRE52QjdGNDJuX0luZm9Ec1BCdVQ5dnFRd3hYRkF0dTgyRndtWmwwNTNleXZGR0NKSjBDUFBXckNMN3pFakRBbm9HMVhHQ2NXWTdYeC1GNU12cGRXc2YyWEFSMzZyTjlYamFYUlh5d2ZsdTVvOTlMTlFjbEFJUjh4THZPRmxybURGLW4tX2RVNFVoRkthNm5sNDFPODBtVnRGNVg3NmNscnpURjJDcUlGSUl1S1ZFQV9CU1lvRkFyTmZZOUh5b2xyb2wwQXF4OFBPVTMzRjFpTw?oc=5"
+        },
+        {
+          "name": "Le Parisien",
+          "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxPaV95VnljRG8xOVJLLVVFOXpLbnVpN2g2dzJnczZCb192UXEyMHA2Q0o5eE5vdnFwWk44RGp3cFQydjViX1pLMHBYNnJ6U2xrdURPbVJ2bW40bl9Jc3ZvZzMwM1JUeEgzei1lNThhcE83MTlqRTRmZXBCTjJ6TTY0a3VGM2VXbFotQWwwaHVrZkpkcngzMTV1bHZ3cEZrTnJ5TnFtYWhiUXFGZjNVMk9CSFl3N1lzVk1fVFpFemRTdnktVHdKMXFwUjNtZ3Vzem94b0lpc3BDMGpjWHZUdUJrZ05aeGo1ejJxUEVUYlFrYlZiYU1LRjRMWDkzczZ6cXBRMXY2bEtabXZsbk5TTDZtSS05Vm9fNU5OeHc?oc=5"
+        },
+        {
+          "name": "Ouest-France",
+          "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQeEZJUzNrWFV3ZlEtX3NPQWkyYnJSY2g2cEhsTVRuSnZhRTFJUUltNWxLUDVrVDlCcDVYRy1HNy1SWlRMR2MyTjRJOGtkQkdXN29LcjdXZ1F5d0FqTzVTU1EzVDQ0V3FHRVpsaVFLMnpxcDVtUnpPWGpCbjZPUElZVy1jYjhUUWROeE5XUnpXS0J4RGF6ZDd0YVprT2p0c0tOWDdyc2lxZXhFZThXamdsdDdvQmFLaU1wWTcwTUM0M3c5d0xmX3V6UTR5R0JsN1pGRU1rclA0RS1veVJ0REo1ZjVQZ2lGYVFOWndHQlJNRldzWERaX2VRaklMX3AwR054ZGZhTThmdmlPRzZyNC05aG92MHZQUk5Bdjh0VXp0dTE?oc=5"
+        },
+        {
+          "name": "franceinfo",
+          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQUXBLWURqSS1kTk5HMl84QUk3SGxXczRldGZ2RVA4TTZhVDllNGdpdm1nYmlQM3g0Q1dRNXNXRG16LVF1OVNKUzhBc1RpbEV5RzZnMG1SUzRhdGhPdkQ3S3Z1ZHFSWDBSUFVSSVNRV0FlbklwU1Z1VEp5NVRPRmVUZ3djUDZsVXhLbVFUd0NCdDZiU255S0pPQ3o4Y1I1Q0t5LVV5eExUb1hfX3RRSHlzVnFRS2NnREpCUG9obU5fNk5TSXlwNmlTX0xNSEtDNjJQRXU5VXE3Mk05NFcyLWcxejJ1SnlnamxR?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "French far-right leader Marine Le Pen to run for president after appeals court shortens public-office ban&nbsp;&nbsp;CBC",
-      "time_ago": "14h ago",
-      "title": "French far-right leader Marine Le Pen to run for president after appeals court shortens public-office ban",
+      "summary": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years   RFI",
+      "time_ago": "1h ago",
+      "title": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years",
       "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE01MlhWWnpycThVRTBaSHRFVFRTU2hDeVJWS0czRHZnTXY3WGxPQjRWRTRramhjWnRZUWJlTEpWdDRNTHRwTVZMMVdUdk9LVVcxeHJOcDFlbFMxUGp5UTl4bVdTNkhzNThpZl9aX3lpbFlrWnp5RWV4SEFZSjNPUQ?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5"
     },
     {
-      "content_chars": 2336,
+      "content_chars": 2674,
       "content_confidence": "medium",
-      "created": "2026-07-08T13:58:41.995472",
-      "draft": "Marine Le Pen, leader of France's far-right National Rally party, will be able to run for president after an appeals court in Paris on Friday shortened her ban from public office, according to reporting by CBC and French media outlets.\n\n## What happened\n\nLe Pen, 56, was initially sentenced in 2023 to a five-year ban from holding elected office following her conviction on charges related to the misuse of European Parliament funds. The Paris appeals court reduced that ban to three years on Friday, effective from the date of her original conviction in December 2023, meaning she will be eligible to run in France's next presidential election scheduled for 2027.\n\nThe decision removes a significant legal obstacle to Le Pen's presidential ambitions. She has not yet formally declared her candidacy for 2027 but has indicated her intention to seek the presidency. The National Rally, which Le Pen has led since 2018, has positioned itself as a major force in French politics and achieved strong performances in recent European Parliament and legislative elections.\n\nThe original conviction stemmed from an investigation into whether the National Rally improperly used European Parliament funds allocated for staff salaries to finance party activities between 2009 and 2019. Le Pen had maintained her innocence throughout the proceedings.\n\n## Reaction\n\nThe appeals court decision is likely to energize Le Pen's supporters and the broader National Rally base ahead of the 2027 presidential race. The party has sought to position itself as a serious governing alternative to France's traditional centre-right and centre-left parties.\n\nOpponents of the National Rally have expressed concern about Le Pen's possible candidacy, citing the party's hard-line immigration policies and its historical associations with anti-Muslim rhetoric. Civil society organizations monitoring far-right politics in France have previously documented the party's use of Islamophobic framing in campaign materials and public statements.\n\n## Why it matters\n\nThe appeals court decision represents a turning point in French politics. Le Pen's potential return to the presidential race could reshape the 2027 election, which is shaping up to be a highly competitive three-way contest. The National Rally's electoral rise and potential access to the presidency reflects broader political shifts across Europe regarding immigration, national identity, and secularism—issues with direct implications for France's Muslim minority of approximately 5 to 6 million people.\n\n## Background\n\nThe National Rally, formerly known as the Front National until 2018, has historically campaigned on restrictive immigration policies and national sovereignty. Under Le Pen's leadership, the party has sought to rebrand itself as mainstream, though it remains classified as far-right by political analysts and civil society monitors. French law permits appeals courts to modify sentences handed down in lower courts.\n\n**What was Le Pen originally convicted of?**\nMisuse of European Parliament funds allocated for staff salaries between 2009 and 2019, which prosecutors alleged were diverted to finance National Rally party activities.\n\n**When is the next French presidential election?**\nScheduled for 2027.\n\n**Can Le Pen appeal the court's decision?**\nThe reporting does not specify whether either party has indicated plans to further appeal.\n\nSources: CBC; French court reporting; French political news coverage",
+      "created": "2026-07-15T07:43:50.111132",
+      "draft": "# Great Mosque of Paris marks centenary as landmark of French religious integration\n\nThe Great Mosque of Paris, one of France's most prominent Islamic institutions, marked its hundredth anniversary this year, celebrating a century of presence within the French Republic. The milestone reflects the mosque's long-standing role in French Muslim life and its institutional relationship with the French state, according to reporting from RFI.\n\n## What happened\n\nThe Great Mosque of Paris, located in the 5th arrondissement, reached its centenary in 2026, marking one hundred years since its official opening in 1926. The anniversary represents a symbolic moment for the institution, which has served as the spiritual and administrative centre for many French Muslims and has historically maintained formal ties to the French state through various institutional arrangements.\n\nThe mosque's existence across this century underscores a particular model of Muslim integration within France's secular framework. Unlike many European Muslim communities that emerged primarily through post-war migration, the Great Mosque of Paris was established earlier, with roots extending to French colonial connections in North Africa and the Middle East.\n\n## Reaction\n\nThe anniversary has been framed by mosque officials and supporters as evidence of Islam's legitimate place within French civic life. The centenary messaging emphasizes the institution's continuity and its role in what might be described as a historically rooted French Muslim presence, distinct from more recent immigration narratives that sometimes dominate contemporary debates.\n\nThe milestone occurs amid ongoing tensions in France surrounding Islam, secularism, and the boundaries of religious expression in public life—debates that have intensified over the past two decades through disputes over headscarves, halal slaughter, mosque funding, and representations of Muslims in media and politics.\n\n## Why it matters\n\nThe Great Mosque's centenary narrative carries significance in contemporary France as a counterpoint to framings of Islam as a recent or foreign presence. For French Muslims, the institution's longevity can represent historical legitimacy and integration. For broader French society, the mosque's century-long presence raises questions about how France manages religious diversity within its republican secular model, and how historical institutions are recognized or forgotten in national memory.\n\n## Background\n\nThe Great Mosque of Paris was established during the 1920s, partly as a gesture toward France's North African colonial subjects and partly to serve Muslim communities already present in Paris. The French concept of laïcité—secularism—shapes how the state relates to all religious institutions, including mosques. France maintains a principle of state neutrality toward religion while funding secular aspects of religious buildings as cultural or historical monuments. The Great Mosque has historically navigated this complex relationship, maintaining religious functions while also serving as a cultural institution recognized by French authorities.\n\nSources: RFI\n\n---\n\n**Why was the Great Mosque of Paris founded in 1926?**\nRFI reporting indicates it was established during the 1920s partly as recognition of France's North African colonial relationship and to serve Muslim communities already resident in Paris.\n\n**What role has the mosque played for French Muslims?**\nIt has functioned as a primary spiritual and administrative centre for French Muslim communities throughout the past century.\n\n**How does the centenary fit into current French debates?**\nThe anniversary provides a historical counter-narrative to contemporary portrayals of Islam as foreign to France.",
       "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_1_website_20260708",
-      "published": true,
-      "source": "CBC",
+      "heat_article_count": 5,
+      "heat_label": "HOT",
+      "heat_score": 16,
+      "id": "post_1_website_20260715",
+      "published": "2026-07-15T05:07:19+00:00",
+      "source": "RFI",
       "sources": [
         {
-          "name": "CBC",
-          "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE01MlhWWnpycThVRTBaSHRFVFRTU2hDeVJWS0czRHZnTXY3WGxPQjRWRTRramhjWnRZUWJlTEpWdDRNTHRwTVZMMVdUdk9LVVcxeHJOcDFlbFMxUGp5UTl4bVdTNkhzNThpZl9aX3lpbFlrWnp5RWV4SEFZSjNPUQ?oc=5"
+          "name": "RFI",
+          "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5"
+        },
+        {
+          "name": "Libération",
+          "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOc3g0U052VGFnRE52QjdGNDJuX0luZm9Ec1BCdVQ5dnFRd3hYRkF0dTgyRndtWmwwNTNleXZGR0NKSjBDUFBXckNMN3pFakRBbm9HMVhHQ2NXWTdYeC1GNU12cGRXc2YyWEFSMzZyTjlYamFYUlh5d2ZsdTVvOTlMTlFjbEFJUjh4THZPRmxybURGLW4tX2RVNFVoRkthNm5sNDFPODBtVnRGNVg3NmNscnpURjJDcUlGSUl1S1ZFQV9CU1lvRkFyTmZZOUh5b2xyb2wwQXF4OFBPVTMzRjFpTw?oc=5"
+        },
+        {
+          "name": "Le Parisien",
+          "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxPaV95VnljRG8xOVJLLVVFOXpLbnVpN2g2dzJnczZCb192UXEyMHA2Q0o5eE5vdnFwWk44RGp3cFQydjViX1pLMHBYNnJ6U2xrdURPbVJ2bW40bl9Jc3ZvZzMwM1JUeEgzei1lNThhcE83MTlqRTRmZXBCTjJ6TTY0a3VGM2VXbFotQWwwaHVrZkpkcngzMTV1bHZ3cEZrTnJ5TnFtYWhiUXFGZjNVMk9CSFl3N1lzVk1fVFpFemRTdnktVHdKMXFwUjNtZ3Vzem94b0lpc3BDMGpjWHZUdUJrZ05aeGo1ejJxUEVUYlFrYlZiYU1LRjRMWDkzczZ6cXBRMXY2bEtabXZsbk5TTDZtSS05Vm9fNU5OeHc?oc=5"
+        },
+        {
+          "name": "Ouest-France",
+          "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQeEZJUzNrWFV3ZlEtX3NPQWkyYnJSY2g2cEhsTVRuSnZhRTFJUUltNWxLUDVrVDlCcDVYRy1HNy1SWlRMR2MyTjRJOGtkQkdXN29LcjdXZ1F5d0FqTzVTU1EzVDQ0V3FHRVpsaVFLMnpxcDVtUnpPWGpCbjZPUElZVy1jYjhUUWROeE5XUnpXS0J4RGF6ZDd0YVprT2p0c0tOWDdyc2lxZXhFZThXamdsdDdvQmFLaU1wWTcwTUM0M3c5d0xmX3V6UTR5R0JsN1pGRU1rclA0RS1veVJ0REo1ZjVQZ2lGYVFOWndHQlJNRldzWERaX2VRaklMX3AwR054ZGZhTThmdmlPRzZyNC05aG92MHZQUk5Bdjh0VXp0dTE?oc=5"
+        },
+        {
+          "name": "franceinfo",
+          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQUXBLWURqSS1kTk5HMl84QUk3SGxXczRldGZ2RVA4TTZhVDllNGdpdm1nYmlQM3g0Q1dRNXNXRG16LVF1OVNKUzhBc1RpbEV5RzZnMG1SUzRhdGhPdkQ3S3Z1ZHFSWDBSUFVSSVNRV0FlbklwU1Z1VEp5NVRPRmVUZ3djUDZsVXhLbVFUd0NCdDZiU255S0pPQ3o4Y1I1Q0t5LVV5eExUb1hfX3RRSHlzVnFRS2NnREpCUG9obU5fNk5TSXlwNmlTX0xNSEtDNjJQRXU5VXE3Mk05NFcyLWcxejJ1SnlnamxR?oc=5"
         }
       ],
       "status": "approved",
-      "summary": "French far-right leader Marine Le Pen to run for president after appeals court shortens public-office ban&nbsp;&nbsp;CBC",
-      "time_ago": "14h ago",
-      "title": "French far-right leader Marine Le Pen to run for president after appeals court shortens public-office ban",
+      "summary": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years   RFI",
+      "time_ago": "1h ago",
+      "title": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE01MlhWWnpycThVRTBaSHRFVFRTU2hDeVJWS0czRHZnTXY3WGxPQjRWRTRramhjWnRZUWJlTEpWdDRNTHRwTVZMMVdUdk9LVVcxeHJOcDFlbFMxUGp5UTl4bVdTNkhzNThpZl9aX3lpbFlrWnp5RWV4SEFZSjNPUQ?oc=5",
-      "published_url": "https://islamophobiawatchfrance.com/news/2026-07-07-french-far-right-leader-marine-le-pen-run-president-appeals.html",
-      "published_at": "2026-07-08T13:42:15.572Z",
-      "push_failed": false
+      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5"
     },
     {
-      "content_chars": 2244,
+      "content_chars": 2468,
       "content_confidence": "medium",
-      "created": "2026-07-08T13:58:41.995472",
-      "draft": "Grenoble's burkini controversy continues to frame Muslim women's clothing choices as a secular issue rather than a matter of religious freedom.\n\nThe debate reflects broader tensions in France where discussions around Muslim dress often centre laïcité—the principle of state secularism—rather than individual liberty or discrimination concerns.\n\nCritics argue that framing burkini policies through a secularism lens masks underlying anti-Muslim sentiment and limits Muslim women's autonomy in choosing their own swimwear.\n\nThe issue remains contentious as French municipalities grapple with how to apply secular principles while respecting religious expression and equality rights.\n\nSource: TRT Français\n\n#IslamophobiaWatchFrance #France #Laïcité",
+      "created": "2026-07-15T07:43:50.111132",
+      "draft": "France marks 10 years since the 2016 Bastille Day terror attack in Nice killed 86 people.\n\nThe anniversary comes as French Muslims reflect on their place in the nation's foundational ideals of liberté, égalité, fraternité.\n\nThe attack, which occurred during France's national celebration, remains a defining moment in recent French history and continues to shape conversations around security, identity, and belonging in the country.\n\nThe commemoration coincides with broader questions about Muslim inclusion in French civic life and whether the nation's republican values extend equally to all communities.\n\nSource: RFI / Muslim Network TV\n\n#IslamophobiaWatchFrance #France #BastilleDay",
       "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_2_linkedin_20260708",
-      "published": "2026-07-07T19:16:40+00:00",
-      "source": "TRT Français",
+      "heat_article_count": 2,
+      "heat_label": "HOT",
+      "heat_score": 8,
+      "id": "post_2_linkedin_20260715",
+      "published": "2026-07-14T10:12:40+00:00",
+      "source": "RFI",
       "sources": [
         {
-          "name": "TRT Français",
-          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBoVjBUTUNEWGp3OTVXTGszZkdFcFBlS0ZpUXYxb0k4eDlmcTVvcDhETG5VcVJyaGg2c2NxdXQ4SlcyckVBQU5xMXBlaUFYYlp6MXRpdS1rVno3a3lj?oc=5"
+          "name": "RFI",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3c5NWNfM2ZvNXg5TDZKbzlTcEhoTDVrNldlYWJxdE5sbXBSdEUzVW1NRERaLXQ0SlhpdVNQR1RlTDNpTnV0RHlfYUJNSlQ2YVlmTE1ZQVRmRk9zZmJwQUN1bjVobHB1aGdFZmdjYVBLN0Q5ZndLVW5XLVBDV2JJX09oNHZCZUhXRW9YUTRrc09mMFNDOFl4Tnk4cGZCTG5uRTNRVzlzaGN5T3M2NGlN?oc=5"
+        },
+        {
+          "name": "Muslim Network TV",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTm0wa1N3MGVsWThwaXhsZW1FT01QUjlGaFQ5YTFCUi03dEdlYlZGN0tWMFpnanR1MVdTM0FfcS1VWXlxMmRaZVpKbHUyX25JX0w3MVJRemJNYkkxcm1fanZKd193TDRhb3RDa1U0d0FZd1V2eDBobUdiR3U4dWcxQjltd0I2RWNnWDVDckNzUXcyN0M4c1BDZTdyWkxSRjM5cFR3NklJbFQ4bFRmU3hUdEc5VVI?oc=5"
         }
       ],
       "status": "pending",
-      "summary": "Burkini in Grenoble: secularism, eternal screen for anti-Muslim hatred - TRT Français",
-      "time_ago": "16h ago",
-      "title": "Burkini in Grenoble: secularism, eternal cover for anti-Muslim hatred",
+      "summary": "France marks 10 years since Bastille Day terror attack in Nice killed 86&nbsp;&nbsp;RFI",
+      "time_ago": "20h ago",
+      "title": "France marks 10 years since Bastille Day terror attack in Nice killed 86",
       "type": "linkedin",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBoVjBUTUNEWGp3OTVXTGszZkdFcFBlS0ZpUXYxb0k4eDlmcTVvcDhETG5VcVJyaGg2c2NxdXQ4SlcyckVBQU5xMXBlaUFYYlp6MXRpdS1rVno3a3lj?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3c5NWNfM2ZvNXg5TDZKbzlTcEhoTDVrNldlYWJxdE5sbXBSdEUzVW1NRERaLXQ0SlhpdVNQR1RlTDNpTnV0RHlfYUJNSlQ2YVlmTE1ZQVRmRk9zZmJwQUN1bjVobHB1aGdFZmdjYVBLN0Q5ZndLVW5XLVBDV2JJX09oNHZCZUhXRW9YUTRrc09mMFNDOFl4Tnk4cGZCTG5uRTNRVzlzaGN5T3M2NGlN?oc=5"
     },
     {
-      "content_chars": 2244,
+      "content_chars": 2468,
       "content_confidence": "medium",
-      "created": "2026-07-08T13:58:41.995472",
-      "draft": "# Grenoble's Burkini Row Reignites France's Secularism Debate\n\nGrenoble has become the latest flashpoint in France's ongoing struggle over religious expression and secularism, as the city's decision to permit burkinis in municipal swimming pools has provoked fierce backlash from critics who argue the measure violates French secular principles, while Muslim advocates say restrictions constitute discrimination masked by appeals to laïcité.\n\n## What happened\n\nThe controversy centres on Grenoble's municipal swimming facilities and the question of whether women wearing full-body swimwear—burkinis—should be permitted access. According to reporting from TRT Français, the city's policy change has triggered intense debate about the boundaries of religious accommodation in public spaces. Details of the specific policy timeline and implementing authority are unclear from available reporting, but the decision has become emblematic of broader French tensions over how municipalities balance religious freedom with secular governance.\n\n## Reaction\n\nCritics of the burkini policy argue it represents an erosion of France's commitment to secularism in public institutions. Secularism advocates have contended that allowing religious clothing in state-run facilities compromises the secular character of public space. However, Muslim community representatives and civil rights organisations counter that restrictions disproportionately target Muslim women and that permitting modest swimwear accommodates religious practice without imposing it on others. TRT Français's framing of the debate—describing secularism as \"an eternal cover for anti-Muslim hatred\"—reflects Muslim community concerns that the rhetoric of laïcité has become weaponised against Islamic expression.\n\n## Why it matters\n\nThe Grenoble debate encapsulates France's fundamental disagreement about religious minorities' place in public life. For French Muslims, restrictions on modest clothing feel like systematic exclusion justified through secular language. For secularism advocates, accommodation of religious dress in state spaces represents a threat to France's foundational principle that public institutions remain neutral territory free from religious expression. These competing visions have shaped policy across French cities, creating a patchwork of burkini policies that reflects deep national divisions about integration, religious freedom, and what laïcité requires.\n\n## Background\n\nFrance's principle of laïcité—secular governance and the separation of religion from state institutions—differs from Anglo-American secularism. French laïcité traditionally aims to create public spaces where no religion receives preference or visibility. Burkini restrictions have been implemented in various French municipalities since the practice emerged, often justified by officials citing public hygiene, swimming safety, or secular principles. However, French courts have increasingly scrutinised such bans, and the legal landscape remains contested. Grenoble's apparent reversal of earlier restrictions thus marks a significant shift in one major French city's approach to religious accommodation in municipal facilities.\n\nSources: TRT Français\n\n---\n\n**What is a burkini exactly?**\n\nA burkini is a full-body swimsuit covering the arms, legs, and head, designed to allow Muslim women to swim while maintaining religious modesty standards.\n\n**Why does France care so much about secularism in swimming pools?**\n\nFrance's concept of laïcité holds that state institutions should remain religiously neutral spaces. Public pools, as municipal facilities, are considered state spaces where religious expression should theoretically be absent.\n\n**Have French courts ruled on burkini bans?**\n\nFrench administrative courts have issued mixed rulings, with some judges finding blanket burkini bans discriminatory and others permitting restrictions under public safety justifications.\n\n**What do other French cities do?**\n\nPolicies vary widely; some cities ban burkinis entirely, others permit them, and some maintain case-by-case accommodation practices.",
+      "created": "2026-07-15T07:43:50.111132",
+      "draft": "# France Marks 10 Years Since Nice Bastille Day Terror Attack; Muslims Question Inclusion in National Values\n\nFrance is marking the tenth anniversary of the 2016 Bastille Day terror attack in Nice, which killed 86 people, as Muslim communities use the occasion to ask whether the French republican values of liberté, égalité, fraternité extend to them.\n\n## What happened\n\nOn July 14, 2016, a truck was driven into a crowd celebrating Bastille Day on the Promenade des Anglais in Nice, resulting in 86 deaths. The attack remains one of France's deadliest terrorist incidents in recent decades and occurred during a period of heightened jihadist attacks across Europe.\n\nThe anniversary has prompted national reflection and remembrance ceremonies across France, with official commemorations taking place in Nice and elsewhere.\n\n## Reaction\n\nFrench Muslim communities have used the tenth anniversary to voice concerns about their place in French society. Muslim Network TV reported that Muslims are asking whether the foundational French republican values—liberté (liberty), égalité (equality), and fraternité (brotherhood)—genuinely include them as equal citizens.\n\nThe timing of these reflections coincides with broader ongoing debates in France about integration, religious minorities, and the interpretation of laïcité (French secularism). Muslim organizations and community leaders have not been quoted in available sources, but the framing of these questions suggests tensions between Muslim citizens and perceptions of their belonging within the French national community.\n\n## Why it matters\n\nThe anniversary underscores persistent questions about Muslim integration and acceptance in France a decade after a major terrorist attack. While the 2016 Nice attack was carried out by an individual rather than an organized group, its impact continues to shape public discourse around Islam, security, and the rights of French Muslims. The fact that Muslim communities are explicitly asking whether republican values include them on this symbolic date reflects deepening concerns about discrimination, Islamophobia, and social cohesion in post-attack France.\n\n## Background\n\nJuly 14 is Bastille Day, France's national holiday commemorating the storming of the Bastille during the French Revolution and celebrating the founding principles of the French Republic. The Nice attack occurred during Bastille Day celebrations and became a defining moment in France's recent history of security crises.\n\nFrance's Muslim population, estimated at between 5 and 8 million people, represents roughly 8–10 percent of the country's total population, making Muslims a significant religious minority. Laïcité—the French constitutional principle of separation of religion and state—has become increasingly contested in debates about Muslim religious expression, headscarves, and religious accommodation in public spaces.\n\nSources: RFI, Muslim Network TV\n\n---\n\n**What was the death toll from the 2016 Nice Bastille Day attack?**\n\nEighty-six people were killed when a truck was driven into crowds celebrating Bastille Day on the Promenade des Anglais in Nice on July 14, 2016.\n\n**When are French Muslims raising these questions about inclusion?**\n\nMuslim communities are raising questions about whether republican values include them on the occasion of the tenth anniversary of the attack, according to Muslim Network TV.\n\n**What does laïcité mean in the French context?**\n\nLaïcité is the French constitutional principle mandating the separation of religion and state. It shapes debates about religious expression and accommodation in public institutions and public spaces.\n\n**What prompted these anniversary reflections?**\n\nThe tenth-year commemoration of the 2016 Nice terror attack, which killed 86 people and remains one of France's deadliest terrorist incidents in recent decades, has prompted national reflection and Muslim communities to question their place in French society.",
       "fetch_source": "cache",
-      "heat_article_count": 1,
-      "heat_label": "NORMAL",
-      "heat_score": 3,
-      "id": "post_2_website_20260708",
-      "published": "2026-07-07T19:16:40+00:00",
-      "source": "TRT Français",
+      "heat_article_count": 2,
+      "heat_label": "HOT",
+      "heat_score": 8,
+      "id": "post_2_website_20260715",
+      "published": "2026-07-14T10:12:40+00:00",
+      "source": "RFI",
       "sources": [
         {
-          "name": "TRT Français",
-          "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBoVjBUTUNEWGp3OTVXTGszZkdFcFBlS0ZpUXYxb0k4eDlmcTVvcDhETG5VcVJyaGg2c2NxdXQ4SlcyckVBQU5xMXBlaUFYYlp6MXRpdS1rVno3a3lj?oc=5"
+          "name": "RFI",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3c5NWNfM2ZvNXg5TDZKbzlTcEhoTDVrNldlYWJxdE5sbXBSdEUzVW1NRERaLXQ0SlhpdVNQR1RlTDNpTnV0RHlfYUJNSlQ2YVlmTE1ZQVRmRk9zZmJwQUN1bjVobHB1aGdFZmdjYVBLN0Q5ZndLVW5XLVBDV2JJX09oNHZCZUhXRW9YUTRrc09mMFNDOFl4Tnk4cGZCTG5uRTNRVzlzaGN5T3M2NGlN?oc=5"
+        },
+        {
+          "name": "Muslim Network TV",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTm0wa1N3MGVsWThwaXhsZW1FT01QUjlGaFQ5YTFCUi03dEdlYlZGN0tWMFpnanR1MVdTM0FfcS1VWXlxMmRaZVpKbHUyX25JX0w3MVJRemJNYkkxcm1fanZKd193TDRhb3RDa1U0d0FZd1V2eDBobUdiR3U4dWcxQjltd0I2RWNnWDVDckNzUXcyN0M4c1BDZTdyWkxSRjM5cFR3NklJbFQ4bFRmU3hUdEc5VVI?oc=5"
         }
       ],
-      "status": "approved",
-      "summary": "Burkini in Grenoble: secularism, eternal screen for anti-Muslim hatred - TRT Français",
-      "time_ago": "16h ago",
-      "title": "Burkini in Grenoble: secularism, eternal cover for anti-Muslim hatred",
+      "status": "pending",
+      "summary": "France marks 10 years since Bastille Day terror attack in Nice killed 86&nbsp;&nbsp;RFI",
+      "time_ago": "20h ago",
+      "title": "France marks 10 years since Bastille Day terror attack in Nice killed 86",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBoVjBUTUNEWGp3OTVXTGszZkdFcFBlS0ZpUXYxb0k4eDlmcTVvcDhETG5VcVJyaGg2c2NxdXQ4SlcyckVBQU5xMXBlaUFYYlp6MXRpdS1rVno3a3lj?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3c5NWNfM2ZvNXg5TDZKbzlTcEhoTDVrNldlYWJxdE5sbXBSdEUzVW1NRERaLXQ0SlhpdVNQR1RlTDNpTnV0RHlfYUJNSlQ2YVlmTE1ZQVRmRk9zZmJwQUN1bjVobHB1aGdFZmdjYVBLN0Q5ZndLVW5XLVBDV2JJX09oNHZCZUhXRW9YUTRrc09mMFNDOFl4Tnk4cGZCTG5uRTNRVzlzaGN5T3M2NGlN?oc=5"
     }
   ],
   "total_stories_scanned": 10

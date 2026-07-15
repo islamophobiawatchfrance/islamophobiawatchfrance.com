@@ -1,4 +1,23 @@
 {
-  "generated": "2026-07-08T11:58:42.326916+00:00",
-  "gaps": []
+  "generated": "2026-07-15T05:43:50.127140+00:00",
+  "gaps": [
+    {
+      "topic": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years",
+      "heat_score": 16,
+      "heat_label": "HOT",
+      "article_count": 5,
+      "top_story_title": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years",
+      "top_story_url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5",
+      "reason": "5 source(s) covered this story but IWF has not published on it recently"
+    },
+    {
+      "topic": "France marks 10 years since Bastille Day terror attack in Nice killed 86",
+      "heat_score": 8,
+      "heat_label": "HOT",
+      "article_count": 2,
+      "top_story_title": "France marks 10 years since Bastille Day terror attack in Nice killed 86",
+      "top_story_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3c5NWNfM2ZvNXg5TDZKbzlTcEhoTDVrNldlYWJxdE5sbXBSdEUzVW1NRERaLXQ0SlhpdVNQR1RlTDNpTnV0RHlfYUJNSlQ2YVlmTE1ZQVRmRk9zZmJwQUN1bjVobHB1aGdFZmdjYVBLN0Q5ZndLVW5XLVBDV2JJX09oNHZCZUhXRW9YUTRrc09mMFNDOFl4Tnk4cGZCTG5uRTNRVzlzaGN5T3M2NGlN?oc=5",
+      "reason": "2 source(s) covered this story but IWF has not published on it recently"
+    }
+  ]
 }
