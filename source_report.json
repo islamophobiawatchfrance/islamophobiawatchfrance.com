@@ -1,105 +1,110 @@
 {
-  "total": 1131,
+  "total": 1202,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
-      "count": 148,
-      "pct": 13.1
+      "count": 152,
+      "pct": 12.6
+    },
+    {
+      "name": "France 24",
+      "count": 73,
+      "pct": 6.1
     },
     {
       "name": "Le Figaro",
       "count": 69,
-      "pct": 6.1
-    },
-    {
-      "name": "France 24",
-      "count": 66,
-      "pct": 5.8
+      "pct": 5.7
     },
     {
       "name": "Actu.fr",
       "count": 60,
-      "pct": 5.3
+      "pct": 5.0
+    },
+    {
+      "name": "Ouest-France",
+      "count": 43,
+      "pct": 3.6
     },
     {
       "name": "tsa-algerie.com",
       "count": 39,
-      "pct": 3.4
-    },
-    {
-      "name": "Ouest-France",
-      "count": 35,
-      "pct": 3.1
+      "pct": 3.2
     },
     {
       "name": "Le Parisien",
-      "count": 32,
-      "pct": 2.8
+      "count": 33,
+      "pct": 2.7
+    },
+    {
+      "name": "RFI",
+      "count": 29,
+      "pct": 2.4
     },
     {
       "name": "Sortir à Paris",
       "count": 29,
-      "pct": 2.6
+      "pct": 2.4
+    },
+    {
+      "name": "Libération",
+      "count": 25,
+      "pct": 2.1
     },
     {
       "name": "CNews",
       "count": 25,
-      "pct": 2.2
+      "pct": 2.1
+    },
+    {
+      "name": "franceinfo",
+      "count": 24,
+      "pct": 2.0
     },
     {
       "name": "Radio France",
       "count": 22,
-      "pct": 1.9
+      "pct": 1.8
     },
     {
       "name": "Visas & Voyages Algérie",
       "count": 21,
-      "pct": 1.9
+      "pct": 1.7
     },
     {
       "name": "MSN",
       "count": 21,
-      "pct": 1.9
+      "pct": 1.7
     },
     {
       "name": "Valeurs actuelles",
       "count": 21,
-      "pct": 1.9
-    },
-    {
-      "name": "RFI",
-      "count": 20,
-      "pct": 1.8
+      "pct": 1.7
     },
     {
       "name": "reinformation.tv",
       "count": 20,
-      "pct": 1.8
-    },
-    {
-      "name": "franceinfo",
-      "count": 19,
       "pct": 1.7
     },
     {
       "name": "Planet.fr",
       "count": 18,
-      "pct": 1.6
-    },
-    {
-      "name": "Libération",
-      "count": 17,
       "pct": 1.5
     },
     {
       "name": "lejdd.fr",
       "count": 17,
-      "pct": 1.5
+      "pct": 1.4
     },
     {
       "name": "Bladi.net",
       "count": 15,
-      "pct": 1.3
+      "pct": 1.2
+    },
+    {
+      "name": "Muslim Network TV",
+      "count": 14,
+      "pct": 1.2
     },
     {
       "name": "France 3 Régions",
@@ -119,32 +124,32 @@
     {
       "name": "TRT Français",
       "count": 12,
-      "pct": 1.1
+      "pct": 1.0
     },
     {
       "name": "Breizh-info.com",
       "count": 12,
-      "pct": 1.1
+      "pct": 1.0
+    },
+    {
+      "name": "Regards protestants",
+      "count": 12,
+      "pct": 1.0
     },
     {
       "name": "beaufortcountynow.com",
       "count": 10,
-      "pct": 0.9
-    },
-    {
-      "name": "Muslim Network TV",
-      "count": 9,
       "pct": 0.8
     },
     {
       "name": "l'Opinion",
       "count": 9,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "L'Humanité",
       "count": 9,
-      "pct": 0.8
+      "pct": 0.7
     },
     {
       "name": "CBC",
@@ -197,9 +202,9 @@
       "pct": 0.7
     },
     {
-      "name": "Regards protestants",
-      "count": 8,
-      "pct": 0.7
+      "name": "Le Monde.fr",
+      "count": 7,
+      "pct": 0.6
     },
     {
       "name": "Causeur",
@@ -259,192 +264,207 @@
     {
       "name": "Washington Examiner",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "ShiaWaves",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "EL PAÍS English",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Georgetown University",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Mediapart",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "The Guardian",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Algerie360",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Le HuffPost",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Programme TV Ouest-France",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Le Devoir",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "RTL.fr",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Mshale",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Gentside",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "politico.eu",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "21News",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Les Echos",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "lediplomate.media",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Europe 1",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Association France Palestine Solidarité",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "La Provence",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "wszystkoconajwazniejsze.pl",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "La Croix",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Bamada.net",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Maliweb",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "RadioJ",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "ENTREVUE.FR",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "CAPJPO EuroPalestine",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "ABC News & Headlines – Australian Broadcasting Corporation",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "lokmattimes.com",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "France TV",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "The Straits Times",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "SaphirNews.com",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "Algerie Patriotique",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "MyPetition.org",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "INFO.FR",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
     },
     {
       "name": "reforme.net",
       "count": 4,
-      "pct": 0.4
+      "pct": 0.3
+    },
+    {
+      "name": "Jeune Afrique",
+      "count": 4,
+      "pct": 0.3
+    },
+    {
+      "name": "mesinfos",
+      "count": 3,
+      "pct": 0.2
     },
     {
       "name": "5Pillars",
       "count": 3,
-      "pct": 0.3
+      "pct": 0.2
     },
     {
       "name": "Yeni Şafak",
       "count": 3,
-      "pct": 0.3
+      "pct": 0.2
+    },
+    {
+      "name": "instagram.com",
+      "count": 3,
+      "pct": 0.2
     },
     {
       "name": "Contre Attaque",
@@ -463,6 +483,16 @@
     },
     {
       "name": "La Nouvelle République Algérie",
+      "count": 2,
+      "pct": 0.2
+    },
+    {
+      "name": "parlons-politique.fr",
+      "count": 2,
+      "pct": 0.2
+    },
+    {
+      "name": "cath.ch",
       "count": 2,
       "pct": 0.2
     },
@@ -488,11 +518,6 @@
     },
     {
       "name": "Public Sénat",
-      "count": 1,
-      "pct": 0.1
-    },
-    {
-      "name": "instagram.com",
       "count": 1,
       "pct": 0.1
     },
