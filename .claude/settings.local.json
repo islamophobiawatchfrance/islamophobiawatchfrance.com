@@ -9,7 +9,13 @@
       "Bash(kill %1)",
       "Bash(pkill -f \"python3 app.py\")",
       "Bash(echo \"Exit code: $?\")",
-      "Bash(kill 74639)"
+      "Bash(kill 74639)",
+      "Bash(mkdir -p ~/Library/LaunchAgents)",
+      "Read(//Users/christopher/Library/LaunchAgents/**)",
+      "Bash(launchctl unload *)",
+      "Bash(launchctl load *)",
+      "Bash(launchctl list *)",
+      "Bash(ping -c 2 api.telegram.org)"
     ]
   }
 }

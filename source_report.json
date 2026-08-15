@@ -1,20 +1,20 @@
 {
-  "total": 1367,
+  "total": 1376,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
       "count": 156,
-      "pct": 11.4
+      "pct": 11.3
     },
     {
       "name": "France 24",
       "count": 94,
-      "pct": 6.9
+      "pct": 6.8
     },
     {
       "name": "Le Figaro",
       "count": 79,
-      "pct": 5.8
+      "pct": 5.7
     },
     {
       "name": "Actu.fr",
@@ -29,7 +29,7 @@
     {
       "name": "tsa-algerie.com",
       "count": 39,
-      "pct": 2.9
+      "pct": 2.8
     },
     {
       "name": "Le Parisien",
@@ -59,12 +59,12 @@
     {
       "name": "franceinfo",
       "count": 24,
-      "pct": 1.8
+      "pct": 1.7
     },
     {
       "name": "reinformation.tv",
       "count": 24,
-      "pct": 1.8
+      "pct": 1.7
     },
     {
       "name": "Valeurs actuelles",
@@ -119,17 +119,17 @@
     {
       "name": "France 3 Régions",
       "count": 13,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "europe1.fr",
       "count": 13,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "L'Union",
       "count": 13,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "mesinfos",
@@ -170,6 +170,11 @@
       "name": "Le Monde.fr",
       "count": 11,
       "pct": 0.8
+    },
+    {
+      "name": "La Croix",
+      "count": 10,
+      "pct": 0.7
     },
     {
       "name": "Anadolu Ajansı",
@@ -255,11 +260,6 @@
       "name": "سانا",
       "count": 8,
       "pct": 0.6
-    },
-    {
-      "name": "La Croix",
-      "count": 7,
-      "pct": 0.5
     },
     {
       "name": "The New Voice of Ukraine",
@@ -490,6 +490,16 @@
       "name": "El Moudjahid",
       "count": 4,
       "pct": 0.3
+    },
+    {
+      "name": "Lyon Capitale",
+      "count": 3,
+      "pct": 0.2
+    },
+    {
+      "name": "Lyon Mag",
+      "count": 3,
+      "pct": 0.2
     },
     {
       "name": "5Pillars",
