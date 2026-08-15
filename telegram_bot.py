@@ -12,13 +12,15 @@ Run with: python3 start_bot.py
 import asyncio
 import json
 import os
+import sys
 from datetime import datetime, timezone
 
 from dotenv import load_dotenv
-from telegram import Update
-from telegram.ext import Application, CallbackQueryHandler, ContextTypes
+from telegram import BotCommand, Update
+from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
 
 import publisher
+import run as pipeline_run
 
 HERE       = os.path.dirname(os.path.abspath(__file__))
 QUEUE_FILE = os.path.join(HERE, "queue.json")
@@ -110,12 +112,67 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
             await query.edit_message_text(f"✓ Approved: {title}\n\nCopy into LinkedIn:\n\n{draft}")
 
 
+async def handle_rescan(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if CHAT_ID and str(update.effective_chat.id) != str(CHAT_ID):
+        return
+
+    pending_titles = []
+    if os.path.exists(QUEUE_FILE):
+        queue = _load_queue()
+        pending_titles = [
+            p.get("title", "Untitled")
+            for p in queue.get("posts", [])
+            if p.get("status") == "pending"
+        ]
+
+    # drafter.py fully overwrites queue.json's post list on every run — it
+    # doesn't merge. Rescanning over unreviewed posts would silently delete
+    # them (no archive happens until the next calendar day), so refuse.
+    if pending_titles:
+        listing = "\n".join(f"  • {t}" for t in pending_titles)
+        await update.message.reply_text(
+            f"⚠️ {len(pending_titles)} pending post(s) still unreviewed:\n{listing}\n\n"
+            "Approve or reject them first, then /rescan again."
+        )
+        return
+
+    if not pipeline_run._acquire_lock():
+        await update.message.reply_text("⏳ Pipeline already running — try again shortly.")
+        return
+
+    await update.message.reply_text("🔄 Rescanning for new stories...")
+
+    try:
+        proc = await asyncio.create_subprocess_exec(sys.executable, "drafter.py", cwd=HERE)
+        code = await proc.wait()
+        if code != 0:
+            await update.message.reply_text(
+                "⚠️ Rescan failed — drafter.py exited with an error. Check logs/ for details."
+            )
+            return
+
+        proc = await asyncio.create_subprocess_exec(
+            sys.executable, "send_drafts_to_telegram.py", cwd=HERE
+        )
+        await proc.wait()
+        await update.message.reply_text("✅ Rescan complete — new drafts (if any) are above.")
+    finally:
+        if os.path.exists(pipeline_run.LOCK_FILE):
+            os.remove(pipeline_run.LOCK_FILE)
+
+
 def main() -> None:
     if not BOT_TOKEN:
         raise SystemExit("TELEGRAM_BOT_TOKEN not set in .env")
 
-    app = Application.builder().token(BOT_TOKEN).build()
+    async def _register_commands(a: Application) -> None:
+        await a.bot.set_my_commands(
+            [BotCommand("rescan", "Rescan for new stories and draft posts")]
+        )
+
+    app = Application.builder().token(BOT_TOKEN).post_init(_register_commands).build()
     app.add_handler(CallbackQueryHandler(handle_callback))
+    app.add_handler(CommandHandler("rescan", handle_rescan))
     print("  Telegram bot listening for approve/reject actions...")
     app.run_polling()
 
