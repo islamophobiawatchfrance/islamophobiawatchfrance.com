@@ -63,6 +63,14 @@ def _pipeline():
         print("  Check your ANTHROPIC_API_KEY in the .env file, then try again.\n")
         sys.exit(1)
 
+    # Send drafts to Telegram
+    try:
+        import subprocess
+        subprocess.Popen([sys.executable, "send_drafts_to_telegram.py"], cwd=HERE)
+        print("  Drafts sent to Telegram.")
+    except Exception as e:
+        print(f"  Telegram send failed: {e}")
+
     # ── Step 2: Start the Flask dashboard in the background ──
     print("  Step 2: Starting dashboard server...")
     flask_proc = subprocess.Popen(
