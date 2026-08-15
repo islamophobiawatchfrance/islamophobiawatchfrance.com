@@ -13,6 +13,7 @@ also be run standalone:
 import asyncio
 import json
 import os
+from urllib.parse import urlparse
 
 from dotenv import load_dotenv
 from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
@@ -49,6 +50,14 @@ def _standfirst(draft: str) -> str:
     return paragraphs[0] if paragraphs else ""
 
 
+def _dashboard_is_public() -> bool:
+    """Telegram rejects inline keyboard URL buttons that point at localhost /
+    loopback addresses, so the Edit button only works once DASHBOARD_URL is a
+    real public URL (e.g. an ngrok tunnel)."""
+    host = urlparse(DASHBOARD_URL).hostname or ""
+    return host not in ("localhost", "127.0.0.1")
+
+
 def build_message(post: dict) -> tuple[str, InlineKeyboardMarkup]:
     post_id    = post["id"]
     title      = _md_escape(post.get("title", "Untitled"))
@@ -70,8 +79,14 @@ def build_message(post: dict) -> tuple[str, InlineKeyboardMarkup]:
             f"_[Article is {word_count} words - tap to approve]_\n\n"
             f"Source: {source}"
         )
-        edit_btn = InlineKeyboardButton("🖥 Edit in dashboard", url=DASHBOARD_URL)
-        markup = InlineKeyboardMarkup([[approve_btn, reject_btn], [edit_btn]])
+        if _dashboard_is_public():
+            edit_btn = InlineKeyboardButton("🖥 Edit in dashboard", url=DASHBOARD_URL)
+            markup = InlineKeyboardMarkup([[approve_btn, reject_btn], [edit_btn]])
+        else:
+            # Telegram rejects localhost URLs on inline buttons — fall back to
+            # a plain-text link until DASHBOARD_URL points at a public tunnel.
+            text += f"\n\n🖥 Edit in dashboard: {DASHBOARD_URL}"
+            markup = InlineKeyboardMarkup([[approve_btn, reject_btn]])
     else:
         text = (
             f"📱 LINKEDIN DRAFT\n"
