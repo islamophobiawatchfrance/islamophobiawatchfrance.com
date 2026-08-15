@@ -17549,6 +17549,414 @@
       "fetch_source": "cache",
       "date": "2026-07-21",
       "approved": false
+    },
+    {
+      "content_chars": 2652,
+      "content_confidence": "medium",
+      "created": "2026-07-20T07:00:51.178860",
+      "draft": "Paris's Grand Mosque marked its centennial with a ceremonial celebration reflecting a century of institutional presence in France.\n\nThe milestone comes as French Muslim institutions navigate their historical legacy. Naïma Huber-Yahi, speaking on the occasion, framed the institution's trajectory: \"The Great Mosque, a colonial tool, will become a tool of emancipation.\"\n\nThe ceremony included recitation of Quranic verses, underscoring the religious significance of the observance. The event reflects broader discussions about Islam's place within French secular governance and republican values.\n\nThe Great Mosque of Paris, established a century ago, remains a focal point for Muslim community life and interfaith engagement in the capital. Its centennial marks a moment for reflection on institutional integration and the evolution of Muslim presence in French society.\n\nSource: France 24\n\n#IslamophobiaWatchFrance #France #InterfaithDialogue",
+      "fetch_source": "cache",
+      "heat_article_count": 8,
+      "heat_label": "HOT",
+      "heat_score": 20,
+      "id": "post_1_linkedin_20260720",
+      "published": "2026-07-19T09:46:59+00:00",
+      "source": "Le Figaro",
+      "sources": [
+        {
+          "name": "Le Figaro",
+          "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5"
+        },
+        {
+          "name": "France 24",
+          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxQVy13Z21KSDdTYUk0YTFndHRkTjM5YjVJdWpnWGk1NER2YXhGSEdBaTFtTGlIUS10V0c4UFRKY2t0aHZGZnZudUNscEJLNl9VUjhMNlVtMnpCUzdDTm42VmtjMjFrNGpqSzloMVJHa0lYQkJXYTh3aVMtNF9ZekR2THZpTEVWb1FWbE4xRmJKRkdGRDl3M3hINEptR3pEdS1FODJnTHdYYWpjREtlV3FEOXNvZEtVM3JFV3JTNGllSkl3SzFPclBDSzZfbUUxYTFMa0x6bWRad0tzN3E4Uk5pUXVDSFBocVc1R1poMmtYM281MTlqN2RjaUYtUFAzUmMwWjQtYW02LXF4R0Z1NTYzblg5MVZMbjg?oc=5"
+        },
+        {
+          "name": "سانا",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE12dzN6ZThPbF9ZSlJ2QW5ReXpTUzROSU42ODY3b0N2YnU1UzM5ajZWVTJKY3Q1a1YtdzEyeV9OQk9tbUN6M0FjUzdKVQ?oc=5"
+        },
+        {
+          "name": "AOL.co.uk",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPR1pxYWhkS3VheGtGckh3UGNFU0VuS2J1MUxZXzkwTlBrdERDTHZlX0NNcjRRUENiVWJfaC05ZVRzR2VDSkhaUWNDbkVSM0xCbHdpeWdHbGZsT0lvVlZPRWdHQ25NMkFIaHBOQkFSemRzbko1M2RhRDAxZVRTc3dQUElR?oc=5"
+        },
+        {
+          "name": "France TV",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTC1HNnRLZGptYUpfanU2WGdZNk1oSVM2YlYxVEpwejl4M3Ixa2VJRjhSajhvOTFBMzc0OWs5Uk1BUWVoNkkyNDd1MGszVmF2VzRBV3pKNldOQ0Y5RHAxOEhoanliWkFhUUxOQnlxYkowRDhzYWRiZ2NWTnlySXhZWHR6eVg2azNnVV9sd01SUQ?oc=5"
+        },
+        {
+          "name": "La Provence",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPM1EwbXBoa1hyZXF4V2ZTd3NXc2JPQ3I1bWNXcVhqRVU1bWhtSTctbTBqRVpvY2c2VExjTS13VjNEdGItelV1M2tqQU5xSkNhZUt4MU1IWjVOdUVFLWtCNGQ3WHpHOVFZX0k2UUlqeERYS251Unp3a2VrdVVVMDFzSFFwWXpjZU1DYU5QZGxreUVTWUF1SjNFM2NCank0ZnNZTUdRYkppSFB3TmkwZzRuSHFOUklMMTFCOXBiU2JZOW5JVkRXanNwMkdneXNaUVNxb2F0VmpsWUJHcFkwWkcwQVFIWnlMSGtZbjYw?oc=5"
+        },
+        {
+          "name": "Orange Actualités",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOX1BtZjdGTzJFVjQtZ0x6R2lBSWVHZFlqVmZCZGpkZWcyU1dzSHlQOUxMUndUZUVSX3psUnF0b0VNNklzTDNVYjVRdVNTWjl0dTN1ZERyRmRpc0s1dEk1aGM1Z2l0Q0Mta1JRUGtqWjFmN1BBRTZIWTRzMkFLcUF1dUNGNTN3WUM2WkpUcXprRTcxS0V0LVVHY2pzYTh4MGMtd1hXbl9JaVF1YlJhTzF6Z0NWb3lDeE9EUmtkTjZtdUNNcFBCUkx2ZFkxbmEwczZ0b3NRNGd5WQ?oc=5"
+        },
+        {
+          "name": "Breaking News, Latest News and Videos",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX3UyUkJrQmhRTVhidzFzZW9hVngtWXlwc2ZpT2IzNndCY0wtNUZiclBwVFZuMjFKWjNQOWJYbmpiQ2ZiZFNTeHFCSEx4MUN3QnpCaU1NRjZwSGtpNjBVb3JlblVMM0VqT3FfNHpQTTdaNjNOZ3NJdmlkNHg5LVFfYzVDeGN6LURUenBiQ0w3aGRSdlYtUXRkZjhSM1liNU9aeHB6NnhTN3ZPQzE3eGU1Q2hTWVpHUU5zZURqSWhB0gHDAUFVX3lxTFBzV3BlRnVCMFM1OTktNmlKZUp1NXY5Ny1xbkhOQ3JyQUlXdGZsdkN5eExvd3M4TW9qaVc3N1pleEdxZm9tQUd2TmhtWGd5Ty15QUEwZ2M2YkhpLTMxMFJmSzdrR2pIUXJCYzhobzZPbWhIWXlhc0xpQWRBVzByRTdEN01mWHRMSV9iRUJaWG9zQUFaOE5JbUkzQXRGS1ZfdVFYcTdZWFVBNUIxVjNuYWxITTZXS3RtS1hNVnVsQmIzMy0zaw?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "Centennial of the Grand Mosque of Paris: What are these Quranic verses that were recited during the ceremony?   Le Figaro",
+      "time_ago": "19h ago",
+      "title": "Centennial of the Great Mosque of Paris: what are these Quranic verses that were recited during the ceremony?",
+      "type": "linkedin",
+      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5",
+      "archived_reason": "daily_reset",
+      "archived_at": "2026-07-22T05:25:08.096035+00:00"
+    },
+    {
+      "content_chars": 2652,
+      "content_confidence": "medium",
+      "created": "2026-07-20T07:00:51.178860",
+      "draft": "# Centennial celebration at Paris's Great Mosque features Quranic recitations\n\nThe Great Mosque of Paris marked its hundredth anniversary with a ceremony featuring Quranic verses, drawing attention to specific passages chosen for the occasion, according to reporting from Le Figaro.\n\n## What happened\n\nThe Great Mosque of Paris, officially the Paris Grand Mosque (Grande Mosquée de Paris), commemorated its centennial this year with a ceremonial event that included recitations of selected Quranic passages. The specific verses recited during the celebration were highlighted in French media coverage of the occasion. The mosque, located in the 5th arrondissement, has served as a significant religious and cultural landmark for French Muslims and the broader Parisian community since its establishment in 1926.\n\nLe Figaro's reporting drew particular attention to which Quranic texts were chosen for recitation, suggesting the selections held symbolic or historical meaning. The ceremony appears to have been planned as a major cultural and religious observance marking a century since the mosque's founding.\n\n## Why it matters\n\nThe Great Mosque of Paris holds unique historical significance in French Islamic life. As France's oldest and most prominent mosque, its centennial reflects broader questions about Muslim integration, religious practice, and institutional Islam's place in French society. The choice of specific Quranic verses for such a high-profile ceremony carries weight within Muslim communities and often attracts scrutiny in French public discourse around Islam and secularism (laïcité), the constitutional principle separating religious and state institutions in France.\n\nMedia coverage of the mosque's ceremonial practices demonstrates ongoing public interest in how organized Islam operates within the French context, particularly through long-established institutions like the Great Mosque of Paris.\n\n## Background\n\nThe Great Mosque of Paris was constructed between 1922 and 1926 with the support of the French government, partly as recognition for North African Muslim soldiers who fought for France during World War I. It was designed by architects Henri Sauvage and Octave Manchon in the Hispano-Moorish style and remains France's largest and most prominent mosque.\n\nThe institution has historically served not only as a place of worship but also as a cultural center and a representation of organized French Islam. It houses a library, hammam (bathhouse), and restaurant, making it a multifunctional community space. Leadership and management of the mosque have occasionally drawn public attention in France, particularly regarding questions of governance, funding sources, and religious authority within Muslim communities.\n\nSources: Le Figaro\n\n---\n\n**What is the Great Mosque of Paris?**\nFrance's oldest and largest mosque, founded in 1926 in Paris's 5th arrondissement, built with government support and serving as both a religious and cultural institution for French Muslims.\n\n**Why would Quranic verse selection matter for a centennial?**\nSymbolic choices in religious ceremonies carry meaning for faith communities and often attract media attention in France regarding how Islam is publicly practiced.",
+      "fetch_source": "cache",
+      "heat_article_count": 8,
+      "heat_label": "HOT",
+      "heat_score": 20,
+      "id": "post_1_website_20260720",
+      "published": "2026-07-19T09:46:59+00:00",
+      "source": "Le Figaro",
+      "sources": [
+        {
+          "name": "Le Figaro",
+          "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5"
+        },
+        {
+          "name": "France 24",
+          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxQVy13Z21KSDdTYUk0YTFndHRkTjM5YjVJdWpnWGk1NER2YXhGSEdBaTFtTGlIUS10V0c4UFRKY2t0aHZGZnZudUNscEJLNl9VUjhMNlVtMnpCUzdDTm42VmtjMjFrNGpqSzloMVJHa0lYQkJXYTh3aVMtNF9ZekR2THZpTEVWb1FWbE4xRmJKRkdGRDl3M3hINEptR3pEdS1FODJnTHdYYWpjREtlV3FEOXNvZEtVM3JFV3JTNGllSkl3SzFPclBDSzZfbUUxYTFMa0x6bWRad0tzN3E4Uk5pUXVDSFBocVc1R1poMmtYM281MTlqN2RjaUYtUFAzUmMwWjQtYW02LXF4R0Z1NTYzblg5MVZMbjg?oc=5"
+        },
+        {
+          "name": "سانا",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE12dzN6ZThPbF9ZSlJ2QW5ReXpTUzROSU42ODY3b0N2YnU1UzM5ajZWVTJKY3Q1a1YtdzEyeV9OQk9tbUN6M0FjUzdKVQ?oc=5"
+        },
+        {
+          "name": "AOL.co.uk",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPR1pxYWhkS3VheGtGckh3UGNFU0VuS2J1MUxZXzkwTlBrdERDTHZlX0NNcjRRUENiVWJfaC05ZVRzR2VDSkhaUWNDbkVSM0xCbHdpeWdHbGZsT0lvVlZPRWdHQ25NMkFIaHBOQkFSemRzbko1M2RhRDAxZVRTc3dQUElR?oc=5"
+        },
+        {
+          "name": "France TV",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTC1HNnRLZGptYUpfanU2WGdZNk1oSVM2YlYxVEpwejl4M3Ixa2VJRjhSajhvOTFBMzc0OWs5Uk1BUWVoNkkyNDd1MGszVmF2VzRBV3pKNldOQ0Y5RHAxOEhoanliWkFhUUxOQnlxYkowRDhzYWRiZ2NWTnlySXhZWHR6eVg2azNnVV9sd01SUQ?oc=5"
+        },
+        {
+          "name": "La Provence",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPM1EwbXBoa1hyZXF4V2ZTd3NXc2JPQ3I1bWNXcVhqRVU1bWhtSTctbTBqRVpvY2c2VExjTS13VjNEdGItelV1M2tqQU5xSkNhZUt4MU1IWjVOdUVFLWtCNGQ3WHpHOVFZX0k2UUlqeERYS251Unp3a2VrdVVVMDFzSFFwWXpjZU1DYU5QZGxreUVTWUF1SjNFM2NCank0ZnNZTUdRYkppSFB3TmkwZzRuSHFOUklMMTFCOXBiU2JZOW5JVkRXanNwMkdneXNaUVNxb2F0VmpsWUJHcFkwWkcwQVFIWnlMSGtZbjYw?oc=5"
+        },
+        {
+          "name": "Orange Actualités",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOX1BtZjdGTzJFVjQtZ0x6R2lBSWVHZFlqVmZCZGpkZWcyU1dzSHlQOUxMUndUZUVSX3psUnF0b0VNNklzTDNVYjVRdVNTWjl0dTN1ZERyRmRpc0s1dEk1aGM1Z2l0Q0Mta1JRUGtqWjFmN1BBRTZIWTRzMkFLcUF1dUNGNTN3WUM2WkpUcXprRTcxS0V0LVVHY2pzYTh4MGMtd1hXbl9JaVF1YlJhTzF6Z0NWb3lDeE9EUmtkTjZtdUNNcFBCUkx2ZFkxbmEwczZ0b3NRNGd5WQ?oc=5"
+        },
+        {
+          "name": "Breaking News, Latest News and Videos",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX3UyUkJrQmhRTVhidzFzZW9hVngtWXlwc2ZpT2IzNndCY0wtNUZiclBwVFZuMjFKWjNQOWJYbmpiQ2ZiZFNTeHFCSEx4MUN3QnpCaU1NRjZwSGtpNjBVb3JlblVMM0VqT3FfNHpQTTdaNjNOZ3NJdmlkNHg5LVFfYzVDeGN6LURUenBiQ0w3aGRSdlYtUXRkZjhSM1liNU9aeHB6NnhTN3ZPQzE3eGU1Q2hTWVpHUU5zZURqSWhB0gHDAUFVX3lxTFBzV3BlRnVCMFM1OTktNmlKZUp1NXY5Ny1xbkhOQ3JyQUlXdGZsdkN5eExvd3M4TW9qaVc3N1pleEdxZm9tQUd2TmhtWGd5Ty15QUEwZ2M2YkhpLTMxMFJmSzdrR2pIUXJCYzhobzZPbWhIWXlhc0xpQWRBVzByRTdEN01mWHRMSV9iRUJaWG9zQUFaOE5JbUkzQXRGS1ZfdVFYcTdZWFVBNUIxVjNuYWxITTZXS3RtS1hNVnVsQmIzMy0zaw?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "Centennial of the Grand Mosque of Paris: What are these Quranic verses that were recited during the ceremony?   Le Figaro",
+      "time_ago": "19h ago",
+      "title": "Centennial of the Great Mosque of Paris: what are these Quranic verses that were recited during the ceremony?",
+      "type": "website",
+      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5",
+      "archived_reason": "daily_reset",
+      "archived_at": "2026-07-22T05:25:08.096035+00:00"
+    },
+    {
+      "content_chars": 2962,
+      "content_confidence": "medium",
+      "created": "2026-07-20T07:00:51.178860",
+      "draft": "Marine Le Pen has launched her fourth presidential campaign.\n\nThe far-right National Rally leader announced her bid as Europe faces a potential rightward political shift, according to reporting from The New Voice of Ukraine.\n\nLe Pen's announcement comes amid broader momentum for right-wing parties across the continent. Her campaign represents continuity in the National Rally's push toward France's highest office.\n\nThe timing reflects evolving European political dynamics heading into upcoming electoral cycles. Le Pen previously ran for president in 2012, 2017, and 2022.\n\nSource: The New Voice of Ukraine\n\n#IslamophobiaWatchFrance #France #Elections",
+      "fetch_source": "cache",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_2_linkedin_20260720",
+      "published": "2026-07-19T16:10:00+00:00",
+      "source": "The New Voice of Ukraine",
+      "sources": [
+        {
+          "name": "The New Voice of Ukraine",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZ2U0N1pudGhaM2RfQTB4RWljYzdpekhzd0tQZ0dtWURRclN4WEdsMVFaYjlHcVduRlp3dEhGNjBST2tfcXVQYnF4cmlUYmN0MkxIdTFHTWVEV2hJWXNFeXlZQWNsbnpJR0ZXWjMwZllPbnViWG1vMHpQQTFIZ25la0hSZlVXVS10cmpQZzZsY3VOTmVfbHV6MDc1T3UyVG9xaXhEZjlwazBBb2RYa1I0QkVB0gGyAUFVX3lxTFBnZTQ3Wm50aFozZF9BMHhFaWNjN2l6SHN3S1BnR21ZRFFyU3hYR2wxUVpiOUdxV25GWnd0SEY2MFJPa19xdVBicXhyaVRiY3QyTEh1MUdNZURXaElZc0V5eVlBY2xueklHRldaMzBmWU9udWJYbW8welBBMUhnbmVrSFJmVVdVLXRyalBnNmxjdU5OZV9sdXowNzVPdTJUb3FpeERmOXBrMEFvZFhrUjRCRUE?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "Le Pen launches fourth presidential bid as Europe braces for a rightward turn&nbsp;&nbsp;The New Voice of Ukraine",
+      "time_ago": "12h ago",
+      "title": "Le Pen launches fourth presidential bid as Europe braces for a rightward turn",
+      "type": "linkedin",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZ2U0N1pudGhaM2RfQTB4RWljYzdpekhzd0tQZ0dtWURRclN4WEdsMVFaYjlHcVduRlp3dEhGNjBST2tfcXVQYnF4cmlUYmN0MkxIdTFHTWVEV2hJWXNFeXlZQWNsbnpJR0ZXWjMwZllPbnViWG1vMHpQQTFIZ25la0hSZlVXVS10cmpQZzZsY3VOTmVfbHV6MDc1T3UyVG9xaXhEZjlwazBBb2RYa1I0QkVB0gGyAUFVX3lxTFBnZTQ3Wm50aFozZF9BMHhFaWNjN2l6SHN3S1BnR21ZRFFyU3hYR2wxUVpiOUdxV25GWnd0SEY2MFJPa19xdVBicXhyaVRiY3QyTEh1MUdNZURXaElZc0V5eVlBY2xueklHRldaMzBmWU9udWJYbW8welBBMUhnbmVrSFJmVVdVLXRyalBnNmxjdU5OZV9sdXowNzVPdTJUb3FpeERmOXBrMEFvZFhrUjRCRUE?oc=5",
+      "archived_reason": "daily_reset",
+      "archived_at": "2026-07-22T05:25:08.096035+00:00"
+    },
+    {
+      "content_chars": 2652,
+      "content_confidence": "medium",
+      "created": "2026-07-20T07:00:51.178860",
+      "draft": "Paris's Grand Mosque marked its centennial with a ceremonial celebration reflecting a century of institutional presence in France.\n\nThe milestone comes as French Muslim institutions navigate their historical legacy. Naïma Huber-Yahi, speaking on the occasion, framed the institution's trajectory: \"The Great Mosque, a colonial tool, will become a tool of emancipation.\"\n\nThe ceremony included recitation of Quranic verses, underscoring the religious significance of the observance. The event reflects broader discussions about Islam's place within French secular governance and republican values.\n\nThe Great Mosque of Paris, established a century ago, remains a focal point for Muslim community life and interfaith engagement in the capital. Its centennial marks a moment for reflection on institutional integration and the evolution of Muslim presence in French society.\n\nSource: France 24\n\n#IslamophobiaWatchFrance #France #InterfaithDialogue",
+      "fetch_source": "cache",
+      "heat_article_count": 8,
+      "heat_label": "HOT",
+      "heat_score": 20,
+      "id": "post_1_linkedin_20260720",
+      "published": "2026-07-19T09:46:59+00:00",
+      "source": "Le Figaro",
+      "sources": [
+        {
+          "name": "Le Figaro",
+          "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5"
+        },
+        {
+          "name": "France 24",
+          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxQVy13Z21KSDdTYUk0YTFndHRkTjM5YjVJdWpnWGk1NER2YXhGSEdBaTFtTGlIUS10V0c4UFRKY2t0aHZGZnZudUNscEJLNl9VUjhMNlVtMnpCUzdDTm42VmtjMjFrNGpqSzloMVJHa0lYQkJXYTh3aVMtNF9ZekR2THZpTEVWb1FWbE4xRmJKRkdGRDl3M3hINEptR3pEdS1FODJnTHdYYWpjREtlV3FEOXNvZEtVM3JFV3JTNGllSkl3SzFPclBDSzZfbUUxYTFMa0x6bWRad0tzN3E4Uk5pUXVDSFBocVc1R1poMmtYM281MTlqN2RjaUYtUFAzUmMwWjQtYW02LXF4R0Z1NTYzblg5MVZMbjg?oc=5"
+        },
+        {
+          "name": "سانا",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE12dzN6ZThPbF9ZSlJ2QW5ReXpTUzROSU42ODY3b0N2YnU1UzM5ajZWVTJKY3Q1a1YtdzEyeV9OQk9tbUN6M0FjUzdKVQ?oc=5"
+        },
+        {
+          "name": "AOL.co.uk",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPR1pxYWhkS3VheGtGckh3UGNFU0VuS2J1MUxZXzkwTlBrdERDTHZlX0NNcjRRUENiVWJfaC05ZVRzR2VDSkhaUWNDbkVSM0xCbHdpeWdHbGZsT0lvVlZPRWdHQ25NMkFIaHBOQkFSemRzbko1M2RhRDAxZVRTc3dQUElR?oc=5"
+        },
+        {
+          "name": "France TV",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTC1HNnRLZGptYUpfanU2WGdZNk1oSVM2YlYxVEpwejl4M3Ixa2VJRjhSajhvOTFBMzc0OWs5Uk1BUWVoNkkyNDd1MGszVmF2VzRBV3pKNldOQ0Y5RHAxOEhoanliWkFhUUxOQnlxYkowRDhzYWRiZ2NWTnlySXhZWHR6eVg2azNnVV9sd01SUQ?oc=5"
+        },
+        {
+          "name": "La Provence",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPM1EwbXBoa1hyZXF4V2ZTd3NXc2JPQ3I1bWNXcVhqRVU1bWhtSTctbTBqRVpvY2c2VExjTS13VjNEdGItelV1M2tqQU5xSkNhZUt4MU1IWjVOdUVFLWtCNGQ3WHpHOVFZX0k2UUlqeERYS251Unp3a2VrdVVVMDFzSFFwWXpjZU1DYU5QZGxreUVTWUF1SjNFM2NCank0ZnNZTUdRYkppSFB3TmkwZzRuSHFOUklMMTFCOXBiU2JZOW5JVkRXanNwMkdneXNaUVNxb2F0VmpsWUJHcFkwWkcwQVFIWnlMSGtZbjYw?oc=5"
+        },
+        {
+          "name": "Orange Actualités",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOX1BtZjdGTzJFVjQtZ0x6R2lBSWVHZFlqVmZCZGpkZWcyU1dzSHlQOUxMUndUZUVSX3psUnF0b0VNNklzTDNVYjVRdVNTWjl0dTN1ZERyRmRpc0s1dEk1aGM1Z2l0Q0Mta1JRUGtqWjFmN1BBRTZIWTRzMkFLcUF1dUNGNTN3WUM2WkpUcXprRTcxS0V0LVVHY2pzYTh4MGMtd1hXbl9JaVF1YlJhTzF6Z0NWb3lDeE9EUmtkTjZtdUNNcFBCUkx2ZFkxbmEwczZ0b3NRNGd5WQ?oc=5"
+        },
+        {
+          "name": "Breaking News, Latest News and Videos",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX3UyUkJrQmhRTVhidzFzZW9hVngtWXlwc2ZpT2IzNndCY0wtNUZiclBwVFZuMjFKWjNQOWJYbmpiQ2ZiZFNTeHFCSEx4MUN3QnpCaU1NRjZwSGtpNjBVb3JlblVMM0VqT3FfNHpQTTdaNjNOZ3NJdmlkNHg5LVFfYzVDeGN6LURUenBiQ0w3aGRSdlYtUXRkZjhSM1liNU9aeHB6NnhTN3ZPQzE3eGU1Q2hTWVpHUU5zZURqSWhB0gHDAUFVX3lxTFBzV3BlRnVCMFM1OTktNmlKZUp1NXY5Ny1xbkhOQ3JyQUlXdGZsdkN5eExvd3M4TW9qaVc3N1pleEdxZm9tQUd2TmhtWGd5Ty15QUEwZ2M2YkhpLTMxMFJmSzdrR2pIUXJCYzhobzZPbWhIWXlhc0xpQWRBVzByRTdEN01mWHRMSV9iRUJaWG9zQUFaOE5JbUkzQXRGS1ZfdVFYcTdZWFVBNUIxVjNuYWxITTZXS3RtS1hNVnVsQmIzMy0zaw?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "Centennial of the Grand Mosque of Paris: What are these Quranic verses that were recited during the ceremony?   Le Figaro",
+      "time_ago": "19h ago",
+      "title": "Centennial of the Great Mosque of Paris: what are these Quranic verses that were recited during the ceremony?",
+      "type": "linkedin",
+      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5",
+      "archived_reason": "daily_reset",
+      "archived_at": "2026-08-15T04:29:58.761686+00:00"
+    },
+    {
+      "content_chars": 2652,
+      "content_confidence": "medium",
+      "created": "2026-07-20T07:00:51.178860",
+      "draft": "# Centennial celebration at Paris's Great Mosque features Quranic recitations\n\nThe Great Mosque of Paris marked its hundredth anniversary with a ceremony featuring Quranic verses, drawing attention to specific passages chosen for the occasion, according to reporting from Le Figaro.\n\n## What happened\n\nThe Great Mosque of Paris, officially the Paris Grand Mosque (Grande Mosquée de Paris), commemorated its centennial this year with a ceremonial event that included recitations of selected Quranic passages. The specific verses recited during the celebration were highlighted in French media coverage of the occasion. The mosque, located in the 5th arrondissement, has served as a significant religious and cultural landmark for French Muslims and the broader Parisian community since its establishment in 1926.\n\nLe Figaro's reporting drew particular attention to which Quranic texts were chosen for recitation, suggesting the selections held symbolic or historical meaning. The ceremony appears to have been planned as a major cultural and religious observance marking a century since the mosque's founding.\n\n## Why it matters\n\nThe Great Mosque of Paris holds unique historical significance in French Islamic life. As France's oldest and most prominent mosque, its centennial reflects broader questions about Muslim integration, religious practice, and institutional Islam's place in French society. The choice of specific Quranic verses for such a high-profile ceremony carries weight within Muslim communities and often attracts scrutiny in French public discourse around Islam and secularism (laïcité), the constitutional principle separating religious and state institutions in France.\n\nMedia coverage of the mosque's ceremonial practices demonstrates ongoing public interest in how organized Islam operates within the French context, particularly through long-established institutions like the Great Mosque of Paris.\n\n## Background\n\nThe Great Mosque of Paris was constructed between 1922 and 1926 with the support of the French government, partly as recognition for North African Muslim soldiers who fought for France during World War I. It was designed by architects Henri Sauvage and Octave Manchon in the Hispano-Moorish style and remains France's largest and most prominent mosque.\n\nThe institution has historically served not only as a place of worship but also as a cultural center and a representation of organized French Islam. It houses a library, hammam (bathhouse), and restaurant, making it a multifunctional community space. Leadership and management of the mosque have occasionally drawn public attention in France, particularly regarding questions of governance, funding sources, and religious authority within Muslim communities.\n\nSources: Le Figaro\n\n---\n\n**What is the Great Mosque of Paris?**\nFrance's oldest and largest mosque, founded in 1926 in Paris's 5th arrondissement, built with government support and serving as both a religious and cultural institution for French Muslims.\n\n**Why would Quranic verse selection matter for a centennial?**\nSymbolic choices in religious ceremonies carry meaning for faith communities and often attract media attention in France regarding how Islam is publicly practiced.",
+      "fetch_source": "cache",
+      "heat_article_count": 8,
+      "heat_label": "HOT",
+      "heat_score": 20,
+      "id": "post_1_website_20260720",
+      "published": "2026-07-19T09:46:59+00:00",
+      "source": "Le Figaro",
+      "sources": [
+        {
+          "name": "Le Figaro",
+          "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5"
+        },
+        {
+          "name": "France 24",
+          "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxQVy13Z21KSDdTYUk0YTFndHRkTjM5YjVJdWpnWGk1NER2YXhGSEdBaTFtTGlIUS10V0c4UFRKY2t0aHZGZnZudUNscEJLNl9VUjhMNlVtMnpCUzdDTm42VmtjMjFrNGpqSzloMVJHa0lYQkJXYTh3aVMtNF9ZekR2THZpTEVWb1FWbE4xRmJKRkdGRDl3M3hINEptR3pEdS1FODJnTHdYYWpjREtlV3FEOXNvZEtVM3JFV3JTNGllSkl3SzFPclBDSzZfbUUxYTFMa0x6bWRad0tzN3E4Uk5pUXVDSFBocVc1R1poMmtYM281MTlqN2RjaUYtUFAzUmMwWjQtYW02LXF4R0Z1NTYzblg5MVZMbjg?oc=5"
+        },
+        {
+          "name": "سانا",
+          "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE12dzN6ZThPbF9ZSlJ2QW5ReXpTUzROSU42ODY3b0N2YnU1UzM5ajZWVTJKY3Q1a1YtdzEyeV9OQk9tbUN6M0FjUzdKVQ?oc=5"
+        },
+        {
+          "name": "AOL.co.uk",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPR1pxYWhkS3VheGtGckh3UGNFU0VuS2J1MUxZXzkwTlBrdERDTHZlX0NNcjRRUENiVWJfaC05ZVRzR2VDSkhaUWNDbkVSM0xCbHdpeWdHbGZsT0lvVlZPRWdHQ25NMkFIaHBOQkFSemRzbko1M2RhRDAxZVRTc3dQUElR?oc=5"
+        },
+        {
+          "name": "France TV",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTC1HNnRLZGptYUpfanU2WGdZNk1oSVM2YlYxVEpwejl4M3Ixa2VJRjhSajhvOTFBMzc0OWs5Uk1BUWVoNkkyNDd1MGszVmF2VzRBV3pKNldOQ0Y5RHAxOEhoanliWkFhUUxOQnlxYkowRDhzYWRiZ2NWTnlySXhZWHR6eVg2azNnVV9sd01SUQ?oc=5"
+        },
+        {
+          "name": "La Provence",
+          "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPM1EwbXBoa1hyZXF4V2ZTd3NXc2JPQ3I1bWNXcVhqRVU1bWhtSTctbTBqRVpvY2c2VExjTS13VjNEdGItelV1M2tqQU5xSkNhZUt4MU1IWjVOdUVFLWtCNGQ3WHpHOVFZX0k2UUlqeERYS251Unp3a2VrdVVVMDFzSFFwWXpjZU1DYU5QZGxreUVTWUF1SjNFM2NCank0ZnNZTUdRYkppSFB3TmkwZzRuSHFOUklMMTFCOXBiU2JZOW5JVkRXanNwMkdneXNaUVNxb2F0VmpsWUJHcFkwWkcwQVFIWnlMSGtZbjYw?oc=5"
+        },
+        {
+          "name": "Orange Actualités",
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOX1BtZjdGTzJFVjQtZ0x6R2lBSWVHZFlqVmZCZGpkZWcyU1dzSHlQOUxMUndUZUVSX3psUnF0b0VNNklzTDNVYjVRdVNTWjl0dTN1ZERyRmRpc0s1dEk1aGM1Z2l0Q0Mta1JRUGtqWjFmN1BBRTZIWTRzMkFLcUF1dUNGNTN3WUM2WkpUcXprRTcxS0V0LVVHY2pzYTh4MGMtd1hXbl9JaVF1YlJhTzF6Z0NWb3lDeE9EUmtkTjZtdUNNcFBCUkx2ZFkxbmEwczZ0b3NRNGd5WQ?oc=5"
+        },
+        {
+          "name": "Breaking News, Latest News and Videos",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX3UyUkJrQmhRTVhidzFzZW9hVngtWXlwc2ZpT2IzNndCY0wtNUZiclBwVFZuMjFKWjNQOWJYbmpiQ2ZiZFNTeHFCSEx4MUN3QnpCaU1NRjZwSGtpNjBVb3JlblVMM0VqT3FfNHpQTTdaNjNOZ3NJdmlkNHg5LVFfYzVDeGN6LURUenBiQ0w3aGRSdlYtUXRkZjhSM1liNU9aeHB6NnhTN3ZPQzE3eGU1Q2hTWVpHUU5zZURqSWhB0gHDAUFVX3lxTFBzV3BlRnVCMFM1OTktNmlKZUp1NXY5Ny1xbkhOQ3JyQUlXdGZsdkN5eExvd3M4TW9qaVc3N1pleEdxZm9tQUd2TmhtWGd5Ty15QUEwZ2M2YkhpLTMxMFJmSzdrR2pIUXJCYzhobzZPbWhIWXlhc0xpQWRBVzByRTdEN01mWHRMSV9iRUJaWG9zQUFaOE5JbUkzQXRGS1ZfdVFYcTdZWFVBNUIxVjNuYWxITTZXS3RtS1hNVnVsQmIzMy0zaw?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "Centennial of the Grand Mosque of Paris: What are these Quranic verses that were recited during the ceremony?   Le Figaro",
+      "time_ago": "19h ago",
+      "title": "Centennial of the Great Mosque of Paris: what are these Quranic verses that were recited during the ceremony?",
+      "type": "website",
+      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5",
+      "archived_reason": "daily_reset",
+      "archived_at": "2026-08-15T04:29:58.761686+00:00"
+    },
+    {
+      "content_chars": 2962,
+      "content_confidence": "medium",
+      "created": "2026-07-20T07:00:51.178860",
+      "draft": "Marine Le Pen has launched her fourth presidential campaign.\n\nThe far-right National Rally leader announced her bid as Europe faces a potential rightward political shift, according to reporting from The New Voice of Ukraine.\n\nLe Pen's announcement comes amid broader momentum for right-wing parties across the continent. Her campaign represents continuity in the National Rally's push toward France's highest office.\n\nThe timing reflects evolving European political dynamics heading into upcoming electoral cycles. Le Pen previously ran for president in 2012, 2017, and 2022.\n\nSource: The New Voice of Ukraine\n\n#IslamophobiaWatchFrance #France #Elections",
+      "fetch_source": "cache",
+      "heat_article_count": 1,
+      "heat_label": "NORMAL",
+      "heat_score": 3,
+      "id": "post_2_linkedin_20260720",
+      "published": "2026-07-19T16:10:00+00:00",
+      "source": "The New Voice of Ukraine",
+      "sources": [
+        {
+          "name": "The New Voice of Ukraine",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZ2U0N1pudGhaM2RfQTB4RWljYzdpekhzd0tQZ0dtWURRclN4WEdsMVFaYjlHcVduRlp3dEhGNjBST2tfcXVQYnF4cmlUYmN0MkxIdTFHTWVEV2hJWXNFeXlZQWNsbnpJR0ZXWjMwZllPbnViWG1vMHpQQTFIZ25la0hSZlVXVS10cmpQZzZsY3VOTmVfbHV6MDc1T3UyVG9xaXhEZjlwazBBb2RYa1I0QkVB0gGyAUFVX3lxTFBnZTQ3Wm50aFozZF9BMHhFaWNjN2l6SHN3S1BnR21ZRFFyU3hYR2wxUVpiOUdxV25GWnd0SEY2MFJPa19xdVBicXhyaVRiY3QyTEh1MUdNZURXaElZc0V5eVlBY2xueklHRldaMzBmWU9udWJYbW8welBBMUhnbmVrSFJmVVdVLXRyalBnNmxjdU5OZV9sdXowNzVPdTJUb3FpeERmOXBrMEFvZFhrUjRCRUE?oc=5"
+        }
+      ],
+      "status": "pending",
+      "summary": "Le Pen launches fourth presidential bid as Europe braces for a rightward turn&nbsp;&nbsp;The New Voice of Ukraine",
+      "time_ago": "12h ago",
+      "title": "Le Pen launches fourth presidential bid as Europe braces for a rightward turn",
+      "type": "linkedin",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZ2U0N1pudGhaM2RfQTB4RWljYzdpekhzd0tQZ0dtWURRclN4WEdsMVFaYjlHcVduRlp3dEhGNjBST2tfcXVQYnF4cmlUYmN0MkxIdTFHTWVEV2hJWXNFeXlZQWNsbnpJR0ZXWjMwZllPbnViWG1vMHpQQTFIZ25la0hSZlVXVS10cmpQZzZsY3VOTmVfbHV6MDc1T3UyVG9xaXhEZjlwazBBb2RYa1I0QkVB0gGyAUFVX3lxTFBnZTQ3Wm50aFozZF9BMHhFaWNjN2l6SHN3S1BnR21ZRFFyU3hYR2wxUVpiOUdxV25GWnd0SEY2MFJPa19xdVBicXhyaVRiY3QyTEh1MUdNZURXaElZc0V5eVlBY2xueklHRldaMzBmWU9udWJYbW8welBBMUhnbmVrSFJmVVdVLXRyalBnNmxjdU5OZV9sdXowNzVPdTJUb3FpeERmOXBrMEFvZFhrUjRCRUE?oc=5",
+      "archived_reason": "daily_reset",
+      "archived_at": "2026-08-15T04:29:58.761686+00:00"
+    },
+    {
+      "id": "post_1_linkedin_20260815",
+      "type": "linkedin",
+      "title": "Due to lack of funding, the Foundation of Islam in France loses its public utility status",
+      "source": "Le Parisien",
+      "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOVFFEZkZGZ0lRZ2RGTVlfOGZQOW5OdUhsMWVwcnBTLXNYUzl5QU9xNjdOZHlyNktFSHhTZVhLc1gzNzc5SkxuYnE3YS1wbUM5b3JraVZubFE4N0ZUaG5CMTR4Mmw3cDZNeTA3dDhoM1pVbzVWa2ZfTk8tTFFGNXZvVGhQZEZzTDJTVm1SX0x0UzRyMWNON21jRzBXRGhVbzQ0OTZrNjR5Q0pmNG1TTlVLSWUyMVZLUU1xbEJKQ3FyczBSYUFWQ3BBaElkUExoV3hfRUp0Zlh3ZFNublo3MnhCQ0ZiR1d0ZnRLaGIwdm96MnF6cnlWTHZKMFR5NXBWRWRWRXFZMQ?oc=5",
+      "published": "2026-08-13T17:41:29+00:00",
+      "time_ago": "1d 10h ago",
+      "summary": "Due to lack of funding, the Foundation of Islam in France loses its public utility status — Le Parisien",
+      "draft": "The Foundation of Islam in France has lost its public utility status due to lack of funding.\n\nThe organisation, established following the 2015 terrorist attacks, has had its legal designation withdrawn. Public utility status provides organisations with significant tax advantages and donor incentives.\n\nThe loss of this designation threatens the foundation's operational survival and capacity to function.\n\nThe foundation was created as part of efforts to strengthen Islam's institutional integration within France and counter extremism narratives. Its removal from the public utility registry marks a significant setback for the institution.\n\nThe funding crisis highlights broader challenges facing French Muslim organisations in sustaining operations and maintaining institutional presence.\n\nSource: BFM / Le Monde / Le Parisien\n\n#IslamophobiaWatchFrance #France #IslamicInstitutions",
+      "status": "pending",
+      "created": "2026-08-15T06:30:28.341264",
+      "heat_score": 12,
+      "heat_label": "HOT",
+      "heat_article_count": 4,
+      "sources": [
+        {
+          "name": "Le Parisien",
+          "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOVFFEZkZGZ0lRZ2RGTVlfOGZQOW5OdUhsMWVwcnBTLXNYUzl5QU9xNjdOZHlyNktFSHhTZVhLc1gzNzc5SkxuYnE3YS1wbUM5b3JraVZubFE4N0ZUaG5CMTR4Mmw3cDZNeTA3dDhoM1pVbzVWa2ZfTk8tTFFGNXZvVGhQZEZzTDJTVm1SX0x0UzRyMWNON21jRzBXRGhVbzQ0OTZrNjR5Q0pmNG1TTlVLSWUyMVZLUU1xbEJKQ3FyczBSYUFWQ3BBaElkUExoV3hfRUp0Zlh3ZFNublo3MnhCQ0ZiR1d0ZnRLaGIwdm96MnF6cnlWTHZKMFR5NXBWRWRWRXFZMQ?oc=5"
+        },
+        {
+          "name": "La Croix",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdW41RFpkaGpqN3NEZFVxNGZ3emwxdnAxcC1xSkktMVdGM0FMUVRhQWx5bWwtSTRLZ0lWTHlWOVpvS3kwSWNXZzA4RlM4b1pYRkRPWmdlbEV5azlUTmM5M2VOWUY3Ni1yMzRJWHJLLXA5cXdKWGw3QlBXSjI4Vm12V2tLNnFFZkN1RHh2cm16czdEeTRvTDk0OEVOSjY0aDNNN2JERVJ2MV9WNE92LXpPdTk1b3BuUlEtXzUwc2pvWUFTQ3FDUzhzWkpB?oc=5"
+        },
+        {
+          "name": "BFM",
+          "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQUjZtcmUzX2xKeWJaUVc4THlfVTNIUWVSZWN0UFprbkZMek1OTnl1RUYxZzNEQTRZNlBwcGV2TWtwUzd4ZEQwTnRRcTVfUFVfaW5Hd3V2ZkRiMnhfbmswOXNrMnMyU2RTUzRSeWU4TTBMLVN0SnAxaHV4cVhoUWpHLUFXdTdqY3ptemlLSU9oZFNpN0E1aFNHNkZ2eWFwVnJyVlRqVDVFUmVTVm9XMlo5aUVNY05GV0hPbmxYb2lIekV5amxGZnNEUUphOXBRbXkxSC1HVGJtZGF1ZUVjSlJGalJJU25RdnVOeUEwb2FLT1FxdEtpTU9heV8zbkpJODVDUUZmZFBoMkhaeGRUSG11Uk1QczBZMHFDX2RFUHZyQQ?oc=5"
+        },
+        {
+          "name": "Le Monde.fr",
+          "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOdFlVck5YRlVCOEZrbmpvczBsbHZXVVBjbFJXRlV5Z1FValotZ0ctMUJ1d0p6SkRrblpBdW05OVc4SU5aYmJEcWJrb3pKSi1mX3Z1N1lSeVd6Z3JnSVo1cDRkYUVqU1JkRWNmQXdRUGFxenFtbzZIbEhRT0lKbWdPMmUtWnZZb1h6YzdRUncxcWhQT2lhc2JlX3BKUXdWbDRfQlhQY2Z5WnNuYUwydkFNVXplM28xSVd6RU5xaHEta002eWFyeklVR3FPRklSY0VabTVMd0JRalpxSVg5TnNuUzc1aThPb3QxZS1GOEYxMlJxbG5tYS1xVXZYbw?oc=5"
+        }
+      ],
+      "content_confidence": "medium",
+      "content_chars": 2764,
+      "fetch_source": "cache",
+      "date": "2026-08-15",
+      "approved": true,
+      "approved_at": "2026-08-15T04:32:39.131Z"
+    },
+    {
+      "id": "post_1_website_20260815",
+      "type": "website",
+      "title": "Due to lack of funding, the Foundation of Islam in France loses its public utility status",
+      "source": "Le Parisien",
+      "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOVFFEZkZGZ0lRZ2RGTVlfOGZQOW5OdUhsMWVwcnBTLXNYUzl5QU9xNjdOZHlyNktFSHhTZVhLc1gzNzc5SkxuYnE3YS1wbUM5b3JraVZubFE4N0ZUaG5CMTR4Mmw3cDZNeTA3dDhoM1pVbzVWa2ZfTk8tTFFGNXZvVGhQZEZzTDJTVm1SX0x0UzRyMWNON21jRzBXRGhVbzQ0OTZrNjR5Q0pmNG1TTlVLSWUyMVZLUU1xbEJKQ3FyczBSYUFWQ3BBaElkUExoV3hfRUp0Zlh3ZFNublo3MnhCQ0ZiR1d0ZnRLaGIwdm96MnF6cnlWTHZKMFR5NXBWRWRWRXFZMQ?oc=5",
+      "published": "2026-08-13T17:41:29+00:00",
+      "time_ago": "1d 10h ago",
+      "summary": "Due to lack of funding, the Foundation of Islam in France loses its public utility status — Le Parisien",
+      "draft": "The Foundation of Islam in France has lost its public utility status due to lack of funding, according to reporting from Le Parisien, La Croix, BFM, and Le Monde. The loss of this designation threatens the organization's survival and capacity to operate.\n\n## What happened\n\nThe Foundation of Islam in France, an organization established following the 2015 terrorist attacks in Paris, has had its public utility status withdrawn. Multiple French news outlets reported the withdrawal over the past 24 hours, citing insufficient funding as the primary cause. Public utility status in France allows organizations to receive tax-deductible donations and access certain forms of public support—benefits now unavailable to the Foundation.\n\nThe loss of this designation creates serious operational challenges for the organization. Without public utility status, the Foundation faces reduced capacity to fundraise and sustain its activities, putting its continued existence at risk.\n\n## Reaction\n\nDetails of formal responses from the Foundation, affected Muslim communities, civil society organizations, or government officials were not accessible in the available source materials.\n\n## Why it matters\n\nThe Foundation of Islam in France was created as a state-backed institutional response to integrate Islam into France's secular framework following the 2015 attacks. Its loss of public utility status reflects broader challenges facing French Muslim institutional leadership: insufficient funding, organizational sustainability, and the difficulty of maintaining state-aligned Islamic structures. This development occurs amid ongoing national debates over Islam's place in France, the government's relationship with Muslim organizations, and the implementation of laïcité—France's constitutional principle of state secularism and separation of religion from public institutions.\n\n## Background\n\nThe Foundation of Islam in France was established in the years following the January 2015 Charlie Hebdo attacks and November 2015 Paris attacks. It was conceived as a framework through which the French state could engage with organized Islam while maintaining laïcité principles. Public utility status (statut d'utilité publique) is a formal French legal designation granted to non-profit organizations serving the public interest, enabling tax deductions for donors and access to certain subsidies.\n\nThe Foundation's creation reflected government efforts to develop institutional channels for Muslim representation and counter-extremism work. Its struggles with funding now highlight the precarious position of state-supported Muslim organizations in France, which often face both financial constraints and political sensitivity.\n\n**What is public utility status in France?**\nPublic utility status is a legal designation in France that allows non-profit organizations to receive tax-deductible donations and access certain forms of public support. Organizations lose these benefits when the status is withdrawn.\n\n**When was the Foundation of Islam in France created?**\nThe Foundation was established in the wake of the 2015 terrorist attacks in Paris, according to BFM.\n\n**What were the 2015 attacks?**\nFrance experienced major terrorist attacks in January 2015 targeting the Charlie Hebdo newspaper and a kosher supermarket, and again in November 2015 across Paris, killing dozens. These attacks prompted government initiatives to address radicalization and engage with Muslim communities.\n\n**What is laïcité?**\nLaïcité is France's constitutional principle of state secularism, establishing the separation of religion from public institutions and ensuring state neutrality toward all religions.\n\nSources: Le Parisien, La Croix, BFM, Le Monde.fr",
+      "status": "pending",
+      "created": "2026-08-15T06:30:28.341264",
+      "heat_score": 12,
+      "heat_label": "HOT",
+      "heat_article_count": 4,
+      "sources": [
+        {
+          "name": "Le Parisien",
+          "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOVFFEZkZGZ0lRZ2RGTVlfOGZQOW5OdUhsMWVwcnBTLXNYUzl5QU9xNjdOZHlyNktFSHhTZVhLc1gzNzc5SkxuYnE3YS1wbUM5b3JraVZubFE4N0ZUaG5CMTR4Mmw3cDZNeTA3dDhoM1pVbzVWa2ZfTk8tTFFGNXZvVGhQZEZzTDJTVm1SX0x0UzRyMWNON21jRzBXRGhVbzQ0OTZrNjR5Q0pmNG1TTlVLSWUyMVZLUU1xbEJKQ3FyczBSYUFWQ3BBaElkUExoV3hfRUp0Zlh3ZFNublo3MnhCQ0ZiR1d0ZnRLaGIwdm96MnF6cnlWTHZKMFR5NXBWRWRWRXFZMQ?oc=5"
+        },
+        {
+          "name": "La Croix",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdW41RFpkaGpqN3NEZFVxNGZ3emwxdnAxcC1xSkktMVdGM0FMUVRhQWx5bWwtSTRLZ0lWTHlWOVpvS3kwSWNXZzA4RlM4b1pYRkRPWmdlbEV5azlUTmM5M2VOWUY3Ni1yMzRJWHJLLXA5cXdKWGw3QlBXSjI4Vm12V2tLNnFFZkN1RHh2cm16czdEeTRvTDk0OEVOSjY0aDNNN2JERVJ2MV9WNE92LXpPdTk1b3BuUlEtXzUwc2pvWUFTQ3FDUzhzWkpB?oc=5"
+        },
+        {
+          "name": "BFM",
+          "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQUjZtcmUzX2xKeWJaUVc4THlfVTNIUWVSZWN0UFprbkZMek1OTnl1RUYxZzNEQTRZNlBwcGV2TWtwUzd4ZEQwTnRRcTVfUFVfaW5Hd3V2ZkRiMnhfbmswOXNrMnMyU2RTUzRSeWU4TTBMLVN0SnAxaHV4cVhoUWpHLUFXdTdqY3ptemlLSU9oZFNpN0E1aFNHNkZ2eWFwVnJyVlRqVDVFUmVTVm9XMlo5aUVNY05GV0hPbmxYb2lIekV5amxGZnNEUUphOXBRbXkxSC1HVGJtZGF1ZUVjSlJGalJJU25RdnVOeUEwb2FLT1FxdEtpTU9heV8zbkpJODVDUUZmZFBoMkhaeGRUSG11Uk1QczBZMHFDX2RFUHZyQQ?oc=5"
+        },
+        {
+          "name": "Le Monde.fr",
+          "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOdFlVck5YRlVCOEZrbmpvczBsbHZXVVBjbFJXRlV5Z1FValotZ0ctMUJ1d0p6SkRrblpBdW05OVc4SU5aYmJEcWJrb3pKSi1mX3Z1N1lSeVd6Z3JnSVo1cDRkYUVqU1JkRWNmQXdRUGFxenFtbzZIbEhRT0lKbWdPMmUtWnZZb1h6YzdRUncxcWhQT2lhc2JlX3BKUXdWbDRfQlhQY2Z5WnNuYUwydkFNVXplM28xSVd6RU5xaHEta002eWFyeklVR3FPRklSY0VabTVMd0JRalpxSVg5TnNuUzc1aThPb3QxZS1GOEYxMlJxbG5tYS1xVXZYbw?oc=5"
+        }
+      ],
+      "content_confidence": "medium",
+      "content_chars": 2764,
+      "fetch_source": "cache",
+      "date": "2026-08-15",
+      "approved": true,
+      "approved_at": "2026-08-15T04:33:14.762Z"
+    },
+    {
+      "id": "post_2_linkedin_20260815",
+      "type": "linkedin",
+      "title": "From Paris to London, is Europe hardening its policy toward the Muslim Brotherhood?",
+      "source": "Le Club de Mediapart",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWmxxZTI4NVc2WF83SGVPdHl2TUpXMEdsbWtOckF2aU1oOEZxMFBLcnpsb3lfSnR6dEg1bkdldzBNblZyb3pSR2NBQ1hIeG0xT1NGbFI4WDY3VWhNS2hvZXZWX1BtOWt2MDc0MzQ0TDJqOTZ0WUl2SXJ0RXJKbTlOQkJTTTJqaDRaWExSZ0xXUVpkNEQ5LXVRUDlRVHhEMTQ4OXJacS1BQmZpWDJyVldITklRVzZISnVfNEVuaEFGMFZRZGxtYlVz?oc=5",
+      "published": "2026-08-14T11:49:25+00:00",
+      "time_ago": "16h ago",
+      "summary": "From Paris to London, is Europe hardening its policy towards the Muslim Brotherhood? Mediapart Club",
+      "draft": "European countries are reassessing their approach to the Muslim Brotherhood.\n\nFrance and the United Kingdom are among nations examining policies toward the organization, according to reporting from Le Club de Mediapart.\n\nThe shift reflects broader European scrutiny of the Brotherhood's activities and influence across the continent. Both countries are considering how to address the group's presence and operations within their borders.\n\nThe question of how European governments should respond to the Muslim Brotherhood remains contested, with security concerns and civil liberties considerations both at play.\n\nSource: Le Club de Mediapart\n\n#IslamophobiaWatchFrance #France #MuslimBrotherhood",
+      "status": "pending",
+      "created": "2026-08-15T06:30:28.341264",
+      "heat_score": 3,
+      "heat_label": "NORMAL",
+      "heat_article_count": 1,
+      "sources": [
+        {
+          "name": "Le Club de Mediapart",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWmxxZTI4NVc2WF83SGVPdHl2TUpXMEdsbWtOckF2aU1oOEZxMFBLcnpsb3lfSnR6dEg1bkdldzBNblZyb3pSR2NBQ1hIeG0xT1NGbFI4WDY3VWhNS2hvZXZWX1BtOWt2MDc0MzQ0TDJqOTZ0WUl2SXJ0RXJKbTlOQkJTTTJqaDRaWExSZ0xXUVpkNEQ5LXVRUDlRVHhEMTQ4OXJacS1BQmZpWDJyVldITklRVzZISnVfNEVuaEFGMFZRZGxtYlVz?oc=5"
+        }
+      ],
+      "content_confidence": "medium",
+      "content_chars": 2600,
+      "fetch_source": "cache",
+      "date": "2026-08-15",
+      "approved": false
+    },
+    {
+      "id": "post_2_website_20260815",
+      "type": "website",
+      "title": "From Paris to London, is Europe hardening its policy toward the Muslim Brotherhood?",
+      "source": "Le Club de Mediapart",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWmxxZTI4NVc2WF83SGVPdHl2TUpXMEdsbWtOckF2aU1oOEZxMFBLcnpsb3lfSnR6dEg1bkdldzBNblZyb3pSR2NBQ1hIeG0xT1NGbFI4WDY3VWhNS2hvZXZWX1BtOWt2MDc0MzQ0TDJqOTZ0WUl2SXJ0RXJKbTlOQkJTTTJqaDRaWExSZ0xXUVpkNEQ5LXVRUDlRVHhEMTQ4OXJacS1BQmZpWDJyVldITklRVzZISnVfNEVuaEFGMFZRZGxtYlVz?oc=5",
+      "published": "2026-08-14T11:49:25+00:00",
+      "time_ago": "16h ago",
+      "summary": "From Paris to London, is Europe hardening its policy towards the Muslim Brotherhood? Mediapart Club",
+      "draft": "# From Paris to London, is Europe hardening its policy toward the Muslim Brotherhood?\n\nEuropean governments are increasingly scrutinising the Muslim Brotherhood and its affiliated organisations across the continent, according to reporting from Le Club de Mediapart. The trend reflects a broader shift in how major democracies approach Islamist movements, with France and the United Kingdom at the forefront of these policy reassessments.\n\n## What happened\n\nFrance has maintained particular scrutiny of Brotherhood-linked networks operating within its borders, according to Le Club de Mediapart's analysis. The British government has similarly intensified oversight of organisations with documented connections to the movement. These parallel developments suggest coordination—or at minimum, alignment—among Western European security establishments in their approach to the Brotherhood and groups in its orbit.\n\nThe reporting indicates that both Paris and London view certain Brotherhood-affiliated organisations as presenting security concerns or ideological challenges to secular governance frameworks. France's longstanding commitment to *laïcité*—the constitutional principle of state secularism and strict separation of religion from public institutions—has historically informed its regulatory approach to religious movements, including Islamic organisations.\n\nLe Club de Mediapart's investigation suggests these policies extend beyond surveillance to include potential restrictions on funding, operational licenses, and institutional recognition for groups deemed to have Brotherhood connections.\n\n## Why it matters\n\nThis European hardening reflects intensified debate over how liberal democracies should regulate religious movements that combine spiritual teaching with political ideology. For French Muslims, the consequences are significant: organisations providing social services, education, or community support may face scrutiny or restrictions if authorities determine Brotherhood affiliations, even indirect ones. This creates potential chilling effects on legitimate religious and community organising.\n\nThe policy shift also illuminates broader French anxieties about integrating Muslim communities while maintaining republican secular principles. Whether Brotherhood-connected organisations genuinely pose security threats or represent merely ideological difference remains contested among French civil society, security experts, and Muslim community leaders themselves.\n\n## Background\n\nThe Muslim Brotherhood, founded in Egypt in 1928, is a transnational Sunni Islamist movement advocating integration of Islamic law and governance. The organisation is banned outright in some Arab states but operates—often legally—across Western Europe through affiliated charities, educational institutions, and community organisations.\n\nFrance's regulatory environment reflects its particular republican model. Unlike the United States or Germany, which accommodate religious diversity within pluralist frameworks, French secularism demands stricter institutional neutrality. This creates specific vulnerabilities for Islamic organisations, which face higher evidentiary thresholds when defending their activities as compatible with *laïcité*.\n\nThe Brotherhood remains controversial even among European Muslims: many view it as a legitimate grassroots movement; others criticise its political ambitions or theological conservatism.\n\n**Is the Muslim Brotherhood banned in France?**\nNo. However, France closely monitors and regulates organisations with documented Brotherhood connections or funding sources.\n\n**What is laïcité?**\nFrance's constitutional commitment to state secularism and the exclusion of religion from public institutions and governance.\n\n**Does this affect all Muslim organisations?**\nPrimarily those with documented or suspected Brotherhood ties. Mainstream Muslim associations operate without such restrictions.\n\n**Are other European countries following France's lead?**\nLe Club de Mediapart reports parallel British scrutiny, suggesting broader European alignment on this issue.\n\nSources: Le Club de Mediapart",
+      "status": "pending",
+      "created": "2026-08-15T06:30:28.341264",
+      "heat_score": 3,
+      "heat_label": "NORMAL",
+      "heat_article_count": 1,
+      "sources": [
+        {
+          "name": "Le Club de Mediapart",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWmxxZTI4NVc2WF83SGVPdHl2TUpXMEdsbWtOckF2aU1oOEZxMFBLcnpsb3lfSnR6dEg1bkdldzBNblZyb3pSR2NBQ1hIeG0xT1NGbFI4WDY3VWhNS2hvZXZWX1BtOWt2MDc0MzQ0TDJqOTZ0WUl2SXJ0RXJKbTlOQkJTTTJqaDRaWExSZ0xXUVpkNEQ5LXVRUDlRVHhEMTQ4OXJacS1BQmZpWDJyVldITklRVzZISnVfNEVuaEFGMFZRZGxtYlVz?oc=5"
+        }
+      ],
+      "content_confidence": "medium",
+      "content_chars": 2600,
+      "fetch_source": "cache",
+      "date": "2026-08-15",
+      "approved": false
     }
   ]
 }

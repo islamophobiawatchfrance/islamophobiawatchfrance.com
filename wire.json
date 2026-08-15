@@ -1,380 +1,44 @@
 {
-  "generated": "2026-07-21T07:03:21.807432",
+  "generated": "2026-08-15T06:30:28.341264",
   "items": [
     {
-      "title": "A verse against the \"misguided\" recited before Nuñez, Bergé and Pécresse",
-      "source": "Valeurs actuelles",
-      "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxPOHlQTm53M3EzRG9wM1RvbFlkbUk0N2lfWVRHMlEyRl9Ka05kZjRTSmdzc0lGZjRaUlBlN29Va21mbHdJUVQweW1QNUFUVGxhUE9uNUd0bzE3am5NN3BiU0RjNlltelhqQ3lwX2JlSlVxSEk1QUZTbWdyQk5zUlI3QlMyY2FSMGZEY2VpQzd1MUVJVEw0alRLRXkySHA3eWFWaDd4YVBGNHdBMExwWFQ1VC1Qek5TQk1aXzJVd21RWjRrTHdNU3VLSjhlS2VCcUtsc1RfNkVrc3hqdVFBZ1RQWnZkRUZtR1RsSFJnY1dHNkRkVXd4WGI4Yk5VTUIwRGx5Skpr?oc=5",
-      "published": "2026-07-20T10:00:30+00:00",
-      "time_ago": "19h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Rehabilitation of French colonial past, racism and Islamophobia: \"It is unworthy not to be outraged\"",
-      "source": "Réalités Magazine",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQRkdHRHNMcFlaZzBiMWJKdEY1ZGhfRktSM1BOaEV0OWsydW9zSFRsZDNreWxKVGdtWUUwdGhnWGNOel90SGN0cnlQQkxfNF9oZnJaMGpYTTEzWXF5aWhIS0hjWkhfMnRrWUVOM1hqTlAtd0pqSk4wMXBkVHo4VWdOTGFvSlBQNnlKa3VvZE5LOHFCcW1Zd0prVUR1YVNMbUc4VkRzWFlmNnRqQ3JEZGFvTTBiMmdna0czcnp3UHhaMFQ3SXJuelpJRw?oc=5",
-      "published": "2026-07-20T09:26:13+00:00",
-      "time_ago": "19h ago",
-      "query": "islamophobie france"
-    },
-    {
-      "title": "Le Pen launches fourth presidential bid as Europe braces for a rightward turn",
-      "source": "The New Voice of Ukraine",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQZ2U0N1pudGhaM2RfQTB4RWljYzdpekhzd0tQZ0dtWURRclN4WEdsMVFaYjlHcVduRlp3dEhGNjBST2tfcXVQYnF4cmlUYmN0MkxIdTFHTWVEV2hJWXNFeXlZQWNsbnpJR0ZXWjMwZllPbnViWG1vMHpQQTFIZ25la0hSZlVXVS10cmpQZzZsY3VOTmVfbHV6MDc1T3UyVG9xaXhEZjlwazBBb2RYa1I0QkVB0gGyAUFVX3lxTFBnZTQ3Wm50aFozZF9BMHhFaWNjN2l6SHN3S1BnR21ZRFFyU3hYR2wxUVpiOUdxV25GWnd0SEY2MFJPa19xdVBicXhyaVRiY3QyTEh1MUdNZURXaElZc0V5eVlBY2xueklHRldaMzBmWU9udWJYbW8welBBMUhnbmVrSFJmVVdVLXRyalBnNmxjdU5OZV9sdXowNzVPdTJUb3FpeERmOXBrMEFvZFhrUjRCRUE?oc=5",
-      "published": "2026-07-19T16:10:00+00:00",
-      "time_ago": "1d 12h ago",
-      "query": "\"Marine Le Pen\" muslims OR islam OR immigration"
-    },
-    {
-      "title": "Parution d'Iqra n°119 spécial centenaire : 'Rendre grâce'",
-      "source": "Grande Mosquée de Paris",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQTjhic1hiUDlSLWVKclFWRDY3ZFBCSlluSi1OWmtYZkVNbHN5aTBHb29xQzRVdUZiblN0YTRSMjNtOHdBZVFucjBRUFI0b3BjQUE0R2dQVERINTZCNUw0UU1MLVZ5SmFMZjJJejd2QXRPbHFncHlSbFZnXzFlX1RHUF9taU44RnQxcnBDLWdxclFjb25QaXctcGIzMkJWdGNSUmNTUHVHMU9vZw?oc=5",
-      "published": "2026-07-19T15:50:16+00:00",
-      "time_ago": "1d 13h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Ceremony on the occasion of the centenary of the Great Mosque of Paris",
-      "source": "سانا",
-      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE12dzN6ZThPbF9ZSlJ2QW5ReXpTUzROSU42ODY3b0N2YnU1UzM5ajZWVTJKY3Q1a1YtdzEyeV9OQk9tbUN6M0FjUzdKVQ?oc=5",
-      "published": "2026-07-19T14:19:41+00:00",
-      "time_ago": "1d 14h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "New settler attack in occupied West Bank, mosque and several buildings set on fire",
-      "source": "Ouest-France",
-      "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQS3JoLWpPczlLa0pib2x5VklNb0NqWS1zZjlXU1NpQ1ZOa0oxWUR1b0pEOG9fZG54NHk2Z25fcUx0ZFc0V1BPWDZCNkNQSllwZEVpWEJaYUVVMndhZWVVaUtWY05rc0tOR3Q5X0VQODhZOUZBUjVCSDBrYjhUMmRJdFVHc01UNmxwZ184QXBIVVQtdVdVclYybFlfdUYzR3U4cmZXUzU3ZHdRREhZMDRadDJBZkoya1FMdTlGejVNeHc4bjFwaFVrM1BVNjlyNVZZLXpVTHcteUpUTFVtRWFrYl9tejF5TUt5VzBHNHJDWVZRQlJTd2E0dVlzWm8xOU1mSDZETEZn?oc=5",
-      "published": "2026-07-19T11:22:48+00:00",
-      "time_ago": "1d 17h ago",
-      "query": "mosquée france attaque"
-    },
-    {
-      "title": "The Grand Mosque of Paris, 'part of the French Republic' for 100 years",
-      "source": "AOL.co.uk",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPR1pxYWhkS3VheGtGckh3UGNFU0VuS2J1MUxZXzkwTlBrdERDTHZlX0NNcjRRUENiVWJfaC05ZVRzR2VDSkhaUWNDbkVSM0xCbHdpeWdHbGZsT0lvVlZPRWdHQ25NMkFIaHBOQkFSemRzbko1M2RhRDAxZVRTc3dQUElR?oc=5",
-      "published": "2026-07-19T10:57:24+00:00",
-      "time_ago": "1d 18h ago",
-      "query": "french muslims"
-    },
-    {
-      "title": "Centennial of the Great Mosque of Paris: what are these Quranic verses that were recited during the ceremony?",
-      "source": "Le Figaro",
-      "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbFlHQ09pbW5XR1F2MndXQWJlTmhmWnRUTE1NUHVGV1hMUDV4VDlmUjIzVDhKVlh6NjVwOTVRd19IYzhZNjRVeEg5MGJzZmo1N21aZHVmQW5DM0xrbDc1WGY4N2VQbmNQU0JWaGc1SlpUY3g1TnZfMTdVNXI2YlRDcGwzRHZIN21QLUVZcjd4Y0dVS01iUTFNc3RBNkpQanJXVjMyZ05jNmtDdm40dnZtajZoWUEyaHpBM3FKNlhFa1hISm1YX3c3cjY4amNTRnlfRXdyQzhjTjFnenpCaVRtZFdEZUlWbFFKWU11b05Na1RFYjZr?oc=5",
-      "published": "2026-07-19T09:46:59+00:00",
-      "time_ago": "1d 19h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Occupied West Bank: A mosque and several buildings set on fire during a settlers' attack",
-      "source": "La Provence",
-      "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPM1EwbXBoa1hyZXF4V2ZTd3NXc2JPQ3I1bWNXcVhqRVU1bWhtSTctbTBqRVpvY2c2VExjTS13VjNEdGItelV1M2tqQU5xSkNhZUt4MU1IWjVOdUVFLWtCNGQ3WHpHOVFZX0k2UUlqeERYS251Unp3a2VrdVVVMDFzSFFwWXpjZU1DYU5QZGxreUVTWUF1SjNFM2NCank0ZnNZTUdRYkppSFB3TmkwZzRuSHFOUklMMTFCOXBiU2JZOW5JVkRXanNwMkdneXNaUVNxb2F0VmpsWUJHcFkwWkcwQVFIWnlMSGtZbjYw?oc=5",
-      "published": "2026-07-19T02:23:00+00:00",
-      "time_ago": "2d 2h ago",
-      "query": "mosquée incendie france"
-    },
-    {
-      "title": "Centenary of the Great Mosque of Paris: a century of dialogue and memory",
-      "source": "El Moudjahid",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOTmkxX0FsQXo0T3NfTzZCTTgtT1h2T0lwaHlRNWxVUmJmZkRzVURmYnBBbVlndm1zVGhaSVhGbE1lUDhleWdvWWVfeEhaODI1bTNTSUpYRW5DVm9zZGpVTVVpLTNYNGQxaFVaWXVicU8yUzNKTm9Hdy1FajNYT25mUmRGcDFyMG1NaE1OV2NIazQ5cUhGUTNNajVCVVZGVnphYzY0VDRTa3VtbTVWXzNrVVFxWll5OHVlZ3NmZmdmT3M?oc=5",
-      "published": "2026-07-19T00:36:23+00:00",
-      "time_ago": "2d 4h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "The Great Mosque of Paris turns 100 in replay - Islam",
-      "source": "France TV",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTC1HNnRLZGptYUpfanU2WGdZNk1oSVM2YlYxVEpwejl4M3Ixa2VJRjhSajhvOTFBMzc0OWs5Uk1BUWVoNkkyNDd1MGszVmF2VzRBV3pKNldOQ0Y5RHAxOEhoanliWkFhUUxOQnlxYkowRDhzYWRiZ2NWTnlySXhZWHR6eVg2azNnVV9sd01SUQ?oc=5",
-      "published": "2026-07-18T22:24:43+00:00",
-      "time_ago": "2d 6h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Naïma Huber-Yahi: \"The Great Mosque, a colonial tool, will become a tool for emancipation\"",
-      "source": "Orange Actualités",
-      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOX1BtZjdGTzJFVjQtZ0x6R2lBSWVHZFlqVmZCZGpkZWcyU1dzSHlQOUxMUndUZUVSX3psUnF0b0VNNklzTDNVYjVRdVNTWjl0dTN1ZERyRmRpc0s1dEk1aGM1Z2l0Q0Mta1JRUGtqWjFmN1BBRTZIWTRzMkFLcUF1dUNGNTN3WUM2WkpUcXprRTcxS0V0LVVHY2pzYTh4MGMtd1hXbl9JaVF1YlJhTzF6Z0NWb3lDeE9EUmtkTjZtdUNNcFBCUkx2ZFkxbmEwczZ0b3NRNGd5WQ?oc=5",
-      "published": "2026-07-18T20:11:19+00:00",
-      "time_ago": "2d 8h ago",
+      "title": "Why the Foundation of Islam in France is seeing its \"public utility\" status withdrawn",
+      "source": "La Croix",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdW41RFpkaGpqN3NEZFVxNGZ3emwxdnAxcC1xSkktMVdGM0FMUVRhQWx5bWwtSTRLZ0lWTHlWOVpvS3kwSWNXZzA4RlM4b1pYRkRPWmdlbEV5azlUTmM5M2VOWUY3Ni1yMzRJWHJLLXA5cXdKWGw3QlBXSjI4Vm12V2tLNnFFZkN1RHh2cm16czdEeTRvTDk0OEVOSjY0aDNNN2JERVJ2MV9WNE92LXpPdTk1b3BuUlEtXzUwc2pvWUFTQ3FDUzhzWkpB?oc=5",
+      "published": "2026-08-14T14:39:06+00:00",
+      "time_ago": "13h ago",
       "query": "musulmans france"
     },
     {
-      "title": "At the heart of the news, the guest - Naïma Huber-Yahi: \"the Great Mosque, a colonial tool, will become a tool of emancipation\"",
-      "source": "France 24",
-      "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxQVy13Z21KSDdTYUk0YTFndHRkTjM5YjVJdWpnWGk1NER2YXhGSEdBaTFtTGlIUS10V0c4UFRKY2t0aHZGZnZudUNscEJLNl9VUjhMNlVtMnpCUzdDTm42VmtjMjFrNGpqSzloMVJHa0lYQkJXYTh3aVMtNF9ZekR2THZpTEVWb1FWbE4xRmJKRkdGRDl3M3hINEptR3pEdS1FODJnTHdYYWpjREtlV3FEOXNvZEtVM3JFV3JTNGllSkl3SzFPclBDSzZfbUUxYTFMa0x6bWRad0tzN3E4Uk5pUXVDSFBocVc1R1poMmtYM281MTlqN2RjaUYtUFAzUmMwWjQtYW02LXF4R0Z1NTYzblg5MVZMbjg?oc=5",
-      "published": "2026-07-18T20:01:16+00:00",
-      "time_ago": "2d 9h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "Paris’ Grand Mosque celebrates its 100th anniversary and interfaith dialogue - ABC News",
-      "source": "Breaking News, Latest News and Videos",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPX3UyUkJrQmhRTVhidzFzZW9hVngtWXlwc2ZpT2IzNndCY0wtNUZiclBwVFZuMjFKWjNQOWJYbmpiQ2ZiZFNTeHFCSEx4MUN3QnpCaU1NRjZwSGtpNjBVb3JlblVMM0VqT3FfNHpQTTdaNjNOZ3NJdmlkNHg5LVFfYzVDeGN6LURUenBiQ0w3aGRSdlYtUXRkZjhSM1liNU9aeHB6NnhTN3ZPQzE3eGU1Q2hTWVpHUU5zZURqSWhB0gHDAUFVX3lxTFBzV3BlRnVCMFM1OTktNmlKZUp1NXY5Ny1xbkhOQ3JyQUlXdGZsdkN5eExvd3M4TW9qaVc3N1pleEdxZm9tQUd2TmhtWGd5Ty15QUEwZ2M2YkhpLTMxMFJmSzdrR2pIUXJCYzhobzZPbWhIWXlhc0xpQWRBVzByRTdEN01mWHRMSV9iRUJaWG9zQUFaOE5JbUkzQXRGS1ZfdVFYcTdZWFVBNUIxVjNuYWxITTZXS3RtS1hNVnVsQmIzMy0zaw?oc=5",
-      "published": "2026-07-18T12:21:02+00:00",
-      "time_ago": "2d 16h ago",
-      "query": "french muslims"
-    },
-    {
-      "title": "Focus on a current event - A century and seven rectors",
-      "source": "Grande Mosquée de Paris",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQaVIyMUk3YUUzT2ZFUi1zNC1UYlZ1UTR0dHhrUW1mbWd4RDVjLXZaTkJnamV6Q0plZW50Wk9RcnZQSW1qbzRoWkNrNlpmdWdjT0Nmcm5ET2UyaF9fRmFCMWdIMWU2bERXWkIyaU5TcmY0R28zWU55bnEzVHhWa1M1U0RMWVFuVzVLazBwZ213M21RS293R1E?oc=5",
-      "published": "2026-07-18T11:58:32+00:00",
-      "time_ago": "2d 17h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "Marion Maréchal and Pascal Lepetit acquitted on appeal against IESH, school close to the Muslim Brotherhood dissolved by the State",
-      "source": "frontieresmedia.fr",
-      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxOaE1tV1dqMkx4SG9DVjNqc0k1U3hWejFnc0ZITGZ3MVRLc1RSTGN1R1Njb1hPcW9INWQtTmJiY3pWc0lBZkJWbkpmMzBJT3BwZVVwQnUxb3ktNmkzQ0NqVW1GZ1doMnJjbnpBMjFUTHViVlZ3eW9tc3dXWTV4cGZiNmNYRUk3dWxkblh5QUtISUt6Y0NTaFpQNnpwTkZwMDNULTkzQm5nLVN2c0NyWHFtMGxaR04wYm4zWXdZYXdHSjJiZmRVeUwxNDBQcGlFaW9iQkhJUnViZHg2Mmp2U2RF?oc=5",
-      "published": "2026-07-18T11:17:03+00:00",
-      "time_ago": "2d 17h ago",
+      "title": "From Paris to London, is Europe hardening its policy toward the Muslim Brotherhood?",
+      "source": "Le Club de Mediapart",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPWmxxZTI4NVc2WF83SGVPdHl2TUpXMEdsbWtOckF2aU1oOEZxMFBLcnpsb3lfSnR6dEg1bkdldzBNblZyb3pSR2NBQ1hIeG0xT1NGbFI4WDY3VWhNS2hvZXZWX1BtOWt2MDc0MzQ0TDJqOTZ0WUl2SXJ0RXJKbTlOQkJTTTJqaDRaWExSZ0xXUVpkNEQ5LXVRUDlRVHhEMTQ4OXJacS1BQmZpWDJyVldITklRVzZISnVfNEVuaEFGMFZRZGxtYlVz?oc=5",
+      "published": "2026-08-14T11:49:25+00:00",
+      "time_ago": "16h ago",
       "query": "frères musulmans france"
     },
     {
-      "title": "The Great Mosque of Paris celebrates a hundred years of history, between war memory and symbol of brotherhood",
-      "source": "Anadolu Ajansı",
-      "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxPZGlmTEZSODJqM2xheXZISTF5MlV6eVFNa0szME81UWhfbGtkQzFyQnZNclMzWnIxXzJzSllGdGdsaDNNMDU2ejFIMjVfdHZRbzY0YmdzMkc5QjVGeWpkN0VrSndxMkJyeHkyM19pV2psNW9wRFZFSEo1bkVIQ2VYcHV6QVVzTnRIRU55dXdJUmExVmh6SDV6Z3BtMGpOVmEwaDJXeDE3MDR3ek5zSGtCaFJ0WTJvMjctUWlpZWhWTWh6WTZOaWdDdkNQT0R2QktnUjRnODJ2c3FYa0RuMW13NExpVXk2TXlpbGdLd1R1SFB6dm1yZjJaZXV3?oc=5",
-      "published": "2026-07-17T20:09:12+00:00",
-      "time_ago": "3d 8h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "From colonial symbol to sanctuary: Paris's Grand Mosque turns 100",
-      "source": "France 24",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVl94cWZwaXZiZU92VXZfdjRzejA4clYzMDBfeGl5aFg3cUdDaU9UX25nV1ZLemtOZHA5RG1wVkxVMzc1M0JYaWNfVENEV1FmeVpwWHJpSGpobjJQbTJtamZqTmpFRW9KX0wxRUc3QzItNG1PcVpqRkV2X2p1NnY2cmxEanhUTkJtNURXeUl5bE83NklmRFlxdjRxdmoyN2JLOEk4SC1R?oc=5",
-      "published": "2026-07-17T15:57:48+00:00",
-      "time_ago": "3d 13h ago",
-      "query": "french muslims"
-    },
-    {
-      "title": "The \"secular\" Republic chooses invasion and Islam over Christian France",
-      "source": "reinformation.tv",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5LT2RjZ3B3STdiUG5GLWtVQm5ibE5KVGhXOURxOTRzTi1oTWp5U0pDS0QyRTQxZkdXUGNsOU83ZldpUF9TVnRVSXFVN0EyMGcyZnFsbFJoRGY3RFd3ME1uYnFUSkRGZ0V1UXFaVHlyM25Sdw?oc=5",
-      "published": "2026-07-17T15:33:44+00:00",
-      "time_ago": "3d 13h ago",
-      "query": "laïcité france islam"
-    },
-    {
-      "title": "Laurent Nuñez announces a national strategy against anti-religious acts",
-      "source": "خبرگزاری بین المللی قرآن",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNWduOVFENWpXYlhXeUVJcFFaRGJ2aFBudFBEakxnb3pleHZ5Yl9qOTNhNXZZcTBpTHFKQVpYeGN3TU4ycm9OTURWbmxmdnJxN21xRkZFTjRTQmU2cThGNVpOUEJpLWV1eW54eThfWFpaM0I2cmpjVk5hUFFlQmFrNnFyVURjdm5SYzZBS0Q3THdGVFJueEJWRm5XOFNRZXMtaUFWN3JCNDg4cmd5?oc=5",
-      "published": "2026-07-17T07:36:02+00:00",
-      "time_ago": "3d 21h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "Centenary of the Great Mosque of Paris: Nuñez promises a plan against anti-religious acts",
-      "source": "mesinfos",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOUHdka0tBaVVTbFZtN09pQUFLcm81cl9RUW9PZjdJWHdveGpNeFhRNGRxX0d2Y2lub3pWcG1IU0FmU1hPNFNuUE1MeWhFV2Q3bGpzS00tY0QyMDI5Wm9fNEJ3RmlQanJNeXRvNk51cU1pNWVPaDRTUzRzRDNNZ1pFLVY0SzNmY1psYWtNRWVzQUZCQW5ULWFNRkUxN2tXLWcyelp1dGtkMDhXTk5sSURJWkVOZ2VWb2ZIbmR3MWM2Wlo4c0F3SUc5N1dxamFoQ2otZ0E?oc=5",
-      "published": "2026-07-17T06:44:00+00:00",
-      "time_ago": "3d 22h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Islamist entryism: The State knows, the State speaks, but what is it doing?",
-      "source": "Politique Matin",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNSDBNUUdMZmxVbmlNRmluY3ZqWlJ6NFZxdTFfaUkwbVpnVGMzc2hyanYtZC1ITE5TbV81WWQwdmJBT1ZSRTN0WlpqRlFhdTVTS0J5b09XdlU5QjdUYUhvRFB4YkRPWHdIdlhhOWM5d3FENVJUQVU3T2dOMlpXUWNmZnNWbEtwYzRrR3RiMmJCX2cyb2Rp?oc=5",
-      "published": "2026-07-17T06:30:14+00:00",
-      "time_ago": "3d 22h ago",
-      "query": "frères musulmans france"
-    },
-    {
-      "title": "New victory against the Islamist Muslim Brotherhood! Continue to support our action by joining @id_libertes 👉 link in bio.",
-      "source": "instagram.com",
-      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE92VGprSjhKQ2xXNlVXbkExcXlnb1B4WDFwbWotbmdxNVQycm1PR2VTYWR6ZzUteUV3b2xFVlpUblFxNUNXbzF0RGxFU2hjdmtuQzRsRjhn?oc=5",
-      "published": "2026-07-17T00:41:31+00:00",
-      "time_ago": "4d 4h ago",
-      "query": "communauté musulmane france initiatives"
-    },
-    {
-      "title": "The Rector's Column (No. 117) - The First Day of the Second Century",
-      "source": "Grande Mosquée de Paris",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNbVRBLWpSeGl6ek91akhXVmN2VDRpeW0wNDhzSDFEa1hZTm40OWgtNWVxVkg4VDFkOWptMVNkWlV1dS16LWdHX00ydHMtNm1OTXRkOEY3dXdweU1ldWpweXhIWU1wTGc0U3lER1VCTmIxZ2NVM2E0Z3Y5anN4OTdaMXBxcFQxdlJ5bHZGNm4tdEZmSnMwR3BaelByLTg3QW9tSmNfcw?oc=5",
-      "published": "2026-07-16T16:50:11+00:00",
-      "time_ago": "4d 12h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Is Qatar Abandoning the Muslim Brotherhood? How War with Iran Threatens to Cut Off Funding to European Islamist Networks",
-      "source": "parlons-politique.fr",
-      "url": "https://news.google.com/rss/articles/CBMisAJBVV95cUxQbFNRYU1FMldVVGpMY1BSdTZFOGdfVHlxeldlXzFTMll5aFJvWjFtMW5iRDBwRklIZ3VHMy1LUHVJNVI3TWVacnAzdEtSRm9nbmVyaV8yalRBb1U1T1RRZzNvSTY3eGk2LWZZaWZhWWRrc3lpVzNaU0Nlc2tQN3VhZDlycHEzREVod0d3SjZZSHhzQzVXZEppMEtlX1k4MktSaVVzeGJIdWRtZkZ3cXRNOGxtd25JR1VlTTdXNlM3c1o4Qm56TGtrS0l5cDlvSG1FZ19WbV9QSmU0alNveWJGTDZqVVZ4ajloSTAtQzNyQjFfWUZSSnp1YWVCX3dfdDByOWJ6UGphRzJMZ2huREM2U1YwbWUwNjQtZExqeE9vdDF1WVVqaHMwTnFNT2JCN1Az?oc=5",
-      "published": "2026-07-16T16:10:24+00:00",
-      "time_ago": "4d 12h ago",
-      "query": "frères musulmans france"
-    },
-    {
-      "title": "The Grand Evening Interview - Chems-Eddine Hafiz Celebrates the 100 Years of the Great Mosque of Paris",
-      "source": "RFI",
-      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOSkZYMUlBSDJWU3BuZ05kX3l0RTNEQk1RUHJLX0pUd1lOS3VKRU1pRUVNc2FDc2NvWHB5UzUtaWc5TEVaUGVBczJ6MGtxclpYWXp6Sm4ybjlubTFtdzRqVXNpLWRHZVB5dThNbDdXVjBqN0piWmpTOWMwb1lhQWFNYmJKZ3VITGNUYkNyMmwyS2laVlAyVFJidnlEQUhNenBnRDIxVUNvSlZlbXJNNEZ4THppcjlveFV0dFJuRXlhT1M2bVlXOGRGVlpRNEEwUE5tLWEyMlBxWkNBWTN1dVZzcWFRTzM?oc=5",
-      "published": "2026-07-16T14:07:08+00:00",
-      "time_ago": "4d 14h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "\"70,000 Muslims died at Verdun\": Nuñez's speech that reignites a burning debate",
-      "source": "Le Tribunal du Net",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZUVqUWtKeGJjSnFmaktfN0Q3TVc1TEY5eVFnVERUVUZiN1dnT0JxWFI0S3BIdVpJMnc4MHdzSDBCRHc5ZUxJY3BEMmlOZVc5aUJ3MWNsNnVWOGEzQi1BR2NJTnhnRkN4eDBTMFdIUFRBLVlacWo2ZDEzY1RSV3p4REJ2V1FfT0ZMMGs0c0Zzdi1GZlh6T3RVQW9GNi1vN1I5VW1FZQ?oc=5",
-      "published": "2026-07-16T10:58:00+00:00",
-      "time_ago": "4d 18h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "The Great Mosque of Paris celebrates a century of history and brotherhood!",
-      "source": "Beur FM",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQOEoxQml4c1pEYVJuYjhDekdBZ0VLeWFjTEtxbWtTblUyVWcyNmYzbTc2bnVRdFR6UlBkVmlyT0laWkpmWlpWUkJ6S215dGFlOG5RNXljYzk5TG1seTZ4VWdQWS1kQnNwZW9QeXFrUE1JSjlObzZoMTR6cFd1WTlHYUlBdTRVeEJlZWpGTE15dm5QbWtGcU9tMmZwaw?oc=5",
-      "published": "2026-07-16T10:45:00+00:00",
-      "time_ago": "4d 18h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "The Great Mosque of Paris celebrates its centennial",
-      "source": "mesinfos",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNV3pwcXBkM3ZQXzUyMG5GWTZZUWF6M2NhcTM2eUw0WEw1Q3A1SDNsTlgyVTJraVJJaXNNRmIwbjl6ZlR0TWhQTHZKYUhUWnB2U1lXd2NPRWxTZEpySW91aHIyNmtMQkVTek96QU1rWjU5RmdOX0tGTV9lY1Nsem1DRHFkNkRJOV9VTXZLSi1iOTAwM1Q3?oc=5",
-      "published": "2026-07-16T09:37:00+00:00",
-      "time_ago": "4d 19h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "The Great Mosque of Paris celebrates its centenary",
-      "source": "Grande Mosquée de Paris",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcWlva1B4a3ZJajAwc2kxUmZBbHdMa3B0TEZ2QmdkVkxvVHlYZGlieEI0QjJkU2tVeVcxTE5KY3RvcGw1RUVkSmFGY0JuTldIRDQ4dDdLVGhIMW9hZHpnUVc2WDhTTjEyUkpScjZvc1Q0VS1WblVJYXZmaDJXVFdJLTRGSUJyZDNhUVNfcndFZHdIVkwt?oc=5",
-      "published": "2026-07-15T20:35:42+00:00",
-      "time_ago": "5d 8h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "At the Great Mosque of Paris, a century of faith, memory and brotherhood",
-      "source": "Regards protestants",
-      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNUThOT0pUM2lWY1FWckRhem5EN3lUZGpLUk1FalhlRXVMOHpwZ2lwbjNqaW9OU3pfQW14dHZqenVfbHFhbWVrMC00Q3ZQZHJFbzFlMUJUUHpZRHhpUkllOEdPU1k4dnBkU1VaX1BHQjRiZUNDUko4Q1A1eDgzUlZ0T0M3WHRSNjVBMHRXLUp1NjlmWU02Z1I4UlRGbE5Bam96eEw3aGpTUm5UWkxSVE5xWkI5ZktuSzRpaGJvU1F5RWNEOU9DVjdqOF9mc1JSWURHOHh4dExR?oc=5",
-      "published": "2026-07-15T19:20:33+00:00",
-      "time_ago": "5d 9h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "French Muslims Question Inclusion as Debate Over Secularism and Religious Rights Intensifies",
-      "source": "ShiaWaves",
-      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNV3VMZjhFZG10VnpZcDR4eWY3THdFV3BFdWFMZm1PTEpLeHBfWEtybG81ZE1RV3hOQnNyeHRxc2FVSWp6MXhuT0J2RTlKbXpVYmljamFOMUNMYmFwWGJNWWZXM1JuUlRNdmdZNTZ1dTA3YmFVVnZjVktmSWk2ZlFyWVExR1ZBek1rMVdsVzJyUE9HREV1Z3VHRUxUZE11UEtQUXd3Zmo1ZWhPc3R2aDhHT2pkQTllQzhKajB2anZnSnNnMS0tY3FHV1U4WF85d251aTU4?oc=5",
-      "published": "2026-07-15T13:04:23+00:00",
-      "time_ago": "5d 15h ago",
-      "query": "french muslims"
-    },
-    {
-      "title": "The Grand Mosque of Paris: a project initiated by colonial France",
-      "source": "Libération",
-      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNSW0xTUI1d0R6N3Nxc0dQdUQ2cW56d0QxZlRRZ2pkTVZ0VnZ5YXVZMGdsZURhN245THpvQlViU3lxOVp4eEhNNWF0NjlyVk45V05UUWhGOUhmS2JHaTk1Mmp4X3MwWnJvaFBWdnJEdXViLXhadG1CNlplSlFLNDBUeFN2OVRkNUZ4RWJ2MmJQSzFiVXlzZXQ5bEs4X1JDNlF6YlMzOHgwVUZQUno5ZlYtOFdSdDFERnlKM2luSFlybGNWcjBQRFAwQ3Y4TmRDY01YeEo3bkthTXQzcjQ0?oc=5",
-      "published": "2026-07-15T08:00:00+00:00",
-      "time_ago": "5d 21h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "The Great Mosque of Paris is 100 years old: looking back at a grandiose and controversial project",
-      "source": "Le Monde.fr",
-      "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNVW1nc1RUWGxhejF0ZzdRQTVBc1RqME9DMmlKdVhrLW5VclUyRUpSZkMwbWl3ZlRUMW5FZE54cUE3cGtseFVyR1F0S3Q3emV5S3I5OU02VTJDeHhZSXZyWXllem5UV1BMc3NYVWk5elMxMWQwNnhOR181STI4dlRUMUgxb0FLZDNoeHlUYjJsbkFIYmc4RXlYcHB2TDRZUFFKdDBRUF9vdlpBamp1SnMwQTJGeFBqeGVZTTdUa25XTWdILV84TjFBcU9EUm52UzFVSmtqTlBOUGQta2NwQko2N2lraFNKYmlWbDRYSzVzVWNtVlVvSkFuYm1B?oc=5",
-      "published": "2026-07-15T07:08:35+00:00",
-      "time_ago": "5d 21h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "France: Muslim Worship Council Welcomes Sarkozy's Victory",
-      "source": "cath.ch",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQWUVDeXp0V3YyQU9MQldpLW9ZTHV6TVRPVnNEWE9FOHlFQTdnTVNIQ2U0TE9HVnZTbjFJS0NHM2hBWE8ybjlTamtVaEYwcVA0NktKVDdjWnFXYzZmRTBQOUt3bEtaZFoxUFVhQzc5R1JBQk5JNHN2bFRrOWg3cEN2ai11d29vRmZSeUVwNHd6dw?oc=5",
-      "published": "2026-07-15T06:06:25+00:00",
-      "time_ago": "5d 22h ago",
-      "query": "CFCM islam france"
-    },
-    {
-      "title": "Femyso : l’imposture Maréchal",
-      "source": "Franc-Tireur",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PdE83VVhCbG0wY2VWMWdic21zZ2pVNnhYZUh5Zlh0UkZLSjZEdlFRelpaZVdUMVVSSWFCWHdYWEUtbkVuaXB3ODl2WFpoRGlPWWt2SEtGN01zTk81SW15ZjVVVGg?oc=5",
-      "published": "2026-07-15T06:00:10+00:00",
-      "time_ago": "5d 23h ago",
-      "query": "frères musulmans france"
-    },
-    {
-      "title": "The 100 Years of the Great Mosque of Paris, a Diplomatic Tool Between France and the Muslim World",
-      "source": "Jeune Afrique",
-      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOczc4cHRNQmxYM1hLZnZLYVoxeXhkaFNsSDlsX3o5RUVyTDRORUQwWFptN1FXQVlLekJ5c0x1TVRNVTM3ZTVJeG9XeDN2ejFVeW9jLWthaGNnZ1NDX2cxYW5XSXpmcURHT0ZjMWtZbUdvRlh4RkNfd1ZkMk1kYUJtSlpIaThDX2VrSVhvbkxPVWV3S0pjMEFrTi1EQXB6czJyZlZIYTlfTU1KRkVwVWU2X2hHSXdSQVYzbU5hTHNJRW5HbWJoLXhMSnlHZjlZaFZqTzhDRHdMOVI0Y3RabXc?oc=5",
-      "published": "2026-07-15T05:51:18+00:00",
-      "time_ago": "5d 23h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "The Unknown Destiny of the Great Mosque of Paris, One Hundred Years at the Heart of History",
-      "source": "France 24",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNTXA4TDNxVGhZWW53WnpjV05lWHdpNGMwb0VUN1N6NHh0d1F5bnBuMzNVdVBadzZ1bHRUWGNJVHk2Z0E0S2FRT0FTWGNfcUxiZGMtczh4YnZHTXhtb0VJNXNtd0x4aVdVTGRaM1Y5Zkd4d3V6NlVWYWhUNUl5R0JLRDlkRUpwUE9ucHdJcDJwNHczaUlkc2padVhuZVk4ZWlBWS1PYnljWlVsSHFCV29LZ3NVallXT09fa2lnWC13UGdtVUY3V3IzTERuWWhrYTNaLW52SXlwa1JjTDg?oc=5",
-      "published": "2026-07-15T05:43:23+00:00",
-      "time_ago": "5d 23h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "INTERVIEW. Built to seal a \"Franco-Muslim brotherhood,\" the Great Mosque of Paris celebrates its 100th anniversary",
-      "source": "Ouest-France",
-      "url": "https://news.google.com/rss/articles/CBMioAJBVV95cUxQeEZJUzNrWFV3ZlEtX3NPQWkyYnJSY2g2cEhsTVRuSnZhRTFJUUltNWxLUDVrVDlCcDVYRy1HNy1SWlRMR2MyTjRJOGtkQkdXN29LcjdXZ1F5d0FqTzVTU1EzVDQ0V3FHRVpsaVFLMnpxcDVtUnpPWGpCbjZPUElZVy1jYjhUUWROeE5XUnpXS0J4RGF6ZDd0YVprT2p0c0tOWDdyc2lxZXhFZThXamdsdDdvQmFLaU1wWTcwTUM0M3c5d0xmX3V6UTR5R0JsN1pGRU1rclA0RS1veVJ0REo1ZjVQZ2lGYVFOWndHQlJNRldzWERaX2VRaklMX3AwR054ZGZhTThmdmlPRzZyNC05aG92MHZQUk5Bdjh0VXp0dTE?oc=5",
-      "published": "2026-07-15T05:30:43+00:00",
-      "time_ago": "5d 23h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "Great Mosque of Paris: \"It has been part of the Republic\" for a hundred years",
-      "source": "RFI",
-      "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxNTV9kWjNXcWNKYW1NaFhwb3QzVTZEU3J2MzlIeDVmaExwYjJCMkZkbGFScnlGNDhrY2xHdlgzV2pxeFFCYlRPUFdDSDd2RTRxNTlRT3ZqcUtlWE10LWNsS1lwbzZuTWIyU2tzZ2tzT2tPOGRlUWVZd3RoZ2dxOFRNS3FEMDEyTHhaRF9RblZQZDFaRnA4T0VLWEdjSFRTQkVJemwtckFwdGJwM1d1NkpLbFp2M0RUSk1EUERiYlEwMzBYLXFUcVZ2QVB0QzhxNTVzQUdvVWE0OTZVSWlGMGRwSjByNjVKazhybm5IcUNaS0VqbEFteTR3anVzSHQ?oc=5",
-      "published": "2026-07-15T05:07:19+00:00",
-      "time_ago": "5d 23h ago",
-      "query": "musulmans france"
-    },
-    {
-      "title": "The Grand Mosque of Paris Celebrates Its Hundred Years in Discretion",
-      "source": "Libération",
-      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxOc3g0U052VGFnRE52QjdGNDJuX0luZm9Ec1BCdVQ5dnFRd3hYRkF0dTgyRndtWmwwNTNleXZGR0NKSjBDUFBXckNMN3pFakRBbm9HMVhHQ2NXWTdYeC1GNU12cGRXc2YyWEFSMzZyTjlYamFYUlh5d2ZsdTVvOTlMTlFjbEFJUjh4THZPRmxybURGLW4tX2RVNFVoRkthNm5sNDFPODBtVnRGNVg3NmNscnpURjJDcUlGSUl1S1ZFQV9CU1lvRkFyTmZZOUh5b2xyb2wwQXF4OFBPVTMzRjFpTw?oc=5",
-      "published": "2026-07-15T05:00:34+00:00",
-      "time_ago": "6d 0h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Spain Arrests Man for Islamophobic Graffiti Targeting Mosque in Bilbao",
-      "source": "Morocco World News",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZ1JUSnpXWTlCbERUYUo5UTQweGhodmpuMUdnSXBOX2ZBV2NnNWhRWXlNdVVySHhsZ0dLOXdlYWlHenFuWmk3cmdTa0I2LTg0ckpDT2xsVl9tcXZ1c191dzg5d2ZrRXJ0c3MwMHZSc0NBTm9LRUFiWG5ldFAwTWdaS294OWN3amJiVUlPWnJqNVF6eWVNRDk1T0lDcWRxd0szYy1lRkJXWnctQlowNnJuTXZ4dk5TVkhNZ2pJ?oc=5",
-      "published": "2026-07-14T16:43:22+00:00",
-      "time_ago": "6d 12h ago",
-      "query": "islamophobia europe"
-    },
-    {
-      "title": "Centenary of the Great Mosque of Paris: \"Building it a few hundred meters from Notre-Dame is very significant\"",
+      "title": "Due to lack of funding, the Foundation of Islam in France loses its public utility status",
       "source": "Le Parisien",
-      "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxPaV95VnljRG8xOVJLLVVFOXpLbnVpN2g2dzJnczZCb192UXEyMHA2Q0o5eE5vdnFwWk44RGp3cFQydjViX1pLMHBYNnJ6U2xrdURPbVJ2bW40bl9Jc3ZvZzMwM1JUeEgzei1lNThhcE83MTlqRTRmZXBCTjJ6TTY0a3VGM2VXbFotQWwwaHVrZkpkcngzMTV1bHZ3cEZrTnJ5TnFtYWhiUXFGZjNVMk9CSFl3N1lzVk1fVFpFemRTdnktVHdKMXFwUjNtZ3Vzem94b0lpc3BDMGpjWHZUdUJrZ05aeGo1ejJxUEVUYlFrYlZiYU1LRjRMWDkzczZ6cXBRMXY2bEtabXZsbk5TTDZtSS05Vm9fNU5OeHc?oc=5",
-      "published": "2026-07-14T13:02:12+00:00",
-      "time_ago": "6d 16h ago",
-      "query": "Grande Mosquée Paris"
+      "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOVFFEZkZGZ0lRZ2RGTVlfOGZQOW5OdUhsMWVwcnBTLXNYUzl5QU9xNjdOZHlyNktFSHhTZVhLc1gzNzc5SkxuYnE3YS1wbUM5b3JraVZubFE4N0ZUaG5CMTR4Mmw3cDZNeTA3dDhoM1pVbzVWa2ZfTk8tTFFGNXZvVGhQZEZzTDJTVm1SX0x0UzRyMWNON21jRzBXRGhVbzQ0OTZrNjR5Q0pmNG1TTlVLSWUyMVZLUU1xbEJKQ3FyczBSYUFWQ3BBaElkUExoV3hfRUp0Zlh3ZFNublo3MnhCQ0ZiR1d0ZnRLaGIwdm96MnF6cnlWTHZKMFR5NXBWRWRWRXFZMQ?oc=5",
+      "published": "2026-08-13T17:41:29+00:00",
+      "time_ago": "1d 10h ago",
+      "query": "musulmans france"
     },
     {
-      "title": "On Bastille Day, France’s Muslims ask whether liberté, égalité, fraternité includes them",
-      "source": "Muslim Network TV",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTm0wa1N3MGVsWThwaXhsZW1FT01QUjlGaFQ5YTFCUi03dEdlYlZGN0tWMFpnanR1MVdTM0FfcS1VWXlxMmRaZVpKbHUyX25JX0w3MVJRemJNYkkxcm1fanZKd193TDRhb3RDa1U0d0FZd1V2eDBobUdiR3U4dWcxQjltd0I2RWNnWDVDckNzUXcyN0M4c1BDZTdyWkxSRjM5cFR3NklJbFQ4bFRmU3hUdEc5VVI?oc=5",
-      "published": "2026-07-14T12:48:37+00:00",
-      "time_ago": "6d 16h ago",
-      "query": "islamophobia france"
+      "title": "The Foundation of Islam in France, created in the wake of the 2015 attacks, loses its public utility status due to lack of funding",
+      "source": "BFM",
+      "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQUjZtcmUzX2xKeWJaUVc4THlfVTNIUWVSZWN0UFprbkZMek1OTnl1RUYxZzNEQTRZNlBwcGV2TWtwUzd4ZEQwTnRRcTVfUFVfaW5Hd3V2ZkRiMnhfbmswOXNrMnMyU2RTUzRSeWU4TTBMLVN0SnAxaHV4cVhoUWpHLUFXdTdqY3ptemlLSU9oZFNpN0E1aFNHNkZ2eWFwVnJyVlRqVDVFUmVTVm9XMlo5aUVNY05GV0hPbmxYb2lIekV5amxGZnNEUUphOXBRbXkxSC1HVGJtZGF1ZUVjSlJGalJJU25RdnVOeUEwb2FLT1FxdEtpTU9heV8zbkpJODVDUUZmZFBoMkhaeGRUSG11Uk1QczBZMHFDX2RFUHZyQQ?oc=5",
+      "published": "2026-08-13T14:25:32+00:00",
+      "time_ago": "1d 14h ago",
+      "query": "musulmans france"
     },
     {
-      "title": "France marks 10 years since Bastille Day terror attack in Nice killed 86",
-      "source": "RFI",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3c5NWNfM2ZvNXg5TDZKbzlTcEhoTDVrNldlYWJxdE5sbXBSdEUzVW1NRERaLXQ0SlhpdVNQR1RlTDNpTnV0RHlfYUJNSlQ2YVlmTE1ZQVRmRk9zZmJwQUN1bjVobHB1aGdFZmdjYVBLN0Q5ZndLVW5XLVBDV2JJX09oNHZCZUhXRW9YUTRrc09mMFNDOFl4Tnk4cGZCTG5uRTNRVzlzaGN5T3M2NGlN?oc=5",
-      "published": "2026-07-14T10:12:40+00:00",
-      "time_ago": "6d 18h ago",
-      "query": "french muslims culture sport business"
-    },
-    {
-      "title": "Centenary of the Great Mosque of Paris: five dates of a project that rhymes worship and culture",
-      "source": "franceinfo",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQUXBLWURqSS1kTk5HMl84QUk3SGxXczRldGZ2RVA4TTZhVDllNGdpdm1nYmlQM3g0Q1dRNXNXRG16LVF1OVNKUzhBc1RpbEV5RzZnMG1SUzRhdGhPdkQ3S3Z1ZHFSWDBSUFVSSVNRV0FlbklwU1Z1VEp5NVRPRmVUZ3djUDZsVXhLbVFUd0NCdDZiU255S0pPQ3o4Y1I1Q0t5LVV5eExUb1hfX3RRSHlzVnFRS2NnREpCUG9obU5fNk5TSXlwNmlTX0xNSEtDNjJQRXU5VXE3Mk05NFcyLWcxejJ1SnlnamxR?oc=5",
-      "published": "2026-07-14T09:08:07+00:00",
-      "time_ago": "6d 19h ago",
-      "query": "Grande Mosquée Paris"
-    },
-    {
-      "title": "Focus on a current event - One place and a thousand debates",
-      "source": "Grande Mosquée de Paris",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQczYwbmVkMVplYWRYOHZONzJzcngxM2liTVpwOUlXWVJxdHl5ZnBFaFpzV0xvdHRFS1ctTXdiZkJwZmU2NTRFS0RGVzlfX01TWTkwZUFJODE1ekRSemlRdXBTQlVGOElIMm9OdGg2Sl9iMzYweDJzTTV1V2pzRUw4aGJMelR5anVtX1JTS1h1WlVrdw?oc=5",
-      "published": "2026-07-14T08:31:58+00:00",
-      "time_ago": "6d 20h ago",
+      "title": "The Foundation of Islam in France loses its public utility status and sees its survival threatened",
+      "source": "Le Monde.fr",
+      "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOdFlVck5YRlVCOEZrbmpvczBsbHZXVVBjbFJXRlV5Z1FValotZ0ctMUJ1d0p6SkRrblpBdW05OVc4SU5aYmJEcWJrb3pKSi1mX3Z1N1lSeVd6Z3JnSVo1cDRkYUVqU1JkRWNmQXdRUGFxenFtbzZIbEhRT0lKbWdPMmUtWnZZb1h6YzdRUncxcWhQT2lhc2JlX3BKUXdWbDRfQlhQY2Z5WnNuYUwydkFNVXplM28xSVd6RU5xaHEta002eWFyeklVR3FPRklSY0VabTVMd0JRalpxSVg5TnNuUzc1aThPb3QxZS1GOEYxMlJxbG5tYS1xVXZYbw?oc=5",
+      "published": "2026-08-13T10:38:46+00:00",
+      "time_ago": "1d 17h ago",
       "query": "musulmans france"
     }
   ]
