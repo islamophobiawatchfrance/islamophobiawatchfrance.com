@@ -410,3 +410,48 @@ telegram.error.NetworkError: httpx.ConnectError: [Errno 8] nodename nor servname
   Wire updated (7 items across 7 days)
   sitemap.xml updated (30 article(s))
   source_report.json: 113 source(s), 0 flagged
+  Pushed to GitHub. Live in ~60 seconds.
+  URL: https://islamophobiawatchfrance.com/news/2026-08-14-why-foundation-islam-france-having-public-utility-status.html
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Archived 1 undecided post(s) from 2026-08-15.
+  Running 32 news searches...
+  Found 3 unique stories in the last 48h.
+  Translating French content...
+  Wire: 3 new, 10 total (2 skipped as seen today).
+  Saved 3 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] Eight Muslim countries condemn Israel's "refusal" to pu... (1 source(s))
+        Fetch: cache | 2,828 chars | confidence: MEDIUM
+        -> LinkedIn (104 words)
+        -> Gathering background research...
+        -> Website article (491 words)
+  [2/2] [TRENDING] End of the Great Mosque of Paris's Monopoly on Vacation... (1 source(s))
+        Fetch: cache | 2,656 chars | confidence: MEDIUM
+        -> LinkedIn (102 words)
+        -> Gathering background research...
+        -> Website article (554 words)
+  Saved 4 post(s) to queue.json.
+  Appended 4 post(s) to archive.json.
+  index.html updated (10 items in feed)
+  news.html updated (30 cards in grid)
+  Wire updated (10 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
+  Sent 4/4 draft(s) to Telegram.
+
+  Publishing: End of the Great Mosque of Paris's Monopoly on Vacation Colonies for A
+  Saved: news/2026-08-16-end-great-mosque-pariss-monopoly-vacation-colonies-algerian.html
+  published.json: 31 article(s) total
+  index.html updated (10 items in feed)
+  news.html updated (31 cards in grid)
+  Wire updated (10 items across 7 days)
+  sitemap.xml updated (31 article(s))
+  source_report.json: 113 source(s), 0 flagged

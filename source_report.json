@@ -1,5 +1,5 @@
 {
-  "total": 1376,
+  "total": 1384,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
@@ -19,7 +19,7 @@
     {
       "name": "Actu.fr",
       "count": 60,
-      "pct": 4.4
+      "pct": 4.3
     },
     {
       "name": "Ouest-France",
@@ -52,14 +52,14 @@
       "pct": 1.9
     },
     {
+      "name": "franceinfo",
+      "count": 26,
+      "pct": 1.9
+    },
+    {
       "name": "CNews",
       "count": 25,
       "pct": 1.8
-    },
-    {
-      "name": "franceinfo",
-      "count": 24,
-      "pct": 1.7
     },
     {
       "name": "reinformation.tv",
@@ -89,7 +89,7 @@
     {
       "name": "Orange Actualités",
       "count": 20,
-      "pct": 1.5
+      "pct": 1.4
     },
     {
       "name": "Planet.fr",
@@ -167,14 +167,14 @@
       "pct": 0.9
     },
     {
-      "name": "Le Monde.fr",
+      "name": "La Croix",
       "count": 11,
       "pct": 0.8
     },
     {
-      "name": "La Croix",
-      "count": 10,
-      "pct": 0.7
+      "name": "Le Monde.fr",
+      "count": 11,
+      "pct": 0.8
     },
     {
       "name": "Anadolu Ajansı",
@@ -262,6 +262,11 @@
       "pct": 0.6
     },
     {
+      "name": "Algerie Patriotique",
+      "count": 7,
+      "pct": 0.5
+    },
+    {
       "name": "The New Voice of Ukraine",
       "count": 7,
       "pct": 0.5
@@ -310,6 +315,16 @@
       "name": "ABNA English",
       "count": 5,
       "pct": 0.4
+    },
+    {
+      "name": "Lyon Capitale",
+      "count": 4,
+      "pct": 0.3
+    },
+    {
+      "name": "Lyon Mag",
+      "count": 4,
+      "pct": 0.3
     },
     {
       "name": "Washington Examiner",
@@ -457,11 +472,6 @@
       "pct": 0.3
     },
     {
-      "name": "Algerie Patriotique",
-      "count": 4,
-      "pct": 0.3
-    },
-    {
       "name": "MyPetition.org",
       "count": 4,
       "pct": 0.3
@@ -490,16 +500,6 @@
       "name": "El Moudjahid",
       "count": 4,
       "pct": 0.3
-    },
-    {
-      "name": "Lyon Capitale",
-      "count": 3,
-      "pct": 0.2
-    },
-    {
-      "name": "Lyon Mag",
-      "count": 3,
-      "pct": 0.2
     },
     {
       "name": "5Pillars",
