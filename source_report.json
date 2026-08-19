@@ -1,5 +1,5 @@
 {
-  "total": 1396,
+  "total": 1398,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
@@ -24,7 +24,7 @@
     {
       "name": "Ouest-France",
       "count": 44,
-      "pct": 3.2
+      "pct": 3.1
     },
     {
       "name": "tsa-algerie.com",
@@ -112,14 +112,14 @@
       "pct": 1.1
     },
     {
-      "name": "Muslim Network TV",
+      "name": "Le Monde.fr",
       "count": 14,
       "pct": 1.0
     },
     {
-      "name": "Le Monde.fr",
-      "count": 13,
-      "pct": 0.9
+      "name": "Muslim Network TV",
+      "count": 14,
+      "pct": 1.0
     },
     {
       "name": "France 3 Régions",
@@ -502,6 +502,11 @@
       "pct": 0.3
     },
     {
+      "name": "Harici",
+      "count": 3,
+      "pct": 0.2
+    },
+    {
       "name": "Tunisie Numerique",
       "count": 3,
       "pct": 0.2
@@ -538,11 +543,6 @@
     },
     {
       "name": "Le Club de Mediapart",
-      "count": 2,
-      "pct": 0.1
-    },
-    {
-      "name": "Harici",
       "count": 2,
       "pct": 0.1
     },
