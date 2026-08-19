@@ -1,105 +1,121 @@
 {
-  "generated": "2026-08-16T21:20:47.793460",
-  "total_stories_scanned": 3,
+  "generated": "2026-08-19T19:12:30.973963",
+  "total_stories_scanned": 8,
   "posts": [
     {
-      "id": "post_1_linkedin_20260816",
+      "id": "post_1_linkedin_20260819",
       "type": "linkedin",
-      "title": "Eight Muslim countries condemn Israel's \"refusal\" to pursue Donald Trump's plan for Gaza",
-      "source": "franceinfo",
-      "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxNVXg0cnJMQVNPZGVsM1hzdUdtWi1YRG4zN0VnLWRoU0Q3b25YcG5CaGVwRURSd1VpTFlzUUI1SUJWQkZyLUR3andrSlVGbno3ZTNtRjJVbW5YY0xNdmFNRmgwYkFXdUV0YjJYQlcxbGhWVE9yV00wS0wzZlRXVFJxTzRFNmJpMnMyaEJnckViWGIyVTZESTUzSHBPUGtYTGVZREpjSmJVV2NzcmxuLU9hRHRYVVhWNk9pcTRMbzBCZU5qSDNNQ2FBX0o3VThDQmt1MTZpQkNRN3Z1TGlONVJESHU4YWhuTEVqWE5MRW4xdEk0bWRNUms5djBMVWZxWW5sVjBSZG5ySjR6dmpWT3BxcHNDb0paOFJVbkZTNQ?oc=5",
-      "published": "2026-08-16T18:52:13+00:00",
-      "time_ago": "28m ago",
-      "summary": "Eight Muslim countries condemn Israel's \"refusal\" to continue Donald Trump's plan for Gaza",
-      "draft": "Eight Muslim-majority countries have issued a joint statement condemning Israel's \"refusal\" to pursue Donald Trump's Gaza peace proposal.\n\nThe coordinated condemnation reflects growing frustration among regional actors over stalled negotiations on the plan. The statement emphasises the participating nations' position that Israel has not engaged constructively with the proposed framework.\n\nThe statement was released following diplomatic efforts to advance the initiative in recent weeks. The countries have signalled their commitment to pursuing alternative diplomatic channels to address the humanitarian crisis in Gaza.\n\nThe development underscores deepening divisions between Israel and Muslim-majority nations over competing visions for resolving the conflict.\n\nSource: franceinfo\n\n#IslamophobiaWatchFrance #France #MiddleEast",
-      "status": "rejected",
-      "created": "2026-08-16T21:20:47.793460",
+      "title": "Marine Le Pen plans French constitutional referendum on immigration",
+      "source": "Harici",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5",
+      "published": "2026-08-19T09:52:59+00:00",
+      "time_ago": "7h ago",
+      "summary": "Marine Le Pen plans French constitutional referendum on immigration",
+      "draft": "Marine Le Pen has proposed a French constitutional referendum on immigration policy.\n\nThe National Rally leader's plan has drawn sharp criticism from political observers. Le Monde characterised the proposal as \"a coup d'état in form and content,\" arguing it represents an unconventional approach to constitutional amendment.\n\nThe proposed referendum would directly alter France's foundational legal framework around immigration governance. Constitutional change through public vote remains a contentious mechanism in French politics, with debate centring on whether such measures bypass traditional parliamentary procedure.\n\nLe Pen's proposal reflects broader political positioning ahead of electoral contests, as immigration remains a central policy flashpoint across the French political spectrum.\n\nSource: Le Monde.fr / Harici\n\n#IslamophobiaWatchFrance #France #Immigration",
+      "status": "pending",
+      "created": "2026-08-19T19:12:30.973963",
       "heat_score": 5,
       "heat_label": "TRENDING",
-      "heat_article_count": 1,
+      "heat_article_count": 2,
       "sources": [
         {
-          "name": "franceinfo",
-          "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxNVXg0cnJMQVNPZGVsM1hzdUdtWi1YRG4zN0VnLWRoU0Q3b25YcG5CaGVwRURSd1VpTFlzUUI1SUJWQkZyLUR3andrSlVGbno3ZTNtRjJVbW5YY0xNdmFNRmgwYkFXdUV0YjJYQlcxbGhWVE9yV00wS0wzZlRXVFJxTzRFNmJpMnMyaEJnckViWGIyVTZESTUzSHBPUGtYTGVZREpjSmJVV2NzcmxuLU9hRHRYVVhWNk9pcTRMbzBCZU5qSDNNQ2FBX0o3VThDQmt1MTZpQkNRN3Z1TGlONVJESHU4YWhuTEVqWE5MRW4xdEk0bWRNUms5djBMVWZxWW5sVjBSZG5ySjR6dmpWT3BxcHNDb0paOFJVbkZTNQ?oc=5"
+          "name": "Harici",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5"
+        },
+        {
+          "name": "Le Monde.fr",
+          "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNR04tbktrZ2V1eVppMFBtRnQ3cW1sV04tdEJCaGFTRGF3NlZnbFJwbzNkYm9kYjJDWm1qM3hWczZvckw2V0JKM3pSYW1uQTY5WkE3QTJZT1pCMTRtWkVLM0RjcmZCY0VSV040ay1DanZFRTlVMWFrd3RjRkowb0NWem9zRjdWa2pEUjl3NjgxUlpSWUg3NWdPMXRNTXJ2aHVaYW9fZmdKSHJXcWoxWUdqQ0tCZThHcnhMaXJZTmhBY3M1ZEVIaUo0cUM1dGJTekxxTXJ6T0N1czNaeWc3UHVmVU5wWW9JSDN0MXlHLUN1YURiUkE?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2828,
+      "content_chars": 2803,
       "fetch_source": "cache"
     },
     {
-      "id": "post_1_website_20260816",
+      "id": "post_1_website_20260819",
       "type": "website",
-      "title": "Eight Muslim countries condemn Israel's \"refusal\" to pursue Donald Trump's plan for Gaza",
-      "source": "franceinfo",
-      "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxNVXg0cnJMQVNPZGVsM1hzdUdtWi1YRG4zN0VnLWRoU0Q3b25YcG5CaGVwRURSd1VpTFlzUUI1SUJWQkZyLUR3andrSlVGbno3ZTNtRjJVbW5YY0xNdmFNRmgwYkFXdUV0YjJYQlcxbGhWVE9yV00wS0wzZlRXVFJxTzRFNmJpMnMyaEJnckViWGIyVTZESTUzSHBPUGtYTGVZREpjSmJVV2NzcmxuLU9hRHRYVVhWNk9pcTRMbzBCZU5qSDNNQ2FBX0o3VThDQmt1MTZpQkNRN3Z1TGlONVJESHU4YWhuTEVqWE5MRW4xdEk0bWRNUms5djBMVWZxWW5sVjBSZG5ySjR6dmpWT3BxcHNDb0paOFJVbkZTNQ?oc=5",
-      "published": "2026-08-16T18:52:13+00:00",
-      "time_ago": "28m ago",
-      "summary": "Eight Muslim countries condemn Israel's \"refusal\" to continue Donald Trump's plan for Gaza",
-      "draft": "# Eight Muslim Countries Condemn Israel's Stance on Trump Gaza Plan\n\nEight Muslim-majority nations have issued a joint statement condemning what they characterize as Israel's \"refusal\" to pursue a proposed plan for Gaza reportedly associated with Donald Trump, according to reporting by France's public broadcaster Franceinfo.\n\n## What happened\n\nThe eight countries, acting through diplomatic channels, delivered a coordinated statement criticizing Israel's approach to a Gaza resolution framework. According to Franceinfo's report, the nations expressed concerns that Israel has not adequately engaged with or committed to the terms of a plan linked to the Trump administration. The statement represents a rare unified position among Muslim-majority states on the Israeli-Palestinian question, though Franceinfo did not identify all eight countries by name in its initial reporting. The timing of the statement coincides with ongoing international diplomatic efforts to address the humanitarian situation in Gaza.\n\n## Reaction\n\nThe joint condemnation underscores persistent tensions between Israel and the broader Muslim world over Gaza policy. Arab League members and other Muslim-majority nations have historically coordinated positions on Palestinian issues, though achieving unified statements remains challenging given divergent national interests and diplomatic relationships. Franceinfo reported the statement without immediately detailing responses from the Israeli government or the Trump administration to the criticism.\n\nCivil society organizations monitoring Middle Eastern affairs have noted that coordinated statements from multiple Muslim countries on Gaza-related matters typically signal shared concern among diverse governments—ranging from Gulf states to North African nations—about the direction of peace negotiations and humanitarian access.\n\n## Why it matters\n\nThe statement reflects deepening frustration among Muslim-majority nations with the pace and terms of Gaza negotiations at a moment when international attention on Palestinian issues remains acute. For France, which maintains diplomatic relationships across both the Muslim world and Israel, the development illustrates the persistent diplomatic challenges surrounding Middle Eastern peace efforts. The condemnation also reflects broader patterns in which proposed solutions to the Israeli-Palestinian conflict face criticism from multiple quarters simultaneously.\n\n## Background\n\nThe Trump administration's Middle East policy, including its approach to Israeli-Palestinian issues, has been a subject of international debate. Previous Trump-era initiatives, including the \"Peace to Prosperity\" plan unveiled in 2020, faced significant criticism from Palestinian authorities and Arab states. The current statement suggests that Muslim-majority nations view recent proposals through a similar lens of skepticism regarding Palestinian representation and interests.\n\nFranceinfo is France's state-owned news agency and a primary source for French public broadcasting information. Muslim-majority nations span Africa, the Middle East, and Asia, and rarely achieve unanimous positions on contested geopolitical matters.\n\nSources: Franceinfo\n\n---\n\n**What countries issued the statement?**\nFranceinfo did not specify all eight nations in its initial reporting.\n\n**What specific plan was referenced?**\nFranceinfo reported the statement referenced a plan associated with Donald Trump without providing full details of its provisions.\n\n**Did Israel respond?**\nNo Israeli response was reported by Franceinfo in the initial coverage.\n\n**When was the statement issued?**\nFranceinfo did not provide a specific date for the joint statement.",
-      "status": "rejected",
-      "created": "2026-08-16T21:20:47.793460",
+      "title": "Marine Le Pen plans French constitutional referendum on immigration",
+      "source": "Harici",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5",
+      "published": "2026-08-19T09:52:59+00:00",
+      "time_ago": "7h ago",
+      "summary": "Marine Le Pen plans French constitutional referendum on immigration",
+      "draft": "# Marine Le Pen plans French constitutional referendum on immigration\n\nMarine Le Pen, leader of the National Rally (Rassemblement National, or RN), announced plans for a constitutional referendum on immigration policy, according to reporting from Harici. The proposal represents a significant escalation in the far-right party's push to reshape French immigration law through direct democratic means.\n\n## What happened\n\nLe Pen's statement signals the National Rally's intention to leverage a constitutional referendum mechanism to fundamentally alter France's immigration framework. The specific provisions or timeline for the proposed referendum were not detailed in available reporting. The announcement aligns with the RN's longstanding campaign platform, which has centered on reducing immigration and strengthening border controls since the party's founding in the 1970s.\n\nThe referendum proposal comes as immigration remains a contentious issue in French politics and public discourse. Le Pen and the National Rally have built substantial electoral support partly through messaging focused on immigration restriction and national identity concerns.\n\n## Reaction\n\nThe proposal has predictably generated opposition from left-leaning and centrist political figures who view such constitutional measures as threats to France's legal framework and democratic institutions. Civil society organizations focused on immigrant rights have historically resisted National Rally immigration proposals, though specific reactions to this referendum announcement were not immediately available in reporting.\n\nPresident Emmanuel Macron's centrist government and other mainstream parliamentary groups have consistently opposed RN immigration initiatives, framing them as incompatible with French constitutional values and European Union obligations.\n\n## Why it matters\n\nA constitutional referendum on immigration would represent an unprecedented attempt to embed restrictionist policies into France's foundational legal document. Such a move would signal the National Rally's confidence in public support for harder immigration stances and could reshape France's legislative capacity to regulate immigration for years or decades. The proposal reflects ongoing tensions between France's republican secular tradition and debates over national identity, cultural integration, and religious diversity that have intensified following migration patterns across Europe.\n\n## Background\n\nThe National Rally, formerly known as the National Front (Front National), has evolved into France's primary far-right political party. Marine Le Pen assumed leadership in 2011 and has positioned the party as a mainstream conservative alternative while maintaining its hardline stance on immigration and Islam. Constitutional referendums in France are rare and require specific political conditions; the Fifth Republic's Article 11 permits referendums on government proposals, though the process remains contentious.\n\nHarici is a Turkish-language news outlet covering international affairs and politics.\n\nSources: Harici\n\n---\n\n**What is a constitutional referendum in France?**\nIt is a direct vote by French citizens on proposed changes to the Constitution. Under the Fifth Republic, such referendums are initiated through specific legal procedures and require presidential sponsorship or parliamentary supermajority approval.\n\n**Has the National Rally previously campaigned on immigration restriction?**\nYes. Immigration policy has been central to the RN's platform for decades, with emphasis on reducing asylum processing and strengthening border enforcement.\n\n**Who is Marine Le Pen?**\nShe has led the National Rally since 2011 and is its principal public spokesperson and political strategist.\n\n**Why would a referendum on immigration be constitutionally significant?**\nIt would embed immigration policy into France's founding legal document, making legislative changes substantially more difficult and signaling majoritarian support for restrictionist measures.",
+      "status": "pending",
+      "created": "2026-08-19T19:12:30.973963",
       "heat_score": 5,
       "heat_label": "TRENDING",
-      "heat_article_count": 1,
+      "heat_article_count": 2,
       "sources": [
         {
-          "name": "franceinfo",
-          "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxNVXg0cnJMQVNPZGVsM1hzdUdtWi1YRG4zN0VnLWRoU0Q3b25YcG5CaGVwRURSd1VpTFlzUUI1SUJWQkZyLUR3andrSlVGbno3ZTNtRjJVbW5YY0xNdmFNRmgwYkFXdUV0YjJYQlcxbGhWVE9yV00wS0wzZlRXVFJxTzRFNmJpMnMyaEJnckViWGIyVTZESTUzSHBPUGtYTGVZREpjSmJVV2NzcmxuLU9hRHRYVVhWNk9pcTRMbzBCZU5qSDNNQ2FBX0o3VThDQmt1MTZpQkNRN3Z1TGlONVJESHU4YWhuTEVqWE5MRW4xdEk0bWRNUms5djBMVWZxWW5sVjBSZG5ySjR6dmpWT3BxcHNDb0paOFJVbkZTNQ?oc=5"
+          "name": "Harici",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5"
+        },
+        {
+          "name": "Le Monde.fr",
+          "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNR04tbktrZ2V1eVppMFBtRnQ3cW1sV04tdEJCaGFTRGF3NlZnbFJwbzNkYm9kYjJDWm1qM3hWczZvckw2V0JKM3pSYW1uQTY5WkE3QTJZT1pCMTRtWkVLM0RjcmZCY0VSV040ay1DanZFRTlVMWFrd3RjRkowb0NWem9zRjdWa2pEUjl3NjgxUlpSWUg3NWdPMXRNTXJ2aHVaYW9fZmdKSHJXcWoxWUdqQ0tCZThHcnhMaXJZTmhBY3M1ZEVIaUo0cUM1dGJTekxxTXJ6T0N1czNaeWc3UHVmVU5wWW9JSDN0MXlHLUN1YURiUkE?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2828,
+      "content_chars": 2803,
       "fetch_source": "cache"
     },
     {
-      "id": "post_2_linkedin_20260816",
+      "id": "post_2_linkedin_20260819",
       "type": "linkedin",
-      "title": "End of the Great Mosque of Paris's Monopoly on Vacation Colonies for Algerian Children",
-      "source": "Algerie Patriotique",
-      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMlludW5hRkkyNDhnWkZ3TVM5cXNoN20wQXk3cF9nX09kYWQyYW5QZ0VFZjFMalE3MkxWcHZfd2R6NEE4RXFCTWFXX01TZk9EZ2JnNTh5bl9ldDAwd1FYSWROajNrUkRPclVLckVKenFxakRMLWRoOGRzWUtxaHItSk9ob01TMjZ1dXNZX0N6aHBfaEY1OGZHelUyRTFYMmlkS2JlUk1SbHpGNXJNTGEtZjMteVdzVXR6QzF4YmZERzAteGFmVUtWX1dfWE5RNXVjXzFIM01SU3NyVHJS?oc=5",
-      "published": "2026-08-16T15:06:02+00:00",
-      "time_ago": "4h ago",
-      "summary": "End of the Great Mosque of Paris's monopoly on vacation colonies for Algerian children   Algeria Patriotic",
-      "draft": "The Great Mosque of Paris is losing its exclusive control over vacation colonies for Algerian children.\n\nThe shift marks a significant change in institutional arrangements that have long positioned the mosque as the primary organiser of summer programmes for young people from Algeria.\n\nThe move opens space for other organisations to participate in coordinating holiday experiences for the demographic, ending what had been a concentrated model of provision.\n\nDetails remain limited on the timeline and scope of this institutional transition, but the development reflects broader shifts in how Franco-Algerian community services are being distributed and managed.\n\nSource: Algérie Patriotique\n\n#IslamophobiaWatchFrance #France #CommunityServices",
+      "title": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship",
+      "source": "ShiaWaves",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5",
+      "published": "2026-08-18T12:15:47+00:00",
+      "time_ago": "1d 4h ago",
+      "summary": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship&nbsp;&nbsp;ShiaWaves",
+      "draft": "A mosque near Paris has been closed, reigniting debate over freedom of worship and Islamophobia in France.\n\nThe closure of the Al-Taqwa Mosque has sparked significant discussion about the balance between security concerns and religious liberty in the country.\n\nThe incident highlights ongoing tensions surrounding mosque operations and administrative oversight in French communities with substantial Muslim populations.\n\nCivil society groups and religious organisations have raised concerns about the closure's implications for Muslim communities' right to worship freely.\n\nThe case reflects broader discussions in France about how authorities handle Muslim institutions and the distinction between legitimate security measures and discriminatory practices.\n\nSource: ShiaWaves / Tunisie Numerique\n\n#IslamophobiaWatchFrance #France #ReligiousFreedom",
       "status": "pending",
-      "created": "2026-08-16T21:20:47.793460",
-      "heat_score": 5,
+      "created": "2026-08-19T19:12:30.973963",
+      "heat_score": 4,
       "heat_label": "TRENDING",
-      "heat_article_count": 1,
+      "heat_article_count": 2,
       "sources": [
         {
-          "name": "Algerie Patriotique",
-          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMlludW5hRkkyNDhnWkZ3TVM5cXNoN20wQXk3cF9nX09kYWQyYW5QZ0VFZjFMalE3MkxWcHZfd2R6NEE4RXFCTWFXX01TZk9EZ2JnNTh5bl9ldDAwd1FYSWROajNrUkRPclVLckVKenFxakRMLWRoOGRzWUtxaHItSk9ob01TMjZ1dXNZX0N6aHBfaEY1OGZHelUyRTFYMmlkS2JlUk1SbHpGNXJNTGEtZjMteVdzVXR6QzF4YmZERzAteGFmVUtWX1dfWE5RNXVjXzFIM01SU3NyVHJS?oc=5"
+          "name": "ShiaWaves",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5"
+        },
+        {
+          "name": "Tunisie Numerique",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNS0YxYUNESkszaVJvYWRMX2pPWm96Mk12dXRMNFp0dDlJWkhoOTdtYXhqcjVNRk5mZ000dDh0WUJQenFpZW8yc0VFN1oyakxnSjBRZTFhTUhtNDhucnlaRFZkZHV6UFlQeXFndk1jQ2F5QUdKSG54YVk2VjdDbEJ3Q2JkLU9HU0o1aTdWLWUzeUFDeTdpVExvVE53Nm93MTlWWjFXblhWbjZqSGE5VndWejVWSG5kaUUtU3RBS0ZLM21WNzlOc2pvLTVXaFc?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2656,
+      "content_chars": 2686,
       "fetch_source": "cache"
     },
     {
-      "id": "post_2_website_20260816",
+      "id": "post_2_website_20260819",
       "type": "website",
-      "title": "End of the Great Mosque of Paris's Monopoly on Vacation Colonies for Algerian Children",
-      "source": "Algerie Patriotique",
-      "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMlludW5hRkkyNDhnWkZ3TVM5cXNoN20wQXk3cF9nX09kYWQyYW5QZ0VFZjFMalE3MkxWcHZfd2R6NEE4RXFCTWFXX01TZk9EZ2JnNTh5bl9ldDAwd1FYSWROajNrUkRPclVLckVKenFxakRMLWRoOGRzWUtxaHItSk9ob01TMjZ1dXNZX0N6aHBfaEY1OGZHelUyRTFYMmlkS2JlUk1SbHpGNXJNTGEtZjMteVdzVXR6QzF4YmZERzAteGFmVUtWX1dfWE5RNXVjXzFIM01SU3NyVHJS?oc=5",
-      "published": "2026-08-16T15:06:02+00:00",
-      "time_ago": "4h ago",
-      "summary": "End of the Great Mosque of Paris's monopoly on vacation colonies for Algerian children   Algeria Patriotic",
-      "draft": "# Algerian State Ends Great Mosque of Paris's Exclusive Role in Youth Programs\n\nAlgeria's government has terminated the Great Mosque of Paris's longstanding monopoly over vacation colonies for Algerian children, according to reporting from Algerie Patriotique. The decision marks a significant shift in how Algiers manages educational and recreational programs for young citizens abroad, moving responsibility away from the Paris-based religious institution toward direct state administration.\n\n## What happened\n\nThe Great Mosque of Paris, France's largest mosque, has historically served as an intermediary for Algerian state-sponsored vacation programs targeting children from Algeria. These colonies—structured holiday camps combining recreation with cultural and educational activities—represented a major institutional responsibility for the mosque's administrative apparatus. The Algerian government's decision to reassign this function indicates a broader recalibration of relationships between North African states and French religious organizations that have long mediated diaspora engagement.\n\nAlgerie Patriotique reported that Algeria's authorities will now directly oversee these vacation programs without routing them through the mosque's organizational structure. The shift removes administrative and financial flows that previously flowed through the institution, which sits on Rue Broca in Paris's 5th arrondissement and operates as a cultural and religious hub for Franco-Algerian communities.\n\n## Reaction\n\nThe Great Mosque of Paris has not issued a public statement regarding the change, according to available reporting. Algerian civil society observers and education officials have generally welcomed greater direct state control over youth programming, viewing it as an opportunity to align vacation colonies more closely with Algeria's current educational priorities.\n\nThe decision reflects broader tensions between North African states and France-based diaspora institutions over cultural authority and program design. Advocates for direct state management argue that centralized control ensures consistency with contemporary Algerian pedagogy and values.\n\n## Why it matters\n\nThis shift signals Algeria's evolving approach to managing its diaspora's relationship with France, particularly regarding the socialization and cultural formation of younger generations. The Great Mosque of Paris has historically bridged French and Algerian communities, but the state's move to reclaim direct authority over youth programs suggests Algiers now prioritizes independent institutional channels. For Franco-Algerian families, the transition may alter how vacation colonies are structured, funded, and promoted.\n\nThe decision also reflects post-colonial power dynamics: decades after Algeria's 1962 independence from France, how diaspora institutions—particularly those born from colonial-era relationships—exercise authority remains contested. Algeria's assertion of direct control demonstrates the state's confidence in managing its diaspora independently.\n\n## Background\n\nThe Great Mosque of Paris, inaugurated in 1926, emerged from Franco-Muslim diplomatic efforts and serves roughly 2,000 worshippers weekly. It operates as a cultural institution offering language classes, libraries, and community programs alongside religious functions. Vacation colonies—common across France for working-class and middle-class families—are subsidized holiday programs that combine recreation with educational content. Algeria has maintained close institutional ties to diaspora populations, particularly in France, where roughly 1.5 million citizens claim Algerian heritage.\n\nSources: Algerie Patriotique\n\n**Did the Great Mosque of Paris respond officially?**\nNo public statement from the mosque has been reported regarding the Algerian government's decision.\n\n**When did this change take effect?**\nThe reporting does not specify an implementation date for the transition away from the mosque's monopoly.\n\n**How many children used these vacation colonies annually?**\nSpecific enrollment figures have not been reported.\n\n**Will the programs continue under Algerian state administration?**\nYes, according to reporting; Algeria will oversee the colonies directly rather than through the mosque.",
+      "title": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship",
+      "source": "ShiaWaves",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5",
+      "published": "2026-08-18T12:15:47+00:00",
+      "time_ago": "1d 4h ago",
+      "summary": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship&nbsp;&nbsp;ShiaWaves",
+      "draft": "# Closure of Al-Taqwa Mosque near Paris reignites debate over state powers and religious freedom\n\nFrench authorities have closed the Al-Taqwa Mosque, located in the suburbs of Paris, according to reporting by ShiaWaves. The closure has prompted immediate responses from Muslim organisations and civil rights advocates regarding its implications for religious freedom and potential Islamophobic targeting.\n\n## What happened\n\nThe Al-Taqwa Mosque, serving a Muslim community in the Paris metropolitan area, has been shuttered by authorities. ShiaWaves reported on the development without specifying the formal date of closure or the precise administrative reasoning provided by state officials at the time of reporting. The closure follows a pattern of mosque shutdowns in France in recent years, though specific details about this particular mosque's circumstances remain limited in available reporting.\n\nFrench authorities have previously cited various grounds for mosque closures, including concerns about radicalisation, administrative violations, or financing irregularities. No named official statement from the Paris prefecture or national government has been publicly detailed regarding this specific case.\n\n## Reaction\n\nMuslim community representatives and civil society organisations have characterised the closure as part of a broader pattern affecting places of Muslim worship in France. Advocacy groups monitoring religious freedom have flagged such closures as concerning precedents, though specific named responses from mosque leadership or community spokespeople are not yet documented in available sources.\n\nThe incident intersects with longstanding French debates over laïcité—the constitutional principle of state secularism and separation of religious and public institutions—and how that principle is applied asymmetrically across different religious communities.\n\n## Why it matters\n\nThe Al-Taqwa closure exemplifies persistent tensions in France between state security frameworks and Muslim communities' right to worship. France has experienced heightened scrutiny of mosques since terrorist attacks in 2015 and subsequent years, creating a climate where religious closures generate immediate questions about proportionality and discriminatory application of state power. Such incidents fuel perceptions among Muslims that administrative measures disproportionately target Islamic spaces compared to churches or synagogues.\n\n## Background\n\nFrance maintains strict constitutional laïcité, which technically restricts state recognition and funding of all religions equally. However, Muslim communities have reported that mosque closures occur more frequently and with less transparency than closures of other religious buildings. The French government has periodically announced operations against mosques it describes as promoting extremism, though civil society monitors argue the standards applied lack clarity and consistency.\n\nThe Paris region hosts one of Europe's largest Muslim populations, estimated at over two million people. Mosque access remains contested political terrain in France, where security concerns and integration debates intersect with religious freedom questions.\n\n## FAQ\n\n**Who ordered the closure?**\nShiaWaves reported the closure but did not attribute the decision to a named official or specific administrative body.\n\n**When did it happen?**\nThe precise timing was not specified in available reporting.\n\n**Has the mosque appealed?**\nNo documented legal challenge has been reported.\n\n**Are other mosques affected?**\nFrance has closed multiple mosques in recent years, though each case varies in circumstances.\n\nSources: ShiaWaves",
       "status": "pending",
-      "created": "2026-08-16T21:20:47.793460",
-      "heat_score": 5,
+      "created": "2026-08-19T19:12:30.973963",
+      "heat_score": 4,
       "heat_label": "TRENDING",
-      "heat_article_count": 1,
+      "heat_article_count": 2,
       "sources": [
         {
-          "name": "Algerie Patriotique",
-          "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMlludW5hRkkyNDhnWkZ3TVM5cXNoN20wQXk3cF9nX09kYWQyYW5QZ0VFZjFMalE3MkxWcHZfd2R6NEE4RXFCTWFXX01TZk9EZ2JnNTh5bl9ldDAwd1FYSWROajNrUkRPclVLckVKenFxakRMLWRoOGRzWUtxaHItSk9ob01TMjZ1dXNZX0N6aHBfaEY1OGZHelUyRTFYMmlkS2JlUk1SbHpGNXJNTGEtZjMteVdzVXR6QzF4YmZERzAteGFmVUtWX1dfWE5RNXVjXzFIM01SU3NyVHJS?oc=5"
+          "name": "ShiaWaves",
+          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5"
+        },
+        {
+          "name": "Tunisie Numerique",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNS0YxYUNESkszaVJvYWRMX2pPWm96Mk12dXRMNFp0dDlJWkhoOTdtYXhqcjVNRk5mZ000dDh0WUJQenFpZW8yc0VFN1oyakxnSjBRZTFhTUhtNDhucnlaRFZkZHV6UFlQeXFndk1jQ2F5QUdKSG54YVk2VjdDbEJ3Q2JkLU9HU0o1aTdWLWUzeUFDeTdpVExvVE53Nm93MTlWWjFXblhWbjZqSGE5VndWejVWSG5kaUUtU3RBS0ZLM21WNzlOc2pvLTVXaFc?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2656,
+      "content_chars": 2686,
       "fetch_source": "cache"
     }
   ]

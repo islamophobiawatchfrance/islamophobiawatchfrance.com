@@ -1,15 +1,15 @@
 {
-  "total": 1384,
+  "total": 1396,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
       "count": 156,
-      "pct": 11.3
+      "pct": 11.2
     },
     {
       "name": "France 24",
       "count": 94,
-      "pct": 6.8
+      "pct": 6.7
     },
     {
       "name": "Le Figaro",
@@ -39,7 +39,7 @@
     {
       "name": "RFI",
       "count": 30,
-      "pct": 2.2
+      "pct": 2.1
     },
     {
       "name": "Sortir à Paris",
@@ -47,12 +47,12 @@
       "pct": 2.1
     },
     {
-      "name": "Libération",
-      "count": 26,
-      "pct": 1.9
+      "name": "franceinfo",
+      "count": 28,
+      "pct": 2.0
     },
     {
-      "name": "franceinfo",
+      "name": "Libération",
       "count": 26,
       "pct": 1.9
     },
@@ -69,7 +69,7 @@
     {
       "name": "Valeurs actuelles",
       "count": 23,
-      "pct": 1.7
+      "pct": 1.6
     },
     {
       "name": "Radio France",
@@ -115,6 +115,11 @@
       "name": "Muslim Network TV",
       "count": 14,
       "pct": 1.0
+    },
+    {
+      "name": "Le Monde.fr",
+      "count": 13,
+      "pct": 0.9
     },
     {
       "name": "France 3 Régions",
@@ -172,11 +177,6 @@
       "pct": 0.8
     },
     {
-      "name": "Le Monde.fr",
-      "count": 11,
-      "pct": 0.8
-    },
-    {
       "name": "Anadolu Ajansı",
       "count": 10,
       "pct": 0.7
@@ -194,17 +194,17 @@
     {
       "name": "l'Opinion",
       "count": 9,
-      "pct": 0.7
+      "pct": 0.6
     },
     {
       "name": "L'Humanité",
       "count": 9,
-      "pct": 0.7
+      "pct": 0.6
     },
     {
       "name": "instagram.com",
       "count": 9,
-      "pct": 0.7
+      "pct": 0.6
     },
     {
       "name": "BFM",
@@ -260,6 +260,11 @@
       "name": "سانا",
       "count": 8,
       "pct": 0.6
+    },
+    {
+      "name": "ShiaWaves",
+      "count": 7,
+      "pct": 0.5
     },
     {
       "name": "Algerie Patriotique",
@@ -328,11 +333,6 @@
     },
     {
       "name": "Washington Examiner",
-      "count": 4,
-      "pct": 0.3
-    },
-    {
-      "name": "ShiaWaves",
       "count": 4,
       "pct": 0.3
     },
@@ -502,6 +502,11 @@
       "pct": 0.3
     },
     {
+      "name": "Tunisie Numerique",
+      "count": 3,
+      "pct": 0.2
+    },
+    {
       "name": "5Pillars",
       "count": 3,
       "pct": 0.2
@@ -533,6 +538,11 @@
     },
     {
       "name": "Le Club de Mediapart",
+      "count": 2,
+      "pct": 0.1
+    },
+    {
+      "name": "Harici",
       "count": 2,
       "pct": 0.1
     },
