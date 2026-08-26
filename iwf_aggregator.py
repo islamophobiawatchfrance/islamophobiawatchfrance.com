@@ -88,8 +88,10 @@ QUERIES = [
 ]
 
 # HOW MANY HOURS BACK to include articles from.
-# 48 = last two days. Use 24 for tighter, 72 for wider.
-HOURS_BACK = 48
+# 72 = last three days. Use 24 for tighter, 48 for narrower.
+# (Widened from 48 as a safety margin after Google News RSS started
+# returning stale results in 2026 - see build_google_news_url().)
+HOURS_BACK = 72
 
 # MAX RESULTS per query. Keep this low (3-5) to avoid duplicates.
 MAX_RESULTS = 4
@@ -107,8 +109,15 @@ def build_google_news_url(query, language_code):
     """
     Builds a Google News RSS URL for a given search query.
     language_code: "FR" for French results, "EN" for English.
+
+    Appends a "when:3d" search operator so Google News itself filters to
+    the last 3 days. Without it, Google News RSS started returning up to
+    100 results with no recency ordering (some months old) as of 2026 -
+    "when:3d" restores recent, mostly-newest-first results. The 3-day
+    window matches HOURS_BACK=72; is_recent() still trims to the exact
+    cutoff afterward.
     """
-    encoded_query = urllib.parse.quote(query)
+    encoded_query = urllib.parse.quote(f"{query} when:3d")
 
     if language_code == "FR":
         return (f"https://news.google.com/rss/search"

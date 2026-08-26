@@ -94,9 +94,12 @@ def _date_prefix(post: dict) -> str:
 
 
 def _short_date(date_str: str) -> str:
-    """'7 May 2026' -> '7 May'"""
+    """'7 May 2026' -> '7 May' ; '19 August 2026' -> '19 Aug'"""
     parts = date_str.split()
-    return " ".join(parts[:2]) if len(parts) >= 2 else date_str
+    if len(parts) < 2:
+        return date_str
+    day, month = parts[0], parts[1]
+    return f"{day} {month[:3]}"
 
 
 def _heat_cls(heat_label: str) -> str:

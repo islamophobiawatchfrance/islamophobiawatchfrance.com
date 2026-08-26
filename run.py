@@ -65,7 +65,6 @@ def _pipeline():
 
     # Send drafts to Telegram
     try:
-        import subprocess
         subprocess.Popen([sys.executable, "send_drafts_to_telegram.py"], cwd=HERE)
         print("  Drafts sent to Telegram.")
     except Exception as e:

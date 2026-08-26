@@ -1,125 +1,186 @@
 {
-  "generated": "2026-08-19T19:12:30.973963",
-  "total_stories_scanned": 8,
+  "generated": "2026-08-26T16:01:18.748225",
+  "total_stories_scanned": 54,
   "posts": [
     {
-      "id": "post_1_linkedin_20260819",
+      "id": "post_1_linkedin_20260826",
       "type": "linkedin",
-      "title": "Marine Le Pen plans French constitutional referendum on immigration",
-      "source": "Harici",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5",
-      "published": "2026-08-19T09:52:59+00:00",
-      "time_ago": "7h ago",
-      "summary": "Marine Le Pen plans French constitutional referendum on immigration",
-      "draft": "Marine Le Pen has proposed a French constitutional referendum on immigration policy.\n\nThe National Rally leader's plan has drawn sharp criticism from political observers. Le Monde characterised the proposal as \"a coup d'état in form and content,\" arguing it represents an unconventional approach to constitutional amendment.\n\nThe proposed referendum would directly alter France's foundational legal framework around immigration governance. Constitutional change through public vote remains a contentious mechanism in French politics, with debate centring on whether such measures bypass traditional parliamentary procedure.\n\nLe Pen's proposal reflects broader political positioning ahead of electoral contests, as immigration remains a central policy flashpoint across the French political spectrum.\n\nSource: Le Monde.fr / Harici\n\n#IslamophobiaWatchFrance #France #Immigration",
+      "title": "French far-left leader Melenchon seen reaching presidential runoff, poll shows",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNd2lDVjVQZnl0M0dpNHZEbGEtcDRQSzE5ekRBT0FWZ3JVZEd2VmJRSTQzTXQ4NXJuODVvVnZmbzJYM180bnNJN0RSZXctLTB2dDJsQVozQmYyRjJMVDRMXzBEcTEtcXNNdTdQZ1hiSURVRVlCcDd3SWxBaUpRU0s0SEdFYzYzWDhCdEsyMXUxd2drYXhWYWtTTDJ6b29Za0VtUzd4a1lxZGJEYUlPTVhFTVQ1RmN4VHFMNnI0?oc=5",
+      "published": "2026-08-24T11:17:45+00:00",
+      "time_ago": "2d 2h ago",
+      "summary": "French far-left leader Melenchon seen reaching presidential runoff, poll shows&nbsp;&nbsp;Reuters",
+      "draft": "France's 2027 presidential race is shaping into a three-way contest, with far-right and left-wing candidates dominating early polling.\n\nMarine Le Pen's National Rally is polling at record highs, while Jean-Luc Mélenchon's far-left La France Insoumise is emerging as a strong contender on the left, with recent polls suggesting he could reach a presidential runoff.\n\nCentrist bloc candidates are meanwhile ramping up anti-immigration rhetoric in an attempt to reclaim political ground. The strategy signals how the 2027 election is reshaping France's political landscape around immigration and security debates.\n\nThe political extremes—Le Pen on the right, Mélenchon on the left—have consolidated support as traditional centrist and centre-left parties struggle to differentiate themselves. Both figures are leveraging favorable polling numbers to assert dominance within their respective blocs.\n\nVincent Bolloré, the media magnate, is seeking to influence the debate without entering the race directly, according to reporting on his political involvement.\n\nSource: Reuters / Middle East Eye / Le Monde\n\n#IslamophobiaWatchFrance #France #2027Election",
       "status": "pending",
-      "created": "2026-08-19T19:12:30.973963",
-      "heat_score": 5,
-      "heat_label": "TRENDING",
-      "heat_article_count": 2,
+      "created": "2026-08-26T16:01:18.748225",
+      "heat_score": 22,
+      "heat_label": "HOT",
+      "heat_article_count": 9,
       "sources": [
         {
-          "name": "Harici",
-          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5"
+          "name": "Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNd2lDVjVQZnl0M0dpNHZEbGEtcDRQSzE5ekRBT0FWZ3JVZEd2VmJRSTQzTXQ4NXJuODVvVnZmbzJYM180bnNJN0RSZXctLTB2dDJsQVozQmYyRjJMVDRMXzBEcTEtcXNNdTdQZ1hiSURVRVlCcDd3SWxBaUpRU0s0SEdFYzYzWDhCdEsyMXUxd2drYXhWYWtTTDJ6b29Za0VtUzd4a1lxZGJEYUlPTVhFTVQ1RmN4VHFMNnI0?oc=5"
+        },
+        {
+          "name": "Caliber.Az",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPNktaVE13OS1vazI4Qm5ENy1hNFRYRzBod3YtajV3WHNPOU9QNHF6MHhJV1V5MVZ2bG5TLUVmSXRVUVRKRlZYbUE3MVN5Q19QWnNDNEFRV0tZa0FEcVJVcTUzMzJ2a1Jsei1uMkdWX2swaUFZSTdHREh2U0pOVlVpR1JR?oc=5"
+        },
+        {
+          "name": "parlons-politique.fr",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPb01EeG8tZmZGajJ6NXJFRVhrVEhNV3huWG8teGU3SzM5MFFGU1U2d21ZYU5MQm4wTjhoc2JEbDVJb0x4MEN0bERybkFpNUpaekhzbG1NdEVNSzBQdVBjY1VIWEVHa2tKVS14QkVLT2pyZ215Ty1pSW5aOTBJRWtGX2Jia25mWUc0V0RYRnU2LTZqOFF5dHVjWmhUVVlia2t1UXFRYW9pSWlqdVJlYzJlbUdrQlNRNHpmOHl4bW1ZeTlQSHl1eXNzSi1BbW0tVFpOam1lWkpQSzJqYVVNbGNhTk42REYwTjFEdmNGbnRKZXZZVzBkTWc?oc=5"
+        },
+        {
+          "name": "Europe 1",
+          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQVm5NNHp4TmRTNTYtbWNEYTZaSTNUVzVMbHFxZW1uTTFaa1FRZks4YnRuUlhsRlVRSEhFNGp1TVpLQXBJQzVMTGpjUlpsNWNiTHRGRGNTWHdiLXpYNElROEU0TXZHZWNFR1AyekZRSjhMRkQzNmV1NjdNWkxkXy1KY0ZjWUlsanNtbFRTWjA2cF8tbEVlR29lY1pBcHhBVG43ZDBjbmdzRUJnN3BBTDlKdjRHb2F4SWZLejRQUm1vV2RwQ0ROTC1kdmVaU2ZPSlVyc29F0gHYAUFVX3lxTE01TUVVcjZMdFZLV0cwX1RsSXhXdkVJanFwZW8zUENDekMyX3F5ZzhSNTlqVGx3dWg1R05IMHpjLURiZHJPZGJLNTlqZ2tNSld5eUItaE5HQUJNd2VxS0pTb19pUkJFcVVUM0JRb1plMWI4YVhJX2dxdUZ3ejllcnRYcERYQ3owZ0czMkptM0FEa1dMYmsxREstRFdCMXJSQmx2X2NJOGxTRklkaVRxZndhRVZBQVBIbUpaRHJ1MzVZcmsyYTVIbjRuVkdkSy1vS3hZT3pBZ3dVXw?oc=5"
         },
         {
           "name": "Le Monde.fr",
-          "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNR04tbktrZ2V1eVppMFBtRnQ3cW1sV04tdEJCaGFTRGF3NlZnbFJwbzNkYm9kYjJDWm1qM3hWczZvckw2V0JKM3pSYW1uQTY5WkE3QTJZT1pCMTRtWkVLM0RjcmZCY0VSV040ay1DanZFRTlVMWFrd3RjRkowb0NWem9zRjdWa2pEUjl3NjgxUlpSWUg3NWdPMXRNTXJ2aHVaYW9fZmdKSHJXcWoxWUdqQ0tCZThHcnhMaXJZTmhBY3M1ZEVIaUo0cUM1dGJTekxxTXJ6T0N1czNaeWc3UHVmVU5wWW9JSDN0MXlHLUN1YURiUkE?oc=5"
+          "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQQWE5Ukg5UVJBbWJkSHhLQ1l2OXhwWGZjcHVGSGNLU0NRdk9Qb09CS2tHUGZtVkhrTngtaGhIcHFYR3UxcllsMlh0aFQ5S3ZCYWx3U2puZjVBTEVZOHJaTkZFZDNQMEk5WXdLS2ZhQWhIa21RbE50Z284LWw3RHdFSDlQS3JXb3N0T1JZX0NwSmRLenVrZFBTQzd6UDNXbGt5al9ZckE4ZU5VcWtlQlp5RnIxYVZCUjdCMWE4OHA3SmZ0bEhKbWtUSkYzSjE1R1l2TThyN05ENGxNVkt3RXVTVjktQTVNWTVVMFhJV0VJQkpBZDZMT3NZTVVR?oc=5"
+        },
+        {
+          "name": "Kewoulo",
+          "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQZWF1WHFlTzllbGVSd3JrTFV2TEs1N3RpOXl1YTZDWm9iN3Mxbk12LWdFajdOUDN3QmNfQ1k1OGl3Um9VVkhFSU9IVVh2cU9VWWNTNU1rb296NUZ3YTBQUndKZkZWT3NsSG5Wa2JQcTdqLVo4Mmc1dm5IeXhOaS1yTkl2ck1ZT2Y3Z2pZVUtyb3RDUDR4WEJNOEI3dXBEUDQxdjZUOEh5ejBDdVd5bUVmdW9XanE1bHVFYWpObUExbTExelFxZy1SaE1oTXpiLS1OUWN1cUxCS05rY21EbG5xSnVUMFVJRWJYX0EyS25EaXFTSV9zR1Y2UC10UVhSc09wUFV1aklGbVpkTlNCVFZHV2tpekJxLXBTOElF?oc=5"
+        },
+        {
+          "name": "Middle East Eye",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTFozbGwtbWlxbVpxZjhJLWVfSWJzX05NLTN3VC10WEUzbTdMdzVYY1lod3JTT0JybmFmeXpqWUUxc0IwSE5FTU96b0tuTmRzc3k0aGt1V0V2OFhuVDF4VWtHNG1uUVVHT3pmRHYwRDVhUWJYcFJ5RGdYNmctZjVxVGJ4VTZxNWItVEI0ZTZwY3dXLVB0MHNpWlR4dTgxZmM4cFBvQjI0UHRjNE4zVl82SDZnYw?oc=5"
+        },
+        {
+          "name": "21News",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNR2tXV3NfT2lRdGpJNGpkMmplYWR3NzRMU2xqS0NDalBfUEhzd1RPSVVyNzBtblA1czcxMkZZdkJtcFRxZzd0WkJFZS1hbzh4UFZlYnZJT2s5eGkzcWhkMXJrTVZtWU0wM0g1bTJtQk1MUGpsU0lqZ1JlVVNuT0Y0VGxySWVjRnlJVGtGVUhDeXNBeF9mc09yNWlyX1BaOUN6ZTBjUEVnOWlfOFhnb2lqUzRpTVFJcVEwYUhMcFViOGNVZlk?oc=5"
+        },
+        {
+          "name": "resistancerepublicaine.com",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdlBrNVozZE9HZUI3NDRYaWhsaUVnUTJaYWgyVzJTajZDX2tCOVlUWFpFbjltS3NFMHIwMGhza19ZYTgzNlExaDJaNEF5MEtzWFVubXF0RWNPQU1wUmFyTE0ybGRxM3lwczZHZGpNbEQwNGZ5ZWFldmlqQXY2Z1VvSndyOGVQaWZ3ZlhBR0pSSm9VWVFlQUlNTVV5SEtRN1U?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2803,
+      "content_chars": 2568,
       "fetch_source": "cache"
     },
     {
-      "id": "post_1_website_20260819",
+      "id": "post_1_website_20260826",
       "type": "website",
-      "title": "Marine Le Pen plans French constitutional referendum on immigration",
-      "source": "Harici",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5",
-      "published": "2026-08-19T09:52:59+00:00",
-      "time_ago": "7h ago",
-      "summary": "Marine Le Pen plans French constitutional referendum on immigration",
-      "draft": "# Marine Le Pen plans French constitutional referendum on immigration\n\nMarine Le Pen, leader of the National Rally (Rassemblement National, or RN), announced plans for a constitutional referendum on immigration policy, according to reporting from Harici. The proposal represents a significant escalation in the far-right party's push to reshape French immigration law through direct democratic means.\n\n## What happened\n\nLe Pen's statement signals the National Rally's intention to leverage a constitutional referendum mechanism to fundamentally alter France's immigration framework. The specific provisions or timeline for the proposed referendum were not detailed in available reporting. The announcement aligns with the RN's longstanding campaign platform, which has centered on reducing immigration and strengthening border controls since the party's founding in the 1970s.\n\nThe referendum proposal comes as immigration remains a contentious issue in French politics and public discourse. Le Pen and the National Rally have built substantial electoral support partly through messaging focused on immigration restriction and national identity concerns.\n\n## Reaction\n\nThe proposal has predictably generated opposition from left-leaning and centrist political figures who view such constitutional measures as threats to France's legal framework and democratic institutions. Civil society organizations focused on immigrant rights have historically resisted National Rally immigration proposals, though specific reactions to this referendum announcement were not immediately available in reporting.\n\nPresident Emmanuel Macron's centrist government and other mainstream parliamentary groups have consistently opposed RN immigration initiatives, framing them as incompatible with French constitutional values and European Union obligations.\n\n## Why it matters\n\nA constitutional referendum on immigration would represent an unprecedented attempt to embed restrictionist policies into France's foundational legal document. Such a move would signal the National Rally's confidence in public support for harder immigration stances and could reshape France's legislative capacity to regulate immigration for years or decades. The proposal reflects ongoing tensions between France's republican secular tradition and debates over national identity, cultural integration, and religious diversity that have intensified following migration patterns across Europe.\n\n## Background\n\nThe National Rally, formerly known as the National Front (Front National), has evolved into France's primary far-right political party. Marine Le Pen assumed leadership in 2011 and has positioned the party as a mainstream conservative alternative while maintaining its hardline stance on immigration and Islam. Constitutional referendums in France are rare and require specific political conditions; the Fifth Republic's Article 11 permits referendums on government proposals, though the process remains contentious.\n\nHarici is a Turkish-language news outlet covering international affairs and politics.\n\nSources: Harici\n\n---\n\n**What is a constitutional referendum in France?**\nIt is a direct vote by French citizens on proposed changes to the Constitution. Under the Fifth Republic, such referendums are initiated through specific legal procedures and require presidential sponsorship or parliamentary supermajority approval.\n\n**Has the National Rally previously campaigned on immigration restriction?**\nYes. Immigration policy has been central to the RN's platform for decades, with emphasis on reducing asylum processing and strengthening border enforcement.\n\n**Who is Marine Le Pen?**\nShe has led the National Rally since 2011 and is its principal public spokesperson and political strategist.\n\n**Why would a referendum on immigration be constitutionally significant?**\nIt would embed immigration policy into France's founding legal document, making legislative changes substantially more difficult and signaling majoritarian support for restrictionist measures.",
+      "title": "French far-left leader Melenchon seen reaching presidential runoff, poll shows",
+      "source": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNd2lDVjVQZnl0M0dpNHZEbGEtcDRQSzE5ekRBT0FWZ3JVZEd2VmJRSTQzTXQ4NXJuODVvVnZmbzJYM180bnNJN0RSZXctLTB2dDJsQVozQmYyRjJMVDRMXzBEcTEtcXNNdTdQZ1hiSURVRVlCcDd3SWxBaUpRU0s0SEdFYzYzWDhCdEsyMXUxd2drYXhWYWtTTDJ6b29Za0VtUzd4a1lxZGJEYUlPTVhFTVQ1RmN4VHFMNnI0?oc=5",
+      "published": "2026-08-24T11:17:45+00:00",
+      "time_ago": "2d 2h ago",
+      "summary": "French far-left leader Melenchon seen reaching presidential runoff, poll shows&nbsp;&nbsp;Reuters",
+      "draft": "Jean-Luc Mélenchon, leader of France's far-left La France Insoumise party, could reach a presidential runoff according to polling data, marking a potential shift in France's political landscape ahead of the next presidential election.\n\n## What happened\n\nRecent polling suggests Mélenchon is positioned to advance to the second round of a future French presidential election, according to Reuters reporting on electoral surveys. The far-left politician, who has led La France Insoumise since its founding in 2016, has previously competed in presidential races and maintains a significant base of support among younger voters and those critical of centrist economic policies. The polling data reflects shifting dynamics in French electoral politics as multiple political forces compete for voter attention.\n\n## Reaction\n\nMélenchon's potential advancement to a runoff reflects broader electoral realignment in France. His party has positioned itself as an alternative to both President Emmanuel Macron's centrist En Marche movement and the right-wing National Rally (Rassemblement National), which has also polled strongly in recent elections. Political analysts note that La France Insoumise's platform, which emphasizes economic redistribution and workers' rights, resonates with voters concerned about purchasing power and social inequality.\n\n## Why it matters\n\nMélenchon's polling strength carries significance for France's Muslim communities and broader debates around secularism and religious minorities. La France Insoumise's platform includes commitments to combating discrimination and racism, positioning itself as critical of policies perceived as Islamophobic. However, the party operates within France's laïcité framework—the constitutional principle of strict separation between religion and state—which shapes how all French political forces, including the far-left, approach questions of religious expression and minority rights. A runoff involving Mélenchon would represent a contest between different visions of French republicanism and secularism, with implications for how Muslim citizens are governed and represented.\n\n## Background\n\nFrench presidential elections operate under a two-round system: if no candidate wins an outright majority in the first round, the top two vote-getters advance to a runoff. Mélenchon previously finished fourth in the 2017 presidential election with 19.6 percent of the vote, narrowly missing the runoff. La France Insoumise, his political vehicle, has grown to become one of France's major left-wing forces, competing with the Socialist Party for progressive voters. The party's explicit anti-racism stance and criticism of police violence have made it a focal point for discussions about minority representation in French politics, though tensions exist between universal republican principles and identity-based advocacy within French political discourse.\n\nSources: Reuters\n\n---\n\n**Why does Mélenchon's potential runoff appearance matter for Muslims in France?**\nHis party explicitly opposes discrimination and Islamophobia, but operates within France's laïcité framework, affecting how religious minorities' concerns are addressed within Republican structures.\n\n**What is La France Insoumise's size?**\nOne of France's major left-wing parties, though specific membership figures vary by reporting period.\n\n**When was the last presidential election?**\nThe most recent complete presidential cycle concluded in 2022, with the next scheduled for 2027.\n\n**What polling organization conducted this survey?**\nReuters reported the polling data but the specific polling firm was not identified in available source material.",
       "status": "pending",
-      "created": "2026-08-19T19:12:30.973963",
-      "heat_score": 5,
-      "heat_label": "TRENDING",
-      "heat_article_count": 2,
+      "created": "2026-08-26T16:01:18.748225",
+      "heat_score": 22,
+      "heat_label": "HOT",
+      "heat_article_count": 9,
       "sources": [
         {
-          "name": "Harici",
-          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRdIBmAFBVV95cUxQSXktTnJLSHRmdjNFUjAyaXdSUXdGbVI2UEkxendydUw0Mm9BRzJmcGVHaDk0OEpheXNCdVNQeTZkb0lrRVROemZJUnNGMy13aFQzNHgxcm12N3p5Yy1yMVRDT3kteDdPQml6RUNla215YjQxVTl4YnF3SGZFemxvaVMzVFZ2NXNtLXVLLXAtVUNyR05GdWtwRQ?oc=5"
+          "name": "Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNd2lDVjVQZnl0M0dpNHZEbGEtcDRQSzE5ekRBT0FWZ3JVZEd2VmJRSTQzTXQ4NXJuODVvVnZmbzJYM180bnNJN0RSZXctLTB2dDJsQVozQmYyRjJMVDRMXzBEcTEtcXNNdTdQZ1hiSURVRVlCcDd3SWxBaUpRU0s0SEdFYzYzWDhCdEsyMXUxd2drYXhWYWtTTDJ6b29Za0VtUzd4a1lxZGJEYUlPTVhFTVQ1RmN4VHFMNnI0?oc=5"
+        },
+        {
+          "name": "Caliber.Az",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPNktaVE13OS1vazI4Qm5ENy1hNFRYRzBod3YtajV3WHNPOU9QNHF6MHhJV1V5MVZ2bG5TLUVmSXRVUVRKRlZYbUE3MVN5Q19QWnNDNEFRV0tZa0FEcVJVcTUzMzJ2a1Jsei1uMkdWX2swaUFZSTdHREh2U0pOVlVpR1JR?oc=5"
+        },
+        {
+          "name": "parlons-politique.fr",
+          "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPb01EeG8tZmZGajJ6NXJFRVhrVEhNV3huWG8teGU3SzM5MFFGU1U2d21ZYU5MQm4wTjhoc2JEbDVJb0x4MEN0bERybkFpNUpaekhzbG1NdEVNSzBQdVBjY1VIWEVHa2tKVS14QkVLT2pyZ215Ty1pSW5aOTBJRWtGX2Jia25mWUc0V0RYRnU2LTZqOFF5dHVjWmhUVVlia2t1UXFRYW9pSWlqdVJlYzJlbUdrQlNRNHpmOHl4bW1ZeTlQSHl1eXNzSi1BbW0tVFpOam1lWkpQSzJqYVVNbGNhTk42REYwTjFEdmNGbnRKZXZZVzBkTWc?oc=5"
+        },
+        {
+          "name": "Europe 1",
+          "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQVm5NNHp4TmRTNTYtbWNEYTZaSTNUVzVMbHFxZW1uTTFaa1FRZks4YnRuUlhsRlVRSEhFNGp1TVpLQXBJQzVMTGpjUlpsNWNiTHRGRGNTWHdiLXpYNElROEU0TXZHZWNFR1AyekZRSjhMRkQzNmV1NjdNWkxkXy1KY0ZjWUlsanNtbFRTWjA2cF8tbEVlR29lY1pBcHhBVG43ZDBjbmdzRUJnN3BBTDlKdjRHb2F4SWZLejRQUm1vV2RwQ0ROTC1kdmVaU2ZPSlVyc29F0gHYAUFVX3lxTE01TUVVcjZMdFZLV0cwX1RsSXhXdkVJanFwZW8zUENDekMyX3F5ZzhSNTlqVGx3dWg1R05IMHpjLURiZHJPZGJLNTlqZ2tNSld5eUItaE5HQUJNd2VxS0pTb19pUkJFcVVUM0JRb1plMWI4YVhJX2dxdUZ3ejllcnRYcERYQ3owZ0czMkptM0FEa1dMYmsxREstRFdCMXJSQmx2X2NJOGxTRklkaVRxZndhRVZBQVBIbUpaRHJ1MzVZcmsyYTVIbjRuVkdkSy1vS3hZT3pBZ3dVXw?oc=5"
         },
         {
           "name": "Le Monde.fr",
-          "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxNR04tbktrZ2V1eVppMFBtRnQ3cW1sV04tdEJCaGFTRGF3NlZnbFJwbzNkYm9kYjJDWm1qM3hWczZvckw2V0JKM3pSYW1uQTY5WkE3QTJZT1pCMTRtWkVLM0RjcmZCY0VSV040ay1DanZFRTlVMWFrd3RjRkowb0NWem9zRjdWa2pEUjl3NjgxUlpSWUg3NWdPMXRNTXJ2aHVaYW9fZmdKSHJXcWoxWUdqQ0tCZThHcnhMaXJZTmhBY3M1ZEVIaUo0cUM1dGJTekxxTXJ6T0N1czNaeWc3UHVmVU5wWW9JSDN0MXlHLUN1YURiUkE?oc=5"
+          "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQQWE5Ukg5UVJBbWJkSHhLQ1l2OXhwWGZjcHVGSGNLU0NRdk9Qb09CS2tHUGZtVkhrTngtaGhIcHFYR3UxcllsMlh0aFQ5S3ZCYWx3U2puZjVBTEVZOHJaTkZFZDNQMEk5WXdLS2ZhQWhIa21RbE50Z284LWw3RHdFSDlQS3JXb3N0T1JZX0NwSmRLenVrZFBTQzd6UDNXbGt5al9ZckE4ZU5VcWtlQlp5RnIxYVZCUjdCMWE4OHA3SmZ0bEhKbWtUSkYzSjE1R1l2TThyN05ENGxNVkt3RXVTVjktQTVNWTVVMFhJV0VJQkpBZDZMT3NZTVVR?oc=5"
+        },
+        {
+          "name": "Kewoulo",
+          "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQZWF1WHFlTzllbGVSd3JrTFV2TEs1N3RpOXl1YTZDWm9iN3Mxbk12LWdFajdOUDN3QmNfQ1k1OGl3Um9VVkhFSU9IVVh2cU9VWWNTNU1rb296NUZ3YTBQUndKZkZWT3NsSG5Wa2JQcTdqLVo4Mmc1dm5IeXhOaS1yTkl2ck1ZT2Y3Z2pZVUtyb3RDUDR4WEJNOEI3dXBEUDQxdjZUOEh5ejBDdVd5bUVmdW9XanE1bHVFYWpObUExbTExelFxZy1SaE1oTXpiLS1OUWN1cUxCS05rY21EbG5xSnVUMFVJRWJYX0EyS25EaXFTSV9zR1Y2UC10UVhSc09wUFV1aklGbVpkTlNCVFZHV2tpekJxLXBTOElF?oc=5"
+        },
+        {
+          "name": "Middle East Eye",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNTFozbGwtbWlxbVpxZjhJLWVfSWJzX05NLTN3VC10WEUzbTdMdzVYY1lod3JTT0JybmFmeXpqWUUxc0IwSE5FTU96b0tuTmRzc3k0aGt1V0V2OFhuVDF4VWtHNG1uUVVHT3pmRHYwRDVhUWJYcFJ5RGdYNmctZjVxVGJ4VTZxNWItVEI0ZTZwY3dXLVB0MHNpWlR4dTgxZmM4cFBvQjI0UHRjNE4zVl82SDZnYw?oc=5"
+        },
+        {
+          "name": "21News",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNR2tXV3NfT2lRdGpJNGpkMmplYWR3NzRMU2xqS0NDalBfUEhzd1RPSVVyNzBtblA1czcxMkZZdkJtcFRxZzd0WkJFZS1hbzh4UFZlYnZJT2s5eGkzcWhkMXJrTVZtWU0wM0g1bTJtQk1MUGpsU0lqZ1JlVVNuT0Y0VGxySWVjRnlJVGtGVUhDeXNBeF9mc09yNWlyX1BaOUN6ZTBjUEVnOWlfOFhnb2lqUzRpTVFJcVEwYUhMcFViOGNVZlk?oc=5"
+        },
+        {
+          "name": "resistancerepublicaine.com",
+          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdlBrNVozZE9HZUI3NDRYaWhsaUVnUTJaYWgyVzJTajZDX2tCOVlUWFpFbjltS3NFMHIwMGhza19ZYTgzNlExaDJaNEF5MEtzWFVubXF0RWNPQU1wUmFyTE0ybGRxM3lwczZHZGpNbEQwNGZ5ZWFldmlqQXY2Z1VvSndyOGVQaWZ3ZlhBR0pSSm9VWVFlQUlNTVV5SEtRN1U?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2803,
+      "content_chars": 2568,
       "fetch_source": "cache"
     },
     {
-      "id": "post_2_linkedin_20260819",
+      "id": "post_2_linkedin_20260826",
       "type": "linkedin",
-      "title": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship",
-      "source": "ShiaWaves",
-      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5",
-      "published": "2026-08-18T12:15:47+00:00",
-      "time_ago": "1d 4h ago",
-      "summary": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship&nbsp;&nbsp;ShiaWaves",
-      "draft": "A mosque near Paris has been closed, reigniting debate over freedom of worship and Islamophobia in France.\n\nThe closure of the Al-Taqwa Mosque has sparked significant discussion about the balance between security concerns and religious liberty in the country.\n\nThe incident highlights ongoing tensions surrounding mosque operations and administrative oversight in French communities with substantial Muslim populations.\n\nCivil society groups and religious organisations have raised concerns about the closure's implications for Muslim communities' right to worship freely.\n\nThe case reflects broader discussions in France about how authorities handle Muslim institutions and the distinction between legitimate security measures and discriminatory practices.\n\nSource: ShiaWaves / Tunisie Numerique\n\n#IslamophobiaWatchFrance #France #ReligiousFreedom",
+      "title": "Portugal enacts 'burqa law' largely prohibiting face coverings in public",
+      "source": "AOL.ca",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZk1LM09jNmxUYThBdEg5ZGFwVjJLX2llb0VoV0tCQk1lQkd2dGdCU2dEbXdXc0kwRkNFQkV6UjQ1UGNGS2NDS0xDMHQ0MlVsOWNZUHduY3otVEYwRk9KQlVGdDdlY3hXMl92RmRrdkdDRlc0TVk2bUdpek1nWWR5Q1RB?oc=5",
+      "published": "2026-08-26T00:02:17+00:00",
+      "time_ago": "13h ago",
+      "summary": "Portugal enacts 'burqa law' largely prohibiting face coverings in public&nbsp;&nbsp;AOL.ca",
+      "draft": "Portugal has enacted legislation banning face coverings in public spaces.\n\nThe new law, colloquially referred to as a \"burqa law,\" prohibits the wearing of garments that conceal the face in public areas. The measure represents Portugal's entry into a growing list of European nations implementing similar restrictions on facial coverings.\n\nThe legislation applies broadly to public spaces, though specific exemptions and enforcement mechanisms remain subjects of ongoing discussion. Portugal joins several other European countries that have adopted comparable face-covering bans in recent years.\n\nThe law reflects broader European policy debates around religious dress, public safety, and secular governance. Supporters argue such measures serve public identification and security purposes, while critics contend they disproportionately affect Muslim women wearing niqabs or burqas.\n\nThe Portuguese law's passage signals continued legislative momentum across Europe toward restricting visible religious attire in public settings.\n\nSource: The New Arab\n\n#IslamophobiaWatchFrance #France #EuropeanPolicies",
       "status": "pending",
-      "created": "2026-08-19T19:12:30.973963",
-      "heat_score": 4,
+      "created": "2026-08-26T16:01:18.748225",
+      "heat_score": 7,
       "heat_label": "TRENDING",
-      "heat_article_count": 2,
+      "heat_article_count": 3,
       "sources": [
         {
-          "name": "ShiaWaves",
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5"
+          "name": "AOL.ca",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZk1LM09jNmxUYThBdEg5ZGFwVjJLX2llb0VoV0tCQk1lQkd2dGdCU2dEbXdXc0kwRkNFQkV6UjQ1UGNGS2NDS0xDMHQ0MlVsOWNZUHduY3otVEYwRk9KQlVGdDdlY3hXMl92RmRrdkdDRlc0TVk2bUdpek1nWWR5Q1RB?oc=5"
         },
         {
-          "name": "Tunisie Numerique",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNS0YxYUNESkszaVJvYWRMX2pPWm96Mk12dXRMNFp0dDlJWkhoOTdtYXhqcjVNRk5mZ000dDh0WUJQenFpZW8yc0VFN1oyakxnSjBRZTFhTUhtNDhucnlaRFZkZHV6UFlQeXFndk1jQ2F5QUdKSG54YVk2VjdDbEJ3Q2JkLU9HU0o1aTdWLWUzeUFDeTdpVExvVE53Nm93MTlWWjFXblhWbjZqSGE5VndWejVWSG5kaUUtU3RBS0ZLM21WNzlOc2pvLTVXaFc?oc=5"
+          "name": "AOL.ca",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOV2p6aWY5NWdkRV9XcE9xTnZfVTR2WHl1NUdtcFY0TGMzeDlaZlIxM0p2WUZBRklya3hSUFJkZEN5UzdVdGlZaWExWkFSbzljNl9vNUt3X0NCZTd5OFNfRGQ4R0xyYWhTWm44Zlc0RVZaSnViT19CSFZzX2tXNEtLUkJn?oc=5"
+        },
+        {
+          "name": "The New Arab",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeFRIVWFTWUdNZzQ5NmVjTkVqeVg5UC12TjN5MEJCUnEyQ1hscWdnUm43VzhTM3pPRU80V1lvMHZJZlktMmN3b1V5Q0sweDZMbm0zUlR2QmFidGEtOFNMbGFSVnBsbFg4VHpnc1l0bDhTcHRIbTN0azFGMDlZYWVWSDhmaE0tTDjSAYwBQVVfeXFMTmEzRWFHQmF1bE1JbEZuNy1SeUd2SG5fckhjRlRLMndldGpwUGJIR3c4SXJPUGhyZkg0VmdjdjBBelhDd1kzNElJc241VEROQTlvaHVfblJCakY0THhZRW02VHBneUJRcDVTSFJ6VGxIcXJ2aC0yeWUzTWVJajRSaW5SckhlSVptdlZrMTk?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2686,
+      "content_chars": 2416,
       "fetch_source": "cache"
     },
     {
-      "id": "post_2_website_20260819",
+      "id": "post_2_website_20260826",
       "type": "website",
-      "title": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship",
-      "source": "ShiaWaves",
-      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5",
-      "published": true,
-      "time_ago": "1d 4h ago",
-      "summary": "The closure of the Al-Taqwa Mosque near Paris sparks debate over Islamophobia and freedom of worship&nbsp;&nbsp;ShiaWaves",
-      "draft": "# Closure of Al-Taqwa Mosque near Paris reignites debate over state powers and religious freedom\n\nFrench authorities have closed the Al-Taqwa Mosque, located in the suburbs of Paris, according to reporting by ShiaWaves. The closure has prompted immediate responses from Muslim organisations and civil rights advocates regarding its implications for religious freedom and potential Islamophobic targeting.\n\n## What happened\n\nThe Al-Taqwa Mosque, serving a Muslim community in the Paris metropolitan area, has been shuttered by authorities. ShiaWaves reported on the development without specifying the formal date of closure or the precise administrative reasoning provided by state officials at the time of reporting. The closure follows a pattern of mosque shutdowns in France in recent years, though specific details about this particular mosque's circumstances remain limited in available reporting.\n\nFrench authorities have previously cited various grounds for mosque closures, including concerns about radicalisation, administrative violations, or financing irregularities. No named official statement from the Paris prefecture or national government has been publicly detailed regarding this specific case.\n\n## Reaction\n\nMuslim community representatives and civil society organisations have characterised the closure as part of a broader pattern affecting places of Muslim worship in France. Advocacy groups monitoring religious freedom have flagged such closures as concerning precedents, though specific named responses from mosque leadership or community spokespeople are not yet documented in available sources.\n\nThe incident intersects with longstanding French debates over laïcité—the constitutional principle of state secularism and separation of religious and public institutions—and how that principle is applied asymmetrically across different religious communities.\n\n## Why it matters\n\nThe Al-Taqwa closure exemplifies persistent tensions in France between state security frameworks and Muslim communities' right to worship. France has experienced heightened scrutiny of mosques since terrorist attacks in 2015 and subsequent years, creating a climate where religious closures generate immediate questions about proportionality and discriminatory application of state power. Such incidents fuel perceptions among Muslims that administrative measures disproportionately target Islamic spaces compared to churches or synagogues.\n\n## Background\n\nFrance maintains strict constitutional laïcité, which technically restricts state recognition and funding of all religions equally. However, Muslim communities have reported that mosque closures occur more frequently and with less transparency than closures of other religious buildings. The French government has periodically announced operations against mosques it describes as promoting extremism, though civil society monitors argue the standards applied lack clarity and consistency.\n\nThe Paris region hosts one of Europe's largest Muslim populations, estimated at over two million people. Mosque access remains contested political terrain in France, where security concerns and integration debates intersect with religious freedom questions.\n\n## FAQ\n\n**Who ordered the closure?**\nShiaWaves reported the closure but did not attribute the decision to a named official or specific administrative body.\n\n**When did it happen?**\nThe precise timing was not specified in available reporting.\n\n**Has the mosque appealed?**\nNo documented legal challenge has been reported.\n\n**Are other mosques affected?**\nFrance has closed multiple mosques in recent years, though each case varies in circumstances.\n\nSources: ShiaWaves",
-      "status": "approved",
-      "created": "2026-08-19T19:12:30.973963",
-      "heat_score": 4,
+      "title": "Portugal enacts 'burqa law' largely prohibiting face coverings in public",
+      "source": "AOL.ca",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZk1LM09jNmxUYThBdEg5ZGFwVjJLX2llb0VoV0tCQk1lQkd2dGdCU2dEbXdXc0kwRkNFQkV6UjQ1UGNGS2NDS0xDMHQ0MlVsOWNZUHduY3otVEYwRk9KQlVGdDdlY3hXMl92RmRrdkdDRlc0TVk2bUdpek1nWWR5Q1RB?oc=5",
+      "published": "2026-08-26T00:02:17+00:00",
+      "time_ago": "13h ago",
+      "summary": "Portugal enacts 'burqa law' largely prohibiting face coverings in public&nbsp;&nbsp;AOL.ca",
+      "draft": "# Portugal enacts legislation banning face coverings in public spaces\n\nPortugal has enacted legislation prohibiting face coverings in public, joining several European countries with similar restrictions. The law, which takes effect in 2025, targets garments that obscure facial identity, including the niqab and burqa worn by some Muslim women.\n\n## What happened\n\nPortugal's parliament passed the face-covering ban in recent weeks, according to reporting on the measure. The legislation prohibits individuals from wearing clothing that conceals the face in public spaces, with limited exceptions for safety, health, or professional reasons. The law applies broadly to any face-covering garment, though it is widely understood as targeting Islamic veils worn by Muslim women. Portuguese authorities have not yet published comprehensive guidance on enforcement mechanisms or penalty structures for violations. The law represents Portugal's alignment with France, Belgium, Austria, and other European nations that have enacted similar restrictions over the past two decades.\n\nThe Portuguese government has not issued detailed statements on the legislative intent or anticipated enforcement timeline beyond the 2025 implementation date. Implementation details remain unclear, including which public spaces fall under the ban's scope and whether religious exemptions will be considered.\n\n## Reaction\n\nMuslim advocacy organizations and human rights groups have not yet issued formal statements on the Portuguese law. However, similar bans across Europe have faced criticism from civil liberties organizations, which argue such measures restrict religious freedom and disproportionately affect Muslim women.\n\nIn France, comparable legislation enacted in 2010 has drawn ongoing scrutiny. Organizations including Human Rights Watch and Amnesty International have characterized face-covering bans as violations of religious liberty and personal autonomy, particularly when framed exclusively around Islamic garments.\n\n## Why it matters\n\nPortugal's ban extends Europe's patchwork of face-covering restrictions, creating legal consequences for Muslim women who wear niqabs or burqas. For France, Portugal's action underscores broader continental debates about laïcité (France's strict church-state separation doctrine) and integration, debates that have intensified over Muslim religious visibility in European public life.\n\n## Background\n\nFace-covering bans reflect European anxieties about religious expression, integration, and security. France pioneered this approach in 2010 under President Nicolas Sarkozy, prohibiting niqabs and burqas nationwide. Belgium followed in 2011, Austria in 2017. These laws exist within contentious frameworks around laïcité—France's constitutional principle separating religious and civic spheres—though they remain controversial among human rights monitors.\n\nPortugal's move suggests this European trend toward restriction continues, despite limited evidence that face coverings present documented security or public order threats.\n\n**Did Portugal's law specify which organizations supported or opposed it?**\nPublic statements from Portuguese political parties or civil society groups on this legislation have not been widely reported.\n\n**How many Muslim women in Portugal wear face coverings?**\nDemographic data on niqab or burqa use in Portugal remains unavailable in English-language reporting.\n\n**Does the law permit any religious exemptions?**\nPortuguese authorities have not publicly clarified whether religious or cultural exceptions will be permitted.\n\n**What penalties apply to violations?**\nSpecific penalty structures have not been detailed in available reporting.\n\nSources: AOL.ca reporting; European face-covering ban precedent (France 2010, Belgium 2011, Austria 2017)",
+      "status": "pending",
+      "created": "2026-08-26T16:01:18.748225",
+      "heat_score": 7,
       "heat_label": "TRENDING",
-      "heat_article_count": 2,
+      "heat_article_count": 3,
       "sources": [
         {
-          "name": "ShiaWaves",
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNTV9BNWF3UnFKaUc0RzhHa216bzBZOGRraWtNSU5fTEhnVGJOUG53cDJRSV9rUEIwZEtnMUZpQkpyRk5DY0thYWdRS2w0Tzh6YTdzLVp4YUc5VmRiTHFVN2lmWnVfR01wVTRWVWg3cDhVbjE2eXlBdVZRWGFuS1hHOGl1REVkT0trb1YwU3lpUEU2SmRGbGlFOXhEZ0o5aEx1anNVN3dYUk5QY29qVnNyb1NlLU9xVjB0bEdrczFidENheG53TzFFMENfckw0NUUzeUhIYUNTNm5FbUloYkFxcHZYeGNRajA?oc=5"
+          "name": "AOL.ca",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZk1LM09jNmxUYThBdEg5ZGFwVjJLX2llb0VoV0tCQk1lQkd2dGdCU2dEbXdXc0kwRkNFQkV6UjQ1UGNGS2NDS0xDMHQ0MlVsOWNZUHduY3otVEYwRk9KQlVGdDdlY3hXMl92RmRrdkdDRlc0TVk2bUdpek1nWWR5Q1RB?oc=5"
         },
         {
-          "name": "Tunisie Numerique",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNS0YxYUNESkszaVJvYWRMX2pPWm96Mk12dXRMNFp0dDlJWkhoOTdtYXhqcjVNRk5mZ000dDh0WUJQenFpZW8yc0VFN1oyakxnSjBRZTFhTUhtNDhucnlaRFZkZHV6UFlQeXFndk1jQ2F5QUdKSG54YVk2VjdDbEJ3Q2JkLU9HU0o1aTdWLWUzeUFDeTdpVExvVE53Nm93MTlWWjFXblhWbjZqSGE5VndWejVWSG5kaUUtU3RBS0ZLM21WNzlOc2pvLTVXaFc?oc=5"
+          "name": "AOL.ca",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOV2p6aWY5NWdkRV9XcE9xTnZfVTR2WHl1NUdtcFY0TGMzeDlaZlIxM0p2WUZBRklya3hSUFJkZEN5UzdVdGlZaWExWkFSbzljNl9vNUt3X0NCZTd5OFNfRGQ4R0xyYWhTWm44Zlc0RVZaSnViT19CSFZzX2tXNEtLUkJn?oc=5"
+        },
+        {
+          "name": "The New Arab",
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNeFRIVWFTWUdNZzQ5NmVjTkVqeVg5UC12TjN5MEJCUnEyQ1hscWdnUm43VzhTM3pPRU80V1lvMHZJZlktMmN3b1V5Q0sweDZMbm0zUlR2QmFidGEtOFNMbGFSVnBsbFg4VHpnc1l0bDhTcHRIbTN0azFGMDlZYWVWSDhmaE0tTDjSAYwBQVVfeXFMTmEzRWFHQmF1bE1JbEZuNy1SeUd2SG5fckhjRlRLMndldGpwUGJIR3c4SXJPUGhyZkg0VmdjdjBBelhDd1kzNElJc241VEROQTlvaHVfblJCakY0THhZRW02VHBneUJRcDVTSFJ6VGxIcXJ2aC0yeWUzTWVJajRSaW5SckhlSVptdlZrMTk?oc=5"
         }
       ],
       "content_confidence": "medium",
-      "content_chars": 2686,
-      "fetch_source": "cache",
-      "published_url": "https://islamophobiawatchfrance.com/news/2026-08-18-closure-al-taqwa-mosque-near-paris-sparks-debate.html",
-      "published_at": "2026-08-19T17:15:53.252988+00:00",
-      "push_failed": false
+      "content_chars": 2416,
+      "fetch_source": "cache"
     }
   ]
 }
