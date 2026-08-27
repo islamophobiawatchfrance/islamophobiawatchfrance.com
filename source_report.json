@@ -1,5 +1,5 @@
 {
-  "total": 1473,
+  "total": 1474,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
@@ -124,7 +124,7 @@
     {
       "name": "Muslim Network TV",
       "count": 14,
-      "pct": 1.0
+      "pct": 0.9
     },
     {
       "name": "France 3 Régions",
@@ -589,6 +589,11 @@
     {
       "name": "The New Arab",
       "count": 2,
+      "pct": 0.1
+    },
+    {
+      "name": "CT Insider",
+      "count": 1,
       "pct": 0.1
     },
     {
