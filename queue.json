@@ -219,7 +219,7 @@
       "heat_label": "TRENDING",
       "heat_score": 5,
       "id": "post_40224_website_20260827",
-      "published": "2026-08-26T13:52:58+00:00",
+      "published": true,
       "source": "CT Insider",
       "sources": [
         {
@@ -232,7 +232,10 @@
       "time_ago": "1d 0h ago",
       "title": "Why French officials placed a Muslim war memorial in the intellectual heart of Paris in the 20th century",
       "type": "website",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQb1E1TlhraWh2ZXZDbG9ZTGJSTWEzS1ZFUlVHdS13c2lHNUlkUW5KaF9KSzZMZUNlbk5HSWtBbklBSG1JUDBocWZGRGY2X052TmV5NHdPbURSLXA5ODUxWEJOSy10NmhuUjZsX0lwOUJVRlpEa2wyTl9RTUFXZ05hS0dmenVGZktWd3dNSUtnaEEwOXNBRVJUWXhLYkxTY09Ici1n?oc=5"
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQb1E1TlhraWh2ZXZDbG9ZTGJSTWEzS1ZFUlVHdS13c2lHNUlkUW5KaF9KSzZMZUNlbk5HSWtBbklBSG1JUDBocWZGRGY2X052TmV5NHdPbURSLXA5ODUxWEJOSy10NmhuUjZsX0lwOUJVRlpEa2wyTl9RTUFXZ05hS0dmenVGZktWd3dNSUtnaEEwOXNBRVJUWXhLYkxTY09Ici1n?oc=5",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-08-26-why-french-officials-placed-muslim-war-memorial.html",
+      "published_at": "2026-08-27T14:17:54.217099+00:00",
+      "push_failed": false
     }
   ],
   "total_stories_scanned": 54
