@@ -24,6 +24,7 @@ from iwf_aggregator import (
     fetch_query, format_time_ago, simplify_title,
     QUERIES, HOURS_BACK, MAX_RESULTS,
 )
+from publisher import _derive_category
 
 load_dotenv()
 
@@ -175,6 +176,65 @@ WEBSITE_USER_TEMPLATE = (
     "{bundle}\n\n"
     "Write only the website article text. Nothing else."
 )
+
+
+# =============================================================
+# TIKTOK SCRIPT
+# =============================================================
+
+TIKTOK_MODEL      = "claude-haiku-4-5-20251001"
+TIKTOK_MAX_TOKENS = 300
+
+TIKTOK_SYSTEM_PROMPT = """
+You write short spoken-word scripts for TikTok videos for Islamophobia Watch France (IWF), an independent English-language journalism project monitoring Islamophobia and Muslim life in France.
+
+The script will be read aloud to camera by a journalist. It must sound completely natural when spoken - no bullet points, no headers, no markdown, just flowing spoken sentences.
+
+Structure every script exactly as follows:
+
+HOOK (1 sentence, 8-12 words max):
+The single most arresting fact, statistic, or development from the story. Must make someone stop scrolling. No "today we're talking about". Just the fact, stated directly.
+
+CONTEXT (2-3 sentences):
+Who, what, where. The essential background a viewer needs to understand what's happening. Assume they know nothing about French politics.
+
+WHAT THIS MEANS (2 sentences):
+Why this matters specifically for Muslim communities in France or across Europe. Be direct and concrete - no vague generalisations.
+
+CALL TO ACTION (1 sentence):
+"Follow Islamophobia Watch France for daily coverage of anti-Muslim discrimination in France."
+
+Rules:
+- Total script must be 80-100 words - no more, no less
+- Written to be spoken aloud, not read
+- No jargon without explanation
+- No hedging language like "reportedly" or "allegedly" - state facts as facts
+- Short sentences - maximum 15 words each
+- End every sentence with a full stop so the speaker knows when to pause
+- Do not include stage directions, timings, or section headers in the output - just the raw script text
+"""
+
+
+def generate_tiktok_script(post: dict) -> str | None:
+    """Calls Claude to write an 80-100 word spoken TikTok script for a post. Returns text or None on failure."""
+    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    user_message = (
+        f"Write a TikTok script for this story: {post.get('title', '')}\n\n"
+        f"Key facts:\n{post.get('draft', '')}\n\n"
+        f"Category: {_derive_category(post)}\n"
+        f"Heat: {post.get('heat_label', '')}"
+    )
+    try:
+        response = client.messages.create(
+            model=TIKTOK_MODEL,
+            max_tokens=TIKTOK_MAX_TOKENS,
+            system=TIKTOK_SYSTEM_PROMPT,
+            messages=[{"role": "user", "content": user_message}],
+        )
+        return response.content[0].text.strip()
+    except Exception as e:
+        print(f"  [WARNING] TikTok script generation failed for '{post.get('title', '')[:50]}': {e}")
+        return None
 
 
 # =============================================================
@@ -1027,10 +1087,12 @@ def main():
 
         # OUTPUT A — LinkedIn post
         linkedin_draft = draft_post(client, cluster, bundle)
+        linkedin_post = None
         if linkedin_draft:
             linkedin_draft = translate_to_english(client, linkedin_draft)
-            posts.append(build_post_record(cluster, score, label, linkedin_draft, i, timestamp,
-                                           "linkedin", primary_fetch=primary_fetch))
+            linkedin_post = build_post_record(cluster, score, label, linkedin_draft, i, timestamp,
+                                           "linkedin", primary_fetch=primary_fetch)
+            posts.append(linkedin_post)
             print(f"        -> LinkedIn ({len(linkedin_draft.split())} words)")
         else:
             print(f"        -> LinkedIn skipped (API error)")
@@ -1046,6 +1108,15 @@ def main():
             print(f"        -> Website article ({len(website_draft.split())} words)")
         else:
             print(f"        -> Website article skipped (API error)")
+
+        # OUTPUT C — TikTok script
+        if linkedin_post:
+            tiktok_script = generate_tiktok_script(linkedin_post)
+            if tiktok_script:
+                linkedin_post["tiktok_script"] = tiktok_script
+                print(f"        -> TikTok script ({len(tiktok_script.split())} words)")
+            else:
+                print(f"        -> TikTok script skipped (API error)")
 
     if not posts:
         print("\n  No posts drafted. Check your API key and try again.")

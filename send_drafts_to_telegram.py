@@ -146,6 +146,13 @@ async def _send_all(pending: list) -> int:
                         parse_mode=parse_mode,
                         reply_markup=markup,
                     )
+                if post.get("tiktok_script"):
+                    # Reference only — no Approve/Reject buttons.
+                    await bot.send_message(
+                        chat_id=CHAT_ID,
+                        text=publisher.format_tiktok_message(post),
+                        parse_mode=ParseMode.MARKDOWN,
+                    )
                 sent += 1
             except Exception as e:
                 print(f"  [Telegram send failed for {post.get('id')}] {e}")

@@ -12,6 +12,7 @@ import json
 import os
 import subprocess
 from datetime import datetime, timezone
+from dotenv import load_dotenv
 from flask import Flask, jsonify, request, render_template_string, send_from_directory
 from werkzeug.utils import secure_filename
 
@@ -19,6 +20,7 @@ from werkzeug.utils import secure_filename
 # of the working directory from which Flask is launched.
 REPO_PATH  = os.path.dirname(os.path.abspath(__file__))
 os.chdir(REPO_PATH)
+load_dotenv(os.path.join(REPO_PATH, ".env"))
 
 app = Flask(__name__)
 
@@ -168,6 +170,29 @@ TEMPLATE = r"""<!DOCTYPE html>
     .btn-regen      { background: #fff; color: #555; border: 1px solid #bbb; }
     .btn-regen:hover { background: #f5f5f5; }
     .btn-regen:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-tiktok-send { background: #fff; color: #1e8e3e; border: 1px solid #1e8e3e; }
+    .btn-tiktok-send:hover { background: #e6f4ea; }
+    .btn-tiktok-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── TikTok script section ── */
+    .tiktok-section { border-top: 1px solid #eee; margin-top: 6px; padding-top: 10px; }
+    .tiktok-toggle {
+      display: flex; align-items: center; gap: 6px;
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 4px 0; font-size: 13px; font-weight: 600; color: #333;
+      text-align: left;
+    }
+    .tiktok-toggle .chevron { color: #999; font-size: 11px; transition: transform 0.15s; display: inline-block; }
+    .tiktok-toggle.open .chevron { transform: rotate(90deg); }
+    .tiktok-body { display: none; margin-top: 12px; }
+    .tiktok-body.open { display: block; }
+    .tiktok-script-box {
+      background: #f8f9fa; border-left: 3px solid #111;
+      padding: 18px 20px; border-radius: 4px;
+      font-size: 16px; line-height: 1.8; white-space: pre-wrap;
+      color: #222; margin-bottom: 8px;
+    }
+    .tiktok-meta { font-size: 12px; color: #999; margin-bottom: 12px; }
 
     /* ── Sources ── */
     .sources { margin-top: 10px; }
@@ -973,6 +998,91 @@ TEMPLATE = r"""<!DOCTYPE html>
       </div>`;
   }
 
+  function renderTiktokSection(post) {
+    const id     = post.id;
+    const script = post.tiktok_script || '';
+    const words  = script.trim() ? script.trim().split(/\s+/).length : 0;
+    return `
+      <div class="tiktok-section">
+        <button class="tiktok-toggle" id="tiktok-toggle-${id}" onclick="toggleTiktok('${id}')">
+          <span class="chevron">›</span><span>📱 TikTok Script</span>
+        </button>
+        <div class="tiktok-body" id="tiktok-body-${id}">
+          <div class="tiktok-script-box" id="tiktok-script-${id}">${esc(script)}</div>
+          <div class="tiktok-meta" id="tiktok-meta-${id}">${words} words</div>
+          <div class="actions">
+            <button class="btn btn-copy" onclick="copyTiktokScript('${id}')">Copy script</button>
+            <button class="btn btn-tiktok-send" id="tiktok-send-btn-${id}" onclick="sendTiktokTelegram('${id}')">Send to Telegram</button>
+            <button class="btn btn-regen" id="tiktok-regen-btn-${id}" onclick="regenerateTiktok('${id}')">Regenerate</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function toggleTiktok(id) {
+    const body   = document.getElementById('tiktok-body-'   + id);
+    const toggle = document.getElementById('tiktok-toggle-' + id);
+    const open   = body.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+  }
+
+  function copyTiktokScript(id) {
+    const post = getPost(id);
+    if (!post || !post.tiktok_script) return;
+    navigator.clipboard.writeText(post.tiktok_script).then(() => {
+      showToast('TikTok script copied to clipboard');
+    });
+  }
+
+  async function sendTiktokTelegram(id) {
+    const btn = document.getElementById('tiktok-send-btn-' + id);
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    try {
+      const res  = await fetch('/api/send_tiktok_telegram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ post_id: id }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showToast('TikTok script sent to Telegram');
+      } else {
+        showToast('Send failed: ' + (data.error || 'unknown'));
+      }
+    } catch (e) {
+      showToast('Send failed (network error)');
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Send to Telegram'; }
+    }
+  }
+
+  async function regenerateTiktok(id) {
+    const btn = document.getElementById('tiktok-regen-btn-' + id);
+    if (btn) { btn.disabled = true; btn.textContent = 'Regenerating…'; }
+    try {
+      const res  = await fetch('/api/regenerate_tiktok', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      });
+      const data = await res.json();
+      if (data.ok && data.tiktok_script) {
+        const post = getPost(id);
+        if (post) post.tiktok_script = data.tiktok_script;
+        document.getElementById('tiktok-script-' + id).textContent = data.tiktok_script;
+        const words = data.tiktok_script.trim().split(/\s+/).length;
+        document.getElementById('tiktok-meta-' + id).textContent = words + ' words';
+        showToast('TikTok script regenerated');
+      } else {
+        showToast('Regeneration failed: ' + (data.error || 'unknown'));
+      }
+    } catch (e) {
+      showToast('Regeneration failed (network error)');
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Regenerate'; }
+    }
+  }
+
   function render() {
     if (!queue || !queue.posts || queue.posts.length === 0) {
       renderEmpty('No posts in the queue yet.');
@@ -997,10 +1107,12 @@ TEMPLATE = r"""<!DOCTYPE html>
     let html = gapBannerHtml();
     for (const key of order) {
       const cards = grouped[key];
+      const tiktokPost = cards.find(p => p.tiktok_script);
+      const tiktokHtml = tiktokPost ? renderTiktokSection(tiktokPost) : '';
       if (cards.length > 1) {
-        html += `<div class="cluster-group">${cards.map(renderCard).join('')}</div>`;
+        html += `<div class="cluster-group">${cards.map(renderCard).join('')}${tiktokHtml}</div>`;
       } else {
-        html += renderCard(cards[0]);
+        html += renderCard(cards[0]) + tiktokHtml;
       }
     }
     document.getElementById('main').innerHTML = html;
@@ -1791,6 +1903,89 @@ def regenerate_draft():
         json.dump(queue_data, f, indent=2, ensure_ascii=False)
 
     return jsonify({"ok": True, "draft": new_draft})
+
+
+@app.route("/api/regenerate_tiktok", methods=["POST"])
+def regenerate_tiktok():
+    """
+    Re-generate the TikTok script for one post using drafter.generate_tiktok_script.
+    Updates queue.json in place and returns the new script text.
+    """
+    from drafter import generate_tiktok_script
+
+    data = request.get_json(force=True)
+    if not data or "id" not in data:
+        return jsonify({"error": "Missing id"}), 400
+
+    if not os.path.exists(QUEUE_FILE):
+        return jsonify({"error": "Queue not found"}), 404
+
+    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+        queue_data = json.load(f)
+
+    post = next((p for p in queue_data.get("posts", []) if p.get("id") == data["id"]), None)
+    if not post:
+        return jsonify({"error": "Post not found"}), 404
+
+    if not os.getenv("ANTHROPIC_API_KEY"):
+        return jsonify({"error": "ANTHROPIC_API_KEY not set"}), 500
+
+    new_script = generate_tiktok_script(post)
+    if not new_script:
+        return jsonify({"error": "TikTok script generation failed"}), 500
+
+    post["tiktok_script"] = new_script
+    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
+        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+
+    return jsonify({"ok": True, "tiktok_script": new_script})
+
+
+@app.route("/api/send_tiktok_telegram", methods=["POST"])
+def send_tiktok_telegram():
+    """
+    Send one post's TikTok script to Telegram for reference — no Approve/Reject
+    buttons, just the formatted script text.
+    """
+    import asyncio
+    from telegram import Bot
+    from telegram.constants import ParseMode
+    import publisher
+
+    data = request.get_json(force=True)
+    if not data or "post_id" not in data:
+        return jsonify({"error": "Missing post_id"}), 400
+
+    if not os.path.exists(QUEUE_FILE):
+        return jsonify({"error": "Queue not found"}), 404
+
+    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
+        queue_data = json.load(f)
+
+    post = next((p for p in queue_data.get("posts", []) if p.get("id") == data["post_id"]), None)
+    if not post:
+        return jsonify({"error": "Post not found"}), 404
+
+    if not post.get("tiktok_script"):
+        return jsonify({"error": "Post has no tiktok_script"}), 400
+
+    bot_token = os.getenv("TELEGRAM_BOT_TOKEN")
+    chat_id   = os.getenv("TELEGRAM_CHAT_ID")
+    if not bot_token or not chat_id:
+        return jsonify({"error": "Telegram not configured (missing TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID)"}), 500
+
+    message = publisher.format_tiktok_message(post)
+
+    async def _send():
+        async with Bot(token=bot_token) as bot:
+            await bot.send_message(chat_id=chat_id, text=message, parse_mode=ParseMode.MARKDOWN)
+
+    try:
+        asyncio.run(_send())
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    return jsonify({"ok": True})
 
 
 def _sanitize_body_html(html: str) -> str:

@@ -67,6 +67,28 @@ def _derive_category(post: dict) -> str:
     return "News"
 
 
+def _tg_escape(text: str) -> str:
+    """Escape characters that break Telegram's legacy Markdown parser."""
+    for ch in ("_", "*", "`", "["):
+        text = text.replace(ch, "\\" + ch)
+    return text
+
+
+def format_tiktok_message(post: dict) -> str:
+    """Format a post's TikTok script as a Telegram message (shared by the
+    dashboard's send-to-Telegram endpoint and the pipeline's draft notifier)."""
+    script      = post.get("tiktok_script", "")
+    word_count  = len(script.split())
+    est_seconds = round((word_count / 2.5) / 5) * 5
+    return (
+        f"📱 *TIKTOK SCRIPT*\n"
+        f"🔥 {post.get('heat_label', 'NORMAL')} | {_derive_category(post)}\n\n"
+        f"*{_tg_escape(post.get('title', 'Untitled'))}*\n\n"
+        f"---\n{_tg_escape(script)}\n---\n\n"
+        f"_{word_count} words · ~{est_seconds}s spoken_"
+    )
+
+
 def _format_date(post: dict) -> str:
     """Return human-readable date e.g. '7 May 2026'."""
     raw = post.get("published") or post.get("created") or ""
