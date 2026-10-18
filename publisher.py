@@ -516,6 +516,32 @@ def save_article(post: dict, repo_path: str = ".", published_articles: list = No
     return rel_path
 
 
+PICK_TEXT_CHARS = 1600   # roughly how much article text the Editor's Pick shows
+
+
+def _pick_paragraphs(text: str, max_chars: int = PICK_TEXT_CHARS) -> list:
+    """
+    Opening paragraphs of an article draft for the Editor's Pick: skips
+    ## headings, stops before the Q&A / Sources section, and keeps whole
+    paragraphs up to about max_chars (always at least one).
+    """
+    paras, total = [], 0
+    for block in re.split(r"\n\s*\n", text or ""):
+        block = block.strip()
+        if not block or block.startswith("#"):
+            continue
+        if block == "---" or block.lower().startswith(("sources:", "source:", "**")):
+            break
+        plain = clean_excerpt(block, 10_000)
+        if paras and total + len(plain) > max_chars:
+            break
+        paras.append(plain)
+        total += len(plain)
+    if paras and total > max_chars * 1.5:          # one very long opening paragraph
+        paras = [clean_excerpt(paras[0], max_chars)]
+    return paras
+
+
 def update_homepage(repo_path: str = ".") -> None:
     """
     Regenerate the homepage hero's Editor's Pick (left column) from the most
@@ -541,12 +567,13 @@ def update_homepage(repo_path: str = ".") -> None:
         filename  = _esc(pick.get("filename", "#"))
         title     = _esc(pick.get("title", ""))
         intro_src = pick.get("standfirst") or pick.get("website_draft") or pick.get("draft", "")
-        intro     = _esc(clean_excerpt(intro_src, 200))
+        intro     = "\n".join(f'        <p class="pick-intro">{_esc(p)}</p>'
+                              for p in _pick_paragraphs(intro_src))
         meta      = " · ".join(_esc(x) for x in (pick.get("date", ""), pick.get("category", "")) if x)
         pick_html = (
             f'\n        <div class="pick-label">Editor\'s Pick</div>\n'
             f'        <h2 class="pick-headline"><a href="{filename}">{title}</a></h2>\n'
-            f'        <p class="pick-intro">{intro}</p>\n'
+            f'{intro}\n'
             f'        <div class="pick-meta">{meta}</div>\n'
             f'        <a href="{filename}" class="pick-read-more">Read more →</a>\n      '
         )
