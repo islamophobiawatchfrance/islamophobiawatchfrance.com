@@ -40468,3 +40468,12 @@ Traceback (most recent call last):
     raise exception
 telegram.error.NetworkError: Bad Gateway
   Telegram bot listening for approve/reject actions...
+
+  Publishing: In Aix, three students suffer a racist assault by far-right groups
+  Saved: news/2026-10-16-aix-three-students-suffer-racist-assault-far-right-groups.html
+  published.json: 36 article(s) total
+  index.html updated (10 items in feed)
+  news.html updated (36 cards in grid)
+  Wire updated (71 items across 7 days)
+  sitemap.xml updated (36 article(s))
+  source_report.json: 127 source(s), 0 flagged
