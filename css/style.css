@@ -356,7 +356,8 @@ p  { color: var(--text-secondary); }
   flex-direction: column;
   justify-content: flex-start;
   gap: 12px;
-  padding: 12px 32px 32px;
+  padding: 20px 32px 24px;
+  border-top: 2px solid var(--red);   /* matches the rule under "Latest News" */
 }
 .pick-label {
   font-size: 10px;
@@ -881,6 +882,15 @@ p  { color: var(--text-secondary); }
     padding-top: 0;
   }
   .editors-pick { padding: 24px 20px; }
+  /* Phones: lede + first subheading + a 3-line teaser, so the wire stays close */
+  .editors-pick .pick-subhead ~ .pick-subhead,
+  .editors-pick p.pick-intro:nth-of-type(n+3) { display: none; }
+  .editors-pick p.pick-intro:nth-of-type(2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
   .hero-right {
     width: 100%;
     border-left: none;

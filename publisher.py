@@ -582,8 +582,7 @@ def update_homepage(repo_path: str = ".") -> None:
         )
         meta      = " · ".join(_esc(x) for x in (pick.get("date", ""), pick.get("category", "")) if x)
         pick_html = (
-            f'\n        <div class="pick-label">Editor\'s Pick</div>\n'
-            f'        <h2 class="pick-headline"><a href="{filename}">{title}</a></h2>\n'
+            f'\n        <h3 class="pick-headline"><a href="{filename}">{title}</a></h3>\n'
             f'{intro}\n'
             f'        <div class="pick-meta">{meta}</div>\n'
             f'        <a href="{filename}" class="pick-read-more">Read more →</a>\n      '
