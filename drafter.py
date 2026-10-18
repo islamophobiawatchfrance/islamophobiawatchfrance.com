@@ -2,8 +2,11 @@
 """
 IWF Drafter
 -----------
-Fetches recent news stories via Google News RSS, clusters them by topic,
-and uses Claude to draft LinkedIn posts in the IWF editorial voice.
+Polls the direct RSS sources in sources.json, scores every story with the
+relevance filter, then:
+  - 8-10  clusters by topic and drafts LinkedIn + website posts (queue.json)
+  - 6-7   queues a Bluesky wire post (wire_queue.json)
+  - 0-5   discards
 Saves results to queue.json for review in the dashboard.
 
 Run with: python3 drafter.py
@@ -20,13 +23,13 @@ import urllib.request
 from dotenv import load_dotenv
 import anthropic
 
-from iwf_aggregator import (
-    fetch_query, format_time_ago, simplify_title,
-    QUERIES, HOURS_BACK, MAX_RESULTS,
-)
+import iwf_aggregator
+import queue_store
+from iwf_aggregator import format_time_ago, simplify_title, load_wire_seen, save_wire_seen
 from publisher import _derive_category
+from relevance_filter import score_relevance, route
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 
 
 # =============================================================
@@ -254,9 +257,13 @@ def _cluster_keywords(title):
     return {w for w in words if w not in _CLUSTER_STOP_WORDS and len(w) > 2}
 
 
-def _source_tier(source):
-    if source in TIER_1: return 1
-    if source in TIER_2: return 2
+def _source_tier(story):
+    """1 = most authoritative. Uses the sources.json trust rating when present."""
+    trust = story.get("source_trust")
+    if trust:
+        return {"high": 1, "medium": 2}.get(trust, 3)
+    if story["source"] in TIER_1: return 1
+    if story["source"] in TIER_2: return 2
     return 3
 
 
@@ -290,7 +297,7 @@ def compute_heat(cluster):
     newest = max(s["published"] for s in cluster["stories"])
     hours_old = (now - newest).total_seconds() / 3600
     recency = 3 if hours_old < 6 else (1 if hours_old < 24 else 0)
-    tier1_bonus = 3 if any(_source_tier(s["source"]) == 1 for s in cluster["stories"]) else 0
+    tier1_bonus = 3 if any(_source_tier(s) == 1 for s in cluster["stories"]) else 0
     score = len(cluster["stories"]) * 2 + recency + tier1_bonus
     label = "HOT" if score >= 8 else ("TRENDING" if score >= 4 else "NORMAL")
     return score, label, hours_old
@@ -359,10 +366,48 @@ def _extract_key_phrase(headline):
     return " ".join(key[:4])
 
 
+# Every story fetched this run (all sources, before relevance filtering).
+# The research helpers mine it for related coverage now that there is no
+# Google News search to query. Set by main(); when drafter functions are
+# called from the dashboard it falls back to stories_today.json.
+_STORY_POOL: list = []
+
+
+def _story_pool() -> list:
+    if _STORY_POOL:
+        return _STORY_POOL
+    try:
+        with open(STORIES_FILE, "r", encoding="utf-8") as f:
+            return json.load(f).get("stories", [])
+    except (OSError, ValueError):
+        return []
+
+
+def _title_keywords(story: dict) -> set:
+    # Match on both the English translation and the original-language title,
+    # since the pool mixes translated (relevant) and untranslated stories.
+    return _cluster_keywords(story.get("title", "")) | _cluster_keywords(story.get("title_original", ""))
+
+
+def _related_stories(story: dict, min_overlap: int = 2, limit: int = 3) -> list:
+    """Stories from the pool whose titles share min_overlap+ significant words with story's."""
+    kw = _title_keywords(story)
+    scored = []
+    for s in _story_pool():
+        if s.get("url") == story.get("url") or not s.get("summary"):
+            continue
+        overlap = len(kw & _title_keywords(s))
+        if overlap >= min_overlap:
+            scored.append((overlap, s))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [s for _, s in scored[:limit]]
+
+
 def gather_research(story, fetch_result: dict):
     """
     Builds a research bundle for one story.
-    If the original article fetch was thin, runs supplementary searches.
+    If the original article fetch was thin, adds related coverage from the
+    other sources polled this run.
     Returns a combined text string.
     """
     article_text = fetch_result.get("text", "") if fetch_result else ""
@@ -373,54 +418,25 @@ def gather_research(story, fetch_result: dict):
     if story["summary"]:
         parts.append(f"[RSS summary]\n{story['summary']}")
 
-    headline = story["title"]
-
-    for lang in ("fr", "en"):
-        try:
-            results = fetch_query(headline, lang, 72, 3)
-            for art in results:
-                if art["summary"]:
-                    label = f"[{art['source']} – {lang.upper()}]"
-                    parts.append(f"{label}\n{art['summary']}")
-        except Exception:
-            pass
-
-    if _is_law_or_policy(headline):
-        phrase = _extract_key_phrase(headline)
-        if phrase:
-            law_query = f"{phrase} france texte loi"
-            try:
-                results = fetch_query(law_query, "fr", 168, 3)
-                for art in results:
-                    if art["summary"]:
-                        parts.append(f"[loi search – {art['source']}]\n{art['summary']}")
-            except Exception:
-                pass
+    for art in _related_stories(story):
+        parts.append(f"[{art['source']}]\n{art['summary']}")
 
     return "\n\n".join(parts) if parts else story["summary"]
 
 
 def gather_deep_research(cluster) -> str:
     """
-    Runs 2-3 additional background searches for a cluster to enrich website articles.
+    Collects background material for a cluster's website article from
+    related coverage across all sources polled this run.
     Returns a text bundle of background material.
     """
-    primary   = cluster["stories"][0]
-    phrase    = _extract_key_phrase(primary["title"])
-    parts     = []
-    bg_queries = [
-        f"{phrase} france context",
-        f"{phrase} history explained",
-    ]
-    for q in bg_queries:
-        for lang in ("en", "fr"):
-            try:
-                results = fetch_query(q, lang, 168, 3)
-                for art in results:
-                    if art["summary"]:
-                        parts.append(f"[Background – {art['source']} {lang.upper()}]\n{art['summary']}")
-            except Exception:
-                pass
+    primary    = cluster["stories"][0]
+    in_cluster = {s["url"] for s in cluster["stories"]}
+    parts      = []
+    for art in _related_stories(primary, min_overlap=1, limit=10):
+        if art.get("url") in in_cluster:
+            continue
+        parts.append(f"[Background – {art['source']}]\n{art['summary']}")
     return "\n\n".join(parts[:6])
 
 
@@ -433,13 +449,33 @@ _REFUSAL_PHRASES = (
 )
 
 
+def inversion_instruction(cluster) -> str:
+    """
+    Category D (documented Islamophobia) drafting instruction, or "" if no
+    story in the cluster was flagged inversion_required by the relevance filter.
+    """
+    flagged = [s for s in cluster["stories"] if s.get("inversion_required")]
+    if not flagged:
+        return ""
+    actor = flagged[0]["source"]
+    reason = flagged[0].get("relevance_reason", "")
+    return (
+        f"INVERSION REQUIRED: The subject of this article is {actor} (or the actor it reports on) "
+        f"making an Islamophobic claim. The Muslim community is never the subject of a negative claim. "
+        f"Lead with who said it and their platform/reach. Never relay the claim as if it were factual.\n"
+        + (f"Editorial note: {reason}\n" if reason else "")
+        + "\n"
+    )
+
+
 def draft_website_article(client, cluster, bundle: str, deep_research: str) -> str | None:
     """Calls Claude to write a long-form website article for a cluster. Returns text or None."""
     combined = bundle
     if deep_research:
         combined += "\n\n=== BACKGROUND RESEARCH ===\n\n" + deep_research
 
-    user_msg = WEBSITE_USER_TEMPLATE.format(count=len(cluster["stories"]), bundle=combined)
+    user_msg = inversion_instruction(cluster) + WEBSITE_USER_TEMPLATE.format(
+        count=len(cluster["stories"]), bundle=combined)
     primary  = cluster["stories"][0]
     try:
         response = client.messages.create(
@@ -450,7 +486,7 @@ def draft_website_article(client, cluster, bundle: str, deep_research: str) -> s
         )
         text = response.content[0].text.strip()
         if any(phrase in text for phrase in _REFUSAL_PHRASES):
-            fallback_prompt = (
+            fallback_prompt = inversion_instruction(cluster) + (
                 f"Write a 400 word news article about this headline for Islamophobia Watch France. "
                 f"Use whatever information you have. Do not refuse. "
                 f"Headline: {primary['title']}. Source: {primary['source']}."
@@ -654,31 +690,25 @@ def _content_confidence(fetch_result: dict) -> str:
 
 
 def fetch_all_stories():
-    """Runs all RSS queries and returns deduplicated stories sorted newest first."""
-    print(f"  Running {len(QUERIES)} news searches...")
-    all_articles = []
-
-    for query, lang in QUERIES:
-        articles = fetch_query(query, lang, HOURS_BACK, MAX_RESULTS)
-        all_articles.extend(articles)
-
-    all_articles.sort(key=lambda a: a["published"], reverse=True)
-
-    seen = set()
-    unique = []
-    for art in all_articles:
-        key = simplify_title(art["title"])
-        if key not in seen:
-            seen.add(key)
-            unique.append(art)
-
-    print(f"  Found {len(unique)} unique stories in the last {HOURS_BACK}h.")
+    """
+    Polls every enabled source via iwf_aggregator and returns stories newest
+    first, deduplicated by URL and title, with "published" as a datetime.
+    """
+    stories = iwf_aggregator.fetch_all_stories()
+    seen, unique = set(), []
+    for s in stories:
+        key = simplify_title(s["title"])
+        if key in seen:
+            continue
+        seen.add(key)
+        s["published"] = datetime.datetime.fromisoformat(s["published"])
+        unique.append(s)
     return unique
 
 
 def draft_post(client, cluster, bundle):
     """Calls Claude to write a LinkedIn post for a cluster. Returns text or None on failure."""
-    user_message = USER_PROMPT_TEMPLATE.format(
+    user_message = inversion_instruction(cluster) + USER_PROMPT_TEMPLATE.format(
         count=len(cluster["stories"]),
         bundle=bundle,
     )
@@ -692,7 +722,7 @@ def draft_post(client, cluster, bundle):
         )
         text = response.content[0].text.strip()
         if any(phrase in text for phrase in _REFUSAL_PHRASES):
-            fallback_prompt = (
+            fallback_prompt = inversion_instruction(cluster) + (
                 f"Write a 150 word LinkedIn post about this headline for Islamophobia Watch France. "
                 f"Use what you have. Do not refuse. "
                 f"Headline: {primary['title']}. Source: {primary['source']}."
@@ -713,14 +743,22 @@ def build_post_record(cluster, score, label, draft_text, index, timestamp,
                       post_type="linkedin", primary_fetch: dict | None = None):
     """Assembles one post dict in the queue.json format."""
     primary = cluster["stories"][0]
-    date_str = timestamp.strftime("%Y%m%d")
+    # Include the time so the 7am and 6pm runs never produce colliding ids
+    # now that queue.json keeps posts from earlier runs (see save_queue).
+    date_str = timestamp.strftime("%Y%m%d%H%M")
     published_dt = primary["published"]
 
     fetch = primary_fetch or {"source": "rss_fallback", "char_count": 0, "success": False}
     confidence = _content_confidence(fetch)
+    flagged = next((s for s in cluster["stories"] if s.get("inversion_required")), None)
 
     return {
         "id": f"post_{index}_{post_type}_{date_str}",
+        "relevance_score":    primary.get("relevance_score"),
+        "relevance_category": primary.get("relevance_category"),
+        "relevance_reason":   primary.get("relevance_reason", ""),
+        "inversion_required": flagged is not None,
+        "bias_flag":          primary.get("bias_flag", ""),
         "type": post_type,
         "title": primary["title"],
         "source": primary["source"],
@@ -804,15 +842,18 @@ def detect_gaps(clusters_with_heat: list, published_json_path: str) -> None:
 
 
 def save_queue(posts, timestamp, total_stories_scanned=0):
-    """Writes all drafted posts to queue.json."""
-    queue = {
-        "generated": timestamp.isoformat(),
-        "total_stories_scanned": total_stories_scanned,
-        "posts": posts,
-    }
-    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(queue, f, indent=2, ensure_ascii=False)
-    print(f"  Saved {len(posts)} post(s) to {QUEUE_FILE}.")
+    """
+    Adds newly drafted posts to queue.json, keeping posts from earlier runs
+    (anything older than 48 h has already been archived by
+    queue_store.archive_stale_posts at the start of main()).
+    """
+    queue = queue_store.load_queue()
+    new_ids = {p["id"] for p in posts}
+    queue["posts"] = [p for p in queue["posts"] if p.get("id") not in new_ids] + posts
+    queue["generated"] = timestamp.isoformat()
+    queue["total_stories_scanned"] = total_stories_scanned
+    queue_store.save_queue(queue)
+    print(f"  Saved {len(posts)} new post(s) to {QUEUE_FILE} ({len(queue['posts'])} in queue).")
 
 
 def append_to_archive(posts, timestamp):
@@ -833,70 +874,6 @@ def append_to_archive(posts, timestamp):
     with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
         json.dump(archive, f, indent=2, ensure_ascii=False)
     print(f"  Appended {len(posts)} post(s) to {ARCHIVE_FILE}.")
-
-
-def _load_wire_seen() -> tuple:
-    """Load wire_seen.json, purge entries older than 24 h, return (data, set of seen URLs)."""
-    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=24)
-    if os.path.exists(WIRE_SEEN_FILE):
-        with open(WIRE_SEEN_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    else:
-        data = {"entries": []}
-    fresh = []
-    for entry in data.get("entries", []):
-        try:
-            seen_at = datetime.datetime.fromisoformat(entry["seen_at"].replace("Z", "+00:00"))
-            if seen_at > cutoff:
-                fresh.append(entry)
-        except Exception:
-            pass
-    data["entries"] = fresh
-    return data, {e["url"] for e in fresh}
-
-
-def _save_wire_seen(data: dict, new_urls: list) -> None:
-    """Append new URLs to wire_seen data and write to disk."""
-    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    for url in new_urls:
-        data["entries"].append({"url": url, "seen_at": now})
-    with open(WIRE_SEEN_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
-
-def archive_stale_queue() -> None:
-    """Move undecided posts from a previous calendar day's queue into archive.json."""
-    if not os.path.exists(QUEUE_FILE):
-        return
-    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-        queue = json.load(f)
-    generated_str = queue.get("generated", "")
-    if not generated_str:
-        return
-    try:
-        generated = datetime.datetime.fromisoformat(generated_str)
-    except Exception:
-        return
-    if generated.date() >= datetime.date.today():
-        return
-    undecided = [p for p in queue.get("posts", []) if p.get("status") in ("pending", "rejected")]
-    if not undecided:
-        return
-    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
-    date_str = generated.strftime("%Y-%m-%d")
-    if os.path.exists(ARCHIVE_FILE):
-        with open(ARCHIVE_FILE, "r", encoding="utf-8") as f:
-            archive = json.load(f)
-    else:
-        archive = {"posts": []}
-    for post in undecided:
-        entry = dict(post)
-        entry["archived_reason"] = "daily_reset"
-        entry["archived_at"] = now
-        archive["posts"].append(entry)
-    with open(ARCHIVE_FILE, "w", encoding="utf-8") as f:
-        json.dump(archive, f, indent=2, ensure_ascii=False)
-    print(f"  Archived {len(undecided)} undecided post(s) from {date_str}.")
 
 
 def save_stories_today(stories: list, clusters_with_heat: list, selected: list, timestamp) -> None:
@@ -927,9 +904,13 @@ def save_stories_today(stories: list, clusters_with_heat: list, selected: list, 
             "time_ago":   format_time_ago(pub) if pub else "",
             "heat_score": heat_score,
             "heat_label": heat_label,
-            "query":      s.get("query", ""),
             "summary":    s.get("summary", ""),
             "selected":   url in selected_urls,
+            "relevance_score":    s.get("relevance_score", 0),
+            "relevance_category": s.get("relevance_category", ""),
+            "relevance_reason":   s.get("relevance_reason", ""),
+            "inversion_required": s.get("inversion_required", False),
+            "source_bias":        s.get("source_bias", ""),
         })
 
     result = {
@@ -948,7 +929,7 @@ def save_wire(stories: list, timestamp) -> None:
     New stories are merged with existing ones, deduplicated by URL,
     purged if older than 7 days, sorted newest-first, capped at 200.
     """
-    wire_seen_data, seen_urls = _load_wire_seen()
+    wire_seen_data, seen_urls = load_wire_seen()
     now      = datetime.datetime.now(datetime.timezone.utc)
     cutoff   = now - datetime.timedelta(days=7)
 
@@ -981,7 +962,6 @@ def save_wire(stories: list, timestamp) -> None:
             "url":       url,
             "published": published.isoformat() if published else "",
             "time_ago":  format_time_ago(published) if published else "",
-            "query":     s.get("query", ""),
         })
         new_urls.append(url)
 
@@ -1002,7 +982,7 @@ def save_wire(stories: list, timestamp) -> None:
     fresh.sort(key=lambda x: x.get("published", ""), reverse=True)
     fresh = fresh[:200]
 
-    _save_wire_seen(wire_seen_data, new_urls)
+    save_wire_seen(wire_seen_data, new_urls)
     wire = {"generated": timestamp.isoformat(), "items": fresh}
     with open(WIRE_FILE, "w", encoding="utf-8") as f:
         json.dump(wire, f, indent=2, ensure_ascii=False)
@@ -1015,11 +995,12 @@ def save_wire(stories: list, timestamp) -> None:
 # =============================================================
 
 def main():
+    global _STORY_POOL
     print("\n" + "=" * 55)
     print("  IWF Drafter - Fetching stories and drafting posts")
     print("=" * 55 + "\n")
 
-    archive_stale_queue()
+    queue_store.archive_stale_posts()
 
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if not api_key:
@@ -1030,24 +1011,49 @@ def main():
     client = anthropic.Anthropic(api_key=api_key)
 
     stories = fetch_all_stories()
+    stats = iwf_aggregator.fetch_all_stories.last_stats
     if not stories:
-        print("  No stories found. Try increasing HOURS_BACK in iwf_aggregator.py.")
+        print("  No stories found. Check sources.json / your internet connection.")
         raise SystemExit(0)
+    _STORY_POOL = stories
 
-    # Translate French titles and summaries to English
-    print("  Translating French content...")
+    # ── Relevance filter ─────────────────────────────────────
+    print("  Scoring relevance...")
+    rejected, wire_stories, full_pipeline = [], [], []
     for story in stories:
+        result = score_relevance(story, story)
+        story["relevance_score"]    = result["score"]
+        story["relevance_category"] = result["category"]
+        story["relevance_reason"]   = result["reason"]
+        story["inversion_required"] = result["inversion_required"]
+        story["bias_flag"]          = result["bias_flag"]
+        {"reject": rejected, "wire": wire_stories, "full": full_pipeline}[route(result["score"])].append(story)
+
+    print(f"  Sources polled: {stats['sources_polled']}")
+    print(f"  Raw stories found: {stats['raw']}")
+    print(f"  Relevance filtered: {len(rejected)} rejected, {len(wire_stories)} wire-only, "
+          f"{len(full_pipeline)} full pipeline\n")
+
+    relevant = wire_stories + full_pipeline
+
+    # Translate French titles and summaries to English (relevant stories only —
+    # rejected ones never reach the site, so translating them is wasted spend)
+    print("  Translating French content...")
+    for story in relevant:
+        story["title_original"] = story.get("title", "")
         story["title"]   = translate_to_english(client, story.get("title", ""))
         story["summary"] = translate_to_english(client, story.get("summary") or "")
 
     timestamp = datetime.datetime.now()
-    save_wire(stories, timestamp)
+    save_wire(relevant, timestamp)
 
-    # Cluster by topic, sort stories within each cluster by source tier
-    clusters = cluster_stories(stories)
+    from post_wire_stories import add_to_wire_queue
+    add_to_wire_queue(wire_stories)
+
+    # Cluster the full-pipeline stories by topic, most authoritative source first
+    clusters = cluster_stories(full_pipeline)
     for c in clusters:
-        c["stories"].sort(key=lambda s: _source_tier(s["source"]))
-    # Sort clusters by size then recency
+        c["stories"].sort(key=_source_tier)
     clusters.sort(
         key=lambda c: (len(c["stories"]), max(s["published"] for s in c["stories"])),
         reverse=True,
@@ -1058,8 +1064,27 @@ def main():
 
     # Select distinct clusters prioritising heat
     selected = select_clusters(clusters_with_heat, MAX_CLUSTERS)
-    save_stories_today(stories, clusters_with_heat, selected, timestamp)
+    # Story Browser shows everything that matched an IWF keyword, scored or not
+    save_stories_today([s for s in stories if s["relevance_score"] > 0],
+                       clusters_with_heat, selected, timestamp)
     detect_gaps(clusters_with_heat, "published.json")
+
+    import publisher as _publisher
+
+    def _regenerate_pages():
+        try:
+            _publisher.update_homepage()
+            _publisher.update_news_archive()
+            _publisher.update_wire()
+        except Exception as _e:
+            print(f"  [page regeneration warning] {_e}")
+
+    if not selected:
+        print("  No stories scored 8+ this run — no articles drafted.")
+        _regenerate_pages()
+        print("\n  Done.\n")
+        return
+
     print(f"  Drafting posts for {len(selected)} topic cluster(s)...\n")
 
     posts = []
@@ -1067,7 +1092,8 @@ def main():
     for i, (cluster, score, label, hours_old) in enumerate(selected, 1):
         primary = cluster["stories"][0]
         n = len(cluster["stories"])
-        print(f"  [{i}/{len(selected)}] [{label}] {primary['title'][:55]}... ({n} source(s))")
+        inv = " [CATEGORY D - INVERSION]" if any(s.get("inversion_required") for s in cluster["stories"]) else ""
+        print(f"  [{i}/{len(selected)}] [{label}]{inv} {primary['title'][:55]}... ({n} source(s))")
 
         article_fetches = {}
         for story in cluster["stories"]:
@@ -1097,7 +1123,7 @@ def main():
         else:
             print(f"        -> LinkedIn skipped (API error)")
 
-        # OUTPUT B — Website article (with deep background research)
+        # OUTPUT B — Website article (with background from related coverage)
         print(f"        -> Gathering background research...")
         deep = gather_deep_research(cluster)
         website_draft = draft_website_article(client, cluster, bundle, deep)
@@ -1126,13 +1152,7 @@ def main():
     append_to_archive(posts, timestamp)
 
     # Regenerate homepage feed, news archive, and wire section with fresh data
-    import publisher as _publisher
-    try:
-        _publisher.update_homepage()
-        _publisher.update_news_archive()
-        _publisher.update_wire()
-    except Exception as _e:
-        print(f"  [page regeneration warning] {_e}")
+    _regenerate_pages()
 
     print("\n  Done. Open the dashboard to review your posts.\n")
 

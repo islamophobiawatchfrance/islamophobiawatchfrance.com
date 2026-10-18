@@ -19,7 +19,9 @@ from dotenv import load_dotenv
 from telegram import BotCommand, Update
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
 
+import bluesky_poster
 import publisher
+import queue_store
 import run as pipeline_run
 
 HERE       = os.path.dirname(os.path.abspath(__file__))
@@ -32,16 +34,33 @@ CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID")
 
 
 def _load_queue() -> dict:
-    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    # Never raises: a corrupt queue.json is backed up and replaced, and
+    # malformed posts are dropped, so one bad entry can't block every button.
+    return queue_store.load_queue(QUEUE_FILE)
 
 
 def _save_queue(queue: dict) -> None:
-    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(queue, f, indent=2, ensure_ascii=False)
+    queue_store.save_queue(queue, QUEUE_FILE)
+
+
+def _site_link(url: str) -> str:
+    return url.split("://", 1)[-1]
 
 
 async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    try:
+        await _handle_callback(update, context)
+    except Exception as e:
+        print(f"  [callback error] {e!r}")
+        try:
+            await update.callback_query.edit_message_text(
+                f"⚠️ Something went wrong handling that button: {e}\n\nOpen the dashboard to finish."
+            )
+        except Exception:
+            pass
+
+
+async def _handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
 
     # This bot can publish to the live site and push to git, so only the
@@ -96,12 +115,28 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
             post["push_failed"]   = not push_ok
             _save_queue(queue)
 
-            if push_ok:
-                await query.edit_message_text(f"✓ Published: {title}\n{url}")
-            else:
+            if not push_ok:
                 await query.edit_message_text(
-                    f"✓ Published (git push failed — saved locally, retry from dashboard): {title}\n{url}"
+                    f"✓ Published (git push failed — saved locally, retry from dashboard): {title}\n"
+                    f"🌐 {_site_link(url)}\n"
+                    f"🦋 Bluesky: skipped until the article is live (posted when you retry the push)"
                 )
+                return
+
+            await query.edit_message_text(f"✓ Published\n🌐 {_site_link(url)}\n🦋 Bluesky: posting thread…")
+            bsky_ok = await asyncio.get_running_loop().run_in_executor(
+                None, bluesky_poster.post_article_thread, post
+            )
+            # Re-load before saving: the queue may have changed while we were posting
+            queue = _load_queue()
+            for p in queue.get("posts", []):
+                if p.get("id") == post_id:
+                    p["bluesky_posted"] = bsky_ok
+                    if post.get("bluesky_thread"):
+                        p["bluesky_thread"] = post["bluesky_thread"]
+            _save_queue(queue)
+            status = "thread posted" if bsky_ok else "failed — see logs/bluesky.log"
+            await query.edit_message_text(f"✓ Published\n🌐 {_site_link(url)}\n🦋 Bluesky: {status}")
         else:
             # LinkedIn posts are never auto-posted (no LinkedIn API call in
             # this pipeline) — mark approved and hand back the draft text so
@@ -116,26 +151,8 @@ async def handle_rescan(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     if CHAT_ID and str(update.effective_chat.id) != str(CHAT_ID):
         return
 
-    pending_titles = []
-    if os.path.exists(QUEUE_FILE):
-        queue = _load_queue()
-        pending_titles = [
-            p.get("title", "Untitled")
-            for p in queue.get("posts", [])
-            if p.get("status") == "pending"
-        ]
-
-    # drafter.py fully overwrites queue.json's post list on every run — it
-    # doesn't merge. Rescanning over unreviewed posts would silently delete
-    # them (no archive happens until the next calendar day), so refuse.
-    if pending_titles:
-        listing = "\n".join(f"  • {t}" for t in pending_titles)
-        await update.message.reply_text(
-            f"⚠️ {len(pending_titles)} pending post(s) still unreviewed:\n{listing}\n\n"
-            "Approve or reject them first, then /rescan again."
-        )
-        return
-
+    # drafter.py merges new drafts into queue.json (posts > 48 h old are
+    # archived), so rescanning never discards unreviewed posts.
     if not pipeline_run._acquire_lock():
         await update.message.reply_text("⏳ Pipeline already running — try again shortly.")
         return
@@ -165,6 +182,9 @@ def main() -> None:
     if not BOT_TOKEN:
         raise SystemExit("TELEGRAM_BOT_TOKEN not set in .env")
 
+    # Clear out anything stuck in the queue for more than 48 h
+    queue_store.archive_stale_posts()
+
     async def _register_commands(a: Application) -> None:
         await a.bot.set_my_commands(
             [BotCommand("rescan", "Rescan for new stories and draft posts")]
@@ -173,6 +193,12 @@ def main() -> None:
     app = Application.builder().token(BOT_TOKEN).post_init(_register_commands).build()
     app.add_handler(CallbackQueryHandler(handle_callback))
     app.add_handler(CommandHandler("rescan", handle_rescan))
+
+    async def _on_error(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
+        # Transient Telegram network errors (e.g. "Bad Gateway") — log one line, keep polling
+        print(f"  [telegram error] {context.error!r}")
+
+    app.add_error_handler(_on_error)
     print("  Telegram bot listening for approve/reject actions...")
     app.run_polling()
 

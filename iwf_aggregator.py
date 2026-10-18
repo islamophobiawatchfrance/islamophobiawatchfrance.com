@@ -2,146 +2,70 @@
 """
 IWF News Aggregator
 -------------------
-Uses Google News RSS to find the latest articles matching
-your search queries. Sorts results by time, newest first.
+Polls the RSS feeds listed in sources.json directly (no Google News),
+keeps everything published in the last HOURS_BACK hours, and returns
+the stories newest first.
 
 Run with:  python3 iwf_aggregator.py
 
 EASY TO CUSTOMISE:
-- Add/remove search queries in the QUERIES section below
+- Add/remove/disable sources in sources.json (or the dashboard's
+  "Manage Sources" tab)
 - Change HOURS_BACK to widen or narrow the time window
-- Change MAX_RESULTS to get more or fewer articles per query
 """
 
-import feedparser
 import datetime
-import urllib.parse
+import json
+import os
 import re
 import textwrap
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
+
+import feedparser
 
 
 # =============================================================
-# CONFIGURATION - this is the only section you need to edit
+# CONFIGURATION
 # =============================================================
 
-# SEARCH QUERIES
-# Each line is a separate Google News search.
-# Use quotes around phrases: "like this"
-# Combine terms with +: islamophobie+france
-# Google News will search across all major French and English sources.
-#
-# FR = French language results | EN = English language results
-# You can mix both freely.
+HERE           = os.path.dirname(os.path.abspath(__file__))
+SOURCES_FILE   = os.path.join(HERE, "sources.json")
+WIRE_SEEN_FILE = os.path.join(HERE, "wire_seen.json")
 
-QUERIES = [
-
-    # --- Core topic (French) ---
-    ("islamophobie france",                "FR"),
-    ("musulmans france",                   "FR"),
-    ("mosquée france attaque",             "FR"),
-    ("voile hijab france loi",             "FR"),
-    ("laïcité france islam",               "FR"),
-    ("frères musulmans france",            "FR"),
-    ("islamisme france retailleau",        "FR"),
-
-    # --- Key organisations & figures (French) ---
-    ("CCIE islamophobie",                  "FR"),
-    ("CFCM islam france",                  "FR"),
-    ("Grande Mosquée Paris",               "FR"),
-
-    # --- Incidents (French) ---
-    ("agression islamophobe france",       "FR"),
-    ("mosquée incendie france",            "FR"),
-
-    # --- English language coverage ---
-    ("islamophobia france",                "EN"),
-    ("french muslims",                     "EN"),
-    ("hijab ban france",                   "EN"),
-    ("secularism france muslims",          "EN"),
-
-    # --- European context ---
-    ("islamophobia europe",                "EN"),
-
-    # --- RN / Far right (French) ---
-    ("\"Marine Le Pen\" islam OR musulmans OR islamophobie", "FR"),
-    ("\"Jordan Bardella\" immigration OR minorités OR islam", "FR"),
-    ("\"Rassemblement National\" musulmans OR islam OR laïcité", "FR"),
-    ("RN immigration islam france",        "FR"),
-    ("\"valeurs françaises\" islam OR musulmans", "FR"),
-    ("\"identité nationale\" islam OR immigration", "FR"),
-
-    # --- RN / Far right (English) ---
-    ("\"Marine Le Pen\" muslims OR islam OR immigration", "EN"),
-    ("\"National Rally\" muslims OR minorities OR french values", "EN"),
-    ("\"Jordan Bardella\" immigration OR islam", "EN"),
-
-    # --- Muslim community / positive coverage (French) ---
-    ("musulmans france culture sport art", "FR"),
-    ("islam france réussite OR succès OR culture", "FR"),
-    ("communauté musulmane france initiatives", "FR"),
-    ("mosquée france culture OR art OR sport", "FR"),
-
-    # --- Muslim community / positive coverage (English) ---
-    ("french muslims culture sport business", "EN"),
-    ("muslim community france achievement",  "EN"),
-
-]
-
-# HOW MANY HOURS BACK to include articles from.
-# 72 = last three days. Use 24 for tighter, 48 for narrower.
-# (Widened from 48 as a safety margin after Google News RSS started
-# returning stale results in 2026 - see build_google_news_url().)
+# HOW MANY HOURS BACK to include articles from. 72 = last three days.
 HOURS_BACK = 72
 
-# MAX RESULTS per query. Keep this low (3-5) to avoid duplicates.
-MAX_RESULTS = 4
+# Seconds to wait for each feed before giving up on it.
+FEED_TIMEOUT = 15
 
-# DEDUPLICATE: skip articles whose title is very similar to one already shown.
-# True = on (recommended). False = show everything including near-duplicates.
-DEDUPLICATE = True
+# Some publishers (Le Figaro, La Dépêche, Le Progrès…) refuse the default
+# feedparser/urllib user agent, so present as a normal desktop browser.
+USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+)
 
 
 # =============================================================
-# CORE FUNCTIONS - you don't need to edit below this line
+# HELPERS
 # =============================================================
-
-def build_google_news_url(query, language_code):
-    """
-    Builds a Google News RSS URL for a given search query.
-    language_code: "FR" for French results, "EN" for English.
-
-    Appends a "when:3d" search operator so Google News itself filters to
-    the last 3 days. Without it, Google News RSS started returning up to
-    100 results with no recency ordering (some months old) as of 2026 -
-    "when:3d" restores recent, mostly-newest-first results. The 3-day
-    window matches HOURS_BACK=72; is_recent() still trims to the exact
-    cutoff afterward.
-    """
-    encoded_query = urllib.parse.quote(f"{query} when:3d")
-
-    if language_code == "FR":
-        return (f"https://news.google.com/rss/search"
-                f"?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr")
-    else:
-        return (f"https://news.google.com/rss/search"
-                f"?q={encoded_query}&hl=en&gl=GB&ceid=GB:en")
-
 
 def get_pub_time(entry):
     """
     Returns a datetime object for an article, or a very old date as fallback.
     """
-    if hasattr(entry, "published_parsed") and entry.published_parsed:
-        return datetime.datetime(
-            *entry.published_parsed[:6],
-            tzinfo=datetime.timezone.utc
-        )
+    for attr in ("published_parsed", "updated_parsed"):
+        parsed = entry.get(attr)
+        if parsed:
+            return datetime.datetime(*parsed[:6], tzinfo=datetime.timezone.utc)
     return datetime.datetime(2000, 1, 1, tzinfo=datetime.timezone.utc)
 
 
 def is_recent(entry, hours_back):
     """
     Returns True if the article is within the HOURS_BACK window.
+    Entries with no date at all are kept (year 2000 sentinel).
     """
     pub_time = get_pub_time(entry)
     if pub_time.year == 2000:
@@ -150,18 +74,16 @@ def is_recent(entry, hours_back):
               - datetime.timedelta(hours=hours_back))
     return pub_time >= cutoff
 
+
 def simplify_title(title):
     return title.lower().strip()
 
-    
+
 def clean_summary(raw):
     """
     Strips HTML tags and extra whitespace from a summary string.
-    Google News summaries often contain HTML like <b> or <a href>.
     """
-    # Remove HTML tags
-    text = re.sub(r'<[^>]+>', '', raw)
-    # Collapse multiple spaces and newlines into one space
+    text = re.sub(r'<[^>]+>', '', raw or "")
     text = re.sub(r'\s+', ' ', text).strip()
     # Truncate to 1500 characters so more story detail reaches Claude
     if len(text) > 1500:
@@ -169,63 +91,16 @@ def clean_summary(raw):
     return text if text else "No summary available."
 
 
-def wrap(text, width=60, indent="      "):
-    """
-    Word-wraps a string to fit neatly in the terminal.
-    """
-    return textwrap.fill(text, width=width,
-                         initial_indent=indent,
-                         subsequent_indent=indent)
-
-
-def fetch_query(query, language_code, hours_back, max_results):
-    """
-    Fetches one Google News RSS query and returns matching articles as a list.
-    """
-    results = []
-    url = build_google_news_url(query, language_code)
-
-    try:
-        feed = feedparser.parse(url)
-
-        count = 0
-        for entry in feed.entries:
-            if count >= max_results:
-                break
-            if not is_recent(entry, hours_back):
-                continue
-
-            raw_title = getattr(entry, "title", "(no title)")
-            if " - " in raw_title:
-                title, source = raw_title.rsplit(" - ", 1)
-            else:
-                title = raw_title
-                source = "Unknown"
-
-            # Extract and clean the summary from the RSS entry
-            raw_summary = getattr(entry, "summary", "")
-            summary = clean_summary(raw_summary)
-
-            results.append({
-                "source":    source.strip(),
-                "title":     title.strip(),
-                "url":       getattr(entry, "link", "(no link)"),
-                "published": get_pub_time(entry),
-                "query":     query,
-                "summary":   summary,
-            })
-            count += 1
-
-    except Exception as e:
-        print(f"  [WARNING] Failed on query '{query}': {e}")
-
-    return results
-
-
 def format_time_ago(pub_time):
     """
     Returns a human-readable string like '3h ago' or '1d 4h ago'.
+    Accepts a datetime or an ISO-format string.
     """
+    if isinstance(pub_time, str):
+        try:
+            pub_time = datetime.datetime.fromisoformat(pub_time.replace("Z", "+00:00"))
+        except ValueError:
+            return "unknown time"
     if pub_time.year == 2000:
         return "unknown time"
 
@@ -244,27 +119,156 @@ def format_time_ago(pub_time):
         return f"{minutes}m ago"
 
 
+def wrap(text, width=60, indent="      "):
+    return textwrap.fill(text, width=width,
+                         initial_indent=indent,
+                         subsequent_indent=indent)
+
+
+# =============================================================
+# SOURCES + SEEN-URL TRACKING
+# =============================================================
+
+def load_sources(enabled_only=True):
+    """Returns the source list from sources.json (enabled ones only by default)."""
+    if not os.path.exists(SOURCES_FILE):
+        print(f"  [WARNING] {SOURCES_FILE} not found — no sources to poll.")
+        return []
+    with open(SOURCES_FILE, "r", encoding="utf-8") as f:
+        sources = json.load(f).get("sources", [])
+    if enabled_only:
+        sources = [s for s in sources if s.get("enabled", True)]
+    return sources
+
+
+def load_wire_seen() -> tuple:
+    """Load wire_seen.json, purge entries older than 24 h, return (data, set of seen URLs)."""
+    cutoff = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=24)
+    data = {"entries": []}
+    if os.path.exists(WIRE_SEEN_FILE):
+        try:
+            with open(WIRE_SEEN_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except (OSError, ValueError):
+            pass
+    fresh = []
+    for entry in data.get("entries", []):
+        try:
+            seen_at = datetime.datetime.fromisoformat(entry["seen_at"].replace("Z", "+00:00"))
+            if seen_at > cutoff:
+                fresh.append(entry)
+        except Exception:
+            pass
+    data["entries"] = fresh
+    return data, {e["url"] for e in fresh}
+
+
+def save_wire_seen(data: dict, new_urls: list) -> None:
+    """Append new URLs to wire_seen data and write to disk."""
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    for url in new_urls:
+        data["entries"].append({"url": url, "seen_at": now})
+    with open(WIRE_SEEN_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+# =============================================================
+# FETCHING
+# =============================================================
+
+def fetch_source(source, hours_back=HOURS_BACK):
+    """
+    Fetches one source's RSS feed and returns its recent entries as story dicts.
+    Never raises — a broken feed just returns [] and prints a warning.
+    """
+    results = []
+    try:
+        req = urllib.request.Request(source["url"], headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8",
+        })
+        with urllib.request.urlopen(req, timeout=FEED_TIMEOUT) as resp:
+            raw = resp.read()
+        feed = feedparser.parse(raw)
+        if not feed.entries and getattr(feed, "bozo", False):
+            print(f"  [WARNING] {source['name']}: unreadable feed ({feed.bozo_exception})")
+            return []
+
+        for entry in feed.entries:
+            if not is_recent(entry, hours_back):
+                continue
+            url = entry.get("link", "")
+            if not url:
+                continue
+            raw_summary = entry.get("summary") or entry.get("description") or ""
+            results.append({
+                "title":        clean_summary(entry.get("title", "(no title)")),
+                "summary":      clean_summary(raw_summary),
+                "url":          url,
+                "published":    get_pub_time(entry).isoformat(),
+                "source":       source["name"],
+                "source_bias":  source.get("bias", "unknown"),
+                "source_trust": source.get("trust", "medium"),
+                "language":     source.get("language", "FR"),
+            })
+    except Exception as e:
+        print(f"  [WARNING] {source.get('name', '?')}: fetch failed ({e})")
+    return results
+
+
+def fetch_all_stories(hours_back=HOURS_BACK, exclude_seen=False, verbose=True):
+    """
+    Polls every enabled source in sources.json and returns stories newest first,
+    deduplicated by URL.
+
+    exclude_seen=True also drops URLs already recorded in wire_seen.json (the
+    24-hour seen list). It is off by default because run_wire.py polls every
+    3 hours — if it consumed the seen list, the 7am/6pm drafter runs would
+    find nothing new to draft.
+
+    Also sets fetch_all_stories.last_stats = {"sources_polled", "sources_ok", "raw"}.
+    """
+    sources = load_sources()
+    if verbose:
+        print(f"  Polling {len(sources)} sources...")
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        per_source = list(pool.map(lambda s: fetch_source(s, hours_back), sources))
+
+    raw_count = sum(len(r) for r in per_source)
+    seen_urls = load_wire_seen()[1] if exclude_seen else set()
+
+    unique, urls = [], set()
+    for story in (s for batch in per_source for s in batch):
+        if story["url"] in urls or story["url"] in seen_urls:
+            continue
+        urls.add(story["url"])
+        unique.append(story)
+
+    unique.sort(key=lambda s: s["published"], reverse=True)
+
+    fetch_all_stories.last_stats = {
+        "sources_polled": len(sources),
+        "sources_ok":     sum(1 for r in per_source if r),
+        "raw":            raw_count,
+    }
+    if verbose:
+        print(f"  Found {len(unique)} unique stories in the last {hours_back}h "
+              f"({fetch_all_stories.last_stats['sources_ok']}/{len(sources)} sources returned items).")
+    return unique
+
+
+fetch_all_stories.last_stats = {"sources_polled": 0, "sources_ok": 0, "raw": 0}
+
+
+# =============================================================
+# MAIN — print a digest to the terminal
+# =============================================================
+
 def print_digest(articles):
-    """
-    Prints the final digest sorted by time, newest first.
-    Each article shows: time, source, headline, summary, link.
-    """
     if not articles:
-        print(f"\n  No articles found in the last {HOURS_BACK} hours.")
-        print("  Try increasing HOURS_BACK in the configuration section.\n")
+        print(f"\n  No articles found in the last {HOURS_BACK} hours.\n")
         return
-
-    articles.sort(key=lambda a: a["published"], reverse=True)
-
-    if DEDUPLICATE:
-        seen = set()
-        unique = []
-        for art in articles:
-            key = simplify_title(art["title"])
-            if key not in seen:
-                seen.add(key)
-                unique.append(art)
-        articles = unique
 
     print(f"\n{'='*65}")
     print(f"  IWF NEWS DIGEST")
@@ -273,48 +277,20 @@ def print_digest(articles):
     print(f"{'='*65}")
 
     for i, art in enumerate(articles, 1):
-        time_str = format_time_ago(art["published"])
-
-        print(f"\n  [{i:02d}]  {time_str}  |  {art['source']}")
+        print(f"\n  [{i:02d}]  {format_time_ago(art['published'])}  |  {art['source']}")
         print(f"  {'─'*61}")
-
-        # Headline - wrapped so long titles don't run off screen
         print(wrap(art["title"], width=61, indent="  "))
-
-        # Summary
         if art["summary"] and art["summary"] != "No summary available.":
             print()
             print(wrap(art["summary"], width=61, indent="  "))
-
-        # Link on its own line
         print()
         print(f"  -> {art['url']}")
 
-    print(f"\n{'='*65}")
-    print(f"  End of digest  |  {len(articles)} articles  |  last {HOURS_BACK}h")
-    print(f"{'='*65}\n")
+    print(f"\n{'='*65}\n")
 
-
-# =============================================================
-# MAIN
-# =============================================================
 
 def main():
-    total_queries = len(QUERIES)
-    print(f"\nRunning {total_queries} searches on Google News...\n")
-
-    all_articles = []
-
-    for query, lang in QUERIES:
-        lang_label = "FR" if lang == "FR" else "EN"
-        print(f"  [{lang_label}] {query}...")
-        articles = fetch_query(query, lang, HOURS_BACK, MAX_RESULTS)
-        all_articles.extend(articles)
-        if articles:
-            print(f"        -> {len(articles)} article(s) found")
-
-    print()
-    print_digest(all_articles)
+    print_digest(fetch_all_stories())
 
 
 if __name__ == "__main__":

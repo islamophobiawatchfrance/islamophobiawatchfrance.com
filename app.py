@@ -16,6 +16,8 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify, request, render_template_string, send_from_directory
 from werkzeug.utils import secure_filename
 
+import queue_store
+
 # Anchor all file operations to the directory containing app.py, regardless
 # of the working directory from which Flask is launched.
 REPO_PATH  = os.path.dirname(os.path.abspath(__file__))
@@ -26,6 +28,7 @@ app = Flask(__name__)
 
 QUEUE_FILE   = "queue.json"
 ARCHIVE_FILE = "archive.json"
+SOURCES_FILE = "sources.json"
 
 # All HTML, CSS, and JS in one string — no separate template files.
 TEMPLATE = r"""<!DOCTYPE html>
@@ -353,6 +356,19 @@ TEMPLATE = r"""<!DOCTYPE html>
     .write-preview-body hr { border: none; border-top: 1px solid #ddd; margin: 18px 0; }
     .write-preview-body ul { padding-left: 1.4em; margin: 8px 0; }
     .badge.manual-badge { background: #f1f3f4; color: #666; }
+    .badge.rel-a { background: #e6f4ea; color: #1e8e3e; }
+    .badge.rel-b { background: #e8f0fe; color: #1a73e8; }
+    .badge.rel-d { background: #fce8e6; color: #a32d2d; }
+    .badge.rel-c { background: #f1f3f4; color: #666; }
+    .inversion-bar { background: #fce8e6; color: #a32d2d; font-size: 12px; padding: 8px 12px; border-radius: 6px; margin: 8px 0; }
+    .src-table { width:100%; border-collapse:collapse; background:#fff; border-radius:10px; border:1px solid #e4e4e4; overflow:hidden; font-size:13px; }
+    .src-table th { padding:10px 12px; text-align:left; background:#f8f9fa; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:#888; }
+    .src-table td { padding:8px 12px; border-top:1px solid #f0f0f0; vertical-align:middle; }
+    .src-table tr.disabled td { color:#aaa; }
+    .src-table select, .src-form input, .src-form select { font:inherit; font-size:13px; padding:5px 8px; border:1px solid #ddd; border-radius:6px; background:#fff; }
+    .src-form { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-top:16px; padding:14px; background:#fff; border:1px solid #e4e4e4; border-radius:10px; }
+    .src-form input { flex:1 1 140px; min-width:0; }
+    .src-del { background:none; border:1px solid #f1c0bc; color:#d93025; border-radius:6px; padding:3px 9px; cursor:pointer; font-size:12px; }
     .badge.conf-high   { background: #e6f4ea; color: #1e8e3e; }
     .badge.conf-medium { background: #fef7e0; color: #854f0b; }
     .badge.conf-low    { background: #fce8e6; color: #d93025; }
@@ -421,7 +437,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   <button class="tab active" id="tab-queue"   onclick="switchTab('queue')">Queue</button>
   <button class="tab"        id="tab-stories" onclick="switchTab('stories')">Story Browser</button>
   <button class="tab"        id="tab-write"   onclick="switchTab('write')">Write article</button>
-  <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Sources</button>
+  <button class="tab"        id="tab-managesources" onclick="switchTab('managesources')">Manage Sources</button>
+  <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Source Report</button>
 </nav>
 
 <div id="push-fail-banner" onclick="dismissPushFail()">
@@ -456,11 +473,114 @@ TEMPLATE = r"""<!DOCTYPE html>
     document.getElementById('tab-stories').classList.toggle('active', tab === 'stories');
     document.getElementById('tab-write').classList.toggle('active', tab === 'write');
     document.getElementById('tab-sources').classList.toggle('active', tab === 'sources');
+    document.getElementById('tab-managesources').classList.toggle('active', tab === 'managesources');
     document.getElementById('heat-bar').style.display = tab === 'queue' ? '' : 'none';
     if (tab === 'queue')        { render(); loadGaps(); }
     else if (tab === 'stories') loadStoryBrowser();
     else if (tab === 'write')   renderWriteTab();
     else if (tab === 'sources') loadSourceReport();
+    else if (tab === 'managesources') loadManageSources();
+  }
+
+  // ── Manage Sources tab ────────────────────────────────────
+
+  let sourcesData = [];
+
+  async function loadManageSources() {
+    try {
+      const res = await fetch('/api/sources');
+      sourcesData = (await res.json()).sources || [];
+      renderManageSources();
+    } catch (e) {
+      document.getElementById('main').innerHTML = '<div class="empty"><h2>Could not load sources.json.</h2></div>';
+    }
+  }
+
+  function trustSelect(s) {
+    const opts = ['high', 'medium', 'low', 'monitor-only'];
+    return `<select onchange="updateSource('${esc(encodeURIComponent(s.name))}', {trust: this.value})">` +
+      opts.map(o => `<option value="${o}" ${o === s.trust ? 'selected' : ''}>${o}</option>`).join('') + '</select>';
+  }
+
+  function renderManageSources() {
+    const enabled = sourcesData.filter(s => s.enabled).length;
+    const rows = sourcesData.map(s => {
+      const key = esc(encodeURIComponent(s.name));
+      return `<tr class="${s.enabled ? '' : 'disabled'}">
+        <td style="font-weight:500"><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none" title="${esc(s.url)}">${esc(s.name)}</a></td>
+        <td>${esc(s.category)}</td>
+        <td>${esc(s.language)}</td>
+        <td>${esc(s.bias)}</td>
+        <td>${trustSelect(s)}</td>
+        <td><label style="cursor:pointer"><input type="checkbox" ${s.enabled ? 'checked' : ''}
+              onchange="updateSource('${key}', {enabled: this.checked})"> ${s.enabled ? 'On' : 'Off'}</label></td>
+        <td><button class="src-del" onclick="deleteSource('${key}', this)">Delete</button></td>
+      </tr>`;
+    }).join('');
+    document.getElementById('main').innerHTML = `
+      <div style="padding:8px 0;">
+        <div style="font-size:12px;color:#999;margin-bottom:16px;">${sourcesData.length} sources · ${enabled} enabled · changes save immediately to sources.json and apply from the next pipeline run</div>
+        <div style="overflow-x:auto">
+        <table class="src-table">
+          <thead><tr><th>Name</th><th>Category</th><th>Language</th><th>Bias</th><th>Trust</th><th>Enabled</th><th></th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        </div>
+        <form class="src-form" onsubmit="addSource(event)">
+          <strong style="width:100%;font-size:13px">Add source</strong>
+          <input name="name" placeholder="Name" required>
+          <input name="url" placeholder="RSS URL" type="url" required style="flex-basis:260px">
+          <select name="language"><option>FR</option><option>EN</option></select>
+          <input name="category" placeholder="Category (e.g. local-lyon)" required>
+          <input name="bias" placeholder="Bias (e.g. centrist)" required>
+          <select name="trust"><option>high</option><option selected>medium</option><option>low</option><option>monitor-only</option></select>
+          <button class="btn btn-approve" type="submit">Add source</button>
+        </form>
+      </div>`;
+  }
+
+  async function updateSource(key, changes) {
+    const res  = await fetch('/api/sources/' + key, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(changes),
+    });
+    const data = await res.json();
+    if (!res.ok) { showToast(data.error || 'Update failed'); }
+    else { showToast('Saved'); }
+    loadManageSources();
+  }
+
+  async function deleteSource(key, btn) {
+    if (btn.dataset.confirm !== '1') {
+      btn.dataset.confirm = '1';
+      btn.textContent = 'Confirm delete';
+      setTimeout(() => { btn.dataset.confirm = ''; btn.textContent = 'Delete'; }, 4000);
+      return;
+    }
+    const res = await fetch('/api/sources/' + key, { method: 'DELETE' });
+    const data = await res.json();
+    showToast(res.ok ? 'Source deleted' : (data.error || 'Delete failed'));
+    loadManageSources();
+  }
+
+  async function addSource(ev) {
+    ev.preventDefault();
+    const form = ev.target;
+    const body = Object.fromEntries(new FormData(form).entries());
+    const btn  = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Checking feed…';
+    try {
+      const res  = await fetch('/api/sources', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (!res.ok) { showToast(data.error || 'Could not add source'); return; }
+      showToast(data.feed_items > 0
+        ? `Added — feed returned ${data.feed_items} item(s)`
+        : 'Added, but the feed returned no items — check the URL');
+      loadManageSources();
+    } finally {
+      btn.disabled = false; btn.textContent = 'Add source';
+    }
   }
 
   async function loadSourceReport() {
@@ -565,7 +685,8 @@ TEMPLATE = r"""<!DOCTYPE html>
           if (data.push_failed) {
             showPushFailBanner(post.title);
           } else {
-            showToast('Published to islamophobiawatchfrance.com');
+            const bsky = data.bluesky ? ` · 🦋 Bluesky: ${data.bluesky.status}` : '';
+            showToast('Published to islamophobiawatchfrance.com' + bsky);
           }
         } else {
           showToast('Approved — publish error: ' + (data.error || 'unknown'));
@@ -943,6 +1064,15 @@ TEMPLATE = r"""<!DOCTYPE html>
       return `<span class="badge conf-low">⚠ Limited source</span>`;
     })();
 
+    const relBadge = (() => {
+      const c = post.relevance_category;
+      if (!c || post.relevance_score == null) return '';
+      return `<span class="badge rel-${esc(c.toLowerCase())}" title="${esc(post.relevance_reason || '')}">Cat ${esc(c)} · ${esc(post.relevance_score)}/10</span>`;
+    })();
+
+    const inversionBar = post.inversion_required
+      ? `<div class="inversion-bar"><strong>INVERSION REQUIRED</strong> — documented Islamophobia (Category D). The actor making the claim must be the subject; check the draft never relays the claim as fact.</div>` : '';
+
     const lowConfBar = (post.content_confidence === 'low')
       ? `<div class="low-confidence-bar">This draft was generated from limited source material (RSS summary only). Verify facts before publishing.</div>` : '';
 
@@ -962,6 +1092,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           <span class="badge time">${esc(post.time_ago)}</span>
           <span class="badge source">${esc(post.source)}</span>
           ${heatBadge}
+          ${relBadge}
           ${manualBadge}
           ${confBadge}
           ${statusBadge}
@@ -991,6 +1122,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           ${copyBtn}
           ${undoBtn}
         </div>
+        ${inversionBar}
         ${lowConfBar}
         ${publishedLink}
         ${pushFailedBar}
@@ -1626,18 +1758,17 @@ def get_queue():
     """Returns queue.json contents, or null if the file doesn't exist yet."""
     if not os.path.exists(QUEUE_FILE):
         return jsonify(None), 200
-    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-        return jsonify(json.load(f))
+    # load_queue never raises — malformed posts are dropped, a corrupt file is backed up
+    return jsonify(queue_store.load_queue())
 
 
 @app.route("/api/queue", methods=["POST"])
 def save_queue():
     """Saves the posted JSON body back to queue.json."""
     data = request.get_json(force=True)
-    if data is None:
-        return jsonify({"error": "No JSON body"}), 400
-    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    if not isinstance(data, dict) or not isinstance(data.get("posts"), list):
+        return jsonify({"error": "Expected a queue object with a posts list"}), 400
+    queue_store.save_queue(data)
     return jsonify({"ok": True})
 
 
@@ -1685,8 +1816,7 @@ def publish_article():
     if not os.path.exists(QUEUE_FILE):
         return jsonify({"error": "Queue not found"}), 404
 
-    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-        queue_data = json.load(f)
+    queue_data = queue_store.load_queue()
 
     post = next(
         (p for p in queue_data.get("posts", []) if p.get("id") == data["id"]),
@@ -1708,10 +1838,33 @@ def publish_article():
     post["published_url"] = url
     post["published_at"]  = now
     post["push_failed"]   = not push_ok
-    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+    queue_store.save_queue(queue_data)
 
-    return jsonify({"ok": True, "url": url, "push_failed": not push_ok})
+    # Only announce on Bluesky once the article is actually live
+    bluesky = (_post_bluesky_thread(post["id"]) if push_ok
+               else {"posted": False, "status": "skipped until git push succeeds"})
+
+    return jsonify({"ok": True, "url": url, "push_failed": not push_ok, "bluesky": bluesky})
+
+
+def _post_bluesky_thread(post_id: str) -> dict:
+    """Post the Bluesky thread for a published queue post and record the result."""
+    import bluesky_poster
+
+    queue_data = queue_store.load_queue()
+    post = next((p for p in queue_data["posts"] if p.get("id") == post_id), None)
+    if post is None or post.get("bluesky_posted"):
+        return {"posted": bool(post and post.get("bluesky_posted")), "status": "already posted"}
+    ok = bluesky_poster.post_article_thread(post)
+    # Re-load: the dashboard may have saved the queue while we were posting
+    queue_data = queue_store.load_queue()
+    for p in queue_data["posts"]:
+        if p.get("id") == post_id:
+            p["bluesky_posted"] = ok
+            if post.get("bluesky_thread"):
+                p["bluesky_thread"] = post["bluesky_thread"]
+    queue_store.save_queue(queue_data)
+    return {"posted": ok, "status": "thread posted" if ok else "failed — see logs/bluesky.log"}
 
 
 @app.route("/api/retry_push", methods=["POST"])
@@ -1720,12 +1873,8 @@ def retry_push():
     post_id = data.get("id")
 
     # If a post id was given, mark it as no longer push-failed in queue.json
-    if post_id and os.path.exists(QUEUE_FILE):
-        with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-            queue_data = json.load(f)
-        post = next((p for p in queue_data.get("posts", []) if p.get("id") == post_id), None)
-    else:
-        post = None
+    queue_data = queue_store.load_queue()
+    post = next((p for p in queue_data.get("posts", []) if p.get("id") == post_id), None) if post_id else None
 
     result = subprocess.run(["git", "push"], capture_output=True, text=True,
                             cwd=REPO_PATH, env=os.environ.copy())
@@ -1733,11 +1882,17 @@ def retry_push():
         print(f"  [retry_push failed] stdout={result.stdout!r} stderr={result.stderr!r}")
         return jsonify({"ok": False, "error": result.stderr.strip()}), 500
 
-    post["push_failed"] = False
-    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+    if post is None:
+        return jsonify({"ok": True})
 
-    return jsonify({"ok": True})
+    post["push_failed"] = False
+    queue_store.save_queue(queue_data)
+
+    # The article is live now — post the Bluesky thread that was held back
+    bluesky = None
+    if post.get("published") and post.get("type") == "website" and not post.get("bluesky_posted"):
+        bluesky = _post_bluesky_thread(post_id)
+    return jsonify({"ok": True, "bluesky": bluesky})
 
 
 @app.route("/api/gaps", methods=["GET"])
@@ -1802,7 +1957,11 @@ def generate_manual():
         "url":     story["url"],
         "published": pub_dt,
         "summary": story.get("summary", ""),
-        "query":   story.get("query", ""),
+        "source_trust":       story.get("source_trust", ""),
+        "relevance_score":    story.get("relevance_score"),
+        "relevance_category": story.get("relevance_category", ""),
+        "relevance_reason":   story.get("relevance_reason", ""),
+        "inversion_required": story.get("inversion_required", False),
     }
     cluster = {"stories": [cluster_story]}
     score   = story.get("heat_score", 0)
@@ -1829,15 +1988,9 @@ def generate_manual():
         return jsonify({"error": "Draft generation failed — check API key"}), 500
 
     # Append to queue.json
-    if os.path.exists(QUEUE_FILE):
-        with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-            queue_data = json.load(f)
-    else:
-        queue_data = {"generated": timestamp.isoformat(), "posts": []}
-
+    queue_data = queue_store.load_queue()
     queue_data["posts"].extend(posts)
-    with open(QUEUE_FILE, "w", encoding="utf-8") as f:
-        json.dump(queue_data, f, indent=2, ensure_ascii=False)
+    queue_store.save_queue(queue_data)
 
     return jsonify({"ok": True, "message": f"{len(posts)} posts added to queue"})
 
@@ -1849,6 +2002,89 @@ def get_source_report():
         return jsonify({"error": "No source report yet"}), 200
     with open(path, "r", encoding="utf-8") as f:
         return jsonify(json.load(f))
+
+
+# ── Source management (sources.json) ───────────────────────
+
+SOURCE_FIELDS = ("name", "url", "language", "bias", "trust", "category")
+TRUST_LEVELS  = ("high", "medium", "low", "monitor-only")
+
+
+def _load_sources() -> dict:
+    if not os.path.exists(SOURCES_FILE):
+        return {"sources": []}
+    with open(SOURCES_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _save_sources(data: dict) -> None:
+    tmp = SOURCES_FILE + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    os.replace(tmp, SOURCES_FILE)
+
+
+@app.route("/api/sources", methods=["GET"])
+def get_sources():
+    return jsonify(_load_sources())
+
+
+@app.route("/api/sources", methods=["POST"])
+def add_source():
+    import iwf_aggregator
+
+    body = request.get_json(silent=True) or {}
+    source = {k: str(body.get(k, "")).strip() for k in SOURCE_FIELDS}
+    missing = [k for k, v in source.items() if not v]
+    if missing:
+        return jsonify({"error": f"Missing: {', '.join(missing)}"}), 400
+    if not source["url"].startswith(("http://", "https://")):
+        return jsonify({"error": "RSS URL must start with http:// or https://"}), 400
+    source["language"] = source["language"].upper()
+    if source["trust"] not in TRUST_LEVELS:
+        return jsonify({"error": f"Trust must be one of {', '.join(TRUST_LEVELS)}"}), 400
+    source["enabled"] = True
+
+    data = _load_sources()
+    if any(s["name"].lower() == source["name"].lower() for s in data["sources"]):
+        return jsonify({"error": f"A source called {source['name']} already exists"}), 409
+    data["sources"].append(source)
+    _save_sources(data)
+
+    # Quick sanity check of the feed so a typo'd URL is obvious straight away
+    items = len(iwf_aggregator.fetch_source(source, hours_back=24 * 365))
+    return jsonify({"ok": True, "source": source, "feed_items": items})
+
+
+@app.route("/api/sources/<path:name>", methods=["PUT"])
+def update_source(name):
+    body = request.get_json(silent=True) or {}
+    data = _load_sources()
+    source = next((s for s in data["sources"] if s["name"] == name), None)
+    if source is None:
+        return jsonify({"error": "Source not found"}), 404
+    if "enabled" in body:
+        source["enabled"] = bool(body["enabled"])
+    if "trust" in body:
+        if body["trust"] not in TRUST_LEVELS:
+            return jsonify({"error": f"Trust must be one of {', '.join(TRUST_LEVELS)}"}), 400
+        source["trust"] = body["trust"]
+    for k in ("url", "language", "bias", "category"):
+        if body.get(k):
+            source[k] = str(body[k]).strip()
+    _save_sources(data)
+    return jsonify({"ok": True, "source": source})
+
+
+@app.route("/api/sources/<path:name>", methods=["DELETE"])
+def delete_source(name):
+    data = _load_sources()
+    remaining = [s for s in data["sources"] if s["name"] != name]
+    if len(remaining) == len(data["sources"]):
+        return jsonify({"error": "Source not found"}), 404
+    data["sources"] = remaining
+    _save_sources(data)
+    return jsonify({"ok": True})
 
 
 @app.route("/api/regenerate", methods=["POST"])
@@ -2152,6 +2388,8 @@ def serve_image(filename):
 # =============================================================
 
 if __name__ == "__main__":
+    # Clear out anything stuck in the queue for more than 48 h
+    queue_store.archive_stale_posts()
     print("\n  IWF Dashboard running at http://localhost:5000")
     print("  Press Ctrl+C to stop.\n")
     app.run(debug=False, port=5000)

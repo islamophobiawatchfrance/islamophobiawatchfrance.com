@@ -9,3 +9,12 @@ pipeline.lock
 __pycache__/
 *.pyc
 .DS_Store
+bluesky_session.txt
+bluesky_daily_stats.json
+relevance_cache.json
+wire_queue.json
+wire_queue.lock
+*.tmp
+queue.corrupt-*.json
+logs/bluesky.log
+logs/wire.log

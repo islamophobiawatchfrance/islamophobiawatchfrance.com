@@ -20,6 +20,7 @@ from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.constants import ParseMode
 
 import publisher
+import queue_store
 
 HERE          = os.path.dirname(os.path.abspath(__file__))
 QUEUE_FILE    = os.path.join(HERE, "queue.json")
@@ -134,8 +135,8 @@ def build_messages(post: dict) -> list:
     return [(text, InlineKeyboardMarkup([[approve_btn, reject_btn]]), ParseMode.MARKDOWN)]
 
 
-async def _send_all(pending: list) -> int:
-    sent = 0
+async def _send_all(pending: list) -> set:
+    sent = set()
     async with Bot(token=BOT_TOKEN) as bot:
         for post in pending:
             try:
@@ -153,7 +154,7 @@ async def _send_all(pending: list) -> int:
                         text=publisher.format_tiktok_message(post),
                         parse_mode=ParseMode.MARKDOWN,
                     )
-                sent += 1
+                sent.add(post["id"])
             except Exception as e:
                 print(f"  [Telegram send failed for {post.get('id')}] {e}")
     return sent
@@ -168,16 +169,24 @@ def main() -> None:
         print("  No queue.json found. Nothing to send.")
         return
 
-    with open(QUEUE_FILE, "r", encoding="utf-8") as f:
-        queue = json.load(f)
+    queue = queue_store.load_queue(QUEUE_FILE)
 
-    pending = [p for p in queue.get("posts", []) if p.get("status") == "pending"]
+    # queue.json keeps earlier runs' posts, so only send drafts not sent before
+    pending = [p for p in queue.get("posts", [])
+               if p.get("status") == "pending" and not p.get("telegram_sent")]
     if not pending:
-        print("  No pending posts to send to Telegram.")
+        print("  No new pending posts to send to Telegram.")
         return
 
-    sent = asyncio.run(_send_all(pending))
-    print(f"  Sent {sent}/{len(pending)} draft(s) to Telegram.")
+    sent_ids = asyncio.run(_send_all(pending))
+
+    # Re-load so we don't clobber approvals made while messages were sending
+    queue = queue_store.load_queue(QUEUE_FILE)
+    for p in queue.get("posts", []):
+        if p.get("id") in sent_ids:
+            p["telegram_sent"] = True
+    queue_store.save_queue(queue, QUEUE_FILE)
+    print(f"  Sent {len(sent_ids)}/{len(pending)} draft(s) to Telegram.")
 
 
 if __name__ == "__main__":

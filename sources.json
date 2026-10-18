@@ -1,0 +1,211 @@
+{
+  "sources": [
+    {
+      "name": "Le Monde",
+      "url": "https://www.lemonde.fr/rss/une.xml",
+      "language": "FR",
+      "bias": "centrist",
+      "trust": "high",
+      "enabled": true,
+      "category": "national"
+    },
+    {
+      "name": "Mediapart",
+      "url": "https://www.mediapart.fr/articles/feed",
+      "language": "FR",
+      "bias": "left",
+      "trust": "high",
+      "enabled": true,
+      "category": "national"
+    },
+    {
+      "name": "Orient XXI",
+      "url": "https://orientxxi.info/spip.php?page=backend",
+      "language": "FR",
+      "bias": "specialist",
+      "trust": "high",
+      "enabled": true,
+      "category": "specialist"
+    },
+    {
+      "name": "Saphirnews",
+      "url": "https://www.saphirnews.com/xml/syndication.rss",
+      "language": "FR",
+      "bias": "muslim-community",
+      "trust": "high",
+      "enabled": true,
+      "category": "specialist"
+    },
+    {
+      "name": "Bondy Blog",
+      "url": "https://www.bondyblog.fr/feed/",
+      "language": "FR",
+      "bias": "community",
+      "trust": "high",
+      "enabled": true,
+      "category": "specialist"
+    },
+    {
+      "name": "TSA Algerie",
+      "url": "https://www.tsa-algerie.com/feed/",
+      "language": "FR",
+      "bias": "algerian-state-adjacent",
+      "trust": "medium",
+      "enabled": true,
+      "category": "international"
+    },
+    {
+      "name": "Middle East Eye France",
+      "url": "https://www.middleeasteye.net/fr/rss",
+      "language": "FR",
+      "bias": "pro-palestine",
+      "trust": "medium",
+      "enabled": true,
+      "category": "international"
+    },
+    {
+      "name": "Basta!",
+      "url": "https://basta.media/spip.php?page=backend",
+      "language": "FR",
+      "bias": "left",
+      "trust": "high",
+      "enabled": true,
+      "category": "national"
+    },
+    {
+      "name": "Rue89 Lyon",
+      "url": "https://www.rue89lyon.fr/feed/",
+      "language": "FR",
+      "bias": "left-local",
+      "trust": "high",
+      "enabled": true,
+      "category": "local-lyon"
+    },
+    {
+      "name": "Lyon Capitale",
+      "url": "https://www.lyoncapitale.fr/feed/",
+      "language": "FR",
+      "bias": "centrist-local",
+      "trust": "high",
+      "enabled": true,
+      "category": "local-lyon"
+    },
+    {
+      "name": "Marsactu",
+      "url": "https://marsactu.fr/feed/",
+      "language": "FR",
+      "bias": "investigative-local",
+      "trust": "high",
+      "enabled": true,
+      "category": "local-marseille"
+    },
+    {
+      "name": "La Provence",
+      "url": "https://www.laprovence.com/rss/marseille.xml",
+      "language": "FR",
+      "bias": "centrist-local",
+      "trust": "medium",
+      "enabled": true,
+      "category": "local-marseille"
+    },
+    {
+      "name": "Rue89 Strasbourg",
+      "url": "https://www.rue89strasbourg.com/feed/",
+      "language": "FR",
+      "bias": "left-local",
+      "trust": "high",
+      "enabled": true,
+      "category": "local-strasbourg"
+    },
+    {
+      "name": "La Depeche",
+      "url": "https://www.ladepeche.fr/rss.xml",
+      "language": "FR",
+      "bias": "centrist-local",
+      "trust": "medium",
+      "enabled": true,
+      "category": "local-toulouse"
+    },
+    {
+      "name": "Le Progres Lyon",
+      "url": "https://www.leprogres.fr/edition-lyon-villeurbanne/rss",
+      "language": "FR",
+      "bias": "centrist-local",
+      "trust": "medium",
+      "enabled": true,
+      "category": "local-lyon"
+    },
+    {
+      "name": "EUobserver",
+      "url": "https://euobserver.com/rss",
+      "language": "EN",
+      "bias": "centrist-eu",
+      "trust": "high",
+      "enabled": true,
+      "category": "european"
+    },
+    {
+      "name": "The Local France",
+      "url": "https://feeds.thelocal.com/rss/fr",
+      "language": "EN",
+      "bias": "centrist",
+      "trust": "high",
+      "enabled": true,
+      "category": "english-france"
+    },
+    {
+      "name": "Al Jazeera English",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "language": "EN",
+      "bias": "state-adjacent-qatar",
+      "trust": "medium",
+      "enabled": true,
+      "category": "international"
+    },
+    {
+      "name": "Bridge Initiative",
+      "url": "https://bridge.georgetown.edu/feed/",
+      "language": "EN",
+      "bias": "academic-monitoring",
+      "trust": "high",
+      "enabled": true,
+      "category": "specialist"
+    },
+    {
+      "name": "ENAR",
+      "url": "https://www.enar-eu.org/feed/",
+      "language": "EN",
+      "bias": "civil-society",
+      "trust": "high",
+      "enabled": true,
+      "category": "specialist"
+    },
+    {
+      "name": "Anadolu Agency",
+      "url": "https://www.aa.com.tr/en/rss/default?cat=europe",
+      "language": "EN",
+      "bias": "turkish-state",
+      "trust": "medium",
+      "enabled": true,
+      "category": "international"
+    },
+    {
+      "name": "Valeurs Actuelles",
+      "url": "https://www.valeursactuelles.com/feed/",
+      "language": "FR",
+      "bias": "far-right",
+      "trust": "monitor-only",
+      "enabled": true,
+      "category": "monitor"
+    },
+    {
+      "name": "Le Figaro",
+      "url": "https://www.lefigaro.fr/rss/figaro_actualites.xml",
+      "language": "FR",
+      "bias": "centre-right",
+      "trust": "medium",
+      "enabled": true,
+      "category": "national"
+    }
+  ]
+}
