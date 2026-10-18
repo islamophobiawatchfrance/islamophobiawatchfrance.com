@@ -63,11 +63,16 @@ Lead with the actor making the claim, not the claim itself.
 Wrong: "Muslims accused of infiltrating schools"
 Right: "Valeurs Actuelles claims Muslims infiltrate schools — no evidence provided"
 
-Return only the post text, nothing else.
+FRANCE ANGLE (mandatory):
+- If the story is about France, make the French connection explicit in the post (place, institution, or French actor).
+- If it is about another European country, the post must be about Islamophobia or anti-Muslim discrimination, and say which country.
+- If the story has no French connection and is not centrally about Islamophobia in Europe, reply with exactly: SKIP
+
+Return only the post text (or SKIP), nothing else.
 """
 
 ARTICLE_POST1_SYSTEM_PROMPT = """
-Write the opening post of a Bluesky thread for an IWF original article. This is IWF's own analysis, not a wire relay. Voice should be informed and direct - a journalist who has read the source material and has a view on its significance. Maximum 280 characters. No link. End with a hook that makes people want to read the thread reply.
+Write the opening post of a Bluesky thread for an IWF original article. This is IWF's own analysis, not a wire relay. Voice should be informed and direct - a journalist who has read the source material and has a view on its significance. Make the France angle explicit (or, for a story elsewhere in Europe, the country and the Islamophobia at its centre). Maximum 280 characters. No link. End with a hook that makes people want to read the thread reply.
 """
 
 ARTICLE_POST2_SYSTEM_PROMPT = """
@@ -110,6 +115,11 @@ def _ask(system: str, user: str, max_tokens: int = 300) -> str:
         messages=[{"role": "user", "content": user}],
     )
     return response.content[0].text.strip().strip('"').strip()
+
+
+def is_skip(text: str) -> bool:
+    """True if the post writer declined the story (no France / Islamophobia angle)."""
+    return text.strip().strip(".").upper() == "SKIP"
 
 
 def has_question(text: str) -> bool:
@@ -265,9 +275,19 @@ def post_wire(story: dict, text: str | None = None) -> bool:
     (post_wire_stories.py passes pre-checked text for the question limit).
     Returns True on success.
     """
+    from relevance_filter import passes_geo_rule
+
     try:
+        # Final guard — this also covers posts triggered by hand
+        if not passes_geo_rule(story):
+            _log(f"WIRE REFUSED (no France angle / not Islamophobia-central in Europe): "
+                 f"{story.get('title', '')[:80]} [geo_scope={story.get('geo_scope')}]")
+            return False
         if text is None:
             text = generate_wire_post(story, allow_question=get_question_count_today() < MAX_QUESTIONS_PER_DAY)
+        if is_skip(text):
+            _log(f"WIRE SKIPPED by post writer (no France angle): {story.get('title', '')[:80]}")
+            return False
         client = authenticate()
         if client is None:
             _log(f"WIRE FAILED (not authenticated): {story.get('title', '')[:80]}")

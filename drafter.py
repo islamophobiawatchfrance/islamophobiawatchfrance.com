@@ -27,7 +27,7 @@ import iwf_aggregator
 import queue_store
 from iwf_aggregator import format_time_ago, simplify_title, load_wire_seen, save_wire_seen
 from publisher import _derive_category
-from relevance_filter import score_relevance, route
+from relevance_filter import score_relevance, route, apply_score
 
 load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
 
@@ -759,6 +759,7 @@ def build_post_record(cluster, score, label, draft_text, index, timestamp,
         "relevance_reason":   primary.get("relevance_reason", ""),
         "inversion_required": flagged is not None,
         "bias_flag":          primary.get("bias_flag", ""),
+        "geo_scope":          primary.get("geo_scope", ""),
         "type": post_type,
         "title": primary["title"],
         "source": primary["source"],
@@ -911,6 +912,7 @@ def save_stories_today(stories: list, clusters_with_heat: list, selected: list, 
             "relevance_reason":   s.get("relevance_reason", ""),
             "inversion_required": s.get("inversion_required", False),
             "source_bias":        s.get("source_bias", ""),
+            "geo_scope":          s.get("geo_scope", ""),
         })
 
     result = {
@@ -1022,11 +1024,7 @@ def main():
     rejected, wire_stories, full_pipeline = [], [], []
     for story in stories:
         result = score_relevance(story, story)
-        story["relevance_score"]    = result["score"]
-        story["relevance_category"] = result["category"]
-        story["relevance_reason"]   = result["reason"]
-        story["inversion_required"] = result["inversion_required"]
-        story["bias_flag"]          = result["bias_flag"]
+        apply_score(story, result)
         {"reject": rejected, "wire": wire_stories, "full": full_pipeline}[route(result["score"])].append(story)
 
     print(f"  Sources polled: {stats['sources_polled']}")

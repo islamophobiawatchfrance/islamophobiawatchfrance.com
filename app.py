@@ -1023,6 +1023,12 @@ TEMPLATE = r"""<!DOCTYPE html>
     } catch (e) { /* stories_today.json may not exist yet */ }
   }
 
+  function geoBadgeHtml(geo) {
+    if (geo === 'france') return '<span class="badge time" title="France angle">🇫🇷 France</span>';
+    if (geo === 'europe') return '<span class="badge time" title="European story — Islamophobia is the central subject">🇪🇺 Europe</span>';
+    return '';
+  }
+
   function renderCard(post) {
     const id   = post.id;
     const type = post.type || 'linkedin';
@@ -1070,6 +1076,8 @@ TEMPLATE = r"""<!DOCTYPE html>
       return `<span class="badge rel-${esc(c.toLowerCase())}" title="${esc(post.relevance_reason || '')}">Cat ${esc(c)} · ${esc(post.relevance_score)}/10</span>`;
     })();
 
+    const geoBadge = geoBadgeHtml(post.geo_scope);
+
     const inversionBar = post.inversion_required
       ? `<div class="inversion-bar"><strong>INVERSION REQUIRED</strong> — documented Islamophobia (Category D). The actor making the claim must be the subject; check the draft never relays the claim as fact.</div>` : '';
 
@@ -1093,6 +1101,7 @@ TEMPLATE = r"""<!DOCTYPE html>
           <span class="badge source">${esc(post.source)}</span>
           ${heatBadge}
           ${relBadge}
+          ${geoBadge}
           ${manualBadge}
           ${confBadge}
           ${statusBadge}
@@ -1671,6 +1680,7 @@ TEMPLATE = r"""<!DOCTYPE html>
       <span class="badge ${heatCls}" style="flex-shrink:0;font-size:9px">${esc(s.heat_label)}</span>
       <span class="story-time">${esc(s.time_ago)}</span>
       <span class="badge source" style="flex-shrink:0">${esc(s.source)}</span>
+      ${geoBadgeHtml(s.geo_scope)}
       <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" class="story-link" title="${esc(s.title)}">${esc(s.title)}</a>
       ${selBadge}
       <button class="btn btn-regen btn-generate" id="gen-btn-${esc(s.id)}" onclick="generatePosts('${esc(s.id)}')">Generate posts</button>

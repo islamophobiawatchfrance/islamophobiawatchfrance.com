@@ -24,6 +24,14 @@ How a story is handled depends on its **relevance score** (0–10), which is dec
 - **6–7:** **wire only.** It appears in the website's wire section and gets one short Bluesky post. No article is written.
 - **8–10:** **full article.** Drafts are written and sent to you for approval. Up to two topics are drafted per run.
 
+**The France rule.** Every story must have a France angle before it can enter the pipeline:
+
+- **France:** anything that happens in France or involves French institutions, politicians, media, courts or Muslims in France. These are judged normally.
+- **Elsewhere in Europe (including the UK):** accepted only if Islamophobia is the main subject. That means an anti-Muslim attack, a headscarf or halal ban, a court case, a hate-crime report, or a named politician's anti-Muslim remarks. Cultural features, achievement stories and general immigration news from other European countries are skipped.
+- **Outside Europe:** always skipped.
+
+The rule is checked twice: once when a story is scored, and again just before anything is posted to Bluesky. In the dashboard, each story shows a 🇫🇷 France or 🇪🇺 Europe label.
+
 Stories from far-right or "monitor-only" sources (for example Valeurs Actuelles) can only come through as **Category D: documented Islamophobia**. That means the person or outlet making the claim is the subject of the story, and the claim is never repeated as if it were true. Drafts like this have a red **INVERSION REQUIRED** banner in the dashboard. Check them carefully before approving.
 
 ### What arrives on your phone via Telegram

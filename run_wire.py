@@ -22,7 +22,7 @@ import iwf_aggregator
 import post_wire_stories
 import publisher
 from drafter import save_wire, translate_to_english, fetch_all_stories
-from relevance_filter import score_relevance, route
+from relevance_filter import score_relevance, route, apply_score
 
 load_dotenv(os.path.join(HERE, ".env"))
 
@@ -78,11 +78,7 @@ def main() -> None:
     relevant = []
     for story in stories:
         result = score_relevance(story, story)
-        story["relevance_score"]    = result["score"]
-        story["relevance_category"] = result["category"]
-        story["relevance_reason"]   = result["reason"]
-        story["inversion_required"] = result["inversion_required"]
-        story["bias_flag"]          = result["bias_flag"]
+        apply_score(story, result)
         bucket = route(result["score"])
         counts[bucket] += 1
         if bucket != "reject":

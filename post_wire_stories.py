@@ -22,6 +22,7 @@ import os
 
 import bluesky_poster
 import queue_store
+from relevance_filter import passes_geo_rule
 
 HERE            = os.path.dirname(os.path.abspath(__file__))
 WIRE_QUEUE_FILE = os.path.join(HERE, "wire_queue.json")
@@ -101,6 +102,8 @@ def add_to_wire_queue(stories: list) -> int:
                 "relevance_category": s.get("relevance_category", ""),
                 "relevance_reason":   s.get("relevance_reason", ""),
                 "inversion_required": bool(s.get("inversion_required")),
+                "geo_scope":          s.get("geo_scope", ""),
+                "islamophobia_central": bool(s.get("islamophobia_central")),
                 "queued_at":          now.isoformat(),
                 "scheduled_for":      None,
                 "bluesky_posted":     False,
@@ -156,6 +159,10 @@ def _drafted_urls() -> set:
 def _is_eligible(p: dict, now: datetime.datetime) -> bool:
     if p.get("bluesky_posted") or p.get("status") in ("failed", "expired", "skipped"):
         return False
+    if not passes_geo_rule(p):
+        p["status"] = "skipped"
+        p["skip_reason"] = "No France angle (or European story not centrally about Islamophobia)"
+        return False
     published = _parse(p.get("published"))
     if published and now - published > MAX_STORY_AGE:
         p["status"] = "expired"
@@ -205,6 +212,11 @@ def run(now: datetime.datetime | None = None) -> dict:
                 if (bluesky_poster.has_question(text)
                         and bluesky_poster.get_question_count_today() >= bluesky_poster.MAX_QUESTIONS_PER_DAY):
                     text = bluesky_poster.generate_wire_post(p, allow_question=False)
+                if bluesky_poster.is_skip(text):
+                    p["status"] = "skipped"
+                    p["skip_reason"] = "Post writer found no France / Islamophobia angle"
+                    save_wire_queue(data)
+                    continue
                 if bluesky_poster.post_wire(p, text=text):
                     p["bluesky_posted"] = True
                     p["posted_at"] = datetime.datetime.now(bluesky_poster.PARIS).isoformat()
