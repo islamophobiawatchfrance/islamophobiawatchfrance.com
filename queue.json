@@ -107,11 +107,11 @@
       "title": "In Aix, three students suffer a racist assault by far-right groups",
       "source": "Marsactu",
       "url": "https://marsactu.fr/a-aix-trois-etudiants-subissent-une-agression-raciste-par-des-groupuscules-dextreme-droite/",
-      "published": "2026-10-16T18:44:40+00:00",
+      "published": true,
       "time_ago": "1d 20h ago",
       "summary": "It is approximately 3:20 p.m., this Saturday, October 10, when Sofian*, accompanied by his colleague Adan*, stops in front of the Faculty of Letters in Aix-en-Provence. \"I felt we were being followed, but I never would have believed that I would one day be confronted with that,\" Sofian tells Marsactu today. We passed in front of a notice board [...]",
       "draft": "Three students were attacked in a racially motivated assault by far-right activists on Saturday, October 10, in Aix-en-Provence, France, according to reporting by Marsactu. All three victims filed complaints with police. The incident occurred near the Faculty of Letters on the outskirts of an antifascist demonstration taking place in the city.\n\n## What happened\n\nAround 3:20 p.m. on October 10, Sofian and his colleague Adan stopped in front of the Faculty of Letters in Aix-en-Provence while waiting for a third colleague who held keys to Adan's student housing in the university residence. Sofian told Marsactu that he sensed they were being followed. As they passed a notice board displaying Marine Le Pen campaign posters, approximately fifteen people approached them in a threatening manner, according to Sofian's account to police during his formal complaint.\n\nThe attackers stated that if Sofian and Adan wanted to remove the Le Pen posters, the group would put them back up. \"That's when we understood they were far-right,\" Sofian, a second-year geography student, explained to Marsactu. The encounter escalated into what Sofian characterized as a racist assault. Marsactu obtained photographs documenting members of the far-right groups involved prior to the attack.\n\nAll three students—Sofian, Adan, and a third colleague—filed police reports following the incident. Marsactu was able to contact one of the victims directly and also interviewed a direct witness to the assault.\n\n## Reaction\n\nNo statement from the attacked students beyond their accounts to Marsactu and police has been reported. No formal response from local authorities, the university, or civil society organizations regarding the assault has been documented in the available reporting.\n\n## Why it matters\n\nThe October 10 assault represents a documented instance of far-right street violence targeting students in France, occurring during a period of heightened political tensions. Such incidents underscore ongoing concerns about racist violence and the presence of organized identitarian groups in French university towns, particularly in contexts involving political activism and counter-demonstrations.\n\n## Background\n\nAix-en-Provence is a major university city in southern France located in the Provence-Alpes-Côte d'Azur region. The incident occurred during an antifascist demonstration, reflecting France's longstanding political divisions between left-wing and far-right movements. Marine Le Pen is the president of the Rassemblement National (National Rally), France's primary far-right political party. Identitarian groups are loose networks of far-right activists who organize around ethno-nationalist ideology. The term \"ratonnade\"—used by Sofian to describe the assault—is a historical French term referring to racially motivated street attacks, carrying significant weight given France's colonial history and ongoing racial tensions.\n\n---\n\n**Who were the three students attacked?**\n\nTwo of the victims are named Sofian, a second-year geography student, and Adan. Their full identities have not been disclosed. The third student's name and details remain unreported by Marsactu.\n\n**Were the attackers identified or arrested?**\n\nMarsactu's reporting does not identify the attackers by name or indicate whether any arrests were made. The source notes that approximately fifteen people participated in the assault and describes them as members of far-right identitarian groups.\n\n**What prompted the confrontation?**\n\nAccording to Sofian's account, the immediate trigger involved Marine Le Pen campaign posters displayed on a notice board at the Faculty of Letters. When the attackers suggested Sofian and Adan would not be permitted to remove the posters, the students recognized the group's far-right ideology.\n\n**Have university or local officials responded?**\n\nNo statement from Aix-en-Provence university administration, local government, or police regarding the assault has been included in Marsactu's reporting.\n\nSources: Marsactu",
-      "status": "pending",
+      "status": "approved",
       "created": "2026-10-18T17:44:07.825040",
       "heat_score": 5,
       "heat_label": "TRENDING",
@@ -125,7 +125,17 @@
       "content_confidence": "high",
       "content_chars": 3632,
       "fetch_source": "direct",
-      "telegram_sent": true
+      "telegram_sent": true,
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-10-16-aix-three-students-suffer-racist-assault-far-right-groups.html",
+      "published_at": "2026-10-18T15:59:53.717295+00:00",
+      "push_failed": false,
+      "bluesky_posted": true,
+      "bluesky_thread": {
+        "post1": "Far-right groups attacked three students in Aix-en-Provence over campaign posters. Police have complaints. But where's the university? Where are local officials? A documented assault on campus edges—and institutional silence.",
+        "post2": "This attack reflects broader patterns of identitarian street violence in French universities. Institutional silence risks normalizing far-right…\n\nFull analysis: https://islamophobiawatchfrance.com/news/2026-10-16-aix-three-students-suffer-racist-assault-far-right-groups.html",
+        "uri": "at://did:plc:oi4y5m7mpujsavahdjlrpb6b/app.bsky.feed.post/3my5xyqxsus27",
+        "reply_uri": "at://did:plc:oi4y5m7mpujsavahdjlrpb6b/app.bsky.feed.post/3my5xyr5hk227"
+      }
     }
   ],
   "total_stories_scanned": 355
