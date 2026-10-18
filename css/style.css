@@ -366,7 +366,7 @@ p  { color: var(--text-secondary); }
   color: var(--red);
 }
 .pick-headline {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   line-height: 1.3;
   color: var(--text);
@@ -374,16 +374,27 @@ p  { color: var(--text-secondary); }
 .pick-headline a { color: inherit; text-decoration: none; }
 .pick-headline a:hover { color: var(--red); }
 .pick-intro {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.75;
+  margin-bottom: 6px;
+}
+/* Mirrors the article page's .art-h2, scaled to the pick's text size */
+.pick-subhead {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0a0a0a;
+  line-height: 1.35;
+  margin-top: 10px;
+  width: fit-content;
+  border-bottom: 2px solid var(--red);
 }
 .pick-meta {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-faint);
 }
 .pick-read-more {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--red);
   text-decoration: none;
