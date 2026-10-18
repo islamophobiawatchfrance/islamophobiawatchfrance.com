@@ -270,7 +270,7 @@ p  { color: var(--text-secondary); }
   overflow: hidden;
 }
 
-/* Left column — latest news wire (live feed) */
+/* Left column — Editor's Pick (single featured article) */
 .hero-left {
   width: 45%;
   display: flex;
@@ -282,12 +282,13 @@ p  { color: var(--text-secondary); }
 
 .hero-wire-header { padding: 0 24px 16px; flex-shrink: 0; }
 
-.hero-left .wire-feed {
+/* Right column — latest news wire (live feed) */
+.hero-right .wire-feed {
   flex: 1;
   max-height: none;
 }
 
-.hero-left .wire-note {
+.hero-right .wire-note {
   flex-shrink: 0;
   padding: 10px 24px;
   border-top: 1px solid var(--border-subtle);
@@ -346,9 +347,54 @@ p  { color: var(--text-secondary); }
 
 .hero-split-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
+/* Editor's Pick */
+.editors-pick {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 12px 32px 32px;
+}
+.pick-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+}
+.pick-headline {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--text);
+}
+.pick-headline a { color: inherit; text-decoration: none; }
+.pick-headline a:hover { color: var(--red); }
+.pick-intro {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.pick-meta {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.pick-read-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  width: fit-content;
+}
+.pick-read-more:hover { text-decoration: underline; }
+
+.footer-mission { margin-top: 6px; }
+
 /* Right column */
 .hero-right {
   flex: 1;
+  border-left: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -817,10 +863,11 @@ p  { color: var(--text-secondary); }
   }
   .hero-left {
     width: 100%;
-    height: 400px;
+    height: auto;
     flex-shrink: 0;
     padding-top: 0;
   }
+  .editors-pick { padding: 24px 20px; }
   .hero-right {
     width: 100%;
     border-left: none;
@@ -903,7 +950,7 @@ p  { color: var(--text-secondary); }
   .footer-left { grid-column: auto; }
 
   /* ── Hero ── */
-  .hero-left         { height: 360px; }
+  .hero-left         { height: auto; }
   .hero-right        { height: 360px; }
   .homepage-about-inner { gap: 20px; }
   .hero-split-ctas   { flex-direction: column; }

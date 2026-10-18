@@ -518,8 +518,9 @@ def save_article(post: dict, repo_path: str = ".", published_articles: list = No
 
 def update_homepage(repo_path: str = ".") -> None:
     """
-    Replace the contents of .hero-feed in index.html with
-    freshly generated feed items (newest first, max 10).
+    Regenerate the homepage hero's Editor's Pick (left column) from the most
+    recently published article in published.json. The right column is the
+    live wire feed, which update_wire() fills.
     Reads published.json directly so manual title edits are always reflected.
     """
     published_path = os.path.join(repo_path, PUBLISHED_FILE)
@@ -533,45 +534,28 @@ def update_homepage(repo_path: str = ".") -> None:
     with open(index_path, "r", encoding="utf-8") as f:
         html = f.read()
 
-    articles = sorted(published_articles, key=lambda x: x.get("published_at", ""), reverse=True)[:10]
+    articles = sorted(published_articles, key=lambda x: x.get("published_at", ""), reverse=True)
+    pick = articles[0] if articles else None
 
-    def _feed_item(a: dict) -> str:
-        filename  = a.get("filename", "#")
-        title     = _esc(a.get("title", ""))
-        short_dt  = _esc(_short_date(a.get("date", "")))
-        heat_lbl  = a.get("heat_label", "NORMAL")
-        _srcs  = a.get("sources") or []
-        source = _esc((_srcs[0].get("name", "") if _srcs else "") or a.get("source", ""))
-        expt      = _esc(clean_excerpt(a.get("draft", ""), 160))
-        heat_html = (
-            f'<span class="badge {_heat_cls(heat_lbl)}">'
-            f'{_heat_icon(heat_lbl)} {_esc(heat_lbl)}</span>\n'
-            if _heat_badge_fresh(a.get("published_at", "")) else ""
+    if pick:
+        filename  = _esc(pick.get("filename", "#"))
+        title     = _esc(pick.get("title", ""))
+        intro_src = pick.get("standfirst") or pick.get("website_draft") or pick.get("draft", "")
+        intro     = _esc(clean_excerpt(intro_src, 200))
+        meta      = " · ".join(_esc(x) for x in (pick.get("date", ""), pick.get("category", "")) if x)
+        pick_html = (
+            f'\n        <div class="pick-label">Editor\'s Pick</div>\n'
+            f'        <h2 class="pick-headline"><a href="{filename}">{title}</a></h2>\n'
+            f'        <p class="pick-intro">{intro}</p>\n'
+            f'        <div class="pick-meta">{meta}</div>\n'
+            f'        <a href="{filename}" class="pick-read-more">Read more →</a>\n      '
         )
-
-        return (
-            f'        <article class="news-feed-item">\n'
-            f'          <div class="feed-date">{short_dt}</div>\n'
-            f'          <div class="feed-content">\n'
-            f'            <div class="feed-headline">\n'
-            f'              <a href="{filename}">{title}</a>\n'
-            f'            </div>\n'
-            f'            <p class="feed-excerpt">{expt}</p>\n'
-            f'            <div class="feed-meta">\n'
-            f'              <span class="feed-source">{source}</span>\n'
-            f'              {heat_html}'
-            f'            </div>\n'
-            f'          </div>\n'
-            f'          <a href="{filename}" class="feed-arrow">→</a>\n'
-            f'        </article>'
-        )
-
-    items_html = "\n\n".join(_feed_item(a) for a in articles)
-    new_contents = f"\n{items_html}\n\n      "
+    else:
+        pick_html = '\n        <p class="pick-intro">No articles published yet.</p>\n      '
 
     updated = re.sub(
-        r'(<div class="hero-feed">).*?(</div><!-- /\.hero-feed -->)',
-        lambda m: m.group(1) + new_contents + m.group(2),
+        r'(<div class="editors-pick">).*?(</div><!-- /\.editors-pick -->)',
+        lambda m: m.group(1) + pick_html + m.group(2),
         html,
         flags=re.DOTALL,
     )
@@ -594,7 +578,7 @@ def update_homepage(repo_path: str = ".") -> None:
 
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(updated)
-    print(f"  index.html updated ({len(articles)} items in feed)")
+    print(f"  index.html updated (Editor's Pick: {pick.get('title', '')[:60] if pick else 'none'})")
 
 
 def update_news_archive(repo_path: str = ".") -> None:
