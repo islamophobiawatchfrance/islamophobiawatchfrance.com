@@ -20009,7 +20009,8 @@
       "content_chars": 8221,
       "fetch_source": "direct",
       "date": "2026-10-24",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-10-24T15:43:41.990Z"
     },
     {
       "id": "post_2_linkedin_202610241528",
