@@ -15,11 +15,13 @@ EASY TO CUSTOMISE:
 """
 
 import datetime
+import gzip
 import json
 import os
 import re
 import textwrap
 import urllib.request
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 
 import feedparser
@@ -176,6 +178,46 @@ def save_wire_seen(data: dict, new_urls: list) -> None:
 # FETCHING
 # =============================================================
 
+_SITEMAP_NS = {
+    "sm":   "http://www.sitemaps.org/schemas/sitemap/0.9",
+    "news": "http://www.google.com/schemas/sitemap-news/0.9",
+}
+
+
+def _parse_news_sitemap(raw, source, hours_back):
+    """
+    Reads a Google News sitemap (for publishers with no RSS, e.g. La Provence).
+    Sitemaps carry a title and date but no summary.
+    """
+    cutoff = (datetime.datetime.now(datetime.timezone.utc)
+              - datetime.timedelta(hours=hours_back))
+    results = []
+    for url_el in ET.fromstring(raw).findall("sm:url", _SITEMAP_NS):
+        url   = url_el.findtext("sm:loc", "", _SITEMAP_NS).strip()
+        title = url_el.findtext("news:news/news:title", "", _SITEMAP_NS)
+        date  = url_el.findtext("news:news/news:publication_date", "", _SITEMAP_NS)
+        if not url or not title:
+            continue
+        try:
+            pub_time = datetime.datetime.fromisoformat(date.replace("Z", "+00:00"))
+            pub_time = pub_time.astimezone(datetime.timezone.utc)
+        except ValueError:
+            pub_time = datetime.datetime(2000, 1, 1, tzinfo=datetime.timezone.utc)
+        if pub_time.year != 2000 and pub_time < cutoff:
+            continue
+        results.append({
+            "title":        clean_summary(title),
+            "summary":      "No summary available.",
+            "url":          url,
+            "published":    pub_time.isoformat(),
+            "source":       source["name"],
+            "source_bias":  source.get("bias", "unknown"),
+            "source_trust": source.get("trust", "medium"),
+            "language":     source.get("language", "FR"),
+        })
+    return results
+
+
 def fetch_source(source, hours_back=HOURS_BACK):
     """
     Fetches one source's RSS feed and returns its recent entries as story dicts.
@@ -189,6 +231,12 @@ def fetch_source(source, hours_back=HOURS_BACK):
         })
         with urllib.request.urlopen(req, timeout=FEED_TIMEOUT) as resp:
             raw = resp.read()
+        # Some servers (Middle East Eye) send gzip bodies without a
+        # Content-Encoding header, so urllib hands back compressed bytes.
+        if raw[:2] == b"\x1f\x8b":
+            raw = gzip.decompress(raw)
+        if source.get("format") == "news-sitemap":
+            return _parse_news_sitemap(raw, source, hours_back)
         feed = feedparser.parse(raw)
         if not feed.entries and getattr(feed, "bozo", False):
             print(f"  [WARNING] {source['name']}: unreadable feed ({feed.bozo_exception})")

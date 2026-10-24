@@ -55,6 +55,7 @@ EN_KEYWORDS = [
     "islam", "muslim", "muslims", "mosque", "islamophobia", "hijab", "veil",
     "secularism", "brotherhood", "separatism", "islamist", "discrimination",
     "minority rights", "hate crime", "far-right france", "laicite",
+    "racism", "racist",
 ]
 
 # Match at the start of a word only, so "veil" catches "veiled" but not

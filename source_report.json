@@ -1,10 +1,10 @@
 {
-  "total": 1511,
+  "total": 1522,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
       "count": 156,
-      "pct": 10.3
+      "pct": 10.2
     },
     {
       "name": "France 24",
@@ -19,7 +19,7 @@
     {
       "name": "Actu.fr",
       "count": 60,
-      "pct": 4.0
+      "pct": 3.9
     },
     {
       "name": "Ouest-France",
@@ -49,7 +49,7 @@
     {
       "name": "franceinfo",
       "count": 28,
-      "pct": 1.9
+      "pct": 1.8
     },
     {
       "name": "Libération",
@@ -64,7 +64,7 @@
     {
       "name": "CNews",
       "count": 25,
-      "pct": 1.7
+      "pct": 1.6
     },
     {
       "name": "reinformation.tv",
@@ -79,7 +79,7 @@
     {
       "name": "Radio France",
       "count": 22,
-      "pct": 1.5
+      "pct": 1.4
     },
     {
       "name": "Visas & Voyages Algérie",
@@ -242,6 +242,11 @@
       "pct": 0.5
     },
     {
+      "name": "Lyon Capitale",
+      "count": 8,
+      "pct": 0.5
+    },
+    {
       "name": "BFM",
       "count": 8,
       "pct": 0.5
@@ -382,17 +387,22 @@
       "pct": 0.3
     },
     {
+      "name": "Le Monde",
+      "count": 5,
+      "pct": 0.3
+    },
+    {
+      "name": "Marsactu",
+      "count": 4,
+      "pct": 0.3
+    },
+    {
       "name": "Harici",
       "count": 4,
       "pct": 0.3
     },
     {
       "name": "Tunisie Numerique",
-      "count": 4,
-      "pct": 0.3
-    },
-    {
-      "name": "Lyon Capitale",
       "count": 4,
       "pct": 0.3
     },
@@ -557,9 +567,9 @@
       "pct": 0.3
     },
     {
-      "name": "Marsactu",
-      "count": 3,
-      "pct": 0.2
+      "name": "TSA Algerie",
+      "count": 4,
+      "pct": 0.3
     },
     {
       "name": "CT Insider",
@@ -602,22 +612,12 @@
       "pct": 0.1
     },
     {
-      "name": "TSA Algerie",
-      "count": 2,
-      "pct": 0.1
-    },
-    {
       "name": "France 3 Auvergne-Rhône-Alpes / France 3 Rhône-Alpes",
       "count": 1,
       "pct": 0.1
     },
     {
       "name": "National Assembly of France",
-      "count": 1,
-      "pct": 0.1
-    },
-    {
-      "name": "Le Monde",
       "count": 1,
       "pct": 0.1
     },

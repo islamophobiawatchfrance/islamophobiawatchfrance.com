@@ -13,3 +13,26 @@
   Drafting posts for 2 topic cluster(s)...
 
   [1/2] [HOT] 2027 Presidential Election: 21% of French People Consid... (17 source(s))
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Polling 23 sources...
+  Found 652 unique stories in the last 72h (20/23 sources returned items).
+  Scoring relevance...
+  Sources polled: 23
+  Raw stories found: 652
+  Relevance filtered: 649 rejected, 2 wire-only, 0 full pipeline
+
+  Translating French content...
+  Wire: 0 new, 54 total (1 skipped as seen today).
+  Saved 16 stories to stories_today.json.
+  Gap detector: all hot topics covered.
+  No stories scored 8+ this run — no articles drafted.
+  index.html updated (Editor's Pick: In Aix, three students suffer a racist assault by far-right )
+  news.html updated (36 cards in grid)
+  Wire updated (54 items across 7 days)
+
+  Done.
+

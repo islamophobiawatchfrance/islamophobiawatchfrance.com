@@ -101,12 +101,13 @@
     },
     {
       "name": "La Provence",
-      "url": "https://www.laprovence.com/rss/marseille.xml",
+      "url": "https://www.laprovence.com/googlenews.xml",
       "language": "FR",
       "bias": "centrist-local",
       "trust": "medium",
       "enabled": true,
-      "category": "local-marseille"
+      "category": "local-marseille",
+      "format": "news-sitemap"
     },
     {
       "name": "Rue89 Strasbourg",
