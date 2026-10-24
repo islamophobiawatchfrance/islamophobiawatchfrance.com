@@ -36,3 +36,79 @@
 
   Done.
 
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Polling 23 sources...
+  Found 647 unique stories in the last 72h (21/23 sources returned items).
+  Scoring relevance...
+  Sources polled: 23
+  Raw stories found: 647
+  Relevance filtered: 633 rejected, 2 wire-only, 11 full pipeline
+
+  Translating French content...
+  Wire: 0 new, 52 total (15 skipped as seen today).
+  Saved 34 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] Racist attack in Trappes: the alleged shooter said he w... (8 source(s))
+        Fetch: direct | 8,221 chars | confidence: HIGH
+        -> LinkedIn (206 words)
+        -> Gathering background research...
+        -> Website article (801 words)
+        -> TikTok script (106 words)
+  [2/2] [HOT] Leurs mots, nos morts... (1 source(s))
+        Fetch: direct | 9,530 chars | confidence: HIGH
+        -> LinkedIn (186 words)
+        -> Gathering background research...
+        -> Website article (631 words)
+        -> TikTok script (85 words)
+  Saved 4 new post(s) to queue.json (4 in queue).
+  Appended 4 post(s) to archive.json.
+  index.html updated (Editor's Pick: ISLAMOPHOBIC SHOOTING IN TRAPPES, FRANCE – WHAT TO KNOW:)
+  news.html updated (37 cards in grid)
+  Wire updated (52 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Polling 23 sources...
+  Found 647 unique stories in the last 72h (21/23 sources returned items).
+  Scoring relevance...
+  Sources polled: 23
+  Raw stories found: 647
+  Relevance filtered: 633 rejected, 2 wire-only, 11 full pipeline
+
+  Translating French content...
+  Wire: 0 new, 52 total (15 skipped as seen today).
+  Saved 34 stories to stories_today.json.
+  Gap detector: 2 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [HOT] Racist attack in Trappes: the suspected shooter said he... (8 source(s))
+        Fetch: direct | 8,221 chars | confidence: HIGH
+        -> LinkedIn (221 words)
+        -> Gathering background research...
+        -> Website article (762 words)
+        -> TikTok script (95 words)
+  [2/2] [HOT] Leurs mots, nos morts... (1 source(s))
+        Fetch: direct | 9,530 chars | confidence: HIGH
+        -> LinkedIn (171 words)
+        -> Gathering background research...
+        -> Website article (604 words)
+        -> TikTok script (107 words)
+  Saved 4 new post(s) to queue.json (8 in queue).
+  Appended 4 post(s) to archive.json.
+  index.html updated (Editor's Pick: ISLAMOPHOBIC SHOOTING IN TRAPPES, FRANCE – WHAT TO KNOW:)
+  news.html updated (37 cards in grid)
+  Wire updated (52 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+

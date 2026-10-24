@@ -296,10 +296,12 @@ def generate_header_graphic(title: str, category: str, heat_label: str, date: st
     return f'<div class="art-header-img">{svg}</div>'
 
 
-def generate_article_html(post: dict, published_articles: list = None) -> str:
+def generate_article_html(post: dict, published_articles: list = None,
+                          filename: str = None, slug: str = None) -> str:
     """
     Read article-template.html and substitute all {{placeholders}}.
-    Returns the complete HTML string.
+    Returns the complete HTML string. filename/slug pin an existing article's
+    URL when it is re-rendered after an edit (otherwise derived from the title).
     """
     with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
         tmpl = f.read()
@@ -309,10 +311,10 @@ def generate_article_html(post: dict, published_articles: list = None) -> str:
     sources    = post.get("sources", [])
     heat_label = post.get("heat_label", "NORMAL")
     heat_score = str(post.get("heat_score", 0))
-    slug       = generate_slug(title)
+    slug       = slug or generate_slug(title)
     date_str   = _format_date(post)
     category   = _derive_category(post)
-    filename   = f"{_date_prefix(post)}-{slug}.html"
+    filename   = filename or f"{_date_prefix(post)}-{slug}.html"
     is_manual  = bool(post.get("manual"))
 
     raw_pub = post.get("published") or post.get("created") or ""
@@ -526,8 +528,15 @@ def _pick_blocks(text: str, max_chars: int = PICK_TEXT_CHARS) -> list:
     Q&A / Sources section and keeps whole paragraphs up to about max_chars
     of body text (always at least one paragraph, never ending on a heading).
     """
+    text = text or ""
+    if re.search(r"<(p|h[1-6])[\s>]", text):
+        # Manual posts are stored as editor HTML: turn headings and paragraphs
+        # into the blank-line-separated markdown blocks parsed below
+        text = re.sub(r"<h[1-6][^>]*>(.*?)</h[1-6]>", r"\n\n## \1\n\n", text, flags=re.DOTALL)
+        text = re.sub(r"</p>|<br\s*/?>\s*<br\s*/?>", "\n\n", text)
+        text = _html.unescape(re.sub(r"<[^>]+>", " ", text)).replace("\xa0", " ")
     blocks, total = [], 0
-    for block in re.split(r"\n\s*\n", text or ""):
+    for block in re.split(r"\n\s*\n", text):
         block = block.strip()
         if not block:
             continue
@@ -798,7 +807,7 @@ def update_sitemap(repo_path: str = ".") -> None:
         filepath = a.get("filename", "")
         if not filepath:
             continue
-        raw = a.get("published_at", today)
+        raw = a.get("updated_at") or a.get("published_at", today)
         try:
             lastmod = datetime.fromisoformat(raw.replace("Z", "+00:00")).strftime("%Y-%m-%d")
         except Exception:
@@ -913,6 +922,68 @@ def git_publish(article_path: str, commit_message: str, repo_path: str = ".") ->
     print(f"\nWARNING: Git push failed after 2 attempts. Article saved locally.")
     print(f"  Run manually: cd {abs_repo} && git push\n")
     return False
+
+
+def update_article(filename: str, post: dict, repo_path: str = ".") -> tuple:
+    """
+    Re-render an already published article after an edit, keeping its
+    original URL, date and position (published_at), then regenerate the
+    listing pages and push. filename is the published.json value, e.g.
+    'news/2026-10-24-....html'. Returns (url, push_ok).
+    """
+    published_path = os.path.join(repo_path, PUBLISHED_FILE)
+    with open(published_path, "r", encoding="utf-8") as f:
+        published = json.load(f)
+    articles = published.get("articles", [])
+    record = next((a for a in articles if a.get("filename") == filename), None)
+    if record is None:
+        raise ValueError(f"No published article with filename {filename}")
+
+    title = post.get("title", record.get("title", ""))
+    print(f"\n  Updating: {title[:70]}")
+
+    # Original publish time drives the displayed date and schema datePublished
+    post["created"] = record.get("published_at") or post.get("created", "")
+    post.pop("published", None)
+
+    article_html = generate_article_html(
+        post, articles,
+        filename=os.path.basename(filename), slug=record.get("slug"),
+    )
+    with open(os.path.join(repo_path, filename), "w", encoding="utf-8") as f:
+        f.write(article_html)
+
+    record.update({
+        "title":      title,
+        "sources":    post.get("sources", []),
+        "heat_label": post.get("heat_label", record.get("heat_label", "NORMAL")),
+        "heat_score": post.get("heat_score", record.get("heat_score", 0)),
+        "category":   _derive_category(post),
+        "draft":      post.get("draft", ""),
+        "updated_at": datetime.now(timezone.utc).isoformat(),
+    })
+    with open(published_path, "w", encoding="utf-8") as f:
+        json.dump(published, f, indent=2, ensure_ascii=False)
+
+    for _fn, _label in [
+        (lambda: update_homepage(repo_path),     "update_homepage"),
+        (lambda: update_news_archive(repo_path), "update_news_archive"),
+        (lambda: update_sitemap(repo_path),      "update_sitemap"),
+    ]:
+        try:
+            _fn()
+        except Exception as _e:
+            print(f"  [{_label} error] {_e}")
+
+    try:
+        push_ok = git_publish(filename, f"Update: {title[:60]}", repo_path)
+    except Exception as _e:
+        print(f"  [git_publish error] {_e}")
+        push_ok = False
+
+    url = f"https://islamophobiawatchfrance.com/{filename}"
+    print(f"  URL: {url}\n")
+    return url, push_ok
 
 
 def publish_post(post: dict, repo_path: str = ".") -> str:

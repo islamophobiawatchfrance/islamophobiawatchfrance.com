@@ -1,4 +1,23 @@
 {
-  "generated": "2026-10-23T14:03:15.305525+00:00",
-  "gaps": []
+  "generated": "2026-10-24T13:32:27.798997+00:00",
+  "gaps": [
+    {
+      "topic": "\"You target, they kill\": the left demands action against hate speech after the Trappes attack",
+      "heat_score": 10,
+      "heat_label": "HOT",
+      "article_count": 2,
+      "top_story_title": "\"You target, they kill\": the left demands action against hate speech after the Trappes attack",
+      "top_story_url": "https://www.mediapart.fr/journal/france/241026/vous-ciblez-ils-tuent-la-gauche-demande-des-actions-contre-les-discours-de-haine-apres-l-attentat-de-trapp",
+      "reason": "2 source(s) covered this story but IWF has not published on it recently"
+    },
+    {
+      "topic": "Leurs mots, nos morts",
+      "heat_score": 8,
+      "heat_label": "HOT",
+      "article_count": 1,
+      "top_story_title": "Leurs mots, nos morts",
+      "top_story_url": "https://www.bondyblog.fr/billet/leurs-mots-nos-morts/",
+      "reason": "1 source(s) covered this story but IWF has not published on it recently"
+    }
+  ]
 }

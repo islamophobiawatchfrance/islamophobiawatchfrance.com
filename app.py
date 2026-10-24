@@ -387,6 +387,22 @@ TEMPLATE = r"""<!DOCTYPE html>
       color: #333; letter-spacing: 0.02em;
     }
 
+    /* ── Published tab ── */
+    .pub-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+    .pub-row {
+      display: flex; align-items: center; gap: 12px; background: #fff;
+      border: 1px solid #e5e5e5; border-radius: 6px; padding: 12px 14px;
+    }
+    .pub-row-main { flex: 1; min-width: 0; }
+    .pub-row-title { font-size: 14px; font-weight: 600; color: #222; }
+    .pub-row-meta { font-size: 12px; color: #999; margin-top: 3px; }
+    .pub-row a.pub-view { font-size: 12px; color: #1e8e3e; text-decoration: none; white-space: nowrap; }
+    .pub-row a.pub-view:hover { text-decoration: underline; }
+    .write-edit-banner {
+      background: #fff8e1; border-left: 3px solid #f2a600; border-radius: 4px;
+      padding: 8px 12px; font-size: 13px; color: #555;
+    }
+
     /* ── Published link ── */
     .published-link {
       display: inline-block; font-size: 12px; color: #1e8e3e;
@@ -437,6 +453,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   <button class="tab active" id="tab-queue"   onclick="switchTab('queue')">Queue</button>
   <button class="tab"        id="tab-stories" onclick="switchTab('stories')">Story Browser</button>
   <button class="tab"        id="tab-write"   onclick="switchTab('write')">Write article</button>
+  <button class="tab"        id="tab-published" onclick="switchTab('published')">Published</button>
   <button class="tab"        id="tab-managesources" onclick="switchTab('managesources')">Manage Sources</button>
   <button class="tab"        id="tab-sources" onclick="switchTab('sources')">Source Report</button>
 </nav>
@@ -472,12 +489,14 @@ TEMPLATE = r"""<!DOCTYPE html>
     document.getElementById('tab-queue').classList.toggle('active', tab === 'queue');
     document.getElementById('tab-stories').classList.toggle('active', tab === 'stories');
     document.getElementById('tab-write').classList.toggle('active', tab === 'write');
+    document.getElementById('tab-published').classList.toggle('active', tab === 'published');
     document.getElementById('tab-sources').classList.toggle('active', tab === 'sources');
     document.getElementById('tab-managesources').classList.toggle('active', tab === 'managesources');
     document.getElementById('heat-bar').style.display = tab === 'queue' ? '' : 'none';
     if (tab === 'queue')        { render(); loadGaps(); }
     else if (tab === 'stories') loadStoryBrowser();
     else if (tab === 'write')   renderWriteTab();
+    else if (tab === 'published') loadPublished();
     else if (tab === 'sources') loadSourceReport();
     else if (tab === 'managesources') loadManageSources();
   }
@@ -1290,6 +1309,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   // ── Write article tab ─────────────────────────────────────
 
   function renderWriteTab() {
+    editingFilename = null;
     const main = document.getElementById('main');
     main.innerHTML = `
       <div class="write-form" id="write-form">
@@ -1617,6 +1637,90 @@ TEMPLATE = r"""<!DOCTYPE html>
         btn.disabled = false; btn.textContent = 'Publish directly';
       }
     } catch { showToast('Network error'); btn.disabled = false; btn.textContent = 'Publish directly'; }
+  }
+
+  // ── Published tab (edit live articles) ────────────────────
+
+  let publishedArticles = [];
+  let editingFilename = null;   // set while the Write form is editing a live article
+
+  async function loadPublished() {
+    const main = document.getElementById('main');
+    main.innerHTML = '<div class="empty"><h2 style="font-size:15px">Loading articles…</h2></div>';
+    try {
+      const res  = await fetch('/api/published');
+      publishedArticles = (await res.json()).articles || [];
+    } catch {
+      main.innerHTML = '<div class="empty"><h2>Could not load published articles.</h2></div>';
+      return;
+    }
+    if (!publishedArticles.length) {
+      main.innerHTML = '<div class="empty"><h2>No published articles yet.</h2></div>';
+      return;
+    }
+    main.innerHTML = '<div class="pub-list">' + publishedArticles.map((a, i) => {
+      const meta = [a.date, a.category, a.updated_at ? 'edited ' + a.updated_at.slice(0, 10) : '']
+        .filter(Boolean).join(' · ');
+      return `<div class="pub-row">
+        <div class="pub-row-main">
+          <div class="pub-row-title">${esc(a.title)}</div>
+          <div class="pub-row-meta">${esc(meta)}</div>
+        </div>
+        <a class="pub-view" href="https://islamophobiawatchfrance.com/${esc(a.filename)}" target="_blank" rel="noopener">View live →</a>
+        <button class="btn btn-write-draft" onclick="editPublished(${i})">Edit</button>
+      </div>`;
+    }).join('') + '</div>';
+  }
+
+  function editPublished(i) {
+    const a = publishedArticles[i];
+    if (!a) return;
+    renderWriteTab();
+    editingFilename = a.filename;
+    document.getElementById('wf-headline').value = a.title;
+    document.getElementById('wf-heat').value = a.heat_label || 'NORMAL';
+    document.getElementById('wf-sources').value =
+      (a.sources || []).map(s => s.url ? `${s.name} | ${s.url}` : s.name).join(', ');
+    document.getElementById('rte-body').innerHTML = a.body_html;
+    // Category is derived from the text at publish time; LinkedIn isn't stored
+    document.getElementById('wf-category').closest('div').style.display = 'none';
+    document.getElementById('wf-linkedin').closest('div').style.display = 'none';
+    document.getElementById('btn-wdraft').style.display = 'none';
+    const btn = document.getElementById('btn-wpublish');
+    btn.textContent = 'Update live article';
+    btn.onclick = writeUpdatePublished;
+    const banner = document.createElement('div');
+    banner.className = 'write-edit-banner';
+    banner.innerHTML = `Editing the live article <b>${esc(a.filename)}</b>. Its URL and date stay the same. ` +
+      `<a href="#" onclick="switchTab('published');return false">Cancel</a>`;
+    const form = document.getElementById('write-form');
+    form.insertBefore(banner, form.firstChild);
+  }
+
+  async function writeUpdatePublished() {
+    const d = writeFormData();
+    if (!d.headline) { showToast('Enter a headline first'); return; }
+    if (!confirm('Update the live article with these changes?')) return;
+    d.filename = editingFilename;
+    const btn = document.getElementById('btn-wpublish');
+    btn.disabled = true; btn.textContent = 'Updating…';
+    try {
+      const res  = await fetch('/api/published/update', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(d),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        editingFilename = null;
+        document.getElementById('main').innerHTML =
+          `<div class="empty"><h2>Article updated</h2><p><a href="${esc(data.url)}" target="_blank" rel="noopener">${esc(data.url)}</a></p><button class="btn btn-write-draft" onclick="switchTab('published')" style="margin-top:12px">Back to published</button></div>`;
+        if (data.warning) showPushFailBanner(d.headline);
+        else showToast('Live article updated');
+      } else {
+        showToast('Error: ' + (data.error || 'unknown'));
+        btn.disabled = false; btn.textContent = 'Update live article';
+      }
+    } catch { showToast('Network error'); btn.disabled = false; btn.textContent = 'Update live article'; }
   }
 
   // ── Story Browser ─────────────────────────────────────────
@@ -2355,6 +2459,83 @@ def manual_publish():
             })
         return jsonify({"ok": True, "url": url})
 
+    except Exception as e:
+        _tb.print_exc()
+        return jsonify({"error": str(e)}), 500
+
+
+def _draft_to_editor_html(draft: str) -> str:
+    """
+    Editor HTML for a published draft. Manual articles are already HTML;
+    pipeline articles are markdown (paragraphs, ## headings, > quotes, ---).
+    """
+    import re as _re
+    import publisher as pub
+
+    if _re.search(r"<(p|h[1-6])[\s>]", draft or ""):
+        return draft
+    out = []
+    for block in _re.split(r"\n\s*\n", draft or ""):
+        block = block.strip()
+        if not block:
+            continue
+        if block == "---":
+            out.append("<hr>")
+        elif block.startswith("#"):
+            out.append(f"<h2>{pub._render_inline(block.lstrip('#').strip())}</h2>")
+        elif block.startswith("> "):
+            out.append(f"<blockquote>{pub._render_inline(block[2:])}</blockquote>")
+        else:
+            out.append("<p>" + "<br>".join(pub._render_inline(l) for l in block.split("\n")) + "</p>")
+    return "".join(out)
+
+
+@app.route("/api/published", methods=["GET"])
+def list_published():
+    """Published articles (newest first) with editor-ready body HTML."""
+    path = os.path.join(REPO_PATH, "published.json")
+    if not os.path.exists(path):
+        return jsonify({"articles": []})
+    with open(path, "r", encoding="utf-8") as f:
+        articles = json.load(f).get("articles", [])
+    articles = sorted(articles, key=lambda a: a.get("published_at", ""), reverse=True)
+    return jsonify({"articles": [{
+        "filename":   a.get("filename", ""),
+        "title":      a.get("title", ""),
+        "date":       a.get("date", ""),
+        "category":   a.get("category", ""),
+        "heat_label": a.get("heat_label", "NORMAL"),
+        "sources":    a.get("sources", []),
+        "updated_at": a.get("updated_at", ""),
+        "body_html":  _draft_to_editor_html(a.get("draft", "")),
+    } for a in articles]})
+
+
+@app.route("/api/published/update", methods=["POST"])
+def update_published():
+    """Save edits to a live article, keeping its URL and date, then push."""
+    import traceback as _tb
+    import publisher
+
+    try:
+        data = request.get_json(silent=True) or {}
+        if not data.get("filename") or not data.get("headline"):
+            return jsonify({"error": "filename and headline required"}), 400
+
+        post = _build_manual_post(data)
+        post["draft"] = post.get("website_draft", "")
+
+        url, push_ok = publisher.update_article(data["filename"], post, repo_path=REPO_PATH)
+        if not push_ok:
+            return jsonify({
+                "ok": True,
+                "url": url,
+                "warning": "Article updated but git push failed. Run git push manually.",
+            })
+        return jsonify({"ok": True, "url": url})
+
+    except ValueError as e:
+        return jsonify({"error": str(e)}), 404
     except Exception as e:
         _tb.print_exc()
         return jsonify({"error": str(e)}), 500
