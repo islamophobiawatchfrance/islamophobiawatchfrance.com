@@ -360,6 +360,20 @@ def should_post_now(post_type: str = "wire", now: datetime.datetime | None = Non
     return any(start <= now.hour < end for start, end in PEAK_WINDOWS)
 
 
+def last_post_time() -> datetime.datetime | None:
+    """Time of the most recent successful post of any kind (wire, thread, weekly), from the log."""
+    try:
+        with open(LOG_FILE, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except OSError:
+        return None
+    for line in reversed(lines):
+        m = re.match(r"\[(\d{4}-\d\d-\d\d \d\d:\d\d:\d\d)\] (WIRE|THREAD|WEEKLY) OK", line)
+        if m:
+            return datetime.datetime.strptime(m.group(1), "%Y-%m-%d %H:%M:%S").replace(tzinfo=PARIS)
+    return None
+
+
 def next_window_start(now: datetime.datetime | None = None) -> datetime.datetime:
     """The start of the next Paris peak window after `now` (or now, if inside one)."""
     now = (now or datetime.datetime.now(PARIS)).astimezone(PARIS)

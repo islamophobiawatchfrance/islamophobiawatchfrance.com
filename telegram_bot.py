@@ -20,7 +20,6 @@ from telegram import BotCommand, Update
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
 
 import bluesky_poster
-import digest
 import publisher
 import queue_store
 import run as pipeline_run
@@ -79,7 +78,9 @@ async def _handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         return
 
     if action.startswith("digest_"):
-        await _handle_digest(query, action, post_id)
+        # Buttons from the retired quiet-spell digest (replaced by weekly_digest.py)
+        await query.edit_message_text("This digest was retired, nothing was posted. "
+                                      "The Friday \"France this week\" thread replaces it.")
         return
 
     if action.startswith("weekly_"):
@@ -155,26 +156,6 @@ async def _handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -
             _save_queue(queue)
             draft = post.get("draft", "")
             await query.edit_message_text(f"✓ Approved: {title}\n\nCopy into LinkedIn:\n\n{draft}")
-
-
-async def _handle_digest(query, action: str, digest_id: str) -> None:
-    """Approve / Reject buttons on a weekly digest proposal (see digest.py)."""
-    entry = digest.get(digest_id)
-    if entry is None or entry.get("status") != "pending":
-        await query.edit_message_text("⚠️ Digest not found (already handled?).")
-        return
-
-    text = entry["text"]
-    if action == "digest_reject":
-        digest.reject(digest_id)
-        await query.edit_message_text(f"✗ Digest rejected — not posted.\n\n{text}")
-        return
-
-    if action == "digest_approve":
-        await query.edit_message_text(f"🦋 Posting digest…\n\n{text}")
-        uri = await asyncio.get_running_loop().run_in_executor(None, digest.post, digest_id)
-        status = "✓ Digest posted to Bluesky" if uri else "⚠️ Digest post failed — see logs/bluesky.log"
-        await query.edit_message_text(f"{status}\n\n{text}")
 
 
 async def _handle_weekly(query, action: str, week: str) -> None:

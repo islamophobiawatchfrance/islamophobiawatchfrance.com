@@ -8,8 +8,10 @@ Posts queued wire stories (relevance 6-7) from wire_queue.json to Bluesky.
 - Spaces posts at least 60 minutes apart, across runs
 - Anything not due yet gets a scheduled_for time stored in wire_queue.json
 - Max 2 posts containing a question per day
-- Queue empty and account quiet for 24h: proposes a weekly digest via
-  Telegram (digest.py) — posted only once approved
+- Skips repeats: a story already posted in the past week (often the same
+  news from another outlet) only goes out again if it adds a genuinely
+  new development; when several outlets queue the same news, the best
+  source is posted
 
 Run by run_wire.py (every 3 hours) and by com.iwf.wire.poster at the
 start of each peak window. Can also be run by hand:
@@ -23,8 +25,8 @@ import json
 import os
 
 import bluesky_poster
-import digest
 import queue_store
+import story_dedupe
 from relevance_filter import passes_geo_rule
 
 HERE            = os.path.dirname(os.path.abspath(__file__))
@@ -36,6 +38,22 @@ DUE_TOLERANCE  = datetime.timedelta(minutes=5)   # launchd may fire a little lat
 MAX_STORY_AGE  = datetime.timedelta(hours=72)    # don't post stale news
 KEEP_POSTED    = datetime.timedelta(days=7)
 MAX_ATTEMPTS   = 3
+REPEAT_WINDOW  = datetime.timedelta(days=7)      # compare new stories with what was posted this long ago
+
+REPEAT_SYSTEM_PROMPT = """
+You decide whether queued news items for the Islamophobia Watch France (IWF) Bluesky wire add anything new.
+
+ALREADY POSTED lists what IWF has posted, or is about to post, in the past week. CANDIDATES are new items, often the same news from different outlets.
+
+For each candidate decide:
+- "repeat": it reports the same development as an ALREADY POSTED item or as another candidate: the same event, statement, ruling or decision, even from a different outlet, in different words, or with reactions, commentary, analysis or minor extra detail.
+- "new": it is meaningfully different coverage: a different story, or a genuinely new development in a story already posted (a charge or indictment, a ruling or verdict, a new incident, a new official decision, or a significant new fact that changes the story).
+
+When in doubt, choose "repeat".
+
+Respond in JSON only:
+{"candidates": [{"id": "n1", "verdict": "new", "same_as": null, "reason": "one short sentence"}, {"id": "n2", "verdict": "repeat", "same_as": "p4", "reason": "one short sentence"}]}
+"""
 
 
 # =============================================================
@@ -173,13 +191,124 @@ def _is_eligible(p: dict, now: datetime.datetime) -> bool:
     return True
 
 
+def _mark_repeat(p: dict, same_as: dict, reason: str = "") -> None:
+    p["repeat_check"] = "repeat"
+    p["status"] = "skipped"
+    p["repeat_of"] = same_as.get("url", "")
+    p["skip_reason"] = f"Repeat of already-covered story: {same_as.get('title', '')[:90]}" + \
+                       (f" ({reason})" if reason else "")
+
+
+def _preferred(items: list, sources: dict) -> dict:
+    """Same news from several outlets: the best source, then the highest relevance, then the earliest."""
+    return min(items, key=lambda p: (story_dedupe.source_rank(p.get("source", ""), sources),
+                                     -(p.get("relevance_score") or 0),
+                                     p.get("published", "")))
+
+
+def drop_repeats(pending: list, posts: list, now: datetime.datetime) -> list:
+    """
+    Checks pending stories that haven't been checked yet against everything
+    posted in the last REPEAT_WINDOW (plus stories already cleared to post)
+    and against each other. Repeats are marked skipped. Returns the pending
+    stories cleared to post; unchecked ones (if the model call fails) wait
+    for the next run.
+    """
+    unchecked = [p for p in pending if not p.get("repeat_check")]
+    if not unchecked:
+        return pending
+    sources = story_dedupe.load_sources()
+
+    reference = [p for p in posts if p.get("bluesky_posted")
+                 and (_parse(p.get("posted_at")) or now) > now - REPEAT_WINDOW]
+    reference += [p for p in pending if p.get("repeat_check") == "new"]
+    reference += [{"title": p.get("title", ""), "url": p.get("url", ""), "bluesky_text": ""}
+                  for p in queue_store.load_queue().get("posts", [])
+                  if p.get("type") == "website" and p.get("bluesky_posted")]
+
+    # Stage 1: same link or near-identical title, no model call needed
+    for p in unchecked:
+        url = story_dedupe.canonical_url(p["url"])
+        match = next((r for r in reference if story_dedupe.canonical_url(r.get("url", "")) == url
+                      or story_dedupe.titles_match(r.get("title", ""), p.get("title", ""))), None)
+        if match:
+            _mark_repeat(p, match, "same headline")
+    remaining = [p for p in unchecked if not p.get("repeat_check")]
+    for i, p in enumerate(remaining):
+        twin = next((q for q in remaining[:i] if not q.get("repeat_check")
+                     and story_dedupe.titles_match(q.get("title", ""), p.get("title", ""))), None)
+        if twin:
+            keep = _preferred([twin, p], sources)
+            _mark_repeat(twin if keep is p else p, keep, "same headline")
+    remaining = [p for p in remaining if not p.get("repeat_check")]
+
+    # Stage 2: one model call for everything left
+    if remaining:
+        refs = {f"p{i + 1}": r for i, r in enumerate(reference)}
+        cands = {f"n{i + 1}": p for i, p in enumerate(remaining)}
+        user = "ALREADY POSTED:\n\n" + ("\n\n".join(
+            f"id: {rid}\ntitle: {r.get('title', '')}\nposted text: {r.get('bluesky_text', '')}"
+            for rid, r in refs.items()) or "(nothing)") + "\n\nCANDIDATES:\n\n" + "\n\n".join(
+            f"id: {cid}\nsource: {p.get('source', '')}\npublished: {p.get('published', '')[:16]}\n"
+            f"title: {p.get('title', '')}\nsummary: {(p.get('summary') or '')[:300]}"
+            for cid, p in cands.items())
+        try:
+            verdicts = story_dedupe.ask_json(story_dedupe.CLUSTER_MODEL, REPEAT_SYSTEM_PROMPT, user,
+                                             max_tokens=3000).get("candidates", [])
+        except Exception as e:
+            print(f"  [WARNING] Repeat check failed ({e}) — {len(remaining)} stor"
+                  f"{'y' if len(remaining) == 1 else 'ies'} held until the next run.")
+            verdicts = []
+
+        # Candidates that repeat each other form a group; a group repeating a
+        # posted story is all repeats, otherwise its best source goes out.
+        group = {cid: cid for cid in cands}
+
+        def root(cid):
+            while group[cid] != cid:
+                cid = group[cid]
+            return cid
+
+        decided, reasons, posted_match = set(), {}, {}
+        for v in verdicts:
+            cid = v.get("id")
+            if cid not in cands:
+                continue
+            decided.add(cid)
+            if v.get("verdict") == "repeat":
+                reasons[cid] = str(v.get("reason", ""))
+            same_as = v.get("same_as")
+            if v.get("verdict") == "repeat" and same_as in refs:
+                posted_match[cid] = refs[same_as]
+            elif v.get("verdict") == "repeat" and same_as in cands:
+                group[root(cid)] = root(same_as)
+            elif v.get("verdict") == "repeat":
+                posted_match[cid] = {"title": "(unspecified)", "url": ""}
+
+        members = {}
+        for cid in decided:
+            members.setdefault(root(cid), []).append(cid)
+        for ids in members.values():
+            hit = next((posted_match[c] for c in ids if c in posted_match), None)
+            keep = None if hit else _preferred([cands[c] for c in ids], sources)
+            for c in ids:
+                if cands[c] is keep:
+                    cands[c]["repeat_check"] = "new"
+                elif hit:
+                    _mark_repeat(cands[c], hit, reasons.get(c, ""))
+                else:
+                    _mark_repeat(cands[c], keep, f"same news, posting the {keep.get('source', '')} version")
+
+    return [p for p in pending if p.get("repeat_check") == "new"]
+
+
 def run(now: datetime.datetime | None = None) -> dict:
     """
     Posts every wire story that is due now and (re)schedules the rest.
     Returns {"posted": [...], "scheduled": [...], "failed": [...]}.
     """
     now = (now or datetime.datetime.now(bluesky_poster.PARIS)).astimezone(bluesky_poster.PARIS)
-    summary = {"posted": [], "scheduled": [], "failed": []}
+    summary = {"posted": [], "scheduled": [], "failed": [], "repeats": []}
 
     with _lock() as locked:
         if not locked:
@@ -196,12 +325,15 @@ def run(now: datetime.datetime | None = None) -> dict:
                 p["skip_reason"] = "Drafted as a full article — gets a thread on approval"
 
         pending = [p for p in posts if _is_eligible(p, now)]
+        cleared = drop_repeats(pending, posts, now)
+        summary["repeats"] = [p for p in pending if p.get("repeat_check") == "repeat"]
+        pending = cleared
         # Strongest stories first, then newest
         pending.sort(key=lambda p: (p.get("relevance_score") or 0, p.get("published", "")), reverse=True)
 
         posted_times = [t for t in (_parse(p.get("posted_at")) for p in posts if p.get("bluesky_posted")) if t]
-        # Article threads and digests aren't in the wire queue, so also space from the last post of any kind
-        last_any = digest.last_bluesky_post()
+        # Article threads and the weekly thread aren't in the wire queue, so also space from the last post of any kind
+        last_any = bluesky_poster.last_post_time()
         if last_any:
             posted_times.append(last_any)
         earliest = max([now] + [t + SPACING for t in posted_times])
@@ -244,13 +376,6 @@ def run(now: datetime.datetime | None = None) -> dict:
                 slot = _next_slot(slot + SPACING)
 
         save_wire_queue(data)
-
-    # Nothing to post in a peak window — offer a weekly digest if the account has gone quiet
-    if not pending and bluesky_poster.should_post_now(now=now):
-        try:
-            digest.maybe_propose(now)
-        except Exception as e:
-            print(f"  [WARNING] Digest proposal failed: {e}")
     return summary
 
 
@@ -261,6 +386,8 @@ def print_summary(summary: dict) -> None:
         print(f"    ✓ posted    {p['title'][:70]}")
     for p in summary["failed"]:
         print(f"    ✗ failed    {p['title'][:70]} (see logs/bluesky.log)")
+    for p in summary.get("repeats", []):
+        print(f"    ↺ repeat    {p['title'][:70]}\n                {p['skip_reason'][:110]}")
     for p in summary["scheduled"]:
         when = _parse(p["scheduled_for"]).astimezone(bluesky_poster.PARIS).strftime("%a %H:%M")
         print(f"    ⏱ {when}  {p['title'][:70]}")

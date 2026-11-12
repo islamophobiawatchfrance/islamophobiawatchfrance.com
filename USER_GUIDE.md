@@ -127,6 +127,7 @@ This tab shows which outlets your published articles cite, and how often. Any so
 - **Wire posts:** one short post (280 characters at most) for each story scoring 6–7. The post leads with the key fact, credits the source at the end (for example "— Le Monde"), and uses 2–3 hashtags.
 - Wire posts only go out at peak times: **07:00–09:00, 12:00–13:00 and 19:00–21:00** Paris time. They are spaced at least an hour apart. Anything not posted yet waits for the next peak time.
 - A story that is being turned into a full article doesn't get a wire post, because it gets a thread when you approve it instead.
+- **No repeats:** when several outlets report the same news, only one wire post goes out, from the most reliable source. A later story on something already posted in the past week only gets a post if it adds a genuinely new development, such as a charge, a ruling, a new incident or an official decision. Reactions, commentary and the same news from another outlet are skipped. Skipped stories show up in **logs/wire.log** marked `↺ repeat`, with the story they repeat.
 
 ### What gets posted when you approve an article
 
@@ -153,18 +154,6 @@ It never posts without your approval. It can never post twice in the same week. 
 cd ~/Documents/iwf-aggregator && python3 weekly_digest.py --dry-run
 ```
 A record of each run is in **logs/weekly-digest.log**.
-
-### The weekly digest (when things go quiet)
-
-If nothing has been posted to Bluesky for **24 hours** and a peak time comes around with nothing queued, the pipeline drafts a short round-up post: "This week in France: …", covering the two or three biggest developments from the week's wire posts. It is **not posted automatically**. It arrives in Telegram as **🦋 BLUESKY WEEKLY DIGEST** with two buttons:
-
-- **✓ Approve & post:** it goes out on Bluesky straight away.
-- **✗ Reject:** nothing is posted. If the account is still quiet, a new draft is offered the next day.
-
-At most one digest is posted per week, and none is offered if fewer than three stories were posted that week. To preview a digest without sending anything, run:
-```
-cd ~/Documents/iwf-aggregator && python3 digest.py
-```
 
 ### How to check what has been posted
 

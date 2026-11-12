@@ -25,22 +25,19 @@ import argparse
 import ast
 import asyncio
 import datetime
-import difflib
 import fcntl
 import json
 import os
 import re
 import sys
 import traceback
-import unicodedata
-from urllib.parse import urlsplit, urlunsplit
 
-import anthropic
 from dotenv import load_dotenv
 
 import bluesky_poster
-import digest
 from relevance_filter import FULL_MIN, WIRE_MIN, passes_geo_rule
+from story_dedupe import (CLUSTER_MODEL, ask_json, canonical_url, load_sources,
+                          normalise_title, source_rank, titles_match)
 
 HERE            = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE      = os.path.join(HERE, "weekly_digest_state.json")
@@ -50,7 +47,6 @@ WIRE_FILE       = os.path.join(HERE, "wire.json")
 WIRE_QUEUE_FILE = os.path.join(HERE, "wire_queue.json")
 PUBLISHED_FILE  = os.path.join(HERE, "published.json")
 CACHE_FILE      = os.path.join(HERE, "relevance_cache.json")
-SOURCES_FILE    = os.path.join(HERE, "sources.json")
 load_dotenv(os.path.join(HERE, ".env"))
 
 PARIS     = bluesky_poster.PARIS
@@ -66,10 +62,6 @@ SPACING     = datetime.timedelta(minutes=60)
 AUTO_POST_IF_NO_RESPONSE = False
 AUTO_POST_AFTER          = datetime.timedelta(minutes=60)
 
-FUZZY_RATIO   = 0.80       # difflib ratio on normalised titles
-FUZZY_JACCARD = 0.60       # overlap of significant title words (names, nouns)
-
-CLUSTER_MODEL = "claude-haiku-4-5-20251001"
 WRITER_MODEL  = "claude-opus-5-5"
 
 CLUSTER_SYSTEM_PROMPT = """
@@ -92,13 +84,6 @@ For each item, write ONE neutral, factual sentence summarising the development, 
 
 Respond in JSON only: {{"lines": {{"<item id>": "<sentence>"}}}}
 """
-
-STOPWORDS = set("""
-the and for with from that this after over into about their they them his her its are was were
-has have had been will would says said say new against amid during under more than not but who
-what when where which while les des une dans pour avec sur par est sont qui que aux du au
-""".split())
-
 
 # =============================================================
 # LOGGING + STATE
@@ -170,19 +155,6 @@ def _parse(ts):
 # CANDIDATES
 # =============================================================
 
-def _source_rank(name: str, sources: dict) -> int:
-    """Lower is better: trust high < medium < monitor-only; state-linked outlets one step down."""
-    s = sources.get((name or "").strip().lower(), {})
-    trust = s.get("trust", "medium")
-    bias = s.get("bias", "")
-    rank = {"high": 0, "medium": 1}.get(trust, 3)
-    if bias == "far-right" or trust == "monitor-only":
-        rank = 3
-    elif "state" in bias:
-        rank += 1
-    return rank
-
-
 def _article_summary(draft: str) -> str:
     for para in (draft or "").split("\n\n"):
         para = para.strip()
@@ -193,9 +165,7 @@ def _article_summary(draft: str) -> str:
 
 def gather_candidates(start: datetime.datetime, end: datetime.datetime) -> tuple:
     """Returns (candidates, excluded) where excluded is [(title, reason)]."""
-    sources = {s["name"].strip().lower(): s
-               for s in _load_json(SOURCES_FILE, {}).get("sources", [])
-               if isinstance(s, dict) and s.get("name")}
+    sources = load_sources()
     queue = {p["url"]: p for p in _load_json(WIRE_QUEUE_FILE, {}).get("posts", [])
              if isinstance(p, dict) and p.get("url")}
     cache = _load_json(CACHE_FILE, {})
@@ -226,7 +196,7 @@ def gather_candidates(start: datetime.datetime, end: datetime.datetime) -> tuple
         candidates.append({
             "title": title, "summary": q.get("summary", ""), "source": it.get("source", ""),
             "url": it["url"], "when": when, "score": score, "category": category,
-            "is_iwf": False, "source_rank": _source_rank(it.get("source", ""), sources),
+            "is_iwf": False, "source_rank": source_rank(it.get("source", ""), sources),
         })
 
     for a in _load_json(PUBLISHED_FILE, {}).get("articles", []):
@@ -258,22 +228,6 @@ def gather_candidates(start: datetime.datetime, end: datetime.datetime) -> tuple
 # DEDUPLICATION
 # =============================================================
 
-def canonical_url(url: str) -> str:
-    parts = urlsplit(url.strip())
-    return urlunsplit((parts.scheme.lower(), parts.netloc.lower().removeprefix("www."),
-                       parts.path.rstrip("/"), "", ""))
-
-
-def normalise_title(title: str) -> str:
-    text = unicodedata.normalize("NFKD", title.lower())
-    text = "".join(ch for ch in text if not unicodedata.combining(ch))
-    return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]", " ", text)).strip()
-
-
-def _key_words(title: str) -> set:
-    return {w for w in normalise_title(title).split() if len(w) >= 4 and w not in STOPWORDS}
-
-
 def preferred(items: list) -> dict:
     """IWF article first, then the highest-quality source, then the earliest."""
     return min(items, key=lambda c: (not c["is_iwf"], c["source_rank"], c["when"]))
@@ -293,28 +247,6 @@ def _merge_groups(groups: list, same) -> tuple:
     return merged, merges
 
 
-def _fuzzy_same(a: dict, b: dict) -> bool:
-    ta, tb = normalise_title(a["title"]), normalise_title(b["title"])
-    if difflib.SequenceMatcher(None, ta, tb).ratio() >= FUZZY_RATIO:
-        return True
-    wa, wb = _key_words(a["title"]), _key_words(b["title"])
-    return bool(wa and wb) and len(wa & wb) / len(wa | wb) >= FUZZY_JACCARD
-
-
-def _ask_json(model: str, system: str, user: str, max_tokens: int, **extra) -> dict:
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-    create = client.beta.messages.create if extra.get("betas") else client.messages.create
-    response = create(model=model, max_tokens=max_tokens, system=system,
-                      messages=[{"role": "user", "content": user}], **extra)
-    if response.stop_reason == "refusal":
-        raise RuntimeError(f"{model} declined the request")
-    text = next((b.text for b in response.content if b.type == "text"), "")
-    match = re.search(r"\{.*\}", text, re.DOTALL)
-    if not match:
-        raise ValueError(f"{model} returned no JSON: {text[:200]!r}")
-    return json.loads(match.group(0))
-
-
 def semantic_clusters(groups: list) -> list:
     """
     One Haiku call over the group representatives. Returns validated clusters:
@@ -326,7 +258,7 @@ def semantic_clusters(groups: list) -> list:
         f"source: {preferred(g)['source']}\ntitle: {preferred(g)['title']}\n"
         f"summary: {preferred(g)['summary'][:300]}"
         for gid, g in reps.items())
-    data = _ask_json(CLUSTER_MODEL, CLUSTER_SYSTEM_PROMPT, user, max_tokens=4000)
+    data = ask_json(CLUSTER_MODEL, CLUSTER_SYSTEM_PROMPT, user, max_tokens=4000)
 
     clusters, seen = [], set()
     for c in data.get("clusters", []):
@@ -371,7 +303,7 @@ def deduplicate(candidates: list, audit: list) -> list:
     audit += [f"  merged  {b['id']} {b['source']}: {b['title'][:70]}\n    into  {a['id']}" for a, b in merges]
 
     before = len(groups)
-    groups, merges = _merge_groups(groups, _fuzzy_same)
+    groups, merges = _merge_groups(groups, lambda a, b: titles_match(a["title"], b["title"]))
     audit.append(f"Pass 2 (fuzzy title): {before} -> {len(groups)}")
     audit += [f"  merged  {b['id']} {b['source']}: {b['title'][:70]}\n    into  {a['id']} {a['source']}: {a['title'][:70]}"
               for a, b in merges]
@@ -423,7 +355,7 @@ def write_lines(entries: list, allow_questions: bool) -> dict:
     if not allow_questions:
         system += "\nDo not use any question marks."
     user = "\n\n".join(f"id: {e['id']}\ntitle: {e['title']}\nsummary: {e['summary'][:500]}" for e in entries)
-    data = _ask_json(WRITER_MODEL, system, user, max_tokens=4000,
+    data = ask_json(WRITER_MODEL, system, user, max_tokens=4000,
                      output_config={"effort": "medium"},
                      betas=["server-side-fallback-2026-07-01"],
                      extra_body={"fallbacks": "default"})  # installed SDK predates the fallbacks kwarg
@@ -541,7 +473,7 @@ def send_for_approval(week: str, posts: list, audit: list) -> None:
 
 def next_allowed(now: datetime.datetime) -> datetime.datetime:
     """Earliest time the thread may go out, given the 60-minute spacing from the last post."""
-    last = digest.last_bluesky_post()
+    last = bluesky_poster.last_post_time()
     return max(now, last + SPACING) if last else now
 
 
