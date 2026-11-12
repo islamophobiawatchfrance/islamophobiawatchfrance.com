@@ -18,3 +18,7 @@ wire_queue.lock
 queue.corrupt-*.json
 logs/bluesky.log
 logs/wire.log
+digest.json
+weekly_digest_state.json
+weekly_digest.lock
+logs/weekly-digest.log

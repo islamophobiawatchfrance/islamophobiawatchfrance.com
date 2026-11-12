@@ -16,6 +16,7 @@ Your Mac does all of this by itself, as long as it is switched on and you're log
 |---|---|
 | **Every 3 hours** — 06:00, 09:00, 12:00, 15:00, 18:00, 21:00 | The **wire runner** checks all your news sources, scores every new story for relevance, adds relevant ones to the website's wire section, and queues short wire posts for Bluesky. |
 | **07:00, 08:00, 12:00, 19:00, 20:00** | Queued Bluesky wire posts go out, one at a time, at least an hour apart. |
+| **Fridays, 12:00** | The **France this week** Bluesky thread is drafted and sent to Telegram for approval (see section 3). |
 | **07:00 and 18:00** | The **full pipeline** runs. It does everything the wire runner does, and also writes full article drafts (a website article, a LinkedIn post and a TikTok script) for the strongest stories, then sends them to your phone. |
 
 How a story is handled depends on its **relevance score** (0–10), which is decided automatically:
@@ -135,6 +136,35 @@ A **two-post thread**:
 2. A reply adds more context, then "Full analysis:" with the article link, and hashtags.
 
 This happens whether you approve from Telegram or from the dashboard.
+
+### France this week (Fridays at 12:00)
+
+Every Friday at 12:00 the pipeline drafts a Bluesky thread, **"France this week"**, covering the week's 6–8 most important stories (Monday to Friday noon) in the order they happened, each story once. It uses wire stories and IWF articles that scored 6 or more (never Category C).
+
+The same story reported by several outlets appears only once. Duplicates are removed by matching links and titles, then by asking Claude to group items about the same event. A follow-up only gets its own line if it is a genuinely new development, such as a charge or a ruling. When there is a choice, an IWF article is kept first, then the most reliable source.
+
+The draft arrives in Telegram as **🦋 FRANCE THIS WEEK**, after a **DEDUPE AUDIT** message that lists every story group and what was dropped:
+
+- **✓ Approve & post:** the thread goes out. If something was posted less than an hour earlier, it waits, and the message shows the time it will post.
+- **✗ Reject:** nothing is posted that week.
+
+It never posts without your approval. It can never post twice in the same week. If fewer than 3 stories qualify, nothing is posted and you get a Telegram message saying so. To preview the thread and the audit without posting or sending anything, run:
+```
+cd ~/Documents/iwf-aggregator && python3 weekly_digest.py --dry-run
+```
+A record of each run is in **logs/weekly-digest.log**.
+
+### The weekly digest (when things go quiet)
+
+If nothing has been posted to Bluesky for **24 hours** and a peak time comes around with nothing queued, the pipeline drafts a short round-up post: "This week in France: …", covering the two or three biggest developments from the week's wire posts. It is **not posted automatically**. It arrives in Telegram as **🦋 BLUESKY WEEKLY DIGEST** with two buttons:
+
+- **✓ Approve & post:** it goes out on Bluesky straight away.
+- **✗ Reject:** nothing is posted. If the account is still quiet, a new draft is offered the next day.
+
+At most one digest is posted per week, and none is offered if fewer than three stories were posted that week. To preview a digest without sending anything, run:
+```
+cd ~/Documents/iwf-aggregator && python3 digest.py
+```
 
 ### How to check what has been posted
 

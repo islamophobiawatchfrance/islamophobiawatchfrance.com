@@ -28,6 +28,7 @@ from dotenv import load_dotenv
 
 HERE       = os.path.dirname(os.path.abspath(__file__))
 CACHE_FILE = os.path.join(HERE, "relevance_cache.json")
+WIRE_QUEUE_FILE = os.path.join(HERE, "wire_queue.json")
 load_dotenv(os.path.join(HERE, ".env"))
 
 MODEL      = "claude-haiku-4-5-20251001"
@@ -41,7 +42,12 @@ CACHE_DAYS = 7
 
 # Bump whenever SYSTEM_PROMPT or the enforcement rules change, so cached
 # scores made under the old rules are thrown away and stories are re-scored.
-PROMPT_VERSION = 3
+PROMPT_VERSION = 4
+
+# Stories IWF has posted recently are shown to the scorer, so follow-ups to
+# an ongoing story (funeral, charges, trial, reactions) are recognised.
+RECENT_DAYS = 7
+RECENT_MAX  = 25
 
 FR_KEYWORDS = [
     "islam", "musulman", "musulmane", "musulmans", "mosquée", "islamophobie",
@@ -98,6 +104,9 @@ Scoring by geo_scope:
 - "europe" with islamophobia_central false: score 0-3, Category C.
 - "other": always score 0-3, Category C.
 
+ONGOING STORIES:
+Below the story you may get a list of stories IWF has posted in the past week. If this story is a direct follow-up to one of them that is about an anti-Muslim incident or Islamophobia (the victims, their funerals or families, the investigation, charges or trial, official or community reactions, marches, the political fallout), score it as part of that story - usually Category A - even if this article does not itself use the words Muslim or Islamophobia. It must be the same event or case and add something new; a story that only shares a place name or a general theme is not a follow-up.
+
 SOURCE BIAS: {source_bias} | TRUST: {source_trust}
 
 Respond in JSON only:
@@ -106,6 +115,7 @@ Respond in JSON only:
 
 _client = None
 _cache  = None
+_recent = None
 
 
 def _get_client():
@@ -138,6 +148,33 @@ def _save_cache() -> None:
             json.dump(_cache, f, indent=1, ensure_ascii=False)
     except OSError as e:
         print(f"  [WARNING] Could not save relevance cache: {e}")
+
+
+def _recent_coverage() -> list:
+    """Titles of stories posted to Bluesky in the last RECENT_DAYS, newest first."""
+    global _recent
+    if _recent is None:
+        _recent = []
+        try:
+            with open(WIRE_QUEUE_FILE, "r", encoding="utf-8") as f:
+                posts = json.load(f).get("posts", [])
+        except (OSError, ValueError):
+            posts = []
+        cutoff = (datetime.datetime.now(datetime.timezone.utc)
+                  - datetime.timedelta(days=RECENT_DAYS))
+        posted = []
+        for p in posts:
+            if not (isinstance(p, dict) and p.get("bluesky_posted") and p.get("title")):
+                continue
+            try:
+                at = datetime.datetime.fromisoformat(str(p.get("posted_at")))
+            except ValueError:
+                continue
+            if at.tzinfo and at > cutoff:
+                posted.append((at, p["title"]))
+        posted.sort(reverse=True)
+        _recent = [title for _, title in posted[:RECENT_MAX]]
+    return _recent
 
 
 def _source_fields(story: dict, source) -> tuple:
@@ -247,6 +284,10 @@ def score_relevance(story: dict, source=None) -> dict:
     user_message = (f"Title: {story.get('title', '')}\n"
                     f"Summary: {story.get('summary', '')}\n"
                     f"Source: {name}")
+    recent = _recent_coverage()
+    if recent:
+        user_message += ("\n\nStories IWF posted in the past week:\n"
+                         + "\n".join(f"- {t}" for t in recent))
     try:
         response = _get_client().messages.create(
             model=MODEL,

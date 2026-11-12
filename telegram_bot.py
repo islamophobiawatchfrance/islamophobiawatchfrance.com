@@ -20,9 +20,11 @@ from telegram import BotCommand, Update
 from telegram.ext import Application, CallbackQueryHandler, CommandHandler, ContextTypes
 
 import bluesky_poster
+import digest
 import publisher
 import queue_store
 import run as pipeline_run
+import weekly_digest
 
 HERE       = os.path.dirname(os.path.abspath(__file__))
 QUEUE_FILE = os.path.join(HERE, "queue.json")
@@ -74,6 +76,14 @@ async def _handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     try:
         action, post_id = query.data.split(":", 1)
     except (ValueError, AttributeError):
+        return
+
+    if action.startswith("digest_"):
+        await _handle_digest(query, action, post_id)
+        return
+
+    if action.startswith("weekly_"):
+        await _handle_weekly(query, action, post_id)
         return
 
     if not os.path.exists(QUEUE_FILE):
@@ -145,6 +155,60 @@ async def _handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) -
             _save_queue(queue)
             draft = post.get("draft", "")
             await query.edit_message_text(f"✓ Approved: {title}\n\nCopy into LinkedIn:\n\n{draft}")
+
+
+async def _handle_digest(query, action: str, digest_id: str) -> None:
+    """Approve / Reject buttons on a weekly digest proposal (see digest.py)."""
+    entry = digest.get(digest_id)
+    if entry is None or entry.get("status") != "pending":
+        await query.edit_message_text("⚠️ Digest not found (already handled?).")
+        return
+
+    text = entry["text"]
+    if action == "digest_reject":
+        digest.reject(digest_id)
+        await query.edit_message_text(f"✗ Digest rejected — not posted.\n\n{text}")
+        return
+
+    if action == "digest_approve":
+        await query.edit_message_text(f"🦋 Posting digest…\n\n{text}")
+        uri = await asyncio.get_running_loop().run_in_executor(None, digest.post, digest_id)
+        status = "✓ Digest posted to Bluesky" if uri else "⚠️ Digest post failed — see logs/bluesky.log"
+        await query.edit_message_text(f"{status}\n\n{text}")
+
+
+async def _handle_weekly(query, action: str, week: str) -> None:
+    """Approve / Reject on the Friday "France this week" thread (see weekly_digest.py)."""
+    loop = asyncio.get_running_loop()
+    if action == "weekly_reject":
+        ok = await loop.run_in_executor(None, weekly_digest.reject, week)
+        await query.edit_message_text(f"✗ France this week ({week}) rejected, not posted." if ok
+                                      else "⚠️ Weekly digest not pending (already handled?).")
+        return
+    if action != "weekly_approve":
+        return
+
+    due = await loop.run_in_executor(None, weekly_digest.approve, week)
+    if due is None:
+        await query.edit_message_text("⚠️ Weekly digest not pending (already handled?).")
+        return
+    # Wait out the 60-minute spacing here; if the bot restarts meanwhile, the
+    # launchd re-runs (13:05, 14:05, 15:05) post the approved thread instead.
+    for _ in range(6):
+        wait = (due - datetime.now(weekly_digest.PARIS)).total_seconds()
+        if wait > 0:
+            await query.edit_message_text(f"✓ Approved. Posting at {due:%H:%M} (60 min after the last post)…")
+            await asyncio.sleep(wait)
+        try:
+            status, due = await loop.run_in_executor(None, weekly_digest.post_if_due, week)
+        except Exception as e:
+            await query.edit_message_text(f"⚠️ France this week ({week}) failed to post: {e}")
+            return
+        if status != "waiting":
+            break
+    text = {"posted": f"✓ France this week ({week}) posted to Bluesky."}.get(
+        status, f"France this week ({week}): {status}. See logs/weekly-digest.log.")
+    await query.edit_message_text(text)
 
 
 async def handle_rescan(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

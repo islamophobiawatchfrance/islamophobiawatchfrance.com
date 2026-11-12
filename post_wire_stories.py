@@ -8,6 +8,8 @@ Posts queued wire stories (relevance 6-7) from wire_queue.json to Bluesky.
 - Spaces posts at least 60 minutes apart, across runs
 - Anything not due yet gets a scheduled_for time stored in wire_queue.json
 - Max 2 posts containing a question per day
+- Queue empty and account quiet for 24h: proposes a weekly digest via
+  Telegram (digest.py) — posted only once approved
 
 Run by run_wire.py (every 3 hours) and by com.iwf.wire.poster at the
 start of each peak window. Can also be run by hand:
@@ -21,6 +23,7 @@ import json
 import os
 
 import bluesky_poster
+import digest
 import queue_store
 from relevance_filter import passes_geo_rule
 
@@ -197,6 +200,10 @@ def run(now: datetime.datetime | None = None) -> dict:
         pending.sort(key=lambda p: (p.get("relevance_score") or 0, p.get("published", "")), reverse=True)
 
         posted_times = [t for t in (_parse(p.get("posted_at")) for p in posts if p.get("bluesky_posted")) if t]
+        # Article threads and digests aren't in the wire queue, so also space from the last post of any kind
+        last_any = digest.last_bluesky_post()
+        if last_any:
+            posted_times.append(last_any)
         earliest = max([now] + [t + SPACING for t in posted_times])
         slot = _next_slot(earliest)
 
@@ -237,6 +244,13 @@ def run(now: datetime.datetime | None = None) -> dict:
                 slot = _next_slot(slot + SPACING)
 
         save_wire_queue(data)
+
+    # Nothing to post in a peak window — offer a weekly digest if the account has gone quiet
+    if not pending and bluesky_poster.should_post_now(now=now):
+        try:
+            digest.maybe_propose(now)
+        except Exception as e:
+            print(f"  [WARNING] Digest proposal failed: {e}")
     return summary
 
 
