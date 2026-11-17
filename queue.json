@@ -46,7 +46,7 @@
       "heat_score": 6,
       "id": "post_14662_website_202611171124",
       "inversion_required": false,
-      "published": "2026-11-07T11:15:00+00:00",
+      "published": true,
       "relevance_category": "A",
       "relevance_reason": "Documented legal case involving discrimination: French administrative court ruling on state closure order against Muslim school, directly relevant to Muslim community rights and institutional treatment in France.",
       "relevance_score": 8,
@@ -63,7 +63,10 @@
       "time_ago": "10d 0h ago",
       "title": "Creil: Justice rules in favor of Al-Ghazali Muslim school, a setback for the State",
       "type": "website",
-      "url": "https://www.saphirnews.com/Creil-la-justice-donne-raison-a-l-ecole-musulmane-Al-Ghazali-un-revers-pour-l-Etat_a31376.html"
+      "url": "https://www.saphirnews.com/Creil-la-justice-donne-raison-a-l-ecole-musulmane-Al-Ghazali-un-revers-pour-l-Etat_a31376.html",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-11-07-creil-justice-rules-favor-al-ghazali-muslim-school-setback.html",
+      "published_at": "2026-11-17T11:27:00.850Z",
+      "push_failed": false
     },
     {
       "bias_flag": "left - low risk",
@@ -111,7 +114,7 @@
       "heat_score": 8,
       "id": "post_1_website_202611171226",
       "inversion_required": false,
-      "published": "2026-11-17T11:16:40+00:00",
+      "published": true,
       "relevance_category": "A",
       "relevance_reason": "Documented anti-Muslim discrimination by named public officials (municipal police in Carcassonne) with evidence of a cover-up by local authorities; this is a direct follow-up to the recent IWF story on racist/Islamophobic remarks by the same officers, now adding investigative detail on institutional failure to hold them accountable.",
       "relevance_score": 8,
@@ -128,7 +131,10 @@
       "time_ago": "9m ago",
       "title": "Racist remarks by municipal police officers in Carcassonne: the results of a botched investigation",
       "type": "website",
-      "url": "https://www.mediapart.fr/journal/france/171126/propos-racistes-de-policiers-municipaux-carcassonne-les-resultats-d-une-enquete-baclee"
+      "url": "https://www.mediapart.fr/journal/france/171126/propos-racistes-de-policiers-municipaux-carcassonne-les-resultats-d-une-enquete-baclee",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-11-17-racist-remarks-municipal-police-officers-carcassonne.html",
+      "published_at": "2026-11-17T11:27:06.850Z",
+      "push_failed": false
     },
     {
       "bias_flag": "muslim-community - medium risk",
@@ -187,7 +193,7 @@
           "url": "https://www.saphirnews.com/Chalon-sur-Saone-la-mairie-change-les-serrures-de-la-mosquee-de-la-rue-Edgar-Quinet_a31386.html"
         }
       ],
-      "status": "pending",
+      "status": "approved",
       "summary": "\"This morning, the City of Chalon took back possession of the former Sainte-Marie market hall, which had been improperly occupied by a mosque since 1979.\" That's pa... www.saphirnews.com | General news and information journal on Islam and Muslims",
       "telegram_sent": true,
       "time_ago": "18h ago",

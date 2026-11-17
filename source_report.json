@@ -1,5 +1,5 @@
 {
-  "total": 1586,
+  "total": 1587,
   "sources": [
     {
       "name": "Grande Mosquée de Paris",
@@ -79,7 +79,7 @@
     {
       "name": "Valeurs actuelles",
       "count": 23,
-      "pct": 1.5
+      "pct": 1.4
     },
     {
       "name": "Radio France",
@@ -132,14 +132,14 @@
       "pct": 0.9
     },
     {
-      "name": "Muslim Network TV",
+      "name": "Saphirnews",
       "count": 14,
       "pct": 0.9
     },
     {
-      "name": "Saphirnews",
-      "count": 13,
-      "pct": 0.8
+      "name": "Muslim Network TV",
+      "count": 14,
+      "pct": 0.9
     },
     {
       "name": "parlons-politique.fr",

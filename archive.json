@@ -20667,7 +20667,8 @@
       "content_chars": 4742,
       "fetch_source": "direct",
       "date": "2026-11-17",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-11-17T11:27:12.534Z"
     }
   ]
 }
