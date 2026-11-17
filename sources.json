@@ -32,7 +32,7 @@
       "url": "https://www.saphirnews.com/xml/syndication.rss",
       "language": "FR",
       "bias": "muslim-community",
-      "trust": "high",
+      "trust": "medium",
       "enabled": true,
       "category": "specialist"
     },
@@ -159,7 +159,7 @@
       "url": "https://www.aljazeera.com/xml/rss/all.xml",
       "language": "EN",
       "bias": "state-adjacent-qatar",
-      "trust": "medium",
+      "trust": "high",
       "enabled": true,
       "category": "international"
     },
