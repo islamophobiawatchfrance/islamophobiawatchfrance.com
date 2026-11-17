@@ -20599,7 +20599,8 @@
       "content_chars": 1050,
       "fetch_source": "direct",
       "date": "2026-11-17",
-      "approved": false
+      "approved": true,
+      "approved_at": "2026-11-17T11:26:59.944Z"
     },
     {
       "id": "post_2_linkedin_202611171226",
