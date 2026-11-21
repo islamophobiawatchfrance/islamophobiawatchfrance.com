@@ -182,7 +182,7 @@
       "heat_score": 3,
       "id": "post_2_website_202611171226",
       "inversion_required": false,
-      "published": "2026-11-16T16:50:00+00:00",
+      "published": true,
       "relevance_category": "A",
       "relevance_reason": "Documented case of a municipality taking discriminatory action against a mosque (changing locks, eviction threat), directly targeting Muslim religious practice and property rights in France.",
       "relevance_score": 8,
@@ -199,7 +199,17 @@
       "time_ago": "18h ago",
       "title": "Chalon-sur-Saône: the city hall changes the locks of the mosque on Edgar-Quinet Street",
       "type": "website",
-      "url": "https://www.saphirnews.com/Chalon-sur-Saone-la-mairie-change-les-serrures-de-la-mosquee-de-la-rue-Edgar-Quinet_a31386.html"
+      "url": "https://www.saphirnews.com/Chalon-sur-Saone-la-mairie-change-les-serrures-de-la-mosquee-de-la-rue-Edgar-Quinet_a31386.html",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-11-16-chalon-sur-saone-city-hall-changes-locks-mosque-edgar.html",
+      "published_at": "2026-11-17T11:27:14.812540+00:00",
+      "push_failed": false,
+      "bluesky_posted": true,
+      "bluesky_thread": {
+        "post1": "# Opening Bluesky Post\n\nFrench city hall locked out a mosque operating since 1979—claiming free use of public space violates laïcité law. But what's really driving these lock changes in France? A thread on how secularism doctrine is becoming a tool against Muslim communities.",
+        "post2": "This dispute reveals a troubling pattern: invoking laïcité selectively against Muslims while ignoring how Christian groups use public spaces. The 1979…\n\nFull analysis: https://islamophobiawatchfrance.com/news/2026-11-16-chalon-sur-saone-city-hall-changes-locks-mosque-edgar.html",
+        "uri": "at://did:plc:oi4y5m7mpujsavahdjlrpb6b/app.bsky.feed.post/3n2iwqqkamd2r",
+        "reply_uri": "at://did:plc:oi4y5m7mpujsavahdjlrpb6b/app.bsky.feed.post/3n2iwqqpggh2l"
+      }
     }
   ],
   "total_stories_scanned": 634

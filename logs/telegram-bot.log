@@ -40755,3 +40755,23 @@ telegram.error.NetworkError: httpx.ConnectError: [Errno 8] nodename nor servname
   [telegram error] NetworkError('httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known')
   Telegram bot listening for approve/reject actions...
   Telegram bot listening for approve/reject actions...
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('Bad Gateway')
+  [telegram error] NetworkError('httpx.ReadError: ')
+
+  Publishing: Chalon-sur-Saône: the city hall changes the locks of the mosque on Edg
+  Saved: news/2026-11-21-chalon-sur-saone-city-hall-changes-locks-mosque-edgar.html
+  published.json: 41 article(s) total
+  index.html updated (Editor's Pick: Chalon-sur-Saône: the city hall changes the locks of the mos)
+  news.html updated (41 cards in grid)
+  Wire updated (29 items across 7 days)
+  sitemap.xml updated (41 article(s))
+  source_report.json: 129 source(s), 0 flagged
