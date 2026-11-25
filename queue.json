@@ -46,7 +46,7 @@
       "heat_score": 5,
       "id": "post_1_website_202611241217",
       "inversion_required": false,
-      "published": "2026-11-24T11:19:11+00:00",
+      "published": true,
       "relevance_category": "A",
       "relevance_reason": "Documented racism and discrimination within French state institution (police academy); follows pattern of recent IWF coverage of systemic police racism; direct French institutional angle with named interior ministry involvement.",
       "relevance_score": 8,
@@ -62,7 +62,10 @@
       "time_ago": "58m ago",
       "title": "France investigates racist messages shared by police academy trainees",
       "type": "website",
-      "url": "https://www.aa.com.tr/en/europe/france-investigates-racist-messages-shared-by-police-academy-trainees/4135693"
+      "url": "https://www.aa.com.tr/en/europe/france-investigates-racist-messages-shared-by-police-academy-trainees/4135693",
+      "published_url": "https://islamophobiawatchfrance.com/news/2026-11-24-france-investigates-racist-messages-shared-police-academy.html",
+      "published_at": "2026-11-25T05:35:43.623Z",
+      "push_failed": false
     },
     {
       "bias_flag": "muslim-community - medium risk",
@@ -120,7 +123,7 @@
           "url": "https://www.saphirnews.com/Nanterre-nouveau-bras-de-fer-entre-la-prefecture-et-l-Institut-Ibn-Badis_a31393.html"
         }
       ],
-      "status": "pending",
+      "status": "approved",
       "summary": "Since Sunday, November 22, a prefectural order has prohibited the Ibn Badis Institute from welcoming minors for its extracurricular activities... www.saphirnews.com | General news and information journal on Islam and Muslims",
       "time_ago": "6h ago",
       "title": "Nanterre: new showdown between the prefecture and the Ibn Badis Institute",
