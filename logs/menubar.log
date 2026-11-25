@@ -113,3 +113,86 @@
   Done. Open the dashboard to review your posts.
 
 2026-11-19 11:55:54.028 Python[1083:285938] NSNotificationCenter connection interrupted
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Polling 23 sources...
+  [WARNING] La Depeche: fetch failed (<urlopen error _ssl.c:983: The handshake operation timed out>)
+  [WARNING] La Provence: fetch failed (<urlopen error _ssl.c:983: The handshake operation timed out>)
+  [WARNING] Le Progres Lyon: fetch failed (<urlopen error _ssl.c:983: The handshake operation timed out>)  [WARNING] Lyon Capitale: fetch failed (<urlopen error _ssl.c:983: The handshake operation timed out>)
+
+  [WARNING] Rue89 Strasbourg: fetch failed (<urlopen error _ssl.c:983: The handshake operation timed out>)
+  Found 185 unique stories in the last 72h (15/23 sources returned items).
+  Scoring relevance...
+  Sources polled: 23
+  Raw stories found: 185
+  Relevance filtered: 181 rejected, 2 wire-only, 2 full pipeline
+
+  Translating French content...
+  Wire: 3 new, 36 total (3 skipped as seen today).
+  Wire queue: 1 new story queued for Bluesky.
+  Saved 8 stories to stories_today.json.
+  Gap detector: 1 uncovered HOT/TRENDING cluster(s) saved to gaps.json.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [TRENDING] France investigates racist messages shared by police ac... (1 source(s))
+        Fetch: direct | 3,539 chars | confidence: HIGH
+        -> LinkedIn (187 words)
+        -> Gathering background research...
+        -> Website article (626 words)
+        -> TikTok script (78 words)
+  [2/2] [NORMAL] Nanterre: new showdown between the prefecture and the I... (1 source(s))
+        Fetch: direct | 6,278 chars | confidence: HIGH
+        -> LinkedIn (198 words)
+        -> Gathering background research...
+        -> Website article (646 words)
+        -> TikTok script (93 words)
+  Saved 4 new post(s) to queue.json (4 in queue).
+  Appended 4 post(s) to archive.json.
+  index.html updated (Editor's Pick: Chalon-sur-Saône: the city hall changes the locks of the mos)
+  news.html updated (41 cards in grid)
+  Wire updated (36 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
+
+=======================================================
+  IWF Drafter - Fetching stories and drafting posts
+=======================================================
+
+  Polling 23 sources...
+  Found 643 unique stories in the last 72h (20/23 sources returned items).
+  Scoring relevance...
+  Sources polled: 23
+  Raw stories found: 643
+  Relevance filtered: 636 rejected, 4 wire-only, 3 full pipeline
+
+  Translating French content...
+  Wire: 1 new, 39 total (7 skipped as seen today).
+  Wire queue: 1 new story queued for Bluesky.
+  Saved 12 stories to stories_today.json.
+  Gap detector: all hot topics covered.
+  Drafting posts for 2 topic cluster(s)...
+
+  [1/2] [NORMAL] France: MP Sabrina Sebaihi denounces a series of closur... (1 source(s))
+        Fetch: direct | 3,858 chars | confidence: HIGH
+        -> LinkedIn (176 words)
+        -> Gathering background research...
+        -> Website article (608 words)
+        -> TikTok script (82 words)
+  [2/2] [NORMAL] Nanterre: new showdown between the prefecture and the I... (1 source(s))
+        Fetch: direct | 6,278 chars | confidence: HIGH
+        -> LinkedIn (168 words)
+        -> Gathering background research...
+        -> Website article (644 words)
+        -> TikTok script (98 words)
+  Saved 4 new post(s) to queue.json (8 in queue).
+  Appended 4 post(s) to archive.json.
+  index.html updated (Editor's Pick: Chalon-sur-Saône: the city hall changes the locks of the mos)
+  news.html updated (41 cards in grid)
+  Wire updated (39 items across 7 days)
+
+  Done. Open the dashboard to review your posts.
+
